@@ -1,0 +1,15 @@
+em alguns diagramas esta espicificado o começo e o fim de cada objeto, não consegui ainda ver se isso altera alguma coisa no codigo.
+
+Locadora2
+diagrama de sequencia que representa o "alt" nesse caso pode ser um if - else pois tem 2 operandos
+
+#dentro da classe cliente
+#nesse caso está dentro do metodo reserva_veiculo que está na classe cliente
+if(x==0){
+   veiculo.reservado();
+}
+else{
+   veiculo.reservado();
+}
+
+
