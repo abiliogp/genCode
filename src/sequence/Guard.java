@@ -10,6 +10,12 @@ public class Guard extends DataSequence{
 
 	private Specification specification;
 	
+	private String minintName;
+	private String minintValue;
+	
+	private String maxintName;
+	private String maxintValue;
+	
 	
 	public Guard(String name) {
 		this.name = name;
@@ -30,6 +36,14 @@ public class Guard extends DataSequence{
 					value = Tool.manipulate(line, "name=");
 					specification = new Specification(value);
 					specification.parser(bf, line);
+				}
+				if(line.contains("<minint")){
+					minintName = Tool.manipulate(line, "name=");
+					minintValue = Tool.manipulate(line, "value=");
+				}
+				if(line.contains("<maxint")){
+					minintName = Tool.manipulate(line, "name=");
+					minintValue = Tool.manipulate(line, "value=");
 				}
 			}
 		}

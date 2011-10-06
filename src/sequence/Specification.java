@@ -42,17 +42,13 @@ public class Specification extends DataSequence{
 	
 	public void parser(BufferedReader bf, String line) throws IOException {
 		type = Tool.manipulate(line,"xmi:type=");
+		body = Tool.manipulate(line, "value=");
+		separate();
 		if (line.contains("/>")){
 			line = "</specification>";
 		} else{
 			for (line = bf.readLine() ; !(line.contains("</specification>")) ; line = bf.readLine() ){
-				if(line.contains("<language>")){
-					language = Tool.manipulate(line, "<language>", ">", "<");
-				}			
-				if(line.contains("<body>")){
-					body = Tool.manipulate(line, "<body>", ">", "<");
-					separate();
-				}
+				
 			}
 		}
 	}
