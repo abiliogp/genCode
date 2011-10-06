@@ -24,6 +24,14 @@ public class Guard extends DataSequence{
 	public Specification getSpecification(){
 		return specification;
 	}
+	
+	public String getMinInt(){
+		return maxintValue;
+	}
+	
+	public String getMaxInt(){
+		return maxintValue;
+	}
 
 	
 	public void parser(BufferedReader bf, String line) throws IOException {
