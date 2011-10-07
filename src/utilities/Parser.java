@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import sequence.Collaboration;
+
 import sequence.Interaction;
 import sequence.OperationEvent;
 
@@ -164,11 +164,12 @@ public abstract class Parser {
 			/*
 			 * Sequência
 			 */
-			if (line.contains("uml:Collaboration")) {// nome da classe
-				value = Tool.manipulate(line, "name");
-				Collaboration collaboration = new Collaboration(value);
-				model.addCollaboration(collaboration);
-				collaboration.parser(bf, line);		
+			if (line.contains("uml:Interaction")) {// nome da classe
+				value = Tool.manipulate(line, "xmi:id=");
+				Interaction interaction = Tool.getTrieInteraction(value);
+				model.addInteraction(interaction);
+				interaction.parser(bf, line);
+						
 			}
 			
 			if ( (line.contains("uml:SendOperationEvent")) || (line.contains("uml:ReceiveOperationEvent")) ) {

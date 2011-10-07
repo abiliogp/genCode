@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import sequence.Collaboration;
+import sequence.Interaction;
 
 public class Model {
 
@@ -15,7 +15,8 @@ public class Model {
 	
 	protected ArrayList<Classe> listClasse;
 	
-	private ArrayList<Collaboration> listCollaboration;
+	private ArrayList<Interaction> listInteraction;
+	
 	private ArrayList<Interface> listInterface;
 	
 	private File dir;
@@ -24,7 +25,7 @@ public class Model {
 		this.name = name;
 		
 		listClasse = new ArrayList<Classe>();
-		listCollaboration = new ArrayList<Collaboration>();
+		listInteraction = new ArrayList<Interaction>();
 		listInterface = new ArrayList<Interface>();
 	}
 	
@@ -32,8 +33,8 @@ public class Model {
 		listClasse.add(classe);
 	}
 	
-	public void addCollaboration(Collaboration collaboration){
-		listCollaboration.add(collaboration);
+	public void addInteraction(Interaction interaction){
+		listInteraction.add(interaction);
 	}
 
 	public void addInterface(Interface inter){
@@ -67,8 +68,8 @@ public class Model {
 		for(int i = 0; i < this.listClasse.size(); i++){
 			this.listClasse.get(i).printProp();
 		}
-		for(int i = 0; i < this.listCollaboration.size(); i++){
-			this.listCollaboration.get(i).printProp();
+		for(int i = 0; i < this.listInteraction.size(); i++){
+			this.listInteraction.get(i).printProp();
 		}
 		
 	}

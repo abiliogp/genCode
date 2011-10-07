@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_uQl7IOAbEeCVCIGh8JgPhA" name="Model">
-  <packageImport xmi:id="_uQl7IeAbEeCVCIGh8JgPhA">
-    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
-  </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_5v0XgOAbEeCVCIGh8JgPhA" name="Class0">
-    <generalization xmi:id="_tp210OAcEeCVCIGh8JgPhA" general="_iY7UIOAcEeCVCIGh8JgPhA"/>
-    <ownedAttribute xmi:id="_-MCrMOAbEeCVCIGh8JgPhA" name="atr1" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VQbz4OAcEeCVCIGh8JgPhA" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VQalwOAcEeCVCIGh8JgPhA" value="1"/>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_FGXMEPD-EeC7__Lh-3r6ug" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_I5CzgPD-EeC7__Lh-3r6ug" name="Class0">
+    <ownedAttribute xmi:id="_TdPyEPD-EeC7__Lh-3r6ug" name="class1" type="_RoX7IPD-EeC7__Lh-3r6ug" association="_TdRnQPD-EeC7__Lh-3r6ug">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TdPyEfD-EeC7__Lh-3r6ug" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TdPyEvD-EeC7__Lh-3r6ug" value="1"/>
     </ownedAttribute>
-    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_uQ6EMOAbEeCVCIGh8JgPhA" name="sd" specification="_A50gEOAcEeCVCIGh8JgPhA">
-      <lifeline xmi:id="_COEgwOAdEeCVCIGh8JgPhA" name="Lifeline1" visibility="public" represents="_hj5UIeAdEeCVCIGh8JgPhA" coveredBy="_kH4o8OAfEeCVCIGh8JgPhA"/>
-      <lifeline xmi:id="_F-5HAOAdEeCVCIGh8JgPhA" name="Lifeline0" represents="_hjtG4OAdEeCVCIGh8JgPhA" coveredBy="_kH7FMOAfEeCVCIGh8JgPhA"/>
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_kH4o8OAfEeCVCIGh8JgPhA" name="mtHe_MessageSend" covered="_COEgwOAdEeCVCIGh8JgPhA" event="_kH4B4OAfEeCVCIGh8JgPhA" message="_kH2MsOAfEeCVCIGh8JgPhA"/>
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_kH7FMOAfEeCVCIGh8JgPhA" name="mtHe_MessageRecv" covered="_F-5HAOAdEeCVCIGh8JgPhA" event="_kH53EOAfEeCVCIGh8JgPhA" message="_kH2MsOAfEeCVCIGh8JgPhA"/>
-      <message xmi:id="_kH2MsOAfEeCVCIGh8JgPhA" name="mtHe_Message" messageSort="asynchCall" receiveEvent="_kH7FMOAfEeCVCIGh8JgPhA" sendEvent="_kH4o8OAfEeCVCIGh8JgPhA"/>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_a6tpMPD-EeC7__Lh-3r6ug" name="Interaction1"/>
+    <ownedOperation xmi:id="_UtPaUPD-EeC7__Lh-3r6ug" name="Operation0"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_RoX7IPD-EeC7__Lh-3r6ug" name="Class1">
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_WqJL4PD-EeC7__Lh-3r6ug" name="Interaction0">
+      <lifeline xmi:id="_95sCoPEAEeC7__Lh-3r6ug" name="Lifeline0" coveredBy="_F9uKgPEBEeC7__Lh-3r6ug _F90RIPEBEeC7__Lh-3r6ug"/>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_F9uKgPEBEeC7__Lh-3r6ug" name="CombinedFragment" covered="_95sCoPEAEeC7__Lh-3r6ug" interactionOperator="loop">
+        <operand xmi:id="_F90RIPEBEeC7__Lh-3r6ug" name="InteractionOperand" covered="_95sCoPEAEeC7__Lh-3r6ug">
+          <guard xmi:id="_XJB_8PEBEeC7__Lh-3r6ug" name="InteractionConstraint0">
+            <specification xmi:type="uml:LiteralString" xmi:id="_XJD1IPEBEeC7__Lh-3r6ug" name="constraintSpec"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_abEYcPEBEeC7__Lh-3r6ug" name="0"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_cXC88PEBEeC7__Lh-3r6ug" name="10" value="10"/>
+          </guard>
+        </operand>
+      </fragment>
     </ownedBehavior>
-    <ownedOperation xmi:id="_A50gEOAcEeCVCIGh8JgPhA" name="mt1" method="_uQ6EMOAbEeCVCIGh8JgPhA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_iY7UIOAcEeCVCIGh8JgPhA" name="Class1">
-    <ownedOperation xmi:id="_yUDUEOAcEeCVCIGh8JgPhA" name="mtHe" visibility="private"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_YETNMOAdEeCVCIGh8JgPhA" name="Class2">
-    <ownedAttribute xmi:id="_hjtG4OAdEeCVCIGh8JgPhA" name="class0" type="_5v0XgOAbEeCVCIGh8JgPhA" association="_hj5UIOAdEeCVCIGh8JgPhA">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hjtG4eAdEeCVCIGh8JgPhA" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hjtG4uAdEeCVCIGh8JgPhA" value="1"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_hj5UIOAdEeCVCIGh8JgPhA" name="class2_class0_0" memberEnd="_hj5UIeAdEeCVCIGh8JgPhA _hjtG4OAdEeCVCIGh8JgPhA">
-    <ownedEnd xmi:id="_hj5UIeAdEeCVCIGh8JgPhA" name="class2" type="_YETNMOAdEeCVCIGh8JgPhA" association="_hj5UIOAdEeCVCIGh8JgPhA">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hj5UIuAdEeCVCIGh8JgPhA" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hj5UI-AdEeCVCIGh8JgPhA" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_TdRnQPD-EeC7__Lh-3r6ug" name="class0_class1_0" memberEnd="_TdRnQfD-EeC7__Lh-3r6ug _TdPyEPD-EeC7__Lh-3r6ug">
+    <ownedEnd xmi:id="_TdRnQfD-EeC7__Lh-3r6ug" name="class0" type="_I5CzgPD-EeC7__Lh-3r6ug" association="_TdRnQPD-EeC7__Lh-3r6ug">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TdRnQvD-EeC7__Lh-3r6ug" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TdRnQ_D-EeC7__Lh-3r6ug" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_kH4B4OAfEeCVCIGh8JgPhA" name="SendOperationEvent0" operation="_yUDUEOAcEeCVCIGh8JgPhA"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_kH53EOAfEeCVCIGh8JgPhA" name="ReceiveOperationEvent0" operation="_yUDUEOAcEeCVCIGh8JgPhA"/>
 </uml:Model>

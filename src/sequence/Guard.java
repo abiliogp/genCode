@@ -57,6 +57,8 @@ public class Guard extends DataSequence{
 	public void printProp() {
 		System.out.println("Guard " + this.name);
 		this.specification.printProp();
+		this.maxint.printProp();
+		this.minint.printProp();
 	}
 
 	public boolean isExpressionLogic(){
