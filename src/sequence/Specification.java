@@ -9,12 +9,10 @@ import utilities.Tool;
 public class Specification extends DataSequence{
 	
 	private String language;
-	private String type;
 
 	private String body;
 	private String variable;
 	private String expression;
-	private String value;
 	
 	private boolean isLogic;
 	private boolean isNumeric;
@@ -36,9 +34,6 @@ public class Specification extends DataSequence{
 		return expression;
 	}
 	
-	public String getValue() {
-		return value;
-	}
 	
 	public void parser(BufferedReader bf, String line) throws IOException {
 		type = Tool.manipulate(line,"xmi:type=");

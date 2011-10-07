@@ -10,12 +10,8 @@ public class Guard extends DataSequence{
 
 	private Specification specification;
 	
-	private String minintName;
-	private String minintValue;
-	
-	private String maxintName;
-	private String maxintValue;
-	
+	private GuardInt maxint;
+	private GuardInt minint;
 	
 	public Guard(String name) {
 		this.name = name;
@@ -25,13 +21,7 @@ public class Guard extends DataSequence{
 		return specification;
 	}
 	
-	public String getMinInt(){
-		return maxintValue;
-	}
 	
-	public String getMaxInt(){
-		return maxintValue;
-	}
 
 	
 	public void parser(BufferedReader bf, String line) throws IOException {
@@ -46,12 +36,16 @@ public class Guard extends DataSequence{
 					specification.parser(bf, line);
 				}
 				if(line.contains("<minint")){
-					minintName = Tool.manipulate(line, "name=");
-					minintValue = Tool.manipulate(line, "value=");
+					value = Tool.manipulate(line, "name=");
+					minint = new GuardInt(value);
+					minint.setValue(Tool.manipulate(line, "value="));
+					minint.setType(Tool.manipulate(line, "type="));
 				}
 				if(line.contains("<maxint")){
-					minintName = Tool.manipulate(line, "name=");
-					minintValue = Tool.manipulate(line, "value=");
+					value = Tool.manipulate(line, "name=");
+					maxint = new GuardInt(value);
+					maxint.setValue(Tool.manipulate(line, "value="));
+					maxint.setType(Tool.manipulate(line, "type="));
 				}
 			}
 		}

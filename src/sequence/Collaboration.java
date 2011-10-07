@@ -10,9 +10,6 @@ public class Collaboration extends DataSequence{
 	
 	private static ArrayList<Interaction> listInteraction = new ArrayList<Interaction>();
 	
-	/*
-	 *Constructor
-	 */
 	public Collaboration(String name){
 		this.name = name;
 	}
@@ -29,6 +26,5 @@ public class Collaboration extends DataSequence{
 		for(int i=0; i < listInteraction.size(); i++){
 			listInteraction.get(i).printProp();
 		}
-		
 	}
 }

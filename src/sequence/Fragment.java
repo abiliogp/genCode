@@ -17,7 +17,7 @@ public class Fragment extends DataSequence{
 	private Message message;
 	
 	private String operator;
-	private String type;
+	
 	private String visibility;
 	private String xmi;
 	
@@ -53,10 +53,6 @@ public class Fragment extends DataSequence{
 		return message;
 	}
 	
-	public String getType(){
-		return type;
-	}
-	
 	public String getXMI(){
 		return xmi;
 	}
@@ -64,10 +60,6 @@ public class Fragment extends DataSequence{
 	/*
 	 *Set
 	 */
-	public void setType(String type){
-		this.type = type;
-	}
-	
 	public void setOperator(String operator){
 		this.operator = operator;
 	}

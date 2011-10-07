@@ -15,28 +15,13 @@ public class OperationEvent extends DataSequence{
 	 *Attributes
 	 */
 	private Method operation;
-	private String type;
+
 	
 	/*
 	 *Constructor
 	 */
 	public OperationEvent(String name){
 		this.name = name;
-	}
-
-	
-	/*
-	 * Get
-	 */
-	public String getType(){
-		return this.type;
-	}
-
-	/*
-	 * Set
-	 */
-	public void setType(String type){
-		this.type = type;
 	}
 
 	
