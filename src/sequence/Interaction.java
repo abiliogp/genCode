@@ -41,7 +41,7 @@ public class Interaction extends DataSequence{
 		String value, key, str;
 		if (line.contains("/>"))
 			line = "</ownedBehavior>"; 		
-		for ( ; !(line.contains("</ownedBehavior>")) ; line = bf.readLine() ) {
+		for ( ; !((line.contains("</ownedBehavior>")) || (line.contains("</packagedElement>"))) ; line = bf.readLine() ) {
 			key = Tool.manipulate(line, "xmi:id");
 			
 			/*
@@ -89,7 +89,7 @@ public class Interaction extends DataSequence{
 		if (line.contains("/>")){
 			line = "</ownedBehavior>";
 		} else{
-			for ( ; !(line.contains("</ownedBehavior>")) ; line = bf.readLine() ) {
+			for ( ; !((line.contains("</ownedBehavior>")) || (line.contains("</packagedElement>"))); line = bf.readLine() ) {
 				key = Tool.manipulate(line, "xmi:id");
 				
 				/*

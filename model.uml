@@ -8,24 +8,23 @@
     <ownedBehavior xmi:type="uml:Interaction" xmi:id="_a6tpMPD-EeC7__Lh-3r6ug" name="Interaction1"/>
     <ownedOperation xmi:id="_UtPaUPD-EeC7__Lh-3r6ug" name="Operation0"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_RoX7IPD-EeC7__Lh-3r6ug" name="Class1">
-    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_WqJL4PD-EeC7__Lh-3r6ug" name="Interaction0">
-      <lifeline xmi:id="_95sCoPEAEeC7__Lh-3r6ug" name="Lifeline0" coveredBy="_F9uKgPEBEeC7__Lh-3r6ug _F90RIPEBEeC7__Lh-3r6ug"/>
-      <fragment xmi:type="uml:CombinedFragment" xmi:id="_F9uKgPEBEeC7__Lh-3r6ug" name="CombinedFragment" covered="_95sCoPEAEeC7__Lh-3r6ug" interactionOperator="loop">
-        <operand xmi:id="_F90RIPEBEeC7__Lh-3r6ug" name="InteractionOperand" covered="_95sCoPEAEeC7__Lh-3r6ug">
-          <guard xmi:id="_XJB_8PEBEeC7__Lh-3r6ug" name="InteractionConstraint0">
-            <specification xmi:type="uml:LiteralString" xmi:id="_XJD1IPEBEeC7__Lh-3r6ug" name="constraintSpec"/>
-            <minint xmi:type="uml:LiteralInteger" xmi:id="_abEYcPEBEeC7__Lh-3r6ug" name="0"/>
-            <maxint xmi:type="uml:LiteralInteger" xmi:id="_cXC88PEBEeC7__Lh-3r6ug" name="10" value="10"/>
-          </guard>
-        </operand>
-      </fragment>
-    </ownedBehavior>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_RoX7IPD-EeC7__Lh-3r6ug" name="Class1"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_TdRnQPD-EeC7__Lh-3r6ug" name="class0_class1_0" memberEnd="_TdRnQfD-EeC7__Lh-3r6ug _TdPyEPD-EeC7__Lh-3r6ug">
     <ownedEnd xmi:id="_TdRnQfD-EeC7__Lh-3r6ug" name="class0" type="_I5CzgPD-EeC7__Lh-3r6ug" association="_TdRnQPD-EeC7__Lh-3r6ug">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TdRnQvD-EeC7__Lh-3r6ug" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TdRnQ_D-EeC7__Lh-3r6ug" value="1"/>
     </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_WqJL4PD-EeC7__Lh-3r6ug" name="Interaction0">
+    <lifeline xmi:id="_95sCoPEAEeC7__Lh-3r6ug" name="Lifeline0" coveredBy="_F9uKgPEBEeC7__Lh-3r6ug _F90RIPEBEeC7__Lh-3r6ug"/>
+    <fragment xmi:type="uml:CombinedFragment" xmi:id="_F9uKgPEBEeC7__Lh-3r6ug" name="CombinedFragment" covered="_95sCoPEAEeC7__Lh-3r6ug" interactionOperator="loop">
+      <operand xmi:id="_F90RIPEBEeC7__Lh-3r6ug" name="InteractionOperand" covered="_95sCoPEAEeC7__Lh-3r6ug">
+        <guard xmi:id="_XJB_8PEBEeC7__Lh-3r6ug" name="InteractionConstraint0">
+          <specification xmi:type="uml:LiteralString" xmi:id="_XJD1IPEBEeC7__Lh-3r6ug" name="constraintSpec"/>
+          <minint xmi:type="uml:LiteralInteger" xmi:id="_abEYcPEBEeC7__Lh-3r6ug" name="0"/>
+          <maxint xmi:type="uml:LiteralInteger" xmi:id="_cXC88PEBEeC7__Lh-3r6ug" name="10" value="10"/>
+        </guard>
+      </operand>
+    </fragment>
   </packagedElement>
 </uml:Model>
