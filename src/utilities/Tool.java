@@ -107,6 +107,7 @@ public class Tool {
 	 * indentation: Return a string with \t * tab to indentation file
 	 */
 	public static String indentation(int tab){
+		if(tab == 0) return "";
 		StringBuilder tabInd = new StringBuilder("\t");
 		for(int i=0; i < tab - 1; i++){
 			tabInd.append("\t");

@@ -249,129 +249,130 @@ public class Classe {
 			out.write("import java.util.ArrayList;\n");
 		}
 		
-		genInnerClass(out);
+		genInnerClass(out, 0);
 		out.close();
 	}
 
-	private void genInnerClass(BufferedWriter out) throws IOException{
+	private void genInnerClass(BufferedWriter out, int tab) throws IOException{
+		String tabInd = Tool.indentation(tab);
 		//Name Class and General
-				out.write("\n" + visibility + (abstrata == true ? " abstract " : " ") + "class " + 
-						  name + (general != null ? " extends " + general  : "") );
-				
-				//Implements
-				if( listRealInter.size() > 0){
-					out.write(" implements ");
-					for(int i = 0 ; i < listRealInter.size() ; i++){
-						out.write( listRealInter.get(i).getNameSupplier() );
-						if(i < listRealInter.size() -1){
-							out.write(", ");
-						}
+		out.write("\n" + tabInd + visibility + (abstrata == true ? " abstract " : " ") + "class " + 
+				  name + (general != null ? " extends " + general  : "") );
+		
+		//Implements
+		if( listRealInter.size() > 0){
+			out.write(" implements ");
+			for(int i = 0 ; i < listRealInter.size() ; i++){
+				out.write( listRealInter.get(i).getNameSupplier() );
+				if(i < listRealInter.size() -1){
+					out.write(", ");
+				}
+			}
+		}
+		
+		out.write("{");
+		
+		//Atributos
+		if(this.listAtributte.size() > 0){
+			out.write("\n\n\t/**Attributes */");
+			for(int i = 0 ; i < listAtributte.size() ; i++){
+				this.listAtributte.get(i).genCode(out, tab);
+			}
+		}
+		
+		//Atributos Return dos Métodos
+		for(int i = 0 ; i < listMethod.size() ; i++){
+			if( !((listMethod.get(i).getName().substring(0, 3).equals("get")) || 
+				 (listMethod.get(i).getName().substring(0, 3).equals("set")) ) )
+			{
+				if( listMethod.get(i).getListReturn().size() > 0 ){
+					out.write( "\n\n\t/**Attribute of Return Method " + listMethod.get(i).getName() + " */" );
+					for(int j = 0 ; j < listMethod.get(i).getListReturn().size() ; j++){
+						listMethod.get(i).getListReturn().get(j).genCodeReturn(out);
 					}
 				}
-				
-				out.write("{");
-				
-				//Atributos
-				if(this.listAtributte.size() > 0){
-					out.write("\n\n\t/**Attributes */");
-					for(int i = 0 ; i < listAtributte.size() ; i++){
-						this.listAtributte.get(i).genCode(out);
-					}
+			}
+		}
+			
+		//Atributtes from Interface
+		for(int i = 0 ; i < listRealInter.size() ; i++){
+			listRealInter.get(i).genCodeAtributte(out);
+		}
+		
+		
+		//Construtor
+		if( !(this.abstrata) ){
+			out.write("\n\n" + tabInd + "\t/** Constructor */");
+			out.write("\n"+ tabInd +"\tpublic " + name + "(");
+			for(int i = 0 ; i < listAtributte.size() ; i++){
+				listAtributte.get(i).genCodeConstructorSignature(out);
+				if(i < listAtributte.size() - 1){
+					out.write(",");
 				}
-				
-				//Atributos Return dos Métodos
-				for(int i = 0 ; i < listMethod.size() ; i++){
-					if( !((listMethod.get(i).getName().substring(0, 3).equals("get")) || 
+			}
+			out.write("){");
+			if( general != null ){
+				out.write("\n" + tabInd + "\tsuper();");
+			}
+			for(int i = 0 ; i < listAtributte.size() ; i++){
+				this.listAtributte.get(i).genCodeConstructor(out);
+			}
+			out.write("\n"+ tabInd +"\t}\n");
+		}
+		
+		for(int i = 0; i < listInnerClass.size(); i++){
+			//problema no alinhameto
+			listInnerClass.get(i).genInnerClass(out, tab + 1);
+		}
+		
+		//Get
+		if(needGetSet){
+			out.write("\n\n\t/** Get */");
+			for(int i = 0 ; i < listAtributte.size() ; i++){
+				listAtributte.get(i).genCodeGet(out, tab);
+			}
+		}
+		
+		//Set
+		if(needGetSet){
+			out.write("\n\n\t/** Set */");
+			for(int i = 0 ; i < listAtributte.size() ; i++){
+				listAtributte.get(i).genCodeSet(out, tab);
+			}
+		}
+		
+		//Metodo
+		if(listMethod.size() > 0){
+			if( !((listMethod.get(0).getName().substring(0, 3).equals("get")) || 
+					 (listMethod.get(0).getName().substring(0, 3).equals("set")) ) )
+			{
+				out.write("\n\n\t/** Methods */");
+			}
+			for(int i = 0 ; i < this.listMethod.size() ; i++){
+				if( !((listMethod.get(i).getName().substring(0, 3).equals("get")) || 
 						 (listMethod.get(i).getName().substring(0, 3).equals("set")) ) )
-					{
-						if( listMethod.get(i).getListReturn().size() > 0 ){
-							out.write( "\n\n\t/**Attribute of Return Method " + listMethod.get(i).getName() + " */" );
-							for(int j = 0 ; j < listMethod.get(i).getListReturn().size() ; j++){
-								listMethod.get(i).getListReturn().get(j).genCodeReturn(out);
-							}
-						}
-					}
+				{
+					listMethod.get(i).genCode(out, tab);
 				}
-					
-				//Atributtes from Interface
-				for(int i = 0 ; i < listRealInter.size() ; i++){
-					listRealInter.get(i).genCodeAtributte(out);
+			}
+		}
+		
+		//Métodos da Super
+		if(general != null){
+			if( (Tool.containsKeyTrieAbstractMethod(general)) ){				
+				for(int i = 0 ; i < Tool.getTrieAbstractMethod(general).size() ; i++){
+					Tool.getTrieAbstractMethod(general).get(i).genCodeMtSuper(out, tab);	
 				}
-				
-				
-				//Construtor
-				if( !(this.abstrata) ){
-					out.write("\n\n\t/** Constructor */");
-					out.write("\n\tpublic " + name + "(");
-					for(int i = 0 ; i < listAtributte.size() ; i++){
-						listAtributte.get(i).genCodeConstructorSignature(out);
-						if(i < listAtributte.size() - 1){
-							out.write(",");
-						}
-					}
-					out.write("){");
-					if( general != null ){
-						out.write("\n\t\tsuper();");
-					}
-					for(int i = 0 ; i < listAtributte.size() ; i++){
-						this.listAtributte.get(i).genCodeConstructor(out);
-					}
-					out.write("\n\t}\n");
-				}
-				
-				for(int i = 0; i < listInnerClass.size(); i++){
-					//problema no alinhameto
-					listInnerClass.get(i).genInnerClass(out);
-				}
-				
-				//Get
-				if(needGetSet){
-					out.write("\n\n\t/** Get */");
-					for(int i = 0 ; i < listAtributte.size() ; i++){
-						listAtributte.get(i).genCodeGet(out);
-					}
-				}
-				
-				//Set
-				if(needGetSet){
-					out.write("\n\n\t/** Set */");
-					for(int i = 0 ; i < listAtributte.size() ; i++){
-						listAtributte.get(i).genCodeSet(out);
-					}
-				}
-				
-				//Metodo
-				if(listMethod.size() > 0){
-					if( !((listMethod.get(0).getName().substring(0, 3).equals("get")) || 
-							 (listMethod.get(0).getName().substring(0, 3).equals("set")) ) )
-					{
-						out.write("\n\n\t/** Methods */");
-					}
-					for(int i = 0 ; i < this.listMethod.size() ; i++){
-						if( !((listMethod.get(i).getName().substring(0, 3).equals("get")) || 
-								 (listMethod.get(i).getName().substring(0, 3).equals("set")) ) )
-						{
-							listMethod.get(i).genCode(out);
-						}
-					}
-				}
-				
-				//Métodos da Super
-				if(general != null){
-					if( (Tool.containsKeyTrieAbstractMethod(general)) ){				
-						for(int i = 0 ; i < Tool.getTrieAbstractMethod(general).size() ; i++){
-							Tool.getTrieAbstractMethod(general).get(i).genCodeMtSuper(out);	
-						}
-					}
-				}
-				
-				//Methods form Interface
-				for(int i = 0 ; i < listRealInter.size() ; i++){
-					listRealInter.get(i).genCodeMethods(out);
-				}
-				
-				out.write("\n}");
-				
+			}
+		}
+		
+		//Methods form Interface
+		for(int i = 0 ; i < listRealInter.size() ; i++){
+			listRealInter.get(i).genCodeMethods(out);
+		}
+		
+		out.write("\n" + tabInd + "}");
+		
 	}
 
 	

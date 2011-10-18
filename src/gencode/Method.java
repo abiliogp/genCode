@@ -114,8 +114,9 @@ public class Method extends DataModel{
 	}
 	
 	
-	public void genCode(BufferedWriter out) throws IOException{
-		out.write("\n\t" + this.visibility);
+	public void genCode(BufferedWriter out, int tab) throws IOException{
+		String tabInd = Tool.indentation(tab);
+		out.write("\n" + tabInd + this.visibility);
 		if( (this.isStatic) ){
 			out.write(" static");
 		}
@@ -131,7 +132,7 @@ public class Method extends DataModel{
 		if( (this.isAbstract) ){
 			out.write(";");
 		} else{
-			genCodeCpMet(out);
+			genCodeCpMet(out, tab);
 		}
 	}
 	
@@ -154,16 +155,17 @@ public class Method extends DataModel{
 	}
 	
 	//gera o corpo do método
-	private void genCodeCpMet(BufferedWriter out) throws IOException{
+	private void genCodeCpMet(BufferedWriter out, int tab) throws IOException{
+		String tabInd = Tool.indentation(tab);
 		//gera declaração dos out dentro do método
 		out.write("{");
 		this.genCodeDeclPmtOut(out);
 		if(interaction != null){
-			interaction.genCode(out,2);
+			interaction.genCode(out,tab + 2);
 		}
 		this.genCodeReturnPmtOut(out);
-		this.genCodeReturn(out);
-		out.write("\n\t}\n");
+		this.genCodeReturn(out, tab);
+		out.write("\n" + tabInd + "}\n");
 	}
 	
 	//gera declaração dos parametros out dentro do método
@@ -192,10 +194,11 @@ public class Method extends DataModel{
 	}
 	
 	//gera return
-	private void genCodeReturn(BufferedWriter out) throws IOException{
+	private void genCodeReturn(BufferedWriter out, int tab) throws IOException{
+		String tabInd = Tool.indentation(tab);		
 		for(int i = 0; i < this.listRetorno.size() ; i++){
 			if( !(this.listRetorno.get(i).getType().equals(this.type)) ){
-				out.write("\n\t\t/*\n\t*WARNING: The Type of Return <" +
+				out.write("\n" + tabInd + "\t/**WARNING: The Type of Return <" +
 						   this.listRetorno.get(i).getType() + 
 				   		   "> \n\t *disagree of type the Method\n\t */");
 			}
@@ -203,12 +206,13 @@ public class Method extends DataModel{
 		}
 	}
 
-	public void genCodeMtSuper(BufferedWriter out) throws IOException{
-		out.write("\n\t/*\n\t *Abstract Method of Super\n\t */");
+	public void genCodeMtSuper(BufferedWriter out, int tab) throws IOException{
+		String tabInd = Tool.indentation(tab);
+		out.write("\n" +tabInd + "/** Abstract Method of Super*/");
 		out.write("\n\t" + this.visibility);
 		out.write(" " + this.type + " " + this.name);
 		this.genCodePmtIn(out);
-		this.genCodeCpMet(out);
+		this.genCodeCpMet(out, tab);
 		
 	}
 

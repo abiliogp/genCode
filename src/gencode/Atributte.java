@@ -28,7 +28,8 @@ public class Atributte extends DataModel {
 							this.lowerValue == -1 ? "*" : this.lowerValue);
 	}
 	
-	public void genCode(BufferedWriter out) throws IOException{
+	public void genCode(BufferedWriter out, int tab) throws IOException{
+		String tabInd = Tool.indentation(tab);
 		if(lowerValue == '*' || upperValue == '*'){
 				if(lowerValue == '1'){
 					out.write("\n\t/*\n\t *You must have at least ONE" +
@@ -39,7 +40,7 @@ public class Atributte extends DataModel {
 				out.write("ArrayList<" + this.type + "> " + this.name + ";" );
 			
 		} else{
-			out.write("\n\t");
+			out.write("\n" + tabInd);
 			out.write( !(this.visibility.equals("package")) ?  this.visibility + " " : "" );
 			out.write(this.type + " " + this.name + ";" );
 		}
@@ -58,18 +59,20 @@ public class Atributte extends DataModel {
 		}
 	}
 	
-	public void genCodeGet(BufferedWriter out) throws IOException{
+	public void genCodeGet(BufferedWriter out , int tab) throws IOException{
+		String tabInd = Tool.indentation(tab); 
 		if( this.visbPrivate ){
-			out.write("\n\tpublic " + this.type + " get" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) + "(){");
-			out.write("\n\t\treturn this." + this.name + ";\n\t}\n");
+			out.write("\n" + tabInd + "public " + this.type + " get" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) + "(){");
+			out.write("\n" + tabInd + "\treturn this." + this.name + ";\n\t}\n");
 		}
 	}
 	
-	public void genCodeSet(BufferedWriter out) throws IOException{
+	public void genCodeSet(BufferedWriter out, int tab) throws IOException{
+		String tabInd = Tool.indentation(tab);
 		if( this.visbPrivate ){
-			out.write("\n\tpublic void set" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) 
+			out.write("\n" + tabInd + "public void set" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) 
 					+ "( " + this.type + " " + this.name + " ){");
-			out.write("\n\t\t this." + this.name + " = " + this.name + ";\n\t}\n");
+			out.write("\n"+ tabInd + "\t this." + this.name + " = " + this.name + ";\n\t}\n");
 		}
 	}
 	

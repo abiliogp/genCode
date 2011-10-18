@@ -55,13 +55,13 @@ public class Interface {
 	
 	public void genCodeAtributte(BufferedWriter out) throws IOException{
 		for(int i = 0 ; i < this.listAtributte.size() ; i++){
-			this.listAtributte.get(i).genCode(out);
+			this.listAtributte.get(i).genCode(out, 0);
 		}
 	}
 	
-	public void genCodeMethods(BufferedWriter out) throws IOException{
+	public void genCodeMethods(BufferedWriter out,int tab) throws IOException{
 		for(int i = 0 ; i < this.listMetodo.size() ; i++){
-			this.listMetodo.get(i).genCode(out);	
+			this.listMetodo.get(i).genCode(out,tab);	
 		}
 	}
 	
