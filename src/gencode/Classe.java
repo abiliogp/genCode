@@ -320,6 +320,7 @@ public class Classe {
 				}
 				
 				for(int i = 0; i < listInnerClass.size(); i++){
+					//problema no alinhameto
 					listInnerClass.get(i).genInnerClass(out);
 				}
 				
