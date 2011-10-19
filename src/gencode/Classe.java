@@ -337,7 +337,7 @@ public class Classe {
 		if(needGetSet){
 			out.write("\n\n\t/** Set */");
 			for(int i = 0 ; i < listAtributte.size() ; i++){
-				listAtributte.get(i).genCodeSet(out, tab);
+				listAtributte.get(i).genCodeSet(out);
 			}
 		}
 		

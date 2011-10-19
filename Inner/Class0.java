@@ -13,8 +13,12 @@ public class Class0{
 
 		public class Class3{
 
+	/**Attributes */
+		private void Property0;
+
 			/** Constructor */
-			public Class3(){
+			public Class3( void Property0 ){
+		this.Property0 = Property0;
 			}
 
 		}
@@ -31,4 +35,8 @@ public class Class0{
 		}
 
 	}
+
+	/** Get */
+
+	/** Set */
 }

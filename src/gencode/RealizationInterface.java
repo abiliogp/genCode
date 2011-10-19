@@ -29,7 +29,7 @@ public class RealizationInterface {
 	public void genCodeMethods(BufferedWriter out) throws IOException{
 		if(supplier.tamListMethod() > 0){
 			out.write("\n\t/** Methods From " + name + " */");
-			supplier.genCodeMethods(out);
+			supplier.genCodeMethods(out, 0);
 		}
 	}
 	

@@ -10,10 +10,7 @@ import utilities.Tool;
 public class Atributte extends DataModel {
 
 	public Atributte(String name) {
-
 		super(name);
-		
-		//this.visibility = "";
 	}
 
 	
@@ -29,11 +26,12 @@ public class Atributte extends DataModel {
 	}
 	
 	public void genCode(BufferedWriter out, int tab) throws IOException{
-		String tabInd = Tool.indentation(tab);
+		this.tab = tab;
+		tabInd = Tool.indentation(tab);
 		if(lowerValue == '*' || upperValue == '*'){
-				if(lowerValue == '1'){
-					out.write("\n\t/*\n\t *You must have at least ONE" +
-							"\n\t *Occurrence of Attribute: " + this.name + " in this class\n\t */");
+				if(this.getLowerValue() == '1'){
+					out.write("\n" + tabInd + "/** You must have at least ONE " +
+							"Occurrence of Attribute: " + this.name + " in this class*/");
 				}
 				out.write("\n\t");
 				out.write( !(this.visibility.equals("package")) ? "\n\t" + this.visibility + " " : "" );
@@ -49,26 +47,26 @@ public class Atributte extends DataModel {
 	public void genCodeAtributteImplements(BufferedWriter out) throws IOException{
 		if(lowerValue == '*' || upperValue == '*'){
 				if(this.getLowerValue() == '1'){
-					out.write("\n\t/*\n\t *You must have at least ONE" +
-							"\n\t *Occurrence of Attribute: " + this.name + " in this class\n\t */");
+					out.write("\n" + tabInd + "/** You must have at least ONE " +
+							"Occurrence of Attribute: " + this.name + " in this class*/");
 				}
 				out.write("\n\tArrayList<" + this.type + "> " + this.name + ";" );
 			
 		} else{
-			out.write("\n\t" + this.type + " " +  this.name + ";" );
+			out.write("\n" + tabInd);
+			out.write(this.type + " " +  this.name + ";" );
 		}
 	}
 	
 	public void genCodeGet(BufferedWriter out , int tab) throws IOException{
-		String tabInd = Tool.indentation(tab); 
+		tabInd = Tool.indentation(tab); 
 		if( this.visbPrivate ){
 			out.write("\n" + tabInd + "public " + this.type + " get" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) + "(){");
 			out.write("\n" + tabInd + "\treturn this." + this.name + ";\n\t}\n");
 		}
 	}
 	
-	public void genCodeSet(BufferedWriter out, int tab) throws IOException{
-		String tabInd = Tool.indentation(tab);
+	public void genCodeSet(BufferedWriter out) throws IOException{
 		if( this.visbPrivate ){
 			out.write("\n" + tabInd + "public void set" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) 
 					+ "( " + this.type + " " + this.name + " ){");

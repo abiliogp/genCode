@@ -10,12 +10,14 @@ public abstract class DataModel {
 	protected char lowerValue;
 	
 	protected String type;
-	
 	protected String visibility;
 	
 	protected boolean visbPrivate;
 	protected boolean isStatic;
 
+	protected String tabInd;
+	protected int tab;
+	
 	public DataModel(String name) {
 		this.name = name;
 		this.visibility = "public";
