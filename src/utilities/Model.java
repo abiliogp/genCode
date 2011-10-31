@@ -75,7 +75,8 @@ public class Model {
 	}
 	
 	public void genCode() throws IOException{
-		dir = new File(name);
+		
+		dir = new File("out/" + name);
 		dir.mkdir();
 		for(int i = 0; i < listClasse.size(); i++){
 			listClasse.get(i).genCode();

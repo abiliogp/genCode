@@ -16,7 +16,8 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		String inputFileName = "inner.uml";
+		String inputFileName = "Interface.uml";
+		inputFileName = "in/" + inputFileName;
 
 		//Parser.loadXMI("UML4Java");
 
