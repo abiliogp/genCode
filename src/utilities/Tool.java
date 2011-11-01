@@ -83,7 +83,7 @@ public class Tool {
 
 		int n = str.indexOf(key);
 		if (n == -1) {
-			return null;
+			return "";
 		}
 		int x = str.indexOf(first, n);
 		int x1 = str.indexOf(last, x + 1);
