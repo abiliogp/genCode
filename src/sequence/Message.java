@@ -74,7 +74,7 @@ public class Message extends DataSequence{
 
 	public void genCode(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
-		out.write(tabInd);
+		out.write("\n" + tabInd);
 		if(messageSort != null){
 			if(messageSort.equals("createMessage")){
 				genCodeCreate(out);

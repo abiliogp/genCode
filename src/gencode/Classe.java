@@ -276,7 +276,7 @@ public class Classe {
 		if(this.listAtributte.size() > 0){
 			out.write("\n\n\t/**Attributes */");
 			for(int i = 0 ; i < listAtributte.size() ; i++){
-				this.listAtributte.get(i).genCode(out, tab);
+				this.listAtributte.get(i).genCode(out, tab + 1);
 			}
 		}
 		
@@ -352,7 +352,7 @@ public class Classe {
 				if( !((listMethod.get(i).getName().substring(0, 3).equals("get")) || 
 						 (listMethod.get(i).getName().substring(0, 3).equals("set")) ) )
 				{
-					listMethod.get(i).genCode(out, tab);
+					listMethod.get(i).genCode(out, tab + 1);
 				}
 			}
 		}
@@ -361,7 +361,7 @@ public class Classe {
 		if(general != null){
 			if( (Tool.containsKeyTrieAbstractMethod(general)) ){				
 				for(int i = 0 ; i < Tool.getTrieAbstractMethod(general).size() ; i++){
-					Tool.getTrieAbstractMethod(general).get(i).genCodeMtSuper(out, tab);	
+					Tool.getTrieAbstractMethod(general).get(i).genCodeMtSuper(out, tab + 1);	
 				}
 			}
 		}

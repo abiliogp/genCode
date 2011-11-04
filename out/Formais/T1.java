@@ -2,13 +2,13 @@
 public class T1{
 
 	/**Attributes */
-public void null;
-public int x;
-public int y;
-public int r1;
-public int r2;
-public int r3;
-public Lib lib;
+	public void null;
+	public int x;
+	public int y;
+	public int r1;
+	public int r2;
+	public int r3;
+	public Lib lib;
 
 	/**Attribute of Return Method calc */
 	public int out;
@@ -27,20 +27,19 @@ public Lib lib;
 		this.lib = lib;
 	}
 
-public int calc(int in){
-			/** Specified from Sequence Diagram Interaction0 */
-			getValue();
-			getValue();
-			calc();
-			setX();
-			setY();
-			calc();
-
+	public int calc(int in){
+		/** Specified from Sequence Diagram Interaction0 */
+		getValue();
+		getValue();
+		calc();
+		setX();
+		setY();
+		calc();
 		return out;
-}
+	}
 
-public int dec(int in){
+	public int dec(int in){
 		return out;
-}
+	}
 
 }

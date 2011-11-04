@@ -202,7 +202,7 @@ public class Fragment extends DataSequence{
 				return;
 			event.genCode(out);
 			message.genCodeArguments(out);
-			out.write(");\n");
+			out.write(");");
 		}
 	}
 	

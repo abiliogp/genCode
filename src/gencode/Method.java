@@ -161,7 +161,7 @@ public class Method extends DataModel{
 		out.write("{");
 		this.genCodeDeclPmtOut(out);
 		if(interaction != null){
-			interaction.genCode(out,tab + 2);
+			interaction.genCode(out,tab + 1);
 		}
 		this.genCodeReturnPmtOut(out);
 		this.genCodeReturn(out, tab);
@@ -172,7 +172,7 @@ public class Method extends DataModel{
 	private void genCodeDeclPmtOut(BufferedWriter out) throws IOException{
 		for(int i = 0; i < this.listParametro.size() ; i++){
 			if(this.listParametro.get(i).getDirection().equals("out")){
-				out.write("\n\t\t");
+				out.write(tabInd);
 				this.listParametro.get(i).genCode(out);
 				out.write(";");
 			}
@@ -188,7 +188,8 @@ public class Method extends DataModel{
 							   this.listParametro.get(i).getType() + 
 			   		   			"> *disagree of type the Method*/");
 				}
-				out.write("\n\t\treturn " + this.listParametro.get(i).getName() + ";");
+				out.write(tabInd);
+				out.write("return " + this.listParametro.get(i).getName() + ";");
 			}
 		}
 	}
