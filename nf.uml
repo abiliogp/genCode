@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_bttJYAcYEeGkb5xNVsjyyA" name="nf">
+  <packageImport xmi:id="_tJBJsAcYEeGkb5xNVsjyyA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_u9610AcYEeGkb5xNVsjyyA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_btxa0AcYEeGkb5xNVsjyyA" name="Interaction0" specification="_fKL3UAcYEeGkb5xNVsjyyA">
+    <lifeline xmi:id="_7KW9gQcYEeGnH6s500HhLA" name="Lifeline" represents="_0-n0AAcYEeGkb5xNVsjyyA" coveredBy="_G48EgAcZEeGnH6s500HhLA _a4Su4AcZEeGnH6s500HhLA"/>
+    <lifeline xmi:id="_8L89YAcYEeGnH6s500HhLA" name="Lifeline0" represents="_0-l-0AcYEeGkb5xNVsjyyA" coveredBy="_G49SoAcZEeGnH6s500HhLA _a4Su4gcZEeGnH6s500HhLA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_a4Su4AcZEeGnH6s500HhLA" name="operation0_MessageSend" covered="_7KW9gQcYEeGnH6s500HhLA" event="_a4SH0QcZEeGnH6s500HhLA" message="_a4SH0AcZEeGnH6s500HhLA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_G48EgAcZEeGnH6s500HhLA" name="Operation1_MessageSend" covered="_7KW9gQcYEeGnH6s500HhLA" event="_G45BMAcZEeGnH6s500HhLA" message="_G41W0AcZEeGnH6s500HhLA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_a4Su4gcZEeGnH6s500HhLA" name="operation0_MessageRecv" covered="_8L89YAcYEeGnH6s500HhLA" event="_a4Su4QcZEeGnH6s500HhLA" message="_a4SH0AcZEeGnH6s500HhLA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_G49SoAcZEeGnH6s500HhLA" name="Operation1_MessageRecv" covered="_8L89YAcYEeGnH6s500HhLA" event="_G48rkAcZEeGnH6s500HhLA" message="_G41W0AcZEeGnH6s500HhLA"/>
+    <message xmi:id="_G41W0AcZEeGnH6s500HhLA" name="Operation1_Message" messageSort="asynchCall" receiveEvent="_G49SoAcZEeGnH6s500HhLA" sendEvent="_G48EgAcZEeGnH6s500HhLA">
+      <argument xmi:type="uml:Expression" xmi:id="_KLFKsAcZEeGnH6s500HhLA" name="a" symbol="X"/>
+    </message>
+    <message xmi:id="_a4SH0AcZEeGnH6s500HhLA" name="X = operation0_Message" messageSort="asynchCall" receiveEvent="_a4Su4gcZEeGnH6s500HhLA" sendEvent="_a4Su4AcZEeGnH6s500HhLA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_dbMl8AcYEeGkb5xNVsjyyA" name="Class0">
+    <ownedAttribute xmi:id="_0-l-0AcYEeGkb5xNVsjyyA" name="class1" type="_eayasAcYEeGkb5xNVsjyyA" association="_0-nM8AcYEeGkb5xNVsjyyA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0-l-0QcYEeGkb5xNVsjyyA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0-l-0gcYEeGkb5xNVsjyyA" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_fKL3UAcYEeGkb5xNVsjyyA" name="Operation0C0" method="_btxa0AcYEeGkb5xNVsjyyA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_eayasAcYEeGkb5xNVsjyyA" name="Class1">
+    <ownedOperation xmi:id="_f9rJwAcYEeGkb5xNVsjyyA" name="Operation1">
+      <ownedParameter xmi:id="_pptxQAcYEeGkb5xNVsjyyA" name="a" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_UMQ7wAcZEeGnH6s500HhLA" name="operation0">
+      <ownedParameter xmi:id="_VhgQYAcZEeGnH6s500HhLA" name="Parameter0" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VhhegAcZEeGnH6s500HhLA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Vhg3cAcZEeGnH6s500HhLA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_0-nM8AcYEeGkb5xNVsjyyA" name="class0_class1_0" memberEnd="_0-n0AAcYEeGkb5xNVsjyyA _0-l-0AcYEeGkb5xNVsjyyA">
+    <ownedEnd xmi:id="_0-n0AAcYEeGkb5xNVsjyyA" name="class0" type="_dbMl8AcYEeGkb5xNVsjyyA" association="_0-nM8AcYEeGkb5xNVsjyyA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0-n0AQcYEeGkb5xNVsjyyA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0-n0AgcYEeGkb5xNVsjyyA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_G45BMAcZEeGnH6s500HhLA" name="SendOperationEvent" operation="_f9rJwAcYEeGkb5xNVsjyyA"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_G48rkAcZEeGnH6s500HhLA" name="ReceiveOperationEvent" operation="_f9rJwAcYEeGkb5xNVsjyyA"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_a4SH0QcZEeGnH6s500HhLA" name="SendOperationEvent0" operation="_UMQ7wAcZEeGnH6s500HhLA"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_a4Su4QcZEeGnH6s500HhLA" name="ReceiveOperationEvent0" operation="_UMQ7wAcZEeGnH6s500HhLA"/>
+</uml:Model>

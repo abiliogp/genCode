@@ -73,8 +73,9 @@ public abstract class Parser {
 			 * Associação
 			 */
 			if (line.contains("uml:Association")) {
-				loadAssociation(bf, line);
+				Associacao.load(bf, line);
 			}
+			
 
 			/*
 			 * Operação
@@ -192,63 +193,7 @@ public abstract class Parser {
 	
 	
 	
-	/**
-	 * loadAssociation: Criação da trieAssoc, informações referentes ao Member(1)
-	 * @param bf
-	 * @param line
-	 * @throws IOException
-	 */
-	private static void loadAssociation(BufferedReader bf, String line) throws IOException{
-		String key, value;
 		
-		key = Tool.manipulate(line, "memberEnd=");
-		key = key.substring(0, 23);
-
-		value = Tool.manipulate(line, "name=");
-		Associacao assoc = new Associacao(value);
-
-		if (line.contains("visibility=")) {
-			value = Tool.manipulate(line, "visibility=");
-			assoc.setVisibilityAssoc(value);
-		} 
-
-		if (line.contains("/>")) {
-			line = "</ownedEnd>";
-		} else {
-			line = bf.readLine();
-
-			value = Tool.manipulate(line, "type=");
-			assoc.setMember(Tool.getTrieID(value));
-
-			if (line.contains("visibility=")) {
-				value = Tool.manipulate(line, "visibility=");
-				assoc.setVisibility(value);
-			} 
-			
-			if (line.contains("aggregation=")) {
-				value = Tool.manipulate(line, "aggregation=");
-				assoc.setAggregation(value);
-			} 
-			
-			line = bf.readLine();
-		}// end else
-
-		for ( ; !(line.contains("</ownedEnd>")) ; line = bf.readLine() ) {
-			if (line.contains("upperValue")) {
-				value = Tool.manipulate(line, "value");
-				assoc.setUpperValue(value == null ? '0' : value
-						.charAt(0));
-			}
-
-			if (line.contains("lowerValue")) {
-				value = Tool.manipulate(line, "value");
-				assoc.setLowerValue(value == null ? '0' : value
-						.charAt(0));
-			}			
-		}
-		//trieAssoc.put(key, assoc);
-	}//end loadAssociation
-	
 	/**
 	 * loadOperation: Criação trie Behavior
 	 * @param bf
@@ -305,41 +250,7 @@ public abstract class Parser {
 	 * @param str
 	 * @throws IOException
 	 */
-	private static void parserAssociation(BufferedReader bf, String line, String str) 
-			throws IOException
-	{
-		//est.getLastClasse().addAssociacao(trieAssoc.get(str));
-		str = Tool.manipulate(line, "type=");
-		model.getLastClasse().getLastAssociacao().setMember2(Tool.getTrieID(str));
-		
-		if (line.contains("visibility=")) {
-			str = Tool.manipulate(line, "visibility=");
-			model.getLastClasse().getLastAssociacao().setVisibility2(str);
-		} 
-
-		if (line.contains("aggregation=")) {
-			str = Tool.manipulate(line, "aggregation=");
-			model.getLastClasse().getLastAssociacao().setAggregation2(str);
-		} 
-		
-		if (line.contains("/>")) {
-			return;
-		}
-
-		/*
-		 * set upper e lowerValue
-		 */
-		for (line = bf.readLine() ; !(line.contains("</ownedAttribute>")); line = bf.readLine() ) {
-			if (line.contains("upperValue")) {
-				str = Tool.manipulate(line, "value");
-				model.getLastClasse().getLastAssociacao().setUpperValue2(str == null ? '0' : str.charAt(0));
-			}
-			if (line.contains("lowerValue")) {
-				str = Tool.manipulate(line, "value");
-				model.getLastClasse().getLastAssociacao().setLowerValue2(str == null ? '0' : str.charAt(0));
-			}
-		}
-	}//end class parserAssociation
+	
 	
 	
 	

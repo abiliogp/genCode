@@ -1,8 +1,12 @@
 
 public class Class0{
 
+	/**Attributes */
+	public Class1 atrb;
+
 	/** Constructor */
-	public Class0(){
+	public Class0( Class1 atrb ){
+		this.atrb = atrb;
 	}
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_bttJYAcYEeGkb5xNVsjyyA" name="formais">
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_bttJYAcYEeGkb5xNVsjyyA" name="nf1">
   <packageImport xmi:id="_tJBJsAcYEeGkb5xNVsjyyA">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -7,8 +7,8 @@
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Interaction" xmi:id="_btxa0AcYEeGkb5xNVsjyyA" name="Interaction0" specification="_fKL3UAcYEeGkb5xNVsjyyA">
-    <lifeline xmi:id="_7KW9gQcYEeGnH6s500HhLA" name="Lifeline" represents="_xmOT0AcjEeGtSqdXFoHPeg" coveredBy="_01xIEQcaEeGnH6s500HhLA _KR22MAcbEeGtSqdXFoHPeg"/>
-    <lifeline xmi:id="_8L89YAcYEeGnH6s500HhLA" name="Lifeline0" represents="_xmPh8QcjEeGtSqdXFoHPeg" coveredBy="_01xIEwcaEeGnH6s500HhLA _KR3dQAcbEeGtSqdXFoHPeg"/>
+    <lifeline xmi:id="_7KW9gQcYEeGnH6s500HhLA" name="Lifeline" represents="_0-n0AAcYEeGkb5xNVsjyyA" coveredBy="_01xIEQcaEeGnH6s500HhLA _KR22MAcbEeGtSqdXFoHPeg"/>
+    <lifeline xmi:id="_8L89YAcYEeGnH6s500HhLA" name="Lifeline0" represents="_0-l-0AcYEeGkb5xNVsjyyA" coveredBy="_01xIEwcaEeGnH6s500HhLA _KR3dQAcbEeGtSqdXFoHPeg"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_01xIEQcaEeGnH6s500HhLA" name="operation0_MessageSend" covered="_7KW9gQcYEeGnH6s500HhLA" event="_01xIEAcaEeGnH6s500HhLA" message="_01whAAcaEeGnH6s500HhLA"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_01xIEwcaEeGnH6s500HhLA" name="operation0_MessageRecv" covered="_8L89YAcYEeGnH6s500HhLA" event="_01xIEgcaEeGnH6s500HhLA" message="_01whAAcaEeGnH6s500HhLA"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_KR22MAcbEeGtSqdXFoHPeg" name="Operation1_MessageSend" covered="_7KW9gQcYEeGnH6s500HhLA" event="_KR2PIAcbEeGtSqdXFoHPeg" message="_KR0Z8AcbEeGtSqdXFoHPeg"/>
@@ -19,6 +19,10 @@
     </message>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_dbMl8AcYEeGkb5xNVsjyyA" name="Class0">
+    <ownedAttribute xmi:id="_0-l-0AcYEeGkb5xNVsjyyA" name="atrb" type="_eayasAcYEeGkb5xNVsjyyA" association="_0-nM8AcYEeGkb5xNVsjyyA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0-l-0QcYEeGkb5xNVsjyyA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0-l-0gcYEeGkb5xNVsjyyA" value="1"/>
+    </ownedAttribute>
     <ownedOperation xmi:id="_fKL3UAcYEeGkb5xNVsjyyA" name="Operation0C0" method="_btxa0AcYEeGkb5xNVsjyyA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_eayasAcYEeGkb5xNVsjyyA" name="Class1">
@@ -35,18 +39,14 @@
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_0-nM8AcYEeGkb5xNVsjyyA" name="atr" memberEnd="_0-n0AAcYEeGkb5xNVsjyyA _0-l-0AcYEeGkb5xNVsjyyA">
+    <ownedEnd xmi:id="_0-n0AAcYEeGkb5xNVsjyyA" name="class0" type="_dbMl8AcYEeGkb5xNVsjyyA" association="_0-nM8AcYEeGkb5xNVsjyyA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0-n0AQcYEeGkb5xNVsjyyA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0-n0AgcYEeGkb5xNVsjyyA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
   <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_01xIEAcaEeGnH6s500HhLA" name="SendOperationEvent" operation="_UMQ7wAcZEeGnH6s500HhLA"/>
   <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_01xIEgcaEeGnH6s500HhLA" name="ReceiveOperationEvent" operation="_UMQ7wAcZEeGnH6s500HhLA"/>
   <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_KR2PIAcbEeGtSqdXFoHPeg" name="SendOperationEvent0" operation="_f9rJwAcYEeGkb5xNVsjyyA"/>
   <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_KR22MQcbEeGtSqdXFoHPeg" name="ReceiveOperationEvent0" operation="_f9rJwAcYEeGkb5xNVsjyyA"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_xmPh8AcjEeGtSqdXFoHPeg" name="class1_class0_0" memberEnd="_xmPh8QcjEeGtSqdXFoHPeg _xmOT0AcjEeGtSqdXFoHPeg" navigableOwnedEnd="_xmPh8QcjEeGtSqdXFoHPeg">
-    <ownedEnd xmi:id="_xmPh8QcjEeGtSqdXFoHPeg" name="class1" type="_eayasAcYEeGkb5xNVsjyyA" association="_xmPh8AcjEeGtSqdXFoHPeg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xmPh8gcjEeGtSqdXFoHPeg" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xmPh8wcjEeGtSqdXFoHPeg" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_xmOT0AcjEeGtSqdXFoHPeg" name="class0" type="_dbMl8AcYEeGkb5xNVsjyyA" association="_xmPh8AcjEeGtSqdXFoHPeg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xmOT0QcjEeGtSqdXFoHPeg" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xmOT0gcjEeGtSqdXFoHPeg" value="1"/>
-    </ownedEnd>
-  </packagedElement>
 </uml:Model>

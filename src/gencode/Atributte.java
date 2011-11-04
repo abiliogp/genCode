@@ -9,8 +9,10 @@ import utilities.Tool;
 
 public class Atributte extends DataModel {
 
+	private String aggregation;
 	public Atributte(String name) {
 		super(name);
+		this.aggregation = "simple";
 	}
 
 	
@@ -99,13 +101,16 @@ public class Atributte extends DataModel {
 		String value = null, key;
 		boolean needImport = false;
 		if (line.contains("visibility=")) {
-			value = Tool.manipulate(line, "visibility=");
-			visibility = value;
+			visibility = Tool.manipulate(line, "visibility=");
 			if( (value != null) && ((value.equals("private")) || (value.equals("protected"))) ){
 				Parser.getModel().getLastClasse().setNeedGetSet(true);
 				visbPrivate = true;
 			}
 		} 
+		
+		if (line.contains("aggregation=")) {
+			aggregation = Tool.manipulate(line, "aggregation=");
+		}
 		if (line.contains("type=")) {
 			value = Tool.manipulate(line, "type=");
 			if (value.charAt(0) == '_') {
@@ -116,7 +121,7 @@ public class Atributte extends DataModel {
 		if (line.contains("/>")) {
 			line = "</ownedAttribute>";
 		} else{
-			for (line = bf.readLine(); !(line.contains("</ownedAttribute>")) ; line = bf.readLine() ) {
+			for (line = bf.readLine(); !((line.contains("</ownedAttribute>")) ||  (line.contains(" </ownedEnd>"))) ; line = bf.readLine() ) {
 				if (line.contains("uml:Stereotype")) {
 					value = Tool.manipulate(line, "pathmap:", "#", "\"");
 					value = Tool.getTrieID(value);
