@@ -11,24 +11,12 @@ import utilities.Tool;
 
 public class OperationEvent extends DataSequence{
 
-	/*
-	 *Attributes
-	 */
 	private Method operation;
 
-	
-	/*
-	 *Constructor
-	 */
 	public OperationEvent(String name){
-		this.name = name;
+		super(name);
 	}
 
-	
-	/*
-	 * SendOperationEvent
-	 * ReceiveOperationEvent
-	 */
 	public static void load(BufferedReader bf, String line) throws IOException {
 		String key, value;
 		key = Tool.manipulate(line, "xmi:id");
@@ -39,9 +27,6 @@ public class OperationEvent extends DataSequence{
 		Tool.putTrieOperationEvent(key,  event);
 	}
 	
-	/*
-	 *Abstract Method of Super
-	 */
 	public void parser(BufferedReader bf, String line) throws IOException{
 		String key;
 		key = Tool.manipulate(line, "operation=");
@@ -61,7 +46,5 @@ public class OperationEvent extends DataSequence{
 			operation.genCodeCall(out);
 		}
 	}
-	
-	
 
 }

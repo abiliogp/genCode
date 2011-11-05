@@ -10,6 +10,12 @@ public abstract class DataSequence{
 	protected String name;
 	protected String type;
 	protected String value;
+	protected String visibility;
+	
+	public DataSequence(String name){
+		this.name = name;
+		visibility = "public";
+	}
 	
 	/**Get*/
 	public String getName(){

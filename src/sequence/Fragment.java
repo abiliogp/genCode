@@ -35,8 +35,7 @@ public class Fragment extends DataSequence{
 	 *Constructor
 	 */
 	public Fragment(String name){
-		this.name = name;
-		visibility = "public";
+		super(name);
 		listOperand = new ArrayList<Operand>();
 		refersTo = null;
 	}

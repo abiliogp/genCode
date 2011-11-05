@@ -23,7 +23,7 @@ public class Lifeline extends DataSequence{
 	 *Constructor
 	 */
 	public Lifeline(String name){
-		this.name = name;
+		super(name);
 		this.coveredBy = new ArrayList<Fragment>();
 		this.order = new ArrayList<Fragment>();
 	}

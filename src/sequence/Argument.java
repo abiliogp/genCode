@@ -11,7 +11,7 @@ public class Argument extends DataSequence {
 	private String symbol;
 	
 	public Argument(String name){
-		this.name = name;
+		super(name);
 	}
 		
 	public void parser(BufferedReader bf, String line) throws IOException{

@@ -23,7 +23,7 @@ public class Message extends DataSequence{
 	 *Constructor
 	 */
 	public Message(String name){
-		this.name = name;
+		super(name);
 		this.listArgument = new ArrayList<Argument>();
 	}
 

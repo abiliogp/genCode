@@ -14,7 +14,7 @@ public class Guard extends DataSequence{
 	private GuardInt minint;
 	
 	public Guard(String name) {
-		this.name = name;
+		super(name);
 	}
 	
 	public Specification getSpecification(){

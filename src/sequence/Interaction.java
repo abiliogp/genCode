@@ -30,7 +30,7 @@ public class Interaction extends DataSequence{
 	 *Constructor
 	 */
 	public Interaction(String name){
-		this.name = name;
+		super(name);
 	}
 
 

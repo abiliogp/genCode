@@ -14,7 +14,7 @@ public class Operand extends DataSequence{
 	
 	
 	public Operand(String name) {
-		this.name = name;
+		super(name);
 		listFragment = new ArrayList<Fragment>();
 	}
 	

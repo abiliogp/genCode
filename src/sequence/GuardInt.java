@@ -8,7 +8,7 @@ import utilities.Tool;
 public class GuardInt extends DataSequence{
 
 	public GuardInt(String name) {
-		this.name = name;
+		super(name);
 	}
 
 	public void setValue(String value){

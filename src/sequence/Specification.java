@@ -20,7 +20,7 @@ public class Specification extends DataSequence{
 	
 	
 	public Specification(String name) {
-		this.name = name;
+		super(name);
 		isLogic = false;
 		isNumeric = false;
 		isExpressionLogic = false;
