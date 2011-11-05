@@ -96,7 +96,7 @@ public class Tool {
 	public static String manipulate(String str, String key) {
 		int n = str.indexOf(key);
 		if (n == -1) {
-			return null;
+			return "";
 		}
 		int x = str.indexOf("\"", n);
 		int x1 = str.indexOf("\"", x + 1);
