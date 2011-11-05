@@ -57,6 +57,10 @@ public class Fragment extends DataSequence{
 		return xmi;
 	}
 	
+	public Lifeline getCovered(){
+		return covered;
+	}
+	
 	/*
 	 *Set
 	 */

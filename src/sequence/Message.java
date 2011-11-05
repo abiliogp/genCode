@@ -75,17 +75,19 @@ public class Message extends DataSequence{
 	public void genCode(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd);
-		if(messageSort != null){
+		
+		//if(messageSort != null){
 			if(messageSort.equals("createMessage")){
 				genCodeCreate(out);
-		}
-		} else{
+			}
+		//} else{
 			genCodeVariable(out);
 			genCodeAttribute(out);
-		}
+		//}
 	}
 
 	private void genCodeVariable(BufferedWriter out) throws IOException {
+		
 		if(name.contains("=")){
 			out.write(name.substring(0, name.indexOf("=")));
 			out.write(" = ");
@@ -93,7 +95,8 @@ public class Message extends DataSequence{
 	} 
 	
 	private void genCodeAttribute(BufferedWriter out) throws IOException {
-		if(sendEvent != receiveEvent){
+		
+		if(sendEvent.getCovered() != receiveEvent.getCovered()){
 			receiveEvent.genCodeAttribute(out);
 		}
 	}

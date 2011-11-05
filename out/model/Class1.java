@@ -1,8 +1,8 @@
 
 public class Class1{
 
-	/**Attribute of Return Method operation0 */
-	public int Parameter0;
+	/**Attribute of Return Method Operation1 */
+	public int returnOp1;
 
 	/** Constructor */
 	public Class1(){
@@ -10,11 +10,8 @@ public class Class1{
 
 
 	/** Methods */
-	public void Operation1(int a){
-	}
-
-	public int operation0(){
-		return Parameter0;
+	public int Operation1(){
+		return returnOp1;
 	}
 
 }
