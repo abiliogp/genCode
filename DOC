@@ -1,0 +1,30 @@
+Documentação das atividas mais relevantes!
+Esse documento está organizado da seguinte forma,
+é dado o exemplo de código gerado, e em seguida a
+classe e o método onde é manipulado essa informação
+
+a = mt();
+Message
+	parser: No método parser da classe Message é manipulado 
+	variavéis que usam o retorno.
+
+mt(); 
+obj.mt;
+Message
+	Como descobrir o objeto que chama a mensagem e também
+	se essa mensagem não é da própria classe?
+	
+	genCodeAtributte: No método ele verifica de onde vê as chamada
+	e para onde vão pelos objetos sendEvent e receiveEvent, pela 
+	chamada dos métodos sendEvent.getCovered() e receiveEvent.getCovered()
+	caso forem diferentes então têm um atributo ou seja tê o obj.mt();
+	caso forem iguais o não têm atributo ou seja mt();
+
+mt(a);
+Argument
+	O argumento passado é lido no parser e atribuido ao atributo symbol,
+	por isso para uso de argumento deve se usar na papyrus os seguintes passo:
+		Após criar a mensagem no diagrama de classes, clic sobre ela na aba
+			properties -> argument -> "+" -> EXPRESSION -> Nome (não importa)
+				Symbol (importa) -> aqui vc usa o argumento que quiser podendo ser num ou var
+	

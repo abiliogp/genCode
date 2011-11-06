@@ -19,11 +19,15 @@ public class Message extends DataSequence{
 	
 	private String messageSort;
 	
+	//variavel que pega o retorno de um método
+	private String variable;
+	
 	/*
 	 *Constructor
 	 */
 	public Message(String name){
 		super(name);
+		this.messageSort = "syn";
 		this.listArgument = new ArrayList<Argument>();
 	}
 
@@ -31,12 +35,16 @@ public class Message extends DataSequence{
 		return messageSort;
 	}
 	
-	/*
-	 *Abstract Method of Super
-	 */
+	
 	public void parser(BufferedReader bf, String line) throws IOException{
 		String value, key;
-		messageSort = Tool.manipulate(line, "messageSort=");
+		if(name.contains("=")){
+			variable = name.substring(0, name.indexOf("="));
+			name = name.substring(name.indexOf("=") + 1);
+		}
+		if(line.contains("messageSort=")){
+			messageSort = Tool.manipulate(line, "messageSort=");
+		}
 		key = Tool.manipulate(line, "receiveEvent=");
 		receiveEvent = Tool.getTrieFragment(key);
 		key = Tool.manipulate(line, "sendEvent=");
@@ -56,46 +64,33 @@ public class Message extends DataSequence{
 	}
 
 	public void printProp() {
-		System.out.println("Message: " + this.name);
-		System.out.println("	messageSort: " + this.messageSort);
-		/*if(this.messageSort != null){
-			System.out.println("\tMessageSort: " + this.messageSort);
-		}
-		if(this.receiveEvent != null){
-			this.receiveEvent.printProp();
-		}
-		if(this.sendEvent != null){
-			this.sendEvent.printProp();
-		}
-		for(int i=0; i < listArgument.size(); i++){
-			this.listArgument.get(i).printProp();
-		}*/
+		System.out.println("Message: " + name);
+		System.out.println("\tsort: " + messageSort);
+		System.out.println("\tvariable: " + (variable == null ? " " : variable));
 	}
 
 	public void genCode(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd);
-		
-		//if(messageSort != null){
-			if(messageSort.equals("createMessage")){
-				genCodeCreate(out);
-			}
-		//} else{
+		if(messageSort.equals("createMessage")){
+			genCodeCreate(out);
+		} else{
 			genCodeVariable(out);
-			genCodeAttribute(out);
-		//}
+			genCodeAtributte(out);
+		}
 	}
 
 	private void genCodeVariable(BufferedWriter out) throws IOException {
-		
-		if(name.contains("=")){
-			out.write(name.substring(0, name.indexOf("=")));
+		if(variable != null){
+			out.write(variable);
 			out.write(" = ");
 		}
 	} 
-	
-	private void genCodeAttribute(BufferedWriter out) throws IOException {
-		
+
+	/*
+	 * Faz chamadas de método da própria classe e de outros objetos
+	 */
+	private void genCodeAtributte(BufferedWriter out) throws IOException {
 		if(sendEvent.getCovered() != receiveEvent.getCovered()){
 			receiveEvent.genCodeAttribute(out);
 		}
