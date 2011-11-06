@@ -66,7 +66,11 @@ public class Message extends DataSequence{
 	public void printProp() {
 		System.out.println("Message: " + name);
 		System.out.println("\tsort: " + messageSort);
-		System.out.println("\tvariable: " + (variable == null ? " " : variable));
+		System.out.println("\tvariable: " + (variable == null ? "NOT!" : variable));
+		for(int i = 0 ; i <  this.listArgument.size(); i++){
+			System.out.print("\targument" + (i + 1) + ": ");
+			listArgument.get(i).printProp();
+		}
 	}
 
 	public void genCode(BufferedWriter out, int tab) throws IOException {
@@ -96,6 +100,9 @@ public class Message extends DataSequence{
 		}
 	}
 	
+	/*
+	 * Gera os n argumentos para um chamada de método
+	 */
 	public void genCodeArguments(BufferedWriter out) throws IOException {
 		for(int i=0; i < listArgument.size(); i++){
 			listArgument.get(i).genCode(out);

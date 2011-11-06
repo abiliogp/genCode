@@ -66,9 +66,7 @@ public class Lifeline extends DataSequence{
 		String value, key;
 		if(line.contains("represents=")){//se tiver atributo associado a lifeline
 			key = Tool.manipulate(line, "represents=");
-			System.err.println("key " + key);
 			represents = Tool.getTrieAtributte(key);
-			System.err.println("rep " + represents.getName());
 		}
 		value = Tool.manipulate(line, "coveredBy=");
 		for(int i = 0; i < value.length() ; i+=24){

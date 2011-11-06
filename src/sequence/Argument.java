@@ -25,8 +25,6 @@ public class Argument extends DataSequence {
 	}
 	
 	public void printProp() {
-		System.out.println("Argument: " + this.name);
-		System.out.println("\tType: " + this.type);
-		System.out.println("\tValue: " + this.symbol);
+		System.out.println(this.symbol);
 	}
 }
