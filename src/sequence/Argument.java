@@ -8,7 +8,6 @@ import utilities.Tool;
 
 public class Argument extends DataSequence {
 	
-	private String symbol;
 	
 	public Argument(String name){
 		super(name);
@@ -16,15 +15,15 @@ public class Argument extends DataSequence {
 		
 	public void parser(BufferedReader bf, String line) throws IOException{
 		type = Tool.manipulate(line, "xmi:type=");
-		value = Tool.manipulate(line, "value=");
-		symbol = Tool.manipulate(line, "symbol=");
+		value = line.contains("symbol=") ? Tool.manipulate(line, "symbol=") : Tool.manipulate(line, "value=");
 	}
 
 	public void genCode(BufferedWriter out) throws IOException {
-		out.write(symbol);
+		out.write(value);
 	}
 	
 	public void printProp() {
-		System.out.println(this.symbol);
+		System.out.println("\t" + type);
+		System.out.println("\t" + value);
 	}
 }
