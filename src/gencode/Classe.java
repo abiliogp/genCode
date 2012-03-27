@@ -34,6 +34,8 @@ public class Classe {
 	private boolean needImport;
 	private boolean needGetSet;
 
+	private boolean generalActivity;
+
 	public Classe(String name) {
 
 		this.name = name;
@@ -312,7 +314,7 @@ public class Classe {
 			}
 			out.write("){");
 			if( general != null ){
-				out.write("\n" + tabInd + "\tsuper();");
+				out.write("\n" + tabInd + "\t\tsuper();");
 			}
 			for(int i = 0 ; i < listAtributte.size() ; i++){
 				this.listAtributte.get(i).genCodeConstructor(out);
@@ -341,18 +343,25 @@ public class Classe {
 			}
 		}
 		
-		//Metodo
-		if(listMethod.size() > 0){
-			if( !((listMethod.get(0).getName().substring(0, 3).equals("get")) || 
-					 (listMethod.get(0).getName().substring(0, 3).equals("set")) ) )
-			{
-				out.write("\n\n\t/** Methods */");
+		//Metodo Android
+		if(generalActivity){
+			for(int i = 0 ; i < this.listMethod.size() ; i++){				
+				listMethod.get(i).genCodeAndroid(out, tab + 1);
 			}
-			for(int i = 0 ; i < this.listMethod.size() ; i++){
-				if( !((listMethod.get(i).getName().substring(0, 3).equals("get")) || 
-						 (listMethod.get(i).getName().substring(0, 3).equals("set")) ) )
+		} else{
+			//Metodo
+			if(listMethod.size() > 0){
+				if( !((listMethod.get(0).getName().substring(0, 3).equals("get")) || 
+						 (listMethod.get(0).getName().substring(0, 3).equals("set")) ) )
 				{
-					listMethod.get(i).genCode(out, tab + 1);
+					out.write("\n\n\t/** Methods */");
+				}
+				for(int i = 0 ; i < this.listMethod.size() ; i++){
+					if( !((listMethod.get(i).getName().substring(0, 3).equals("get")) || 
+							 (listMethod.get(i).getName().substring(0, 3).equals("set")) ) )
+					{
+						listMethod.get(i).genCode(out, tab + 1);
+					}
 				}
 			}
 		}
@@ -410,6 +419,7 @@ public class Classe {
 					key = Tool.manipulate(line, "general=");
 					value = Tool.getTrieID(key);
 					general = value;
+					generalActivity = general.equals("Activity");
 				}
 				
 				if(line.contains("<nestedClassifier")){

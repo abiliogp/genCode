@@ -5,7 +5,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+
 import sequence.Interaction;
+
 import utilities.Parser;
 import utilities.Tool;
 
@@ -27,7 +30,7 @@ public class Method extends DataModel{
 		listRetorno = new ArrayList<Parametro>();
 		isAbstract = false;
 	}
-
+	
 	//add	
 	public void addParametro(String name){
 		this.listParametro.add(new Parametro(name));
@@ -113,8 +116,12 @@ public class Method extends DataModel{
 		out.write(";");
 	}
 	
-	
 	public void genCode(BufferedWriter out, int tab) throws IOException{
+		genCodeH(out,tab);
+		genCodePmtCp(out, tab);
+	}
+	
+	public void genCodeH(BufferedWriter out, int tab) throws IOException{
 		this.tab = tab;
 		tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd + this.visibility);
@@ -125,6 +132,9 @@ public class Method extends DataModel{
 			out.write(" abstract");
 		}
 		out.write(" " + this.type + " " + this.name );
+	}
+	
+	private void genCodePmtCp(BufferedWriter out, int tab) throws IOException{
 		if(this.name.equals("main")){
 			out.write("( String args[] )");
 		} else{
@@ -136,6 +146,50 @@ public class Method extends DataModel{
 			genCodeCpMet(out);
 		}
 	}
+	
+	public void genCodeAndroid(BufferedWriter out, int tab) throws IOException {
+		this.tab = tab;
+		tabInd = Tool.indentation(tab);
+		genCodeH(out,tab);
+		if(name.equals("onCreate")){
+				out.write(" onCreate(");
+				if(listParametro.isEmpty()){
+					out.write("Bundle savedInstanceState){");
+				} else{
+					genCodePmtIn(out);
+				}
+				out.write("\n" + tabInd + "\tsuper.onCreate(savedInstanceState);");
+				genCodeCpMet(out);
+		} else	if(name.equals("onStart")){
+				out.write(" onStart(");
+				if(listParametro.isEmpty()){
+					out.write("){");
+				} else{
+					genCodePmtIn(out);
+				}
+				out.write("\n" + tabInd + "\tsuper.onStart();");
+				genCodePmtCp(out, tab);
+		} else	if(name.equals("onStop")){
+				out.write("  onStop(");
+				if(listParametro.isEmpty()){
+					out.write("){");
+				} else{
+					genCodePmtIn(out);
+				}
+				out.write("\n" + tabInd + "\tsuper.onStop();");
+				genCodePmtCp(out, tab);
+		} else	if(name.equals("onDestroy")){
+				out.write("  onDestroy(");
+				if(listParametro.isEmpty()){
+					out.write("){");
+				} else{
+					genCodePmtIn(out);
+				}
+				out.write("\n" + tabInd + "\tsuper.onDestroy();");
+				genCodePmtCp(out, tab);
+		}
+	}
+	
 	
 	
 	//Gera os Parametros de Entrada
@@ -286,6 +340,8 @@ public class Method extends DataModel{
 			Tool.putTrieAbstractMethod(str, listMetAbs);
 		}
 	}
+
+	
 
 	
 	
