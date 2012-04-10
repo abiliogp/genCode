@@ -17,8 +17,14 @@ public class BluetoothChat extends Activity{
 	public void onResume
 	private void setupChat
 	public void onPause
-	public void onStop
-	public void onDestroy
+	public void onStop  onStop(){
+		super.onStop();(){
+	}
+
+	public void onDestroy  onDestroy(){
+		super.onDestroy();(){
+	}
+
 	private void sendMessage
 	private void setStatus
 	public void onActivityResult
