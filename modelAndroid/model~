@@ -1,2 +1,5 @@
 Activity
 	onCreate
+	onPause
+
+

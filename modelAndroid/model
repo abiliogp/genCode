@@ -1,3 +1,6 @@
 Activity
 	onCreate
 	onPause
+
+- Notification
+- arquivo strings.xml
