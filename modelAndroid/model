@@ -1,5 +1,6 @@
 Activity
 	onCreate
+		setContentView(R.layout.cadastro);
 	onPause
 
 - Notification
