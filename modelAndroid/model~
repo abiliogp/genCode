@@ -1,6 +1,22 @@
 Activity
 	onCreate
+		setContentView(R.layout.cadastro);
 	onPause
+		 public void onPause(){
+ 
+         super.onPause(); 
 
+     }
+	onResume
+		
+	onRestart
+
+	onClick
+		public void onClick(View v) {
+ 
+              finish();
+ 
+     }
+	
 - Notification
 - arquivo strings.xml
