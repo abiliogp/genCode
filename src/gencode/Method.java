@@ -20,7 +20,7 @@ public class Method extends DataModel {
 	private boolean isAbstract;
 	
 	enum AndroidMethods{
-		onCreate, onStop, onPause, onResume, onDestroy, onStart;
+		onCreate, onStop, onPause, onResume, onDestroy, onStart, onClick;
 	}
 
 	public Method(String name) {
@@ -156,7 +156,18 @@ public class Method extends DataModel {
 				interaction.genCode(out, tab + 1);
 			}
 			out.write("\n" + tabInd + "}");
-		} else if (AndroidMethods.valueOf(name) != null) {
+		} else if (name.equals("onClick")) {
+			if (listParametro.isEmpty()) {
+				out.write("View v){");
+			} else {
+				genCodePmtIn(out);
+			}
+			out.write("\n" + tabInd + "finish();");
+			if (interaction != null) {
+				interaction.genCode(out, tab + 1);
+			}
+			out.write("\n" + tabInd + "}");
+		} else {
 			if (listParametro.isEmpty()) {
 				out.write("){");
 			} else {
