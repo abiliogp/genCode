@@ -1,12 +1,5 @@
 Activity
 
-----------------------------------------------------------
-	onClick
-		public void onClick(View v) {
- 
-              finish();
- 
-     }
-------------------------------------------------------------	
+
 - Notification
 - arquivo strings.xml
