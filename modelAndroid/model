@@ -1,13 +1,6 @@
 Activity
-	onCreate
-		setContentView(R.layout.cadastro);
------------------------------------------------------------	
-	onPause
-		 public void onPause(){
- 
-         super.onPause(); 
 
-     }
+
 -----------------------------------------------------------	
 	onResume
 		public void onResume(){

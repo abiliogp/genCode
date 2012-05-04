@@ -6,30 +6,57 @@ public class BluetoothChat extends Activity{
 		super();
 	}
 
-	public void onCreate onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);{
+	public void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.);
+	}
+	public void onStart(){
+		super.onStart();
+	}
+	public void onResume(){
+		super.onResume();
 	}
 
-	public void onStart onStart(){
-		super.onStart();(){
+	/** Methods */
+	public void onPause(){
+		super.onPause();
+	}
+	public void onStop(){
+		super.onStop();
+	}
+	public void onDestroy(){
+		super.onDestroy();
 	}
 
-	public void onResume
-	private void setupChat
-	public void onPause
-	public void onStop  onStop(){
-		super.onStop();(){
+	/** Methods */
+	private void sendMessage(){
 	}
 
-	public void onDestroy  onDestroy(){
-		super.onDestroy();(){
+
+	/** Methods */
+
+	/** Methods */
+	public void onActivityResult(){
 	}
 
-	private void sendMessage
-	private void setStatus
-	public void onActivityResult
-	private void connectDevice
-	public void onCreateOptionsMenu
-	public void onOptionsItemSelected
-	public void Operation13
+
+	/** Methods */
+	private void connectDevice(){
+	}
+
+
+	/** Methods */
+	public void onCreateOptionsMenu(){
+	}
+
+
+	/** Methods */
+	public void onOptionsItemSelected(){
+	}
+
+
+	/** Methods */
+	public void Operation13(){
+	}
+
 }
