@@ -135,6 +135,7 @@ public class Method extends DataModel {
 			out.write(";");
 		} else {
 			genCodeCpMet(out);
+			out.write("\n" + tabInd + "}\n");
 		}
 	}
 
@@ -142,44 +143,24 @@ public class Method extends DataModel {
 		this.tab = tab;
 		tabInd = Tool.indentation(tab);
 		genCodeH(out, tab);
-		out.write("(");
 		if (name.equals("onCreate")) {
-			if (listParametro.isEmpty()) {
-				out.write("Bundle savedInstanceState){");
-			} else {
-				genCodePmtIn(out);
-			}
+			listParametro.add(new Parametro("savedInstanceState","Bundle"));
+			genCodePmtIn(out);			
 			out.write("\n" + tabInd + "\tsuper.onCreate(savedInstanceState);");
 			// fazer a ref p classe
 			out.write("\n" + tabInd + "\tsetContentView(R.layout.);");
-			if (interaction != null) {
-				interaction.genCode(out, tab + 1);
-			}
-			out.write("\n" + tabInd + "}");
 		} else if (name.equals("onClick")) {
-			if (listParametro.isEmpty()) {
-				out.write("View v){");
-			} else {
-				genCodePmtIn(out);
-			}
+			listParametro.add(new Parametro("v","View"));
+			genCodePmtIn(out);
 			out.write("\n" + tabInd + "finish();");
-			if (interaction != null) {
-				interaction.genCode(out, tab + 1);
-			}
-			out.write("\n" + tabInd + "}");
 		} else {
-			if (listParametro.isEmpty()) {
-				out.write("){");
-			} else {
-				genCodePmtIn(out);
-			}
+			genCodePmtIn(out);
 			out.write("\n" + tabInd + "\tsuper." + name + "();");
-			if (interaction != null) {
-				interaction.genCode(out, tab + 1);
-			}
-			out.write("\n" + tabInd + "}");
 		} 
-		
+		if (interaction != null) {
+			interaction.genCode(out, tab + 1);
+		}
+		out.write("\n" + tabInd + "}\n");
 	}
 
 	// Gera os Parametros de Entrada
@@ -197,20 +178,19 @@ public class Method extends DataModel {
 				}
 			}
 		}
-		out.write(")");
+		out.write("){");
 	}
 
 	// gera o corpo do método
 	private void genCodeCpMet(BufferedWriter out) throws IOException {
 		// gera declaração dos out dentro do método
-		out.write("{");
 		this.genCodeDeclPmtOut(out);
 		if (interaction != null) {
 			interaction.genCode(out, tab + 1);
 		}
 		this.genCodeReturnPmtOut(out);
 		this.genCodeReturn(out, tab);
-		out.write("\n" + tabInd + "}\n");
+
 	}
 
 	// gera declaração dos parametros out dentro do método
@@ -260,7 +240,7 @@ public class Method extends DataModel {
 		out.write(" " + this.type + " " + this.name);
 		this.genCodePmtIn(out);
 		this.genCodeCpMet(out);
-
+		out.write("\n" + tabInd + "}\n");
 	}
 
 	public void genCodeCall(BufferedWriter out) throws IOException {

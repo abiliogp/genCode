@@ -12,21 +12,27 @@ public class BluetoothChat extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.);
 	}
+
 	public void onStart(){
 		super.onStart();
 	}
+
 	public void onResume(){
 		super.onResume();
 	}
+
 	public void onPause(){
 		super.onPause();
 	}
+
 	public void onStop(){
 		super.onStop();
 	}
+
 	public void onDestroy(){
 		super.onDestroy();
 	}
+
 	private void sendMessage(){
 	}
 

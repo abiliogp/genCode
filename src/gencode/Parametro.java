@@ -9,16 +9,19 @@ import utilities.Tool;
 
 public class Parametro extends DataModel{
 
-	
 	private String direction;
 
 	public Parametro(String name) {
-
 		super(name);
-		
 		this.direction = "in";
 	}
 
+	public Parametro(String name, String type) {
+		super(name);
+		this.type = type;
+		this.direction = "in";
+	}
+	
 	// set
 
 	public void setDirection(String direction) {
