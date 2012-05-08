@@ -1,9 +1,14 @@
 
 public class BluetoothChat extends Activity{
+	/**Attributes */
+	private BluetoothChatService nBluetoothAdapter;
+	private DeviceListActivity nChatService;
 
 	/** Constructor */
-	public BluetoothChat(){
+	public BluetoothChat( BluetoothChatService nBluetoothAdapter , DeviceListActivity nChatService ){
 		super();
+		this.nBluetoothAdapter = nBluetoothAdapter;
+		this.nChatService = nChatService;
 	}
 
 	/** Methods */
@@ -18,6 +23,9 @@ public class BluetoothChat extends Activity{
 
 	public void onResume(){
 		super.onResume();
+	}
+
+	private void setupChat(){
 	}
 
 	public void onPause(){
@@ -35,19 +43,19 @@ public class BluetoothChat extends Activity{
 	private void sendMessage(){
 	}
 
+	public void setStatus(){
+	}
+
 	public void onActivityResult(){
 	}
 
-	private void connectDevice(){
+	public void connectDevice(){
 	}
 
 	public void onCreateOptionsMenu(){
 	}
 
 	public void onOptionsItemSelected(){
-	}
-
-	public void Operation13(){
 	}
 
 }

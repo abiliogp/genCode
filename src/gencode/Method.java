@@ -139,7 +139,7 @@ public class Method extends DataModel {
 		}
 	}
 
-	public void genCodeAndroid(BufferedWriter out, int tab) throws IOException {
+	public void genCodeAndroid(String nameClass, BufferedWriter out, int tab) throws IOException {
 		this.tab = tab;
 		tabInd = Tool.indentation(tab);
 		genCodeH(out, tab);
@@ -148,7 +148,7 @@ public class Method extends DataModel {
 			genCodePmtIn(out);			
 			out.write("\n" + tabInd + "\tsuper.onCreate(savedInstanceState);");
 			// fazer a ref p classe
-			out.write("\n" + tabInd + "\tsetContentView(R.layout.);");
+			out.write("\n" + tabInd + "\tsetContentView(R.layout." + nameClass +");");
 		} else if (name.equals("onClick")) {
 			listParametro.add(new Parametro("v","View"));
 			genCodePmtIn(out);

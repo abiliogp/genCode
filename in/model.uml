@@ -1,103 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_BXRPQeU5EeCap6mXwuOK9Q" name="Model">
-  <packageImport xmi:id="_BXRPQuU5EeCap6mXwuOK9Q">
-    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
-  </packageImport>
-  <packagedElement xmi:type="uml:Activity" xmi:id="_BZutYOU5EeCap6mXwuOK9Q" name="Activity0"/>
-  <packagedElement xmi:type="uml:Interaction" xmi:id="_BbzxAOU5EeCap6mXwuOK9Q" name="RBI">
-    <lifeline xmi:id="_BYoCwOluEeCWMM0dhgQKLQ" name="Principal" coveredBy="_OVPDIOluEeCWMM0dhgQKLQ _YA86gOluEeCWMM0dhgQKLQ"/>
-    <lifeline xmi:id="_J_DtEOluEeCWMM0dhgQKLQ" name="IPC" coveredBy="_OVStgOluEeCWMM0dhgQKLQ"/>
-    <lifeline xmi:id="_K851YOluEeCWMM0dhgQKLQ" name="RBI" coveredBy="_YA_WwOluEeCWMM0dhgQKLQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OVPDIOluEeCWMM0dhgQKLQ" name="MessageSend" covered="_BYoCwOluEeCWMM0dhgQKLQ" event="_OVL_0OluEeCWMM0dhgQKLQ" message="_OVIVcOluEeCWMM0dhgQKLQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_YA86gOluEeCWMM0dhgQKLQ" name="MessageSend0" covered="_BYoCwOluEeCWMM0dhgQKLQ" event="_YA7sYOluEeCWMM0dhgQKLQ" message="_YA6eQOluEeCWMM0dhgQKLQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OVStgOluEeCWMM0dhgQKLQ" name="MessageRecv" covered="_J_DtEOluEeCWMM0dhgQKLQ" event="_OVQ4UOluEeCWMM0dhgQKLQ" message="_OVIVcOluEeCWMM0dhgQKLQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_YA_WwOluEeCWMM0dhgQKLQ" name="MessageRecv0" covered="_K851YOluEeCWMM0dhgQKLQ" event="_YA-IoOluEeCWMM0dhgQKLQ" message="_YA6eQOluEeCWMM0dhgQKLQ"/>
-    <message xmi:id="_OVIVcOluEeCWMM0dhgQKLQ" name="Intent = ACTION_CALL" messageSort="asynchCall" receiveEvent="_OVStgOluEeCWMM0dhgQKLQ" sendEvent="_OVPDIOluEeCWMM0dhgQKLQ"/>
-    <message xmi:id="_YA6eQOluEeCWMM0dhgQKLQ" name="startService(Intent)" messageSort="asynchCall" receiveEvent="_YA_WwOluEeCWMM0dhgQKLQ" sendEvent="_YA86gOluEeCWMM0dhgQKLQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_-Wko8OU5EeCap6mXwuOK9Q" name="Activity"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_lP_woOU6EeCap6mXwuOK9Q" name="R"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_zhF3sOU6EeCap6mXwuOK9Q" name="ListActivity">
-    <generalization xmi:id="_7vBbEOU9EeCap6mXwuOK9Q" general="_-Wko8OU5EeCap6mXwuOK9Q"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_0DA5AOU6EeCap6mXwuOK9Q" name="MapActivity">
-    <generalization xmi:id="_8NzBwOU9EeCap6mXwuOK9Q" general="_-Wko8OU5EeCap6mXwuOK9Q"/>
-    <ownedAttribute xmi:id="_sbQhwAD3EeGPMoG5Rpq9yw" name="deviceListActivity" type="_5UJVMAD2EeGvT8jQ3jZN7A" association="_sbXPcAD3EeGPMoG5Rpq9yw">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sbQhwQD3EeGPMoG5Rpq9yw" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sbQhwgD3EeGPMoG5Rpq9yw" value="1"/>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_sltT0Zk9EeGFas-xkD60rg" name="BluetoothChat">
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_sudnMJk9EeGFas-xkD60rg" name="Interaction0"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9N84cJk9EeGFas-xkD60rg" name="BluetoothChat">
+    <generalization xmi:id="_mpaNIJlAEeGFas-xkD60rg" general="_ae3NwJk-EeGFas-xkD60rg"/>
+    <ownedAttribute xmi:id="_JHb1oJlDEeGtTI2VIFrjFQ" name="nBluetoothAdapter" visibility="private" type="_vnl7AJk-EeGFas-xkD60rg" association="_JHsUUJlDEeGtTI2VIFrjFQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JHb1oZlDEeGtTI2VIFrjFQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JHb1oplDEeGtTI2VIFrjFQ" value="1"/>
     </ownedAttribute>
+    <ownedAttribute xmi:id="_LFyYsJlDEeGtTI2VIFrjFQ" name="nChatService" visibility="private" type="_1twA8Jk-EeGFas-xkD60rg" association="_LF5tcJlDEeGtTI2VIFrjFQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LFyYsZlDEeGtTI2VIFrjFQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LFyYsplDEeGtTI2VIFrjFQ" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_f4-3oJk_EeGFas-xkD60rg" name="onCreate"/>
+    <ownedOperation xmi:id="_hicIwJk_EeGFas-xkD60rg" name="onStart"/>
+    <ownedOperation xmi:id="_iV0GcJk_EeGFas-xkD60rg" name="onResume"/>
+    <ownedOperation xmi:id="_jD57gJk_EeGFas-xkD60rg" name="setupChat" visibility="private"/>
+    <ownedOperation xmi:id="_j1eiYJk_EeGFas-xkD60rg" name="onPause"/>
+    <ownedOperation xmi:id="__ssg4Jk_EeGFas-xkD60rg" name="onStop"/>
+    <ownedOperation xmi:id="_BFT5oJlAEeGFas-xkD60rg" name="onDestroy"/>
+    <ownedOperation xmi:id="_DZMAwJlAEeGFas-xkD60rg" name="sendMessage" visibility="private"/>
+    <ownedOperation xmi:id="_EW5mMJlAEeGFas-xkD60rg" name="setStatus"/>
+    <ownedOperation xmi:id="_FK3ZwJlAEeGFas-xkD60rg" name="onActivityResult"/>
+    <ownedOperation xmi:id="_F-43sJlAEeGFas-xkD60rg" name="connectDevice"/>
+    <ownedOperation xmi:id="_aUOZIJlAEeGFas-xkD60rg" name="onCreateOptionsMenu"/>
+    <ownedOperation xmi:id="_bf5iEJlAEeGFas-xkD60rg" name="onOptionsItemSelected"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_0g8yMOU6EeCap6mXwuOK9Q" name="Serializable"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_FkbhUOU7EeCap6mXwuOK9Q" name="Classe_GUI" clientDependency="_UiAT4OU7EeCap6mXwuOK9Q">
-    <generalization xmi:id="_Z8C6sOU7EeCap6mXwuOK9Q" general="_-Wko8OU5EeCap6mXwuOK9Q"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ae3NwJk-EeGFas-xkD60rg" name="Activity"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_vnl7AJk-EeGFas-xkD60rg" name="BluetoothChatService">
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_TB2NIJk_EeGFas-xkD60rg" name="AceptThread" visibility="private">
+      <ownedOperation xmi:id="_7ixMMJlBEeGFas-xkD60rg" name="AcceptThread"/>
+      <ownedOperation xmi:id="_8PTiEJlBEeGFas-xkD60rg" name="run"/>
+      <ownedOperation xmi:id="_9XG3oJlBEeGFas-xkD60rg" name="cancel"/>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_4eaxwJk-EeGFas-xkD60rg" name="ConnectThread" visibility="private">
+      <ownedOperation xmi:id="_19Q8QJlBEeGFas-xkD60rg" name="ConnectThread"/>
+      <ownedOperation xmi:id="_22S2AJlBEeGFas-xkD60rg" name="run"/>
+      <ownedOperation xmi:id="_30-r0JlBEeGFas-xkD60rg" name="cancel"/>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_yCaXoJk-EeGFas-xkD60rg" name="ConnectedThread" visibility="private">
+      <ownedOperation xmi:id="_ChHeYJlCEeGFas-xkD60rg" name="ConnectedThread"/>
+      <ownedOperation xmi:id="_E7WsMJlCEeGFas-xkD60rg" name="run"/>
+      <ownedOperation xmi:id="_FnxtUJlCEeGFas-xkD60rg" name="write"/>
+      <ownedOperation xmi:id="_GPChoJlCEeGFas-xkD60rg" name="cancel"/>
+    </nestedClassifier>
+    <ownedOperation xmi:id="_McjCMJlBEeGFas-xkD60rg" name="setState" visibility="private"/>
+    <ownedOperation xmi:id="_NkED4JlBEeGFas-xkD60rg" name="getState"/>
+    <ownedOperation xmi:id="_OhFFwJlBEeGFas-xkD60rg" name="start"/>
+    <ownedOperation xmi:id="_PY1NIJlBEeGFas-xkD60rg" name="connect"/>
+    <ownedOperation xmi:id="_QjlJAJlBEeGFas-xkD60rg" name="connected"/>
+    <ownedOperation xmi:id="_RnuGkJlBEeGFas-xkD60rg" name="stop"/>
+    <ownedOperation xmi:id="_TguPkJlBEeGFas-xkD60rg" name="write"/>
+    <ownedOperation xmi:id="_UW5CkJlBEeGFas-xkD60rg" name="connectionFailed" visibility="private"/>
+    <ownedOperation xmi:id="_oHvW4JlBEeGFas-xkD60rg" name="connectionLost" visibility="private"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Realization" xmi:id="_UiAT4OU7EeCap6mXwuOK9Q" name="Realization0" supplier="_lP_woOU6EeCap6mXwuOK9Q" client="_FkbhUOU7EeCap6mXwuOK9Q"/>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_OVL_0OluEeCWMM0dhgQKLQ" name="SendOperationEvent"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_OVQ4UOluEeCWMM0dhgQKLQ" name="ReceiveOperationEvent"/>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_YA7sYOluEeCWMM0dhgQKLQ" name="SendOperationEvent0"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_YA-IoOluEeCWMM0dhgQKLQ" name="ReceiveOperationEvent0"/>
-  <packagedElement xmi:type="uml:Interaction" xmi:id="_A06T4Ol9EeC0xvLspOnYFQ" name="PC"/>
-  <packagedElement xmi:type="uml:Interaction" xmi:id="_JAKeEOl9EeC0xvLspOnYFQ" name="onCreate">
-    <lifeline xmi:id="_Tvo4gOl9EeC0xvLspOnYFQ" name="Principal" coveredBy="_rSgF4Ol9EeC0xvLspOnYFQ _0zn20Ol9EeC0xvLspOnYFQ _-WukwOl9EeC0xvLspOnYFQ _FC6I4Ol-EeC0xvLspOnYFQ _RG9woOl-EeC0xvLspOnYFQ"/>
-    <lifeline xmi:id="_YMBkQOl9EeC0xvLspOnYFQ" name="OutraAtividade" coveredBy="_rSjwQOl9EeC0xvLspOnYFQ"/>
-    <lifeline xmi:id="_cg-yUOl9EeC0xvLspOnYFQ" name="Service" coveredBy="_0zq6IOl9EeC0xvLspOnYFQ _-WxBAOl9EeC0xvLspOnYFQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rSgF4Ol9EeC0xvLspOnYFQ" name="MessageSend" covered="_Tvo4gOl9EeC0xvLspOnYFQ" event="_rScbgOl9EeC0xvLspOnYFQ" message="_rSXjAOl9EeC0xvLspOnYFQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rSjwQOl9EeC0xvLspOnYFQ" name="MessageRecv" covered="_YMBkQOl9EeC0xvLspOnYFQ" event="_rSh7EOl9EeC0xvLspOnYFQ" message="_rSXjAOl9EeC0xvLspOnYFQ"/>
-    <fragment xmi:type="uml:InteractionUse" xmi:id="_FC6I4Ol-EeC0xvLspOnYFQ" name="InteractionUse" covered="_Tvo4gOl9EeC0xvLspOnYFQ" refersTo="_BbzxAOU5EeCap6mXwuOK9Q"/>
-    <fragment xmi:type="uml:InteractionUse" xmi:id="_RG9woOl-EeC0xvLspOnYFQ" name="InteractionUse0" covered="_Tvo4gOl9EeC0xvLspOnYFQ" refersTo="_A06T4Ol9EeC0xvLspOnYFQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0zn20Ol9EeC0xvLspOnYFQ" name="MessageSend0" covered="_Tvo4gOl9EeC0xvLspOnYFQ" event="_0zmBoOl9EeC0xvLspOnYFQ" message="_0zjlYOl9EeC0xvLspOnYFQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-WukwOl9EeC0xvLspOnYFQ" name="MessageSend1" covered="_Tvo4gOl9EeC0xvLspOnYFQ" event="_-WtWoOl9EeC0xvLspOnYFQ" message="_-Wq6YOl9EeC0xvLspOnYFQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0zq6IOl9EeC0xvLspOnYFQ" name="MessageRecv0" covered="_cg-yUOl9EeC0xvLspOnYFQ" event="_0zpsAOl9EeC0xvLspOnYFQ" message="_0zjlYOl9EeC0xvLspOnYFQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-WxBAOl9EeC0xvLspOnYFQ" name="MessageRecv1" covered="_cg-yUOl9EeC0xvLspOnYFQ" event="_-WwZ8Ol9EeC0xvLspOnYFQ" message="_-Wq6YOl9EeC0xvLspOnYFQ"/>
-    <message xmi:id="_rSXjAOl9EeC0xvLspOnYFQ" name="onDestroy()" messageSort="asynchCall" receiveEvent="_rSjwQOl9EeC0xvLspOnYFQ" sendEvent="_rSgF4Ol9EeC0xvLspOnYFQ"/>
-    <message xmi:id="_0zjlYOl9EeC0xvLspOnYFQ" name="onStart()" messageSort="asynchCall" receiveEvent="_0zq6IOl9EeC0xvLspOnYFQ" sendEvent="_0zn20Ol9EeC0xvLspOnYFQ"/>
-    <message xmi:id="_-Wq6YOl9EeC0xvLspOnYFQ" name="onBind()" messageSort="asynchCall" receiveEvent="_-WxBAOl9EeC0xvLspOnYFQ" sendEvent="_-WukwOl9EeC0xvLspOnYFQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_1twA8Jk-EeGFas-xkD60rg" name="DeviceListActivity">
+    <generalization xmi:id="_Ic3gkJlBEeGFas-xkD60rg" general="_ae3NwJk-EeGFas-xkD60rg"/>
+    <ownedOperation xmi:id="_tikdUJlAEeGFas-xkD60rg" name="onCreate" visibility="protected"/>
+    <ownedOperation xmi:id="_unxx4JlAEeGFas-xkD60rg" name="onDestroy" visibility="protected"/>
+    <ownedOperation xmi:id="_vfUd4JlAEeGFas-xkD60rg" name="doDiscovery" visibility="private"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_rScbgOl9EeC0xvLspOnYFQ" name="SendOperationEvent1"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_rSh7EOl9EeC0xvLspOnYFQ" name="ReceiveOperationEvent1"/>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_0zmBoOl9EeC0xvLspOnYFQ" name="SendOperationEvent2"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_0zpsAOl9EeC0xvLspOnYFQ" name="ReceiveOperationEvent2"/>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_-WtWoOl9EeC0xvLspOnYFQ" name="SendOperationEvent3"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_-WwZ8Ol9EeC0xvLspOnYFQ" name="ReceiveOperationEvent3"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Vu9UgADtEeGSVJryw86wNQ" name="BluetoothChat">
-    <generalization xmi:id="_mhuHEADtEeGSVJryw86wNQ" general="_f1020ADtEeGSVJryw86wNQ"/>
-    <ownedOperation xmi:id="_y8C5wADtEeGSVJryw86wNQ" name="onCreate"/>
-    <ownedOperation xmi:id="_zkLQwADtEeGSVJryw86wNQ" name="onStart"/>
-    <ownedOperation xmi:id="_0FbjsADtEeGSVJryw86wNQ" name="onResume"/>
-    <ownedOperation xmi:id="_1dydwADtEeGSVJryw86wNQ" name="setupChat" visibility="private"/>
-    <ownedOperation xmi:id="_2J-1YADtEeGSVJryw86wNQ" name="onPause"/>
-    <ownedOperation xmi:id="_5VXzUADtEeGSVJryw86wNQ" name="onStop"/>
-    <ownedOperation xmi:id="_6NKW8ADtEeGSVJryw86wNQ" name="onDestroy"/>
-    <ownedOperation xmi:id="_778M8ADtEeGSVJryw86wNQ" name="sendMessage" visibility="private"/>
-    <ownedOperation xmi:id="_8z7k4ADtEeGSVJryw86wNQ" name="setStatus" visibility="private"/>
-    <ownedOperation xmi:id="_D9QYAADuEeGSVJryw86wNQ" name="onActivityResult"/>
-    <ownedOperation xmi:id="_EsutIADuEeGSVJryw86wNQ" name="connectDevice" visibility="private"/>
-    <ownedOperation xmi:id="_FgxZMADuEeGSVJryw86wNQ" name="onCreateOptionsMenu"/>
-    <ownedOperation xmi:id="_I0B5sADuEeGSVJryw86wNQ" name="onOptionsItemSelected"/>
-    <ownedOperation xmi:id="_JuNC8ADuEeGSVJryw86wNQ" name="Operation13"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_f1020ADtEeGSVJryw86wNQ" name="Activity"/>
-  <packagedElement xmi:type="uml:Interaction" xmi:id="_NsotwAD2EeGSVJryw86wNQ" name="onCreate">
-    <lifeline xmi:id="_wLCboQD2EeGvT8jQ3jZN7A" name="Lifeline" represents="_sbQhwAD3EeGPMoG5Rpq9yw" coveredBy="_Ina1gAD4EeGPMoG5Rpq9yw _VaNLgAD4EeGPMoG5Rpq9yw _VaSrEAD4EeGPMoG5Rpq9yw"/>
-    <lifeline xmi:id="_03inAAD2EeGvT8jQ3jZN7A" name="BluetoothDevice" coveredBy="_IngVEAD4EeGPMoG5Rpq9yw"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Ina1gAD4EeGPMoG5Rpq9yw" name="MessageSend" covered="_wLCboQD2EeGvT8jQ3jZN7A" event="_InVV8AD4EeGPMoG5Rpq9yw" message="_InFeUAD4EeGPMoG5Rpq9yw"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_IngVEAD4EeGPMoG5Rpq9yw" name="MessageRecv" covered="_03inAAD2EeGvT8jQ3jZN7A" event="_Ind40AD4EeGPMoG5Rpq9yw" message="_InFeUAD4EeGPMoG5Rpq9yw"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_VaNLgAD4EeGPMoG5Rpq9yw" name="MessageSend0" covered="_wLCboQD2EeGvT8jQ3jZN7A" event="_VaKvQAD4EeGPMoG5Rpq9yw" message="_VaHr8AD4EeGPMoG5Rpq9yw"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_VaSrEAD4EeGPMoG5Rpq9yw" name="MessageRecv0" covered="_wLCboQD2EeGvT8jQ3jZN7A" event="_VaPnwAD4EeGPMoG5Rpq9yw" message="_VaHr8AD4EeGPMoG5Rpq9yw"/>
-    <message xmi:id="_InFeUAD4EeGPMoG5Rpq9yw" name="iFilter = ACTION_FOUND" messageSort="asynchCall" receiveEvent="_IngVEAD4EeGPMoG5Rpq9yw" sendEvent="_Ina1gAD4EeGPMoG5Rpq9yw"/>
-    <message xmi:id="_VaHr8AD4EeGPMoG5Rpq9yw" name="registerReceiver(mReceiver,iFilter)" messageSort="asynchCall" receiveEvent="_VaSrEAD4EeGPMoG5Rpq9yw" sendEvent="_VaNLgAD4EeGPMoG5Rpq9yw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_5UJVMAD2EeGvT8jQ3jZN7A" name="DeviceListActivity"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_ZFm7sAD3EeGvT8jQ3jZN7A"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_q5iQUAD3EeGPMoG5Rpq9yw"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_sbXPcAD3EeGPMoG5Rpq9yw" name="mapActivity_deviceListActivity_0" memberEnd="_sbXPcQD3EeGPMoG5Rpq9yw _sbQhwAD3EeGPMoG5Rpq9yw">
-    <ownedEnd xmi:id="_sbXPcQD3EeGPMoG5Rpq9yw" name="mapActivity" type="_0DA5AOU6EeCap6mXwuOK9Q" association="_sbXPcAD3EeGPMoG5Rpq9yw">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sbXPcgD3EeGPMoG5Rpq9yw" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sbXPcwD3EeGPMoG5Rpq9yw" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JHsUUJlDEeGtTI2VIFrjFQ" name="bluetoothChat_bluetoothChatService_0" memberEnd="_JHsUUZlDEeGtTI2VIFrjFQ _JHb1oJlDEeGtTI2VIFrjFQ">
+    <ownedEnd xmi:id="_JHsUUZlDEeGtTI2VIFrjFQ" name="bluetoothChat" type="_9N84cJk9EeGFas-xkD60rg" association="_JHsUUJlDEeGtTI2VIFrjFQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JHsUUplDEeGtTI2VIFrjFQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JHsUU5lDEeGtTI2VIFrjFQ" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_InVV8AD4EeGPMoG5Rpq9yw" name="SendOperationEvent4"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_Ind40AD4EeGPMoG5Rpq9yw" name="ReceiveOperationEvent4"/>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_VaKvQAD4EeGPMoG5Rpq9yw" name="SendOperationEvent5"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_VaPnwAD4EeGPMoG5Rpq9yw" name="ReceiveOperationEvent5"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LF5tcJlDEeGtTI2VIFrjFQ" name="BluetoothChat_deviceListActivity_0" visibility="private" memberEnd="_LF6UgJlDEeGtTI2VIFrjFQ _LFyYsJlDEeGtTI2VIFrjFQ">
+    <ownedEnd xmi:id="_LF6UgJlDEeGtTI2VIFrjFQ" name="bluetoothChat" type="_9N84cJk9EeGFas-xkD60rg" association="_LF5tcJlDEeGtTI2VIFrjFQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LF6UgZlDEeGtTI2VIFrjFQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LF6UgplDEeGtTI2VIFrjFQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>

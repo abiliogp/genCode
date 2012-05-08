@@ -37,6 +37,10 @@ public class Classe {
 
 	private boolean generalActivity;
 
+	enum AndroidClasses {
+		Activity, ListActivity, MapActivity, R;
+	}
+
 	public Classe(String name) {
 
 		this.name = name;
@@ -229,25 +233,29 @@ public class Classe {
 	}
 
 	public void genCode() throws IOException {
-		File cls = new File(Parser.getModel().getFile(), name.concat(".java"));
-		BufferedWriter out = new BufferedWriter(new FileWriter(cls));
-
-		// Pacote
-		if (pacote != null) {
-			out.write("package " + pacote.getName() + ";\n");
-			if (this.pacote.getAssocPacote() != null) {
-				out.write("import " + pacote.getAssocPacote().getSupplier()
-						+ ".*;\n");
+		try {
+			if (AndroidClasses.valueOf(name) != null) {
+				return;
 			}
+		} catch (java.lang.IllegalArgumentException ex) {
+			File cls = new File(Parser.getModel().getFile(),
+					name.concat(".java"));
+			BufferedWriter out = new BufferedWriter(new FileWriter(cls));
+			// Pacote
+			if (pacote != null) {
+				out.write("package " + pacote.getName() + ";\n");
+				if (this.pacote.getAssocPacote() != null) {
+					out.write("import " + pacote.getAssocPacote().getSupplier()
+							+ ".*;\n");
+				}
+			}
+			// Imports
+			if (needImport) {
+				out.write("import java.util.ArrayList;\n");
+			}
+			genInnerClass(out, 0);
+			out.close();
 		}
-
-		// Imports
-		if (needImport) {
-			out.write("import java.util.ArrayList;\n");
-		}
-
-		genInnerClass(out, 0);
-		out.close();
 	}
 
 	private void genInnerClass(BufferedWriter out, int tab) throws IOException {
@@ -272,7 +280,7 @@ public class Classe {
 
 		// Atributos
 		if (this.listAtributte.size() > 0) {
-			out.write("\n\n\t/**Attributes */");
+			out.write("\n" + tabInd + "\t/**Attributes */");
 			for (int i = 0; i < listAtributte.size(); i++) {
 				this.listAtributte.get(i).genCode(out, tab + 1);
 			}
@@ -283,7 +291,7 @@ public class Classe {
 			if (!((listMethod.get(i).getName().substring(0, 3).equals("get")) || (listMethod
 					.get(i).getName().substring(0, 3).equals("set")))) {
 				if (listMethod.get(i).getListReturn().size() > 0) {
-					out.write("\n\n\t/**Attribute of Return Method "
+					out.write("\n" + tabInd + "/**Attribute of Return Method "
 							+ listMethod.get(i).getName() + " */");
 					for (int j = 0; j < listMethod.get(i).getListReturn()
 							.size(); j++) {
@@ -319,14 +327,10 @@ public class Classe {
 			out.write("\n" + tabInd + "\t}\n");
 		}
 
-		for (int i = 0; i < listInnerClass.size(); i++) {
-			// problema no alinhameto
-			listInnerClass.get(i).genInnerClass(out, tab + 1);
-		}
 
 		// Get
 		if (needGetSet) {
-			out.write("\n\n\t/** Get */");
+			out.write("\n" + tabInd + "\t/** Get */");
 			for (int i = 0; i < listAtributte.size(); i++) {
 				listAtributte.get(i).genCodeGet(out, tab);
 			}
@@ -334,7 +338,7 @@ public class Classe {
 
 		// Set
 		if (needGetSet) {
-			out.write("\n\n\t/** Set */");
+			out.write("\n" + tabInd + "\t/** Set */");
 			for (int i = 0; i < listAtributte.size(); i++) {
 				listAtributte.get(i).genCodeSet(out);
 			}
@@ -342,20 +346,15 @@ public class Classe {
 
 		// Metodo Android
 		if (listMethod.size() > 0) {
-			out.write("\n\n\t/** Methods */");
+			out.write("\n" + tabInd + "\t/** Methods */");
 			for (int i = 0; i < this.listMethod.size(); i++) {
 				try {
 					if (Method.AndroidMethods.valueOf(listMethod.get(i)
 							.getName()) != null) {
-						listMethod.get(i).genCodeAndroid(out, tab + 1);
+						listMethod.get(i).genCodeAndroid(name, out, tab + 1);
 					}
 				} catch (java.lang.IllegalArgumentException ex) {
-					if (!((listMethod.get(i).getName().substring(0, 3)
-							.equals("get")) || (listMethod.get(i).getName()
-							.substring(0, 3).equals("set")))) {
-						listMethod.get(i).genCode(out, tab + 1);
-					}
-
+					listMethod.get(i).genCode(out, tab + 1);
 				}
 			}
 		}
@@ -375,6 +374,11 @@ public class Classe {
 			listRealInter.get(i).genCodeMethods(out);
 		}
 
+		//Inner Class
+		for (int i = 0; i < listInnerClass.size(); i++) {
+			listInnerClass.get(i).genInnerClass(out, tab + 1);
+		}
+		
 		out.write("\n" + tabInd + "}");
 
 	}
