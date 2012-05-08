@@ -6,6 +6,8 @@ public class BluetoothChat extends Activity{
 		super();
 	}
 
+
+	/** Methods */
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.);
@@ -16,8 +18,6 @@ public class BluetoothChat extends Activity{
 	public void onResume(){
 		super.onResume();
 	}
-
-	/** Methods */
 	public void onPause(){
 		super.onPause();
 	}
@@ -27,35 +27,21 @@ public class BluetoothChat extends Activity{
 	public void onDestroy(){
 		super.onDestroy();
 	}
-
-	/** Methods */
 	private void sendMessage(){
 	}
 
-
-	/** Methods */
-
-	/** Methods */
 	public void onActivityResult(){
 	}
 
-
-	/** Methods */
 	private void connectDevice(){
 	}
 
-
-	/** Methods */
 	public void onCreateOptionsMenu(){
 	}
 
-
-	/** Methods */
 	public void onOptionsItemSelected(){
 	}
 
-
-	/** Methods */
 	public void Operation13(){
 	}
 

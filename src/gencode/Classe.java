@@ -341,24 +341,21 @@ public class Classe {
 		}
 
 		// Metodo Android
-
-		for (int i = 0; i < this.listMethod.size(); i++) {
-			try {
-				if (Method.AndroidMethods.valueOf(listMethod.get(i).getName()) != null) {
-					listMethod.get(i).genCodeAndroid(out, tab + 1);
-				}
-			} catch (java.lang.IllegalArgumentException ex) {
-				if (listMethod.size() > 0) {
-					if (!((listMethod.get(0).getName().substring(0, 3)
-							.equals("get")) || (listMethod.get(0).getName()
-							.substring(0, 3).equals("set")))) {
-						out.write("\n\n\t/** Methods */");
+		if (listMethod.size() > 0) {
+			out.write("\n\n\t/** Methods */");
+			for (int i = 0; i < this.listMethod.size(); i++) {
+				try {
+					if (Method.AndroidMethods.valueOf(listMethod.get(i)
+							.getName()) != null) {
+						listMethod.get(i).genCodeAndroid(out, tab + 1);
 					}
+				} catch (java.lang.IllegalArgumentException ex) {
 					if (!((listMethod.get(i).getName().substring(0, 3)
 							.equals("get")) || (listMethod.get(i).getName()
 							.substring(0, 3).equals("set")))) {
 						listMethod.get(i).genCode(out, tab + 1);
 					}
+
 				}
 			}
 		}
