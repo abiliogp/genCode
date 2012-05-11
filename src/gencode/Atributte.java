@@ -102,7 +102,7 @@ public class Atributte extends DataModel {
 		boolean needImport = false;
 		if (line.contains("visibility=")) {
 			visibility = Tool.manipulate(line, "visibility=");
-			if( (value != null) && ((value.equals("private")) || (value.equals("protected"))) ){
+			if( (visibility != null) && ((visibility.equals("private")) || (visibility.equals("protected"))) ){
 				Parser.getModel().getLastClasse().setNeedGetSet(true);
 				visbPrivate = true;
 			}

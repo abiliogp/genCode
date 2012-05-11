@@ -1,22 +1,10 @@
 Activity
-	onCreate
-		setContentView(R.layout.cadastro);
-	onPause
-		 public void onPause(){
- 
-         super.onPause(); 
+Imports 
+- Fazer um return do parser do atributte p/ gerar os imports
+        
+ListView    import android.widget.ListView;
+EditText    import android.widget.EditText;
+Button      import android.widget.Button;
 
-     }
-	onResume
-		
-	onRestart
-
-	onClick
-		public void onClick(View v) {
- 
-              finish();
- 
-     }
-	
 - Notification
 - arquivo strings.xml
