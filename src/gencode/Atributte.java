@@ -97,9 +97,9 @@ public class Atributte extends DataModel {
 	 * @return needImport (boolean)
 	 * @throws IOException
 	 */
-	public boolean parser(BufferedReader bf, String line) throws IOException {
+	public String parser(BufferedReader bf, String line) throws IOException {
 		String value = null, key;
-		boolean needImport = false;
+		String needImport = null;
 		if (line.contains("visibility=")) {
 			visibility = Tool.manipulate(line, "visibility=");
 			if( (visibility != null) && ((visibility.equals("private")) || (visibility.equals("protected"))) ){
@@ -135,7 +135,7 @@ public class Atributte extends DataModel {
 					value = Tool.manipulate(line, "value");
 					upperValue = value.charAt(0);
 					if( value.substring(0, 1).equals("*") ){
-						needImport = true;
+						needImport = "*";
 					}
 				}
 				if ( (line.contains("lowerValue")) && (line.contains("value=")) ) {
