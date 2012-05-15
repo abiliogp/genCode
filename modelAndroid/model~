@@ -8,4 +8,4 @@ Button      import android.widget.Button;
 
 - Notification
 - arquivo strings.xml
-- 
+- Criar uma classe Android e colocar todos os enum lá
