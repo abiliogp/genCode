@@ -39,7 +39,7 @@ public class Associacao extends DataModel {
 					value = Tool.manipulate(line, "name");
 					Atributte atributte = new Atributte(value);
 					//listAtributte.add(atributte);
-					boolean needImport = atributte.parser(bf, line);
+					//boolean needImport = atributte.parser(bf, line);
 					
 					Tool.putTrieAtributte(key, atributte);
 				}

@@ -1,6 +1,5 @@
 package gencode;
 
-import gencode.Method.AndroidMethods;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import sequence.Interaction;
+import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
 
@@ -31,15 +31,15 @@ public class Classe {
 	private ArrayList<Operation> listOperacao;
 	private ArrayList<Interaction> listInteraction;
 	private ArrayList<RealizationInterface> listRealInter;
-
+	private ArrayList<Atributte> listStereotype;
+	
 	private boolean needImport;
 	private boolean needGetSet;
 
 	private boolean generalActivity;
 
-	enum AndroidClasses {
-		Activity, ListActivity, MapActivity, R;
-	}
+	
+
 
 	public Classe(String name) {
 
@@ -51,6 +51,7 @@ public class Classe {
 		general = null;
 		listInnerClass = new ArrayList<Classe>();
 		listAtributte = new ArrayList<Atributte>();
+		listStereotype = new ArrayList<Atributte>();
 		listMethod = new ArrayList<Method>();
 		listAssociacao = new ArrayList<Associacao>();
 		listOperacao = new ArrayList<Operation>();
@@ -234,7 +235,7 @@ public class Classe {
 
 	public void genCode() throws IOException {
 		try {
-			if (AndroidClasses.valueOf(name) != null) {
+			if (Android.Classes.valueOf(name) != null) {
 				return;
 			}
 		} catch (java.lang.IllegalArgumentException ex) {
@@ -253,6 +254,12 @@ public class Classe {
 			if (needImport) {
 				out.write("import java.util.ArrayList;\n");
 			}
+			if(!listStereotype.isEmpty()){
+				for(int i=0 ; i < listStereotype.size() ; i++){
+					listStereotype.get(i).genCodeImports(out);
+				}
+			}
+			
 			genInnerClass(out, 0);
 			out.close();
 		}
@@ -332,7 +339,7 @@ public class Classe {
 		if (needGetSet) {
 			out.write("\n" + tabInd + "\t/** Get */");
 			for (int i = 0; i < listAtributte.size(); i++) {
-				listAtributte.get(i).genCodeGet(out, tab);
+				listAtributte.get(i).genCodeGet(out, tab+1);
 			}
 		}
 
@@ -340,7 +347,7 @@ public class Classe {
 		if (needGetSet) {
 			out.write("\n" + tabInd + "\t/** Set */");
 			for (int i = 0; i < listAtributte.size(); i++) {
-				listAtributte.get(i).genCodeSet(out);
+				listAtributte.get(i).genCodeSet(out,tab+1);
 			}
 		}
 
@@ -349,7 +356,7 @@ public class Classe {
 			out.write("\n" + tabInd + "\t/** Methods */");
 			for (int i = 0; i < this.listMethod.size(); i++) {
 				try {
-					if (Method.AndroidMethods.valueOf(listMethod.get(i)
+					if (Android.Methods.valueOf(listMethod.get(i)
 							.getName()) != null) {
 						listMethod.get(i).genCodeAndroid(name, out, tab + 1);
 					}
@@ -419,11 +426,21 @@ public class Classe {
 				}
 
 				if (line.contains("<nestedClassifier")) {
+					key = Tool.manipulate(line, "xmi:id=");
 					value = Tool.manipulate(line, "name=");
-					Classe innerClass = new Classe(value);
-					listInnerClass.add(innerClass);
-					innerClass.parser(bf, line);
+					if (line.contains("uml:Class")) {
+						Classe innerClass = new Classe(value);
+						listInnerClass.add(innerClass);
+						innerClass.parser(bf, line);
+					}
+					if (line.contains("uml:Stereotype")) {
+						Atributte stereotype = new Atributte(value);
+						listStereotype.add(stereotype);
+						stereotype.parser(bf, line);
+						Tool.putTrieAtributte(key, stereotype);
+					}
 				}
+				
 				/*
 				 * Atributo
 				 */

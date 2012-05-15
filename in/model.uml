@@ -11,6 +11,12 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LFyYsZlDEeGtTI2VIFrjFQ" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LFyYsplDEeGtTI2VIFrjFQ" value="1"/>
     </ownedAttribute>
+    <ownedAttribute xmi:id="_gRAToJ6xEeGvcLFqe4zVxw" name="mSendButton" visibility="private" type="_aUHhoJ61EeGHQoexFO7Z_g"/>
+    <ownedAttribute xmi:id="_jLS6gJ6xEeGvcLFqe4zVxw" name="mOutEditText" visibility="private" type="_YoK9MJ61EeGHQoexFO7Z_g"/>
+    <ownedAttribute xmi:id="_lNGaMJ6xEeGvcLFqe4zVxw" name="mConversationView" visibility="private" type="_I2DIQJ61EeGHQoexFO7Z_g"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_aUHhoJ61EeGHQoexFO7Z_g" name="Button"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_YoK9MJ61EeGHQoexFO7Z_g" name="EditText"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_I2DIQJ61EeGHQoexFO7Z_g" name="ListView"/>
     <ownedOperation xmi:id="_f4-3oJk_EeGFas-xkD60rg" name="onCreate"/>
     <ownedOperation xmi:id="_hicIwJk_EeGFas-xkD60rg" name="onStart"/>
     <ownedOperation xmi:id="_iV0GcJk_EeGFas-xkD60rg" name="onResume"/>
@@ -28,16 +34,19 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_ae3NwJk-EeGFas-xkD60rg" name="Activity"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_vnl7AJk-EeGFas-xkD60rg" name="BluetoothChatService">
     <nestedClassifier xmi:type="uml:Class" xmi:id="_TB2NIJk_EeGFas-xkD60rg" name="AceptThread" visibility="private">
+      <generalization xmi:id="_7p0UUJ6wEeGvcLFqe4zVxw" general="_pyBzYZ6wEeGvcLFqe4zVxw"/>
       <ownedOperation xmi:id="_7ixMMJlBEeGFas-xkD60rg" name="AcceptThread"/>
       <ownedOperation xmi:id="_8PTiEJlBEeGFas-xkD60rg" name="run"/>
       <ownedOperation xmi:id="_9XG3oJlBEeGFas-xkD60rg" name="cancel"/>
     </nestedClassifier>
     <nestedClassifier xmi:type="uml:Class" xmi:id="_4eaxwJk-EeGFas-xkD60rg" name="ConnectThread" visibility="private">
+      <generalization xmi:id="_5-XfIJ6wEeGvcLFqe4zVxw" general="_pyBzYZ6wEeGvcLFqe4zVxw"/>
       <ownedOperation xmi:id="_19Q8QJlBEeGFas-xkD60rg" name="ConnectThread"/>
       <ownedOperation xmi:id="_22S2AJlBEeGFas-xkD60rg" name="run"/>
       <ownedOperation xmi:id="_30-r0JlBEeGFas-xkD60rg" name="cancel"/>
     </nestedClassifier>
     <nestedClassifier xmi:type="uml:Class" xmi:id="_yCaXoJk-EeGFas-xkD60rg" name="ConnectedThread" visibility="private">
+      <generalization xmi:id="_4dN1cJ6wEeGvcLFqe4zVxw" general="_pyBzYZ6wEeGvcLFqe4zVxw"/>
       <ownedOperation xmi:id="_ChHeYJlCEeGFas-xkD60rg" name="ConnectedThread"/>
       <ownedOperation xmi:id="_E7WsMJlCEeGFas-xkD60rg" name="run"/>
       <ownedOperation xmi:id="_FnxtUJlCEeGFas-xkD60rg" name="write"/>
@@ -71,4 +80,5 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LF6UgplDEeGtTI2VIFrjFQ" value="1"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pyBzYZ6wEeGvcLFqe4zVxw" name="Thread"/>
 </uml:Model>

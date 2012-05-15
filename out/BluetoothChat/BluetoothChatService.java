@@ -33,10 +33,11 @@ public class BluetoothChatService{
 	private void connectionLost(){
 	}
 
-	private class AceptThread{
+	private class AceptThread extends Thread{
 
 		/** Constructor */
 		public AceptThread(){
+			super();
 		}
 
 		/** Methods */
@@ -50,10 +51,11 @@ public class BluetoothChatService{
 		}
 
 	}
-	private class ConnectThread{
+	private class ConnectThread extends Thread{
 
 		/** Constructor */
 		public ConnectThread(){
+			super();
 		}
 
 		/** Methods */
@@ -67,10 +69,11 @@ public class BluetoothChatService{
 		}
 
 	}
-	private class ConnectedThread{
+	private class ConnectedThread extends Thread{
 
 		/** Constructor */
 		public ConnectedThread(){
+			super();
 		}
 
 		/** Methods */

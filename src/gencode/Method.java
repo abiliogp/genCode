@@ -19,9 +19,6 @@ public class Method extends DataModel {
 	private Interaction interaction;
 	private boolean isAbstract;
 	
-	enum AndroidMethods{
-		onCreate, onStop, onPause, onResume, onDestroy, onStart, onClick;
-	}
 
 	public Method(String name) {
 		super(name);

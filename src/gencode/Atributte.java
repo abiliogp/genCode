@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
 
@@ -68,7 +69,8 @@ public class Atributte extends DataModel {
 		}
 	}
 	
-	public void genCodeSet(BufferedWriter out) throws IOException{
+	public void genCodeSet(BufferedWriter out, int tab) throws IOException{
+		tabInd = Tool.indentation(tab); 
 		if( this.visbPrivate ){
 			out.write("\n" + tabInd + "public void set" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) 
 					+ "( " + this.type + " " + this.name + " ){");
@@ -89,6 +91,24 @@ public class Atributte extends DataModel {
 			out.write(" " + this.type + " " + this.name + " ");
 		}
 	}
+	
+	public void genCodeImports(BufferedWriter out) throws IOException{
+		
+		try {
+			if (Android.Widget.valueOf(name) != null) {
+				out.write("import android.widget." + name + ";\n");
+			}
+			else if (Android.View.valueOf(name) != null) {
+				out.write("import android.view." + name + ";\n");
+			}
+			else if (Android.Content.valueOf(name) != null) {
+				out.write("import android.content." + name + ";\n");
+			}
+			else if (Android.os.valueOf(name) != null) {
+				out.write("import android.os." + name + ";\n");
+			}
+		} catch (java.lang.IllegalArgumentException ex) {}		
+	}
 
 	/**
 	 * 
@@ -97,9 +117,9 @@ public class Atributte extends DataModel {
 	 * @return needImport (boolean)
 	 * @throws IOException
 	 */
-	public String parser(BufferedReader bf, String line) throws IOException {
+	public boolean parser(BufferedReader bf, String line) throws IOException {
 		String value = null, key;
-		String needImport = null;
+		boolean needImport = false;
 		if (line.contains("visibility=")) {
 			visibility = Tool.manipulate(line, "visibility=");
 			if( (visibility != null) && ((visibility.equals("private")) || (visibility.equals("protected"))) ){
@@ -135,7 +155,7 @@ public class Atributte extends DataModel {
 					value = Tool.manipulate(line, "value");
 					upperValue = value.charAt(0);
 					if( value.substring(0, 1).equals("*") ){
-						needImport = "*";
+						needImport = true;
 					}
 				}
 				if ( (line.contains("lowerValue")) && (line.contains("value=")) ) {
