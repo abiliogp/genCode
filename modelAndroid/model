@@ -2,23 +2,7 @@ Activity
 Imports 
 - Fazer um return do parser do atributte p/ gerar os imports
         de acordo com uma lista de enum
-ListView        import android.widget.ListView;
-EditText        import android.widget.EditText;
-Button          import android.widget.Button;
-Menu            import android.view.Menu;
-SubMenu         import android.view.SubMenu;
-MenuItem        import android.view.MenuItem;
-MenuInflater    import android.view.MenuInflater;
-Bundle          import android.os.Bundle;
-Window          import android.view.Window;
-ImageButton     import android.widget.ImageButton;
-ImageView       import android.widget.ImageView;
-LinearLAyout    import android.widget.LinearLayout;
-ProgressBar     import android.widget.ProgressBar;
-TextView        import android.widget.TextView;
-Intent          import android.content.Intent;
-ActionBar       import android.app.ActionBar;
-onClickListener import android.view.View.OnClickListener;
+
 
 
 

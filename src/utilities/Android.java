@@ -20,6 +20,11 @@ public class Android {
 		Menu, SubMenu, MenuItem, MenuInflater, Window, View, KeyEvent;
 	}
 	
+	//import android.view.View.OnClickListener;
+	public enum view{
+		OnClickListener;
+	}
+	
 	public enum Content{
 		Intent, Context;
 	}
@@ -32,7 +37,10 @@ public class Android {
 		Bundle, Handler, Message;
 	}
 	
-	
+	//import android.app.ActionBar;
+	public enum app{
+		ActionBar;
+	}
 	
 	public enum adntroidUtil{
 		Log, AttributeSet;
@@ -41,8 +49,5 @@ public class Android {
 	public enum javaUtil{
 		Random;
 	}
-	
-
-	
 	
 }
