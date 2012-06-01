@@ -104,8 +104,17 @@ public class Atributte extends DataModel {
 			else if (Android.Content.valueOf(name) != null) {
 				out.write("import android.content." + name + ";\n");
 			}
+			else if (Android.res.valueOf(name) != null) {
+				out.write("import android.content.res." + name + ";\n");
+			}
 			else if (Android.os.valueOf(name) != null) {
 				out.write("import android.os." + name + ";\n");
+			}
+			else if (Android.adntroidUtil.valueOf(name) != null) {
+				out.write("import android.util." + name + ";\n");
+			}
+			else if (Android.javaUtil.valueOf(name) != null) {
+				out.write("import java.util." + name + ";\n");
 			}
 		} catch (java.lang.IllegalArgumentException ex) {}		
 	}

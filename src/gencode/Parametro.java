@@ -103,7 +103,12 @@ public class Parametro extends DataModel{
 				}	
 				if (line.contains("lowerValue")) {
 					value = Tool.manipulate(line, "value");
-					lowerValue = value.charAt(0);
+					if(!value.isEmpty()){
+						lowerValue = value.charAt(0);
+						if( value.substring(0, 1).equals("*") ){
+							Parser.getModel().getLastClasse().setNeedImport(true);
+						}
+					}
 				}
 			}// end for
 		}

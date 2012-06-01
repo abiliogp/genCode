@@ -144,7 +144,7 @@ public class Interface {
 					value = Tool.manipulate(line, "name");
 					Atributte atributte = new Atributte(value);
 					listAtributte.add(atributte);
-					needImport = atributte.parser(bf, line);
+					needImport = atributte.parser(bf, line); 
 					Tool.putTrieAtributte(key, atributte);
 				}
 				/*
