@@ -294,6 +294,7 @@ public class Classe {
 		}
 
 		// Atributos Return dos Métodos
+		
 		for (int i = 0; i < listMethod.size(); i++) {
 			if (!((listMethod.get(i).getName().substring(0, 3).equals("get")) || (listMethod
 					.get(i).getName().substring(0, 3).equals("set")))) {
@@ -308,7 +309,8 @@ public class Classe {
 				}
 			}
 		}
-
+		
+		
 		// Atributtes from Interface
 		for (int i = 0; i < listRealInter.size(); i++) {
 			listRealInter.get(i).genCodeAtributte(out);

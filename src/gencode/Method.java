@@ -119,7 +119,13 @@ public class Method extends DataModel {
 		if ((this.isAbstract)) {
 			out.write(" abstract");
 		}
-		out.write(" " + this.type + " " + this.name);
+		out.write(" ");
+		if(!this.listRetorno.isEmpty()){
+			this.listRetorno.get(0).genCodeMult(out);
+		} else{
+			out.write(" " + this.type + " " + this.name);
+		}
+		out.write(this.name);
 	}
 
 	private void genCodePmtCp(BufferedWriter out, int tab) throws IOException {

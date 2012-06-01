@@ -30,16 +30,16 @@ public class Snake extends Activity{
 	}
 
 	/** Methods */
-	public void onCreate(Bundle savedInstanceState){
+	public  void onCreateonCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.Snake);
 	}
 
-	protected void onPause(){
+	protected  void onPauseonPause(){
 		super.onPause();
 	}
 
-	public void onSavedInstanceState(){
+	public  void onSavedInstanceStateonSavedInstanceState(){
 	}
 
 }
