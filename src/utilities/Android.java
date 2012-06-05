@@ -15,7 +15,7 @@ public class Android {
 	}
 	
 	public enum Methods{
-		onCreate, onStop, onPause, onResume, onDestroy, onStart, onClick;
+		onCreate, onStop, onPause, onResume, onDestroy, onStart, onClick, onSaveInstanceState;
 	}
 	
 

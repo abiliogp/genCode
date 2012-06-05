@@ -123,7 +123,7 @@ public class Method extends DataModel {
 		if(!this.listRetorno.isEmpty()){
 			this.listRetorno.get(0).genCodeMult(out);
 		} else{
-			out.write(" " + this.type + " " + this.name);
+			out.write(this.type + " ");
 		}
 		out.write(this.name);
 	}
@@ -150,9 +150,14 @@ public class Method extends DataModel {
 			listParametro.add(new Parametro("savedInstanceState","Bundle"));
 			genCodePmtIn(out);			
 			out.write("\n" + tabInd + "\tsuper.onCreate(savedInstanceState);");
-			// fazer a ref p classe
 			out.write("\n" + tabInd + "\tsetContentView(R.layout." + nameClass +");");
-		} else if (name.equals("onClick")) {
+		}
+		else if (name.equals("onSaveInstanceState")) {
+			listParametro.add(new Parametro("outState","Bundle"));
+			genCodePmtIn(out);
+			out.write("\n" + tabInd + "\toutState.putBundle();");
+		}
+		else if (name.equals("onClick")) {
 			listParametro.add(new Parametro("v","View"));
 			genCodePmtIn(out);
 			out.write("\n" + tabInd + "finish();");

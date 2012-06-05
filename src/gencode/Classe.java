@@ -251,6 +251,9 @@ public class Classe {
 				}
 			}
 			// Imports
+			if(this.generalActivity) {
+				out.write("import android.app.Activity;\n");
+			}
 			if (needImport) {
 				out.write("import java.util.ArrayList;\n");
 			}
@@ -353,7 +356,7 @@ public class Classe {
 			}
 		}
 
-		// Metodo Android
+		// Metodo 
 		if (listMethod.size() > 0) {
 			out.write("\n" + tabInd + "\t/** Methods */");
 			for (int i = 0; i < this.listMethod.size(); i++) {

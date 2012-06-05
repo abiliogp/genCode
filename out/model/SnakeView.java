@@ -204,16 +204,16 @@ public class SnakeView extends TileView{
 	}
 
 	/** Methods */
-	public  void SnakeViewSnakeView(Context context, AttributeSet attrs){
+	public void SnakeView(Context context, AttributeSet attrs){
 	}
 
-	public  void SnakeViewSnakeView(Context context, AttributeSet attrs, int defStyle){
+	public void SnakeView(Context context, AttributeSet attrs, int defStyle){
 	}
 
-	private  void initSnakeViewinitSnakeView(){
+	private void initSnakeView(){
 	}
 
-	private  void initNewGameinitNewGame(){
+	private void initNewGame(){
 	}
 
 	private int coordArrayList(Coordinate cvec){
@@ -228,32 +228,32 @@ public class SnakeView extends TileView{
 		return rawArray;
 	}
 
-	public  void restoreStaterestoreState(Bundle icicle){
+	public void restoreState(Bundle icicle){
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent msg){
 		return boolean;
 	}
 
-	public  void setTextViewsetTextView(TextView newView){
+	public void setTextView(TextView newView){
 	}
 
-	public  void setModesetMode(int newMode){
+	public void setMode(int newMode){
 	}
 
-	private  void addRandomAppleaddRandomApple(){
+	private void addRandomApple(){
 	}
 
-	public  void updateupdate(){
+	public void update(){
 	}
 
-	private  void updateWallsupdateWalls(){
+	private void updateWalls(){
 	}
 
-	private  void updateApplesupdateApples(){
+	private void updateApples(){
 	}
 
-	private  void updateSnakeupdateSnake(){
+	private void updateSnake(){
 	}
 
 	public class RefreshHandler extends Handler{
@@ -264,10 +264,10 @@ public class SnakeView extends TileView{
 		}
 
 		/** Methods */
-		public  void handleMessagehandleMessage(Message msg){
+		public void handleMessage(Message msg){
 		}
 
-		public  void sleepsleep(long delayMillis){
+		public void sleep(long delayMillis){
 		}
 
 	}

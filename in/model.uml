@@ -16,7 +16,7 @@
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_P2q4UK89EeGdv_Dx1W00dw" name="Bundle"/>
     <ownedOperation xmi:id="_F2rtgKafEeGqF9qVXRepmg" name="onCreate"/>
     <ownedOperation xmi:id="_GtEi8KafEeGqF9qVXRepmg" name="onPause" visibility="protected"/>
-    <ownedOperation xmi:id="_HcOH8KafEeGqF9qVXRepmg" name="onSavedInstanceState"/>
+    <ownedOperation xmi:id="_HcOH8KafEeGqF9qVXRepmg" name="onSaveInstanceState"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_brGRgKaeEeGqF9qVXRepmg" name="TileView">
     <generalization xmi:id="_67mgAKaeEeGqF9qVXRepmg" general="_v7K4cKaeEeGqF9qVXRepmg"/>

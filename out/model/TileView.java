@@ -95,28 +95,28 @@ public class TileView extends View{
 	}
 
 	/** Methods */
-	public  void TileViewTileView(Context context, AttributeSet attrs, int defStyle){
+	public void TileView(Context context, AttributeSet attrs, int defStyle){
 	}
 
-	public  void TileViewTileView(Context context, AttributeSet attrs){
+	public void TileView(Context context, AttributeSet attrs){
 	}
 
-	public  void resetTilesresetTiles(int tilecount){
+	public void resetTiles(int tilecount){
 	}
 
-	protected  void onSizeChangedonSizeChanged(int w, int h, int oldw, int oldh){
+	protected void onSizeChanged(int w, int h, int oldw, int oldh){
 	}
 
-	public  void loadTileloadTile(int key, Drawable tile){
+	public void loadTile(int key, Drawable tile){
 	}
 
-	public  void clearTilesclearTiles(){
+	public void clearTiles(){
 	}
 
-	public  void setTilesetTile(int tileindex, int x, int y){
+	public void setTile(int tileindex, int x, int y){
 	}
 
-	public  void onDrawonDraw(Canvas canvas){
+	public void onDraw(Canvas canvas){
 	}
 
 }

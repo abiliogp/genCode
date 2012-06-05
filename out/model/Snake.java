@@ -1,3 +1,4 @@
+import android.app.Activity;
 import android.os.Bundle;
 
 public class Snake extends Activity{
@@ -31,16 +32,17 @@ public class Snake extends Activity{
 	}
 
 	/** Methods */
-	public  void onCreateonCreate(Bundle savedInstanceState){
+	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.Snake);
 	}
 
-	protected  void onPauseonPause(){
+	protected void onPause(){
 		super.onPause();
 	}
 
-	public  void onSavedInstanceStateonSavedInstanceState(){
+	public void onSaveInstanceState(Bundle outState){
+		outState.putBundle();
 	}
 
 }
