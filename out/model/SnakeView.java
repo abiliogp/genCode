@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import android.widget.TextView;
+import java.util.Random;
+import android.os.Bundle;
+import android.view.KeyEvent;
 
 public class SnakeView extends TileView{
 	/**Attributes */

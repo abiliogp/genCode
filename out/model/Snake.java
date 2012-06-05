@@ -1,3 +1,4 @@
+import android.os.Bundle;
 
 public class Snake extends Activity{
 	/**Attributes */

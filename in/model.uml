@@ -13,6 +13,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       <defaultValue xmi:type="uml:LiteralString" xmi:id="_x5H9cKafEeGqF9qVXRepmg" name="snake_view" value="snake_view"/>
     </ownedAttribute>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_P2q4UK89EeGdv_Dx1W00dw" name="Bundle"/>
     <ownedOperation xmi:id="_F2rtgKafEeGqF9qVXRepmg" name="onCreate"/>
     <ownedOperation xmi:id="_GtEi8KafEeGqF9qVXRepmg" name="onPause" visibility="protected"/>
     <ownedOperation xmi:id="_HcOH8KafEeGqF9qVXRepmg" name="onSavedInstanceState"/>

@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import android.content.Context;
+import android.util.AttributeSet;
 
 public class TileView extends View{
 	/**Attributes */

@@ -103,30 +103,32 @@ public class Atributte extends DataModel {
 	}
 	
 	public void genCodeImports(BufferedWriter out) throws IOException{
-		
-		try {
-			if (Android.Widget.valueOf(name) != null) {
-				out.write("import android.widget." + name + ";\n");
-			}
-			else if (Android.View.valueOf(name) != null) {
-				out.write("import android.view." + name + ";\n");
-			}
-			else if (Android.Content.valueOf(name) != null) {
-				out.write("import android.content." + name + ";\n");
-			}
-			else if (Android.res.valueOf(name) != null) {
-				out.write("import android.content.res." + name + ";\n");
-			}
-			else if (Android.os.valueOf(name) != null) {
+			
+			if (Android.os.contains(this.name)) {
 				out.write("import android.os." + name + ";\n");
 			}
-			else if (Android.adntroidUtil.valueOf(name) != null) {
+			if (Android.Widget.contains(name)) {
+				out.write("import android.widget." + name + ";\n");
+			}
+			if (Android.View.contains(name)) {
+				out.write("import android.view." + name + ";\n");
+			}
+			if (Android.view.contains(name)) {
+				out.write("import android.view.View." + name + ";\n");
+			}
+			if (Android.Content.contains(name)) {
+				out.write("import android.content." + name + ";\n");
+			}
+			if (Android.res.contains(name)) {
+				out.write("import android.content.res." + name + ";\n");
+			}
+			
+			if (Android.adntroidUtil.contains(name)) {
 				out.write("import android.util." + name + ";\n");
 			}
-			else if (Android.javaUtil.valueOf(name) != null) {
+			if (Android.javaUtil.contains(name)) {
 				out.write("import java.util." + name + ";\n");
 			}
-		} catch (java.lang.IllegalArgumentException ex) {}		
 	}
 
 	/**
