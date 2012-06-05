@@ -2,7 +2,7 @@
 public class Snake extends Activity{
 	/**Attributes */
 	private SnakeView mSnakeView;
-	private String ICICLE_KEY;
+	private String ICICLE_KEY = "snake_view";
 
 	/** Constructor */
 	public Snake( SnakeView mSnakeView , String ICICLE_KEY ){

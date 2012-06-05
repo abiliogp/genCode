@@ -11,7 +11,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_opPtgKafEeGqF9qVXRepmg" name="ICICLE_KEY" visibility="private" isStatic="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      <defaultValue xmi:type="uml:LiteralString" xmi:id="_x5H9cKafEeGqF9qVXRepmg" name="&quot;snake_view&quot;" value="&quot;snake_view&quot;"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_x5H9cKafEeGqF9qVXRepmg" name="snake_view" value="snake_view"/>
     </ownedAttribute>
     <ownedOperation xmi:id="_F2rtgKafEeGqF9qVXRepmg" name="onCreate"/>
     <ownedOperation xmi:id="_GtEi8KafEeGqF9qVXRepmg" name="onPause" visibility="protected"/>
@@ -106,7 +106,7 @@
     <generalization xmi:id="_6MmsAKaeEeGqF9qVXRepmg" general="_brGRgKaeEeGqF9qVXRepmg"/>
     <ownedAttribute xmi:id="_0gUIgKanEeGqF9qVXRepmg" name="TAG" visibility="private" isStatic="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      <defaultValue xmi:type="uml:LiteralString" xmi:id="_1hGaoKaoEeGqF9qVXRepmg" name="&quot;SnakeView&quot;" value="&quot;SnakeView&quot;"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_1hGaoKaoEeGqF9qVXRepmg" name="SnakeView" value="SnakeView"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_1CmWMKanEeGqF9qVXRepmg" name="mMode" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>

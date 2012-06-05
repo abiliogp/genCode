@@ -11,6 +11,9 @@ import utilities.Tool;
 public class Atributte extends DataModel {
 
 	private String aggregation;
+	private String defautlValue;
+	private String defautlValueType;
+	
 	public Atributte(String name) {
 		super(name);
 		this.aggregation = "simple";
@@ -22,10 +25,9 @@ public class Atributte extends DataModel {
 		System.out.println("\tAtributo: " + this.name);
 		System.out.println("\t\tTipo: " + this.type);
 		System.out.println("\t\tVisibilidade: " + this.visibility);
-		System.out.printf("\t\tUpper Value: %s\n", 
-							this.upperValue == -1 ? "*" : this.upperValue);
-		System.out.printf("\t\tLower Value: %s\n", 
-							this.lowerValue == -1 ? "*" : this.lowerValue);
+		System.out.printf("\t\tUpper Value: %s\n", this.upperValue == -1 ? "*" : this.upperValue);
+		System.out.printf("\t\tLower Value: %s\n", this.lowerValue == -1 ? "*" : this.lowerValue);
+		System.out.printf("\t\tDefault Value: %s\n", this.defautlValue);		
 	}
 	
 	public void genCode(BufferedWriter out, int tab) throws IOException{
@@ -43,7 +45,15 @@ public class Atributte extends DataModel {
 		} else{
 			out.write("\n" + tabInd);
 			out.write( !(this.visibility.equals("package")) ?  this.visibility + " " : "" );
-			out.write(this.type + " " + this.name + ";" );
+			out.write(this.type + " " + this.name);
+			if(this.defautlValue != null){
+				if(this.defautlValueType.equals("uml:LiteralString")){
+					out.write(" = \"" + this.defautlValue + "\"");
+				} else{
+					out.write(" = " + this.defautlValue);	
+				}
+			}
+			out.write(";");
 		}
 	}
 	
@@ -171,6 +181,10 @@ public class Atributte extends DataModel {
 					value = Tool.manipulate(line, "value");
 					lowerValue = value.charAt(0);
 				}
+				if ( (line.contains("defaultValue")) && (line.contains("value=")) ) {
+					defautlValueType = Tool.manipulate(line, "type");
+					defautlValue = Tool.manipulate(line, "value");
+				}  
 			}// end for
 		}
 		return needImport;
