@@ -256,6 +256,15 @@ public class SnakeView extends TileView{
 	private void updateSnake(){
 	}
 
+	public void Bundle map = getBundle()(){
+	}
+
+	public void restoreState(map)(){
+	}
+
+	public void Bundle map = getBundle(ICICLE_KEY)(){
+	}
+
 	public class RefreshHandler extends Handler{
 
 		/** Constructor */

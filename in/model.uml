@@ -3,7 +3,7 @@
   <packageImport xmi:id="_pN3BAKagEeGqF9qVXRepmg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_aSCz4KaeEeGqF9qVXRepmg" name="Snake">
+  <packagedElement xmi:type="uml:Class" xmi:id="_aSCz4KaeEeGqF9qVXRepmg" name="Snake" classifierBehavior="_3zxRsLOqEeGhCfQP0M9frw">
     <generalization xmi:id="_4NukgKaeEeGqF9qVXRepmg" general="_wYtJAKaeEeGqF9qVXRepmg"/>
     <ownedAttribute xmi:id="_VvagwKafEeGqF9qVXRepmg" name="mSnakeView" visibility="private" type="_cZK4cKaeEeGqF9qVXRepmg" association="_Vvbu4KafEeGqF9qVXRepmg">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VvagwaafEeGqF9qVXRepmg" value="1"/>
@@ -13,8 +13,70 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       <defaultValue xmi:type="uml:LiteralString" xmi:id="_x5H9cKafEeGqF9qVXRepmg" name="snake_view" value="snake_view"/>
     </ownedAttribute>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_3zxRsLOqEeGhCfQP0M9frw" name="onCreate" specification="_F2rtgKafEeGqF9qVXRepmg">
+      <ownedRule xmi:id="_yJckcLOwEeGWSacyqp1c2w">
+        <specification xmi:type="uml:LiteralString" xmi:id="_yJdykLOwEeGWSacyqp1c2w" value=""/>
+      </ownedRule>
+      <lifeline xmi:id="_MUT9kLOrEeGhCfQP0M9frw" name="Lifeline" represents="_VvagwKafEeGqF9qVXRepmg" coveredBy="_55ZsALOrEeGhCfQP0M9frw _55d9cLOrEeGhCfQP0M9frw _MJ2SoLOuEeG_AcnwFIsgTw _MKAqsLOuEeG_AcnwFIsgTw _6O_ksLOvEeGWSacyqp1c2w _6PBZ4LOvEeGWSacyqp1c2w _RAi0cLOxEeGWSacyqp1c2w _2_iM0LO0EeGWSacyqp1c2w _2_o6gLO0EeGWSacyqp1c2w _Fjj28LO1EeGWSacyqp1c2w _FjlsILO1EeGWSacyqp1c2w"/>
+      <lifeline xmi:id="_ydW7wLOsEeG-bYcB3Q9ptg" name="Lifeline0" represents="_2ZMCsLOtEeG_AcnwFIsgTw" coveredBy="_MJ2SoLOuEeG_AcnwFIsgTw _MKAqsLOuEeG_AcnwFIsgTw _RAi0cLOxEeGWSacyqp1c2w _aFmFsLO3EeGOkevjh7nNSQ _aFoh8LO3EeGOkevjh7nNSQ"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_55ZsALOrEeGhCfQP0M9frw" name="setTextView_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_55SXQLOrEeGhCfQP0M9frw" message="_547x8LOrEeGhCfQP0M9frw"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_55d9cLOrEeGhCfQP0M9frw" name="setTextView_MessageRecv" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_55cvULOrEeGhCfQP0M9frw" message="_547x8LOrEeGhCfQP0M9frw"/>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_MJ2SoLOuEeG_AcnwFIsgTw" name="CombinedFragment" covered="_MUT9kLOrEeGhCfQP0M9frw _ydW7wLOsEeG-bYcB3Q9ptg" interactionOperator="alt">
+        <operand xmi:id="_MKAqsLOuEeG_AcnwFIsgTw" name="InteractionOperand" covered="_MUT9kLOrEeGhCfQP0M9frw _ydW7wLOsEeG-bYcB3Q9ptg">
+          <guard xmi:id="_MKFjMLOuEeG_AcnwFIsgTw" name="savedInstanceState">
+            <specification xmi:type="uml:LiteralString" xmi:id="_qaxeALOvEeGWSacyqp1c2w" name="savedInstanceState" value="savedInstanceState == null"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_MKHYYLOuEeG_AcnwFIsgTw"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_MKHYYbOuEeG_AcnwFIsgTw" value="1"/>
+          </guard>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6O_ksLOvEeGWSacyqp1c2w" name="setMode_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_6O9IcLOvEeGWSacyqp1c2w" message="_6O2awLOvEeGWSacyqp1c2w"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6PBZ4LOvEeGWSacyqp1c2w" name="setMode_MessageRecv" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_6PAy0LOvEeGWSacyqp1c2w" message="_6O2awLOvEeGWSacyqp1c2w"/>
+        </operand>
+        <operand xmi:id="_RAi0cLOxEeGWSacyqp1c2w" name="InteractionOperand0" covered="_MUT9kLOrEeGhCfQP0M9frw _ydW7wLOsEeG-bYcB3Q9ptg">
+          <guard xmi:id="_RAkpoLOxEeGWSacyqp1c2w" name="else">
+            <specification xmi:type="uml:LiteralString" xmi:id="_f5JAYLOxEeGWSacyqp1c2w" name="else" value="else"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_RAl3wLOxEeGWSacyqp1c2w"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_RAme0LOxEeGWSacyqp1c2w" value="1"/>
+          </guard>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_aFmFsLO3EeGOkevjh7nNSQ" name="Bundle map = getBundle(ICICLE_KEY)_MessageSend" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_aFjpcLO3EeGOkevjh7nNSQ" message="_aFew8LO3EeGOkevjh7nNSQ"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_aFoh8LO3EeGOkevjh7nNSQ" name="Bundle map = getBundle(ICICLE_KEY)_MessageRecv" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_aFn64LO3EeGOkevjh7nNSQ" message="_aFew8LO3EeGOkevjh7nNSQ"/>
+          <fragment xmi:type="uml:CombinedFragment" xmi:id="_uFJMELOxEeGWSacyqp1c2w" name="CombinedFragment" interactionOperator="alt">
+            <operand xmi:id="_uFKaMLOxEeGWSacyqp1c2w" name="InteractionOperand">
+              <guard xmi:id="_uFLBQLOxEeGWSacyqp1c2w">
+                <specification xmi:type="uml:LiteralString" xmi:id="_LC2moLO0EeGWSacyqp1c2w" name="map" value="map != null"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_uFM2cLOxEeGWSacyqp1c2w"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_uFNdgLOxEeGWSacyqp1c2w" value="1"/>
+              </guard>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_2_iM0LO0EeGWSacyqp1c2w" name="restoreState(map)_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_2_gXoLO0EeGWSacyqp1c2w" message="_2_fJgLO0EeGWSacyqp1c2w"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_2_o6gLO0EeGWSacyqp1c2w" name="restoreState(map)_MessageRecv" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_2_meQLO0EeGWSacyqp1c2w" message="_2_fJgLO0EeGWSacyqp1c2w"/>
+            </operand>
+            <operand xmi:id="_8iltELOxEeGWSacyqp1c2w" name="InteractionOperand0">
+              <guard xmi:id="_8im7MLOxEeGWSacyqp1c2w">
+                <specification xmi:type="uml:LiteralString" xmi:id="_hX2rALO6EeGOkevjh7nNSQ" name="else" value="else"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_8ioJULOxEeGWSacyqp1c2w"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_8iowYLOxEeGWSacyqp1c2w" value="1"/>
+              </guard>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Fjj28LO1EeGWSacyqp1c2w" name="setMode_Message0Send" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_Fjio0LO1EeGWSacyqp1c2w" message="_FjgzoLO1EeGWSacyqp1c2w"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_FjlsILO1EeGWSacyqp1c2w" name="setMode_Message0Recv" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_FjkeALO1EeGWSacyqp1c2w" message="_FjgzoLO1EeGWSacyqp1c2w"/>
+            </operand>
+          </fragment>
+        </operand>
+      </fragment>
+      <message xmi:id="_547x8LOrEeGhCfQP0M9frw" name="setTextView_Message" messageSort="asynchCall" receiveEvent="_55d9cLOrEeGhCfQP0M9frw" sendEvent="_55ZsALOrEeGhCfQP0M9frw"/>
+      <message xmi:id="_6O2awLOvEeGWSacyqp1c2w" name="setMode_Message" messageSort="asynchCall" receiveEvent="_6PBZ4LOvEeGWSacyqp1c2w" sendEvent="_6O_ksLOvEeGWSacyqp1c2w">
+        <argument xmi:type="uml:LiteralString" xmi:id="_-9urELO3EeGOkevjh7nNSQ" name="SnakeView.READY" value="SnakeView.READY)"/>
+      </message>
+      <message xmi:id="_2_fJgLO0EeGWSacyqp1c2w" name="restoreState" messageSort="asynchCall" receiveEvent="_2_o6gLO0EeGWSacyqp1c2w" sendEvent="_2_iM0LO0EeGWSacyqp1c2w">
+        <argument xmi:type="uml:LiteralString" xmi:id="_LIEoYLO1EeGWSacyqp1c2w" name="map" value="map"/>
+      </message>
+      <message xmi:id="_FjgzoLO1EeGWSacyqp1c2w" name="setMode_Message0" messageSort="asynchCall" receiveEvent="_FjlsILO1EeGWSacyqp1c2w" sendEvent="_Fjj28LO1EeGWSacyqp1c2w">
+        <argument xmi:type="uml:LiteralString" xmi:id="_xeqv0LO1EeGOkevjh7nNSQ" name="SnakeView.PAUSE" value="SnakeView.PAUSE"/>
+      </message>
+      <message xmi:id="_aFew8LO3EeGOkevjh7nNSQ" name="Bundle map = getBundle(ICICLE_KEY)_Message" messageSort="asynchCall" receiveEvent="_aFoh8LO3EeGOkevjh7nNSQ" sendEvent="_aFmFsLO3EeGOkevjh7nNSQ"/>
+    </ownedBehavior>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_P2q4UK89EeGdv_Dx1W00dw" name="Bundle"/>
-    <ownedOperation xmi:id="_F2rtgKafEeGqF9qVXRepmg" name="onCreate"/>
+    <ownedOperation xmi:id="_F2rtgKafEeGqF9qVXRepmg" name="onCreate" method="_3zxRsLOqEeGhCfQP0M9frw">
+      <ownedParameter xmi:id="_2ZMCsLOtEeG_AcnwFIsgTw" name="savedInstanceState" type="_P2q4UK89EeGdv_Dx1W00dw" isUnique="false"/>
+    </ownedOperation>
     <ownedOperation xmi:id="_GtEi8KafEeGqF9qVXRepmg" name="onPause" visibility="protected"/>
     <ownedOperation xmi:id="_HcOH8KafEeGqF9qVXRepmg" name="onSaveInstanceState"/>
   </packagedElement>
@@ -284,6 +346,9 @@
     <ownedOperation xmi:id="_bDR4AKaoEeGqF9qVXRepmg" name="updateWalls" visibility="private"/>
     <ownedOperation xmi:id="_btboQKaoEeGqF9qVXRepmg" name="updateApples" visibility="private"/>
     <ownedOperation xmi:id="_9Nb_IKbzEeGXKvEp58beiQ" name="updateSnake" visibility="private"/>
+    <ownedOperation xmi:id="_e6DQALOzEeGWSacyqp1c2w" name="Bundle map = getBundle()"/>
+    <ownedOperation xmi:id="_2-_aQLO0EeGWSacyqp1c2w" name="restoreState(map)"/>
+    <ownedOperation xmi:id="_aE4UALO3EeGOkevjh7nNSQ" name="Bundle map = getBundle(ICICLE_KEY)"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_vQrxAKaeEeGqF9qVXRepmg" name="Handler"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_v7K4cKaeEeGqF9qVXRepmg" name="View"/>
@@ -312,4 +377,14 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZLt1Q6avEeGqF9qVXRepmg" value="1"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_55SXQLOrEeGhCfQP0M9frw" name="SendOperationEvent" operation="_ZB1ksKaoEeGqF9qVXRepmg"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_55cvULOrEeGhCfQP0M9frw" name="ReceiveOperationEvent" operation="_ZB1ksKaoEeGqF9qVXRepmg"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_6O9IcLOvEeGWSacyqp1c2w" name="SendOperationEvent0" operation="_ZgpnoKaoEeGqF9qVXRepmg"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_6PAy0LOvEeGWSacyqp1c2w" name="ReceiveOperationEvent0" operation="_ZgpnoKaoEeGqF9qVXRepmg"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_2_gXoLO0EeGWSacyqp1c2w" name="SendOperationEvent1" operation="_2-_aQLO0EeGWSacyqp1c2w"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_2_meQLO0EeGWSacyqp1c2w" name="ReceiveOperationEvent1" operation="_2-_aQLO0EeGWSacyqp1c2w"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_Fjio0LO1EeGWSacyqp1c2w" name="SendOperationEvent2" operation="_ZgpnoKaoEeGqF9qVXRepmg"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_FjkeALO1EeGWSacyqp1c2w" name="ReceiveOperationEvent2" operation="_ZgpnoKaoEeGqF9qVXRepmg"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_aFjpcLO3EeGOkevjh7nNSQ" name="SendOperationEvent3" operation="_aE4UALO3EeGOkevjh7nNSQ"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_aFn64LO3EeGOkevjh7nNSQ" name="ReceiveOperationEvent3" operation="_aE4UALO3EeGOkevjh7nNSQ"/>
 </uml:Model>
