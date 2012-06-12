@@ -268,8 +268,8 @@ public class SnakeView extends TileView{
 
 		public void sleep(long delayMillis){
 		}
-	}
 
+	}
 	private class Coordinate{
 		/**Attributes */
 		public int x;
@@ -277,17 +277,18 @@ public class SnakeView extends TileView{
 
 		/** Constructor */
 		public Coordinate( int x , int y ){
-			this.x = x;
-			this.y = y;
+		this.x = x;
+		this.y = y;
 		}
 
 		/** Methods */
 		public boolean equals(Coordinate other){
-			return boolean;
+		return boolean;
 		}
 
 		public String toString(){
-			return string;
+		return string;
 		}
+
 	}
 }
