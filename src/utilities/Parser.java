@@ -78,6 +78,14 @@ public abstract class Parser {
 			
 
 			/*
+			 * Método
+			 */
+			if (line.contains("<ownedOperation")) {
+				Method.load(bf, line);
+			}
+			
+			
+			/*
 			 * Operação
 			 */
 			if (line.contains("<ownedBehavior")) {

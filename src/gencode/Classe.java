@@ -425,8 +425,10 @@ public class Classe {
 		if (line.contains("/>")) {
 			line = "</packagedElement";
 		} else {
-			for (line = bf.readLine(); !((line.contains("</packagedElement")) || (line
-					.contains("</nestedClassifier"))); line = bf.readLine()) {
+			System.err.println(line);
+			for (line = bf.readLine(); 
+					!((line.contains("</packagedElement")) || (line.contains("</nestedClassifier"))); 
+					line = bf.readLine()) {
 				if (line.contains("<generalization")) {
 					key = Tool.manipulate(line, "general=");
 					value = Tool.getTrieID(key);
@@ -466,11 +468,10 @@ public class Classe {
 				 */
 				if (line.contains("<ownedOperation")) {
 					key = Tool.manipulate(line, "xmi:id=");
-					value = Tool.manipulate(line, "name");
-					Method metodo = new Method(value);
+					Method metodo = Tool.getTrieMetodo(key);
+					System.err.println("mtd " + metodo.getName());
 					listMethod.add(metodo);
 					metodo.parser(bf, line);
-					Tool.putTrieMetodo(key, metodo);
 				}
 
 				if (line.contains("uml:Interaction")) {// nome da classe

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import sequence.Interaction;
+import sequence.OperationEvent;
 
 import utilities.Parser;
 import utilities.Tool;
@@ -320,6 +321,14 @@ public class Method extends DataModel {
 			listMetAbs.add(Parser.getModel().getLastClasse().getLastMetodo());
 			Tool.putTrieAbstractMethod(str, listMetAbs);
 		}
+	}
+
+	public static void load(BufferedReader bf, String line) {
+		String key, value;
+		key = Tool.manipulate(line, "xmi:id");
+		value = Tool.manipulate(line, "name=");
+		Method method = new Method(value);
+		Tool.putTrieMetodo(key,  method);
 	}
 
 }// end class

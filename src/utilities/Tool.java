@@ -33,8 +33,6 @@ public class Tool {
 	
 	private static TreeMap<String, Atributte> trieAtributte = new TreeMap<String, Atributte>();
 	
-	private static TreeMap<String, Parametro> trieParameter = new TreeMap<String, Parametro>();
-	
 	private static TreeMap<String, Operation> trieOperation = new TreeMap<String, Operation>();
 	
 	private static TreeMap<String, Interface> trieInterface = new TreeMap<String, Interface>();
@@ -143,10 +141,6 @@ public class Tool {
 		trieAtributte.put(key, atributte);
 	}
 	
-	public static void putTrieParameter(String key, Parametro parameter) {
-		trieParameter.put(key, parameter);
-	}
-	
 	public static void putTrieOperation(String key, Operation operation){
 		trieOperation.put(key,operation);
 	}
@@ -172,10 +166,6 @@ public class Tool {
 	
 	public static Atributte getTrieAtributte(String key){
 		return key == null ? null : trieAtributte.get(key);
-	}
-	
-	public static Parametro getTrieParameter(String key){
-		return key == null ? null : trieParameter.get(key);
 	}
 	
 	public static Operation getTrieOperation(String key){
