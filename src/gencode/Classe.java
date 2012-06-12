@@ -268,6 +268,11 @@ public class Classe {
 		}
 	}
 
+	/**
+	 * @param out
+	 * @param tab
+	 * @throws IOException
+	 */
 	private void genInnerClass(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		// Name Class and General
@@ -297,21 +302,20 @@ public class Classe {
 		}
 
 		// Atributos Return dos Métodos
-		
-		for (int i = 0; i < listMethod.size(); i++) {
-			if (!((listMethod.get(i).getName().substring(0, 3).equals("get")) || (listMethod
-					.get(i).getName().substring(0, 3).equals("set")))) {
-				if (listMethod.get(i).getListReturn().size() > 0) {
-					out.write("\n" + tabInd + "/**Attribute of Return Method "
-							+ listMethod.get(i).getName() + " */");
-					for (int j = 0; j < listMethod.get(i).getListReturn()
-							.size(); j++) {
-						listMethod.get(i).getListReturn().get(j)
-								.genCodeReturn(out);
-					}
-				}
-			}
-		}
+//		for (int i = 0; i < listMethod.size(); i++) {
+//			if (!((listMethod.get(i).getName().substring(0, 3).equals("get")) || (listMethod
+//					.get(i).getName().substring(0, 3).equals("set")))) {
+//				if (listMethod.get(i).getListReturn().size() > 0) {
+//					out.write("\n" + tabInd + "/**Attribute of Return Method "
+//							+ listMethod.get(i).getName() + " */");
+//					for (int j = 0; j < listMethod.get(i).getListReturn()
+//							.size(); j++) {
+//						listMethod.get(i).getListReturn().get(j)
+//								.genCodeReturn(out);
+//					}
+//				}
+//			}
+//		}
 		
 		
 		// Atributtes from Interface

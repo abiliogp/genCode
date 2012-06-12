@@ -95,9 +95,9 @@ public class Message extends DataSequence{
 	 * Faz chamadas de método da própria classe e de outros objetos
 	 */
 	private void genCodeAtributte(BufferedWriter out) throws IOException {
-		if(sendEvent.getCovered() != receiveEvent.getCovered()){
+		//if(sendEvent.getCovered() != receiveEvent.getCovered()){
 			receiveEvent.genCodeAttribute(out);
-		}
+		//}
 	}
 	
 	/*

@@ -198,6 +198,7 @@ public class Fragment extends DataSequence{
 	}
 
 	public void genCodeMessage(BufferedWriter out, int tab) throws IOException {
+		System.err.println("ttt " + name );
 		if(event.getType().equals("uml:SendOperationEvent")){
 			message.genCode(out, tab);
 			if(message.getMessageSort()!= null)
