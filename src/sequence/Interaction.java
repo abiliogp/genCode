@@ -135,7 +135,7 @@ public class Interaction extends DataSequence{
 		if(!(listLifeline.isEmpty()))
 			this.listLifeline.get(0).genCode(out, tab);
 		//for(int i = 0 ; i < listLifeline.size() ; i++){
-		//	this.listLifeline.get(0).genCode(out);
+		//	this.listLifeline.get(i).genCode(out,tab);
 		//}
 	}
 	

@@ -52,16 +52,16 @@ public class Operand extends DataSequence{
 	}
 
 	public void genCodeOpt(BufferedWriter out, int tab) throws IOException {
-		String tabInd;
+		String tabInd, subInd;
 		tabInd = Tool.indentation(tab);
 		if( !(guard.getSpecification().getBody().equals("else")) ){
-			out.write(tabInd + "if(");
+			out.write("\n" + tabInd + "if(");
 			guard.genCode(out);	
 			out.write(")");
 		} 
 		out.write("{");
 		genCode(out, tab);
-		out.write(tabInd + "}\n");
+		out.write("\n" + tabInd + "}");
 	}
 	
 	public void genCode(BufferedWriter out, int tab) throws IOException {

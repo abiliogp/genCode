@@ -17,8 +17,8 @@
       <ownedRule xmi:id="_yJckcLOwEeGWSacyqp1c2w">
         <specification xmi:type="uml:LiteralString" xmi:id="_yJdykLOwEeGWSacyqp1c2w" value=""/>
       </ownedRule>
-      <lifeline xmi:id="_MUT9kLOrEeGhCfQP0M9frw" name="Lifeline" represents="_VvagwKafEeGqF9qVXRepmg" coveredBy="_55ZsALOrEeGhCfQP0M9frw _55d9cLOrEeGhCfQP0M9frw _MJ2SoLOuEeG_AcnwFIsgTw _MKAqsLOuEeG_AcnwFIsgTw _6O_ksLOvEeGWSacyqp1c2w _6PBZ4LOvEeGWSacyqp1c2w _RAi0cLOxEeGWSacyqp1c2w _2_iM0LO0EeGWSacyqp1c2w _2_o6gLO0EeGWSacyqp1c2w _Fjj28LO1EeGWSacyqp1c2w _FjlsILO1EeGWSacyqp1c2w"/>
-      <lifeline xmi:id="_ydW7wLOsEeG-bYcB3Q9ptg" name="Lifeline0" represents="_2ZMCsLOtEeG_AcnwFIsgTw" coveredBy="_MJ2SoLOuEeG_AcnwFIsgTw _MKAqsLOuEeG_AcnwFIsgTw _RAi0cLOxEeGWSacyqp1c2w _aFmFsLO3EeGOkevjh7nNSQ _aFoh8LO3EeGOkevjh7nNSQ"/>
+      <lifeline xmi:id="_MUT9kLOrEeGhCfQP0M9frw" name="Lifeline" represents="_VvagwKafEeGqF9qVXRepmg" coveredBy="_55ZsALOrEeGhCfQP0M9frw _55d9cLOrEeGhCfQP0M9frw _MJ2SoLOuEeG_AcnwFIsgTw _MKAqsLOuEeG_AcnwFIsgTw _6O_ksLOvEeGWSacyqp1c2w _6PBZ4LOvEeGWSacyqp1c2w _RAi0cLOxEeGWSacyqp1c2w _Fjj28LO1EeGWSacyqp1c2w _FjlsILO1EeGWSacyqp1c2w _1HR_YLQwEeGz58GUO985BQ _1HUboLQwEeGz58GUO985BQ _MLzHELQ1EeGxdM5xebHBAg"/>
+      <lifeline xmi:id="_ydW7wLOsEeG-bYcB3Q9ptg" name="Lifeline0" represents="_2ZMCsLOtEeG_AcnwFIsgTw" coveredBy="_MJ2SoLOuEeG_AcnwFIsgTw _MKAqsLOuEeG_AcnwFIsgTw _RAi0cLOxEeGWSacyqp1c2w _fFc1ALQyEeGz58GUO985BQ _fFeqMbQyEeGz58GUO985BQ _fFeqMLQyEeGz58GUO985BQ _ML3YgLQ1EeGxdM5xebHBAg"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_55ZsALOrEeGhCfQP0M9frw" name="setTextView_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_55SXQLOrEeGhCfQP0M9frw" message="_547x8LOrEeGhCfQP0M9frw"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_55d9cLOrEeGhCfQP0M9frw" name="setTextView_MessageRecv" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_55cvULOrEeGhCfQP0M9frw" message="_547x8LOrEeGhCfQP0M9frw"/>
       <fragment xmi:type="uml:CombinedFragment" xmi:id="_MJ2SoLOuEeG_AcnwFIsgTw" name="CombinedFragment" covered="_MUT9kLOrEeGhCfQP0M9frw _ydW7wLOsEeG-bYcB3Q9ptg" interactionOperator="alt">
@@ -37,8 +37,9 @@
             <minint xmi:type="uml:LiteralInteger" xmi:id="_RAl3wLOxEeGWSacyqp1c2w"/>
             <maxint xmi:type="uml:LiteralInteger" xmi:id="_RAme0LOxEeGWSacyqp1c2w" value="1"/>
           </guard>
-          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_aFmFsLO3EeGOkevjh7nNSQ" name="Bundle map = getBundle(ICICLE_KEY)_MessageSend" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_aFjpcLO3EeGOkevjh7nNSQ" message="_aFew8LO3EeGOkevjh7nNSQ"/>
-          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_aFoh8LO3EeGOkevjh7nNSQ" name="Bundle map = getBundle(ICICLE_KEY)_MessageRecv" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_aFn64LO3EeGOkevjh7nNSQ" message="_aFew8LO3EeGOkevjh7nNSQ"/>
+          <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_fFc1ALQyEeGz58GUO985BQ" name="ActionExecSpecStart" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_fFZxsLQyEeGz58GUO985BQ" execution="_fFeqMLQyEeGz58GUO985BQ"/>
+          <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_fFeqMLQyEeGz58GUO985BQ" name="ActionExecSpec" covered="_ydW7wLOsEeG-bYcB3Q9ptg" start="_fFc1ALQyEeGz58GUO985BQ" finish="_fFeqMbQyEeGz58GUO985BQ"/>
+          <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_fFeqMbQyEeGz58GUO985BQ" name="ActionExecSpecFinish" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_fFa_0LQyEeGz58GUO985BQ" execution="_fFeqMLQyEeGz58GUO985BQ"/>
           <fragment xmi:type="uml:CombinedFragment" xmi:id="_uFJMELOxEeGWSacyqp1c2w" name="CombinedFragment" interactionOperator="alt">
             <operand xmi:id="_uFKaMLOxEeGWSacyqp1c2w" name="InteractionOperand">
               <guard xmi:id="_uFLBQLOxEeGWSacyqp1c2w">
@@ -46,8 +47,8 @@
                 <minint xmi:type="uml:LiteralInteger" xmi:id="_uFM2cLOxEeGWSacyqp1c2w"/>
                 <maxint xmi:type="uml:LiteralInteger" xmi:id="_uFNdgLOxEeGWSacyqp1c2w" value="1"/>
               </guard>
-              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_2_iM0LO0EeGWSacyqp1c2w" name="restoreState(map)_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_2_gXoLO0EeGWSacyqp1c2w" message="_2_fJgLO0EeGWSacyqp1c2w"/>
-              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_2_o6gLO0EeGWSacyqp1c2w" name="restoreState(map)_MessageRecv" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_2_meQLO0EeGWSacyqp1c2w" message="_2_fJgLO0EeGWSacyqp1c2w"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_1HR_YLQwEeGz58GUO985BQ" name="restoreState_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_1HQKMLQwEeGz58GUO985BQ" message="_1HOVALQwEeGz58GUO985BQ"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_1HUboLQwEeGz58GUO985BQ" name="restoreState_MessageRecv" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_1HSmcLQwEeGz58GUO985BQ" message="_1HOVALQwEeGz58GUO985BQ"/>
             </operand>
             <operand xmi:id="_8iltELOxEeGWSacyqp1c2w" name="InteractionOperand0">
               <guard xmi:id="_8im7MLOxEeGWSacyqp1c2w">
@@ -61,17 +62,21 @@
           </fragment>
         </operand>
       </fragment>
-      <message xmi:id="_547x8LOrEeGhCfQP0M9frw" name="setTextView_Message" messageSort="asynchCall" receiveEvent="_55d9cLOrEeGhCfQP0M9frw" sendEvent="_55ZsALOrEeGhCfQP0M9frw"/>
-      <message xmi:id="_6O2awLOvEeGWSacyqp1c2w" name="setMode_Message" messageSort="asynchCall" receiveEvent="_6PBZ4LOvEeGWSacyqp1c2w" sendEvent="_6O_ksLOvEeGWSacyqp1c2w">
-        <argument xmi:type="uml:LiteralString" xmi:id="_-9urELO3EeGOkevjh7nNSQ" name="SnakeView.READY" value="SnakeView.READY)"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_MLzHELQ1EeGxdM5xebHBAg" name="getBundle_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_MLxR4LQ1EeGxdM5xebHBAg" message="_MLlrsLQ1EeGxdM5xebHBAg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ML3YgLQ1EeGxdM5xebHBAg" name="getBundle_MessageRecv" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_ML1jULQ1EeGxdM5xebHBAg" message="_MLlrsLQ1EeGxdM5xebHBAg"/>
+      <message xmi:id="_547x8LOrEeGhCfQP0M9frw" name="setTextView_Message" messageSort="asynchCall" receiveEvent="_55d9cLOrEeGhCfQP0M9frw" sendEvent="_55ZsALOrEeGhCfQP0M9frw">
+        <argument xmi:type="uml:LiteralString" xmi:id="_7ZP6cLQ1EeGxdM5xebHBAg" name="R.id.snake" value="R.id.snake"/>
       </message>
-      <message xmi:id="_2_fJgLO0EeGWSacyqp1c2w" name="restoreState" messageSort="asynchCall" receiveEvent="_2_o6gLO0EeGWSacyqp1c2w" sendEvent="_2_iM0LO0EeGWSacyqp1c2w">
-        <argument xmi:type="uml:LiteralString" xmi:id="_LIEoYLO1EeGWSacyqp1c2w" name="map" value="map"/>
+      <message xmi:id="_6O2awLOvEeGWSacyqp1c2w" name="setMode_Message" messageSort="asynchCall" receiveEvent="_6PBZ4LOvEeGWSacyqp1c2w" sendEvent="_6O_ksLOvEeGWSacyqp1c2w">
+        <argument xmi:type="uml:LiteralString" xmi:id="_-9urELO3EeGOkevjh7nNSQ" name="SnakeView.READY" value="SnakeView.READY"/>
       </message>
       <message xmi:id="_FjgzoLO1EeGWSacyqp1c2w" name="setMode_Message0" messageSort="asynchCall" receiveEvent="_FjlsILO1EeGWSacyqp1c2w" sendEvent="_Fjj28LO1EeGWSacyqp1c2w">
         <argument xmi:type="uml:LiteralString" xmi:id="_xeqv0LO1EeGOkevjh7nNSQ" name="SnakeView.PAUSE" value="SnakeView.PAUSE"/>
       </message>
-      <message xmi:id="_aFew8LO3EeGOkevjh7nNSQ" name="Bundle map = getBundle(ICICLE_KEY)_Message" messageSort="asynchCall" receiveEvent="_aFoh8LO3EeGOkevjh7nNSQ" sendEvent="_aFmFsLO3EeGOkevjh7nNSQ"/>
+      <message xmi:id="_1HOVALQwEeGz58GUO985BQ" name="restoreState_Message" messageSort="asynchCall" receiveEvent="_1HUboLQwEeGz58GUO985BQ" sendEvent="_1HR_YLQwEeGz58GUO985BQ">
+        <argument xmi:type="uml:LiteralString" xmi:id="_4xC7YLQwEeGz58GUO985BQ" name="map" value="map"/>
+      </message>
+      <message xmi:id="_MLlrsLQ1EeGxdM5xebHBAg" name="Bundle map = getBundle_Message" messageSort="asynchCall" receiveEvent="_ML3YgLQ1EeGxdM5xebHBAg" sendEvent="_MLzHELQ1EeGxdM5xebHBAg"/>
     </ownedBehavior>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_P2q4UK89EeGdv_Dx1W00dw" name="Bundle"/>
     <ownedOperation xmi:id="_F2rtgKafEeGqF9qVXRepmg" name="onCreate" method="_3zxRsLOqEeGhCfQP0M9frw">
@@ -346,9 +351,7 @@
     <ownedOperation xmi:id="_bDR4AKaoEeGqF9qVXRepmg" name="updateWalls" visibility="private"/>
     <ownedOperation xmi:id="_btboQKaoEeGqF9qVXRepmg" name="updateApples" visibility="private"/>
     <ownedOperation xmi:id="_9Nb_IKbzEeGXKvEp58beiQ" name="updateSnake" visibility="private"/>
-    <ownedOperation xmi:id="_e6DQALOzEeGWSacyqp1c2w" name="Bundle map = getBundle()"/>
-    <ownedOperation xmi:id="_2-_aQLO0EeGWSacyqp1c2w" name="restoreState(map)"/>
-    <ownedOperation xmi:id="_aE4UALO3EeGOkevjh7nNSQ" name="Bundle map = getBundle(ICICLE_KEY)"/>
+    <ownedOperation xmi:id="_LJtUwLQxEeGz58GUO985BQ" name="getBundle"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_vQrxAKaeEeGqF9qVXRepmg" name="Handler"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_v7K4cKaeEeGqF9qVXRepmg" name="View"/>
@@ -381,10 +384,14 @@
   <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_55cvULOrEeGhCfQP0M9frw" name="ReceiveOperationEvent" operation="_ZB1ksKaoEeGqF9qVXRepmg"/>
   <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_6O9IcLOvEeGWSacyqp1c2w" name="SendOperationEvent0" operation="_ZgpnoKaoEeGqF9qVXRepmg"/>
   <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_6PAy0LOvEeGWSacyqp1c2w" name="ReceiveOperationEvent0" operation="_ZgpnoKaoEeGqF9qVXRepmg"/>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_2_gXoLO0EeGWSacyqp1c2w" name="SendOperationEvent1" operation="_2-_aQLO0EeGWSacyqp1c2w"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_2_meQLO0EeGWSacyqp1c2w" name="ReceiveOperationEvent1" operation="_2-_aQLO0EeGWSacyqp1c2w"/>
   <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_Fjio0LO1EeGWSacyqp1c2w" name="SendOperationEvent2" operation="_ZgpnoKaoEeGqF9qVXRepmg"/>
   <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_FjkeALO1EeGWSacyqp1c2w" name="ReceiveOperationEvent2" operation="_ZgpnoKaoEeGqF9qVXRepmg"/>
-  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_aFjpcLO3EeGOkevjh7nNSQ" name="SendOperationEvent3" operation="_aE4UALO3EeGOkevjh7nNSQ"/>
-  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_aFn64LO3EeGOkevjh7nNSQ" name="ReceiveOperationEvent3" operation="_aE4UALO3EeGOkevjh7nNSQ"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_1HQKMLQwEeGz58GUO985BQ" name="SendOperationEvent4" operation="_YFobIKaoEeGqF9qVXRepmg"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_1HSmcLQwEeGz58GUO985BQ" name="ReceiveOperationEvent4" operation="_YFobIKaoEeGqF9qVXRepmg"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_aN0-wLQyEeGz58GUO985BQ" name="SendOperationEvent5"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_aN7FYLQyEeGz58GUO985BQ" name="ReceiveOperationEvent5"/>
+  <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_fFZxsLQyEeGz58GUO985BQ" name="ExecutionEvent"/>
+  <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_fFa_0LQyEeGz58GUO985BQ" name="ExecutionEvent0"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_MLxR4LQ1EeGxdM5xebHBAg" name="SendOperationEvent6" operation="_LJtUwLQxEeGz58GUO985BQ"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_ML1jULQ1EeGxdM5xebHBAg" name="ReceiveOperationEvent6" operation="_LJtUwLQxEeGz58GUO985BQ"/>
 </uml:Model>

@@ -36,15 +36,17 @@ public class Snake extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.Snake);
 		/** Specified from Sequence Diagram onCreate */
-		setTextView();		if(null null null){
-			setMode(SnakeView.READY));		}
- else {
-			Bundle map  = Bundle map = getBundle(ICICLE_KEY)();			if(null null null){
-				restoreState(map)(map);			}
- else {
-				setMode(SnakeView.PAUSE);			}
+		setTextView(R.id.snake);
+		if(savedInstanceState  ==  null){
+			setMode(SnakeView.READY);
+		} else {
+			if(map  !=  null){
+				restoreState(map);
+			} else {
+				setMode(SnakeView.PAUSE);
+			}
 		}
-
+		Bundle map  = savedInstanceState.getBundle();
 	}
 
 	protected void onPause(){

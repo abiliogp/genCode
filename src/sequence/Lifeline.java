@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import utilities.Tool;
 import gencode.Atributte;
+import gencode.Parametro;
 
 public class Lifeline extends DataSequence{
 
@@ -15,6 +16,7 @@ public class Lifeline extends DataSequence{
 	 *Attributes
 	 */
 	private Atributte represents;
+	private String parameter;
 	
 	private ArrayList<Fragment> coveredBy;
 	private ArrayList<Fragment> order;
@@ -67,6 +69,9 @@ public class Lifeline extends DataSequence{
 		if(line.contains("represents=")){//se tiver atributo associado a lifeline
 			key = Tool.manipulate(line, "represents=");
 			represents = Tool.getTrieAtributte(key);
+			if( represents == null) {
+				parameter = Tool.getTrieID(key);
+			}
 		}
 		value = Tool.manipulate(line, "coveredBy=");
 		for(int i = 0; i < value.length() ; i+=24){
@@ -98,8 +103,12 @@ public class Lifeline extends DataSequence{
 
 
 	public void genCodeAttribute(BufferedWriter out) throws IOException {
-		if(represents != null){
-			out.write(represents.getName() + ".");
+		if(parameter != null){
+			out.write(parameter + ".");
+		} else {
+			if(represents != null) {
+				out.write(represents.getName() + ".");
+			}
 		}
 	}
 

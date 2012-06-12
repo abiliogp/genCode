@@ -43,10 +43,9 @@ public class Specification extends DataSequence{
 			line = "</specification>";
 		} else{
 			for (line = bf.readLine() ; !(line.contains("</specification>")) ; line = bf.readLine() ){
-				
 			}
-			separate();
 		}
+		separate();
 	}
 	
 	private void separate(){
@@ -56,6 +55,8 @@ public class Specification extends DataSequence{
 			delimiter = body.indexOf("!");
 		} else{
 			delimiter = body.indexOf("=");
+		} if(delimiter == -1) {
+			return;
 		}
 		variable = body.substring(0, delimiter);
 		expression = body.substring(delimiter, delimiter + 1);

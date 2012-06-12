@@ -4,6 +4,7 @@ import gencode.Atributte;
 import gencode.Interface;
 import gencode.Method;
 import gencode.Operation;
+import gencode.Parametro;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -30,7 +31,9 @@ public class Tool {
 	
 	private static TreeMap< String, ArrayList<Method> > trieAbstractMethod = new TreeMap< String, ArrayList<Method> >();
 	
-	private static TreeMap<String, Atributte> trieAtributte = new TreeMap<String, Atributte>(); 
+	private static TreeMap<String, Atributte> trieAtributte = new TreeMap<String, Atributte>();
+	
+	private static TreeMap<String, Parametro> trieParameter = new TreeMap<String, Parametro>();
 	
 	private static TreeMap<String, Operation> trieOperation = new TreeMap<String, Operation>();
 	
@@ -140,6 +143,10 @@ public class Tool {
 		trieAtributte.put(key, atributte);
 	}
 	
+	public static void putTrieParameter(String key, Parametro parameter) {
+		trieParameter.put(key, parameter);
+	}
+	
 	public static void putTrieOperation(String key, Operation operation){
 		trieOperation.put(key,operation);
 	}
@@ -165,6 +172,10 @@ public class Tool {
 	
 	public static Atributte getTrieAtributte(String key){
 		return key == null ? null : trieAtributte.get(key);
+	}
+	
+	public static Parametro getTrieParameter(String key){
+		return key == null ? null : trieParameter.get(key);
 	}
 	
 	public static Operation getTrieOperation(String key){
@@ -239,5 +250,7 @@ public class Tool {
 	public static boolean containsTrieXMIfragment(String key) {
 		return key == null ? false : trieXMIfragment.containsKey(key);
 	}
+
+	
 
 }
