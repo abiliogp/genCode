@@ -40,13 +40,13 @@ public class Snake extends Activity{
 		if(savedInstanceState  ==  null){
 			mSnakeView.setMode(SnakeView.READY);
 		} else {
+			Bundle map  = savedInstanceState.getBundle(SnakeView.PAUSE);
 			if(map  !=  null){
 				mSnakeView.restoreState(map);
 			} else {
 				mSnakeView.setMode(SnakeView.PAUSE);
 			}
 		}
-		Bundle map  = savedInstanceState.getBundle(SnakeView.PAUSE);
 	}
 
 	protected void onPause(){

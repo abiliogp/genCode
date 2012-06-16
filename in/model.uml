@@ -38,8 +38,10 @@
             <maxint xmi:type="uml:LiteralInteger" xmi:id="_RAme0LOxEeGWSacyqp1c2w" value="1"/>
           </guard>
           <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_fFc1ALQyEeGz58GUO985BQ" name="ActionExecSpecStart" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_fFZxsLQyEeGz58GUO985BQ" execution="_fFeqMLQyEeGz58GUO985BQ"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_MLzHELQ1EeGxdM5xebHBAg" name="getBundle_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_MLxR4LQ1EeGxdM5xebHBAg" message="_MLlrsLQ1EeGxdM5xebHBAg"/>
           <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_fFeqMLQyEeGz58GUO985BQ" name="ActionExecSpec" covered="_ydW7wLOsEeG-bYcB3Q9ptg" start="_fFc1ALQyEeGz58GUO985BQ" finish="_fFeqMbQyEeGz58GUO985BQ"/>
           <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_fFeqMbQyEeGz58GUO985BQ" name="ActionExecSpecFinish" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_fFa_0LQyEeGz58GUO985BQ" execution="_fFeqMLQyEeGz58GUO985BQ"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ML3YgLQ1EeGxdM5xebHBAg" name="getBundle_MessageRecv" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_ML1jULQ1EeGxdM5xebHBAg" message="_MLlrsLQ1EeGxdM5xebHBAg"/>
           <fragment xmi:type="uml:CombinedFragment" xmi:id="_uFJMELOxEeGWSacyqp1c2w" name="CombinedFragment" interactionOperator="alt">
             <operand xmi:id="_uFKaMLOxEeGWSacyqp1c2w" name="InteractionOperand">
               <guard xmi:id="_uFLBQLOxEeGWSacyqp1c2w">
@@ -62,8 +64,6 @@
           </fragment>
         </operand>
       </fragment>
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_MLzHELQ1EeGxdM5xebHBAg" name="getBundle_MessageSend" covered="_MUT9kLOrEeGhCfQP0M9frw" event="_MLxR4LQ1EeGxdM5xebHBAg" message="_MLlrsLQ1EeGxdM5xebHBAg"/>
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ML3YgLQ1EeGxdM5xebHBAg" name="getBundle_MessageRecv" covered="_ydW7wLOsEeG-bYcB3Q9ptg" event="_ML1jULQ1EeGxdM5xebHBAg" message="_MLlrsLQ1EeGxdM5xebHBAg"/>
       <message xmi:id="_547x8LOrEeGhCfQP0M9frw" name="setTextView_Message" messageSort="asynchCall" receiveEvent="_55d9cLOrEeGhCfQP0M9frw" sendEvent="_55ZsALOrEeGhCfQP0M9frw">
         <argument xmi:type="uml:LiteralString" xmi:id="_7ZP6cLQ1EeGxdM5xebHBAg" name="R.id.snake" value="R.id.snake"/>
       </message>
@@ -114,12 +114,61 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZYgxkKajEeGqF9qVXRepmg" value="*"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZYgKgKajEeGqF9qVXRepmg"/>
     </ownedAttribute>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_r5dpoLfNEeGYbsQaesEvqg" name="onDraw" specification="_mJOD8KajEeGqF9qVXRepmg">
+      <lifeline xmi:id="_JCnxILfOEeGYbsQaesEvqg" name="Lifeline" represents="_qMZosKanEeGqF9qVXRepmg" coveredBy="_XiIusLfOEeGYbsQaesEvqg _XiLyALfOEeGYbsQaesEvqg _Fu8H8LfQEeGYbsQaesEvqg _Fu-kMLfQEeGYbsQaesEvqg _Fu99ILfQEeGYbsQaesEvqg _LvbqwLfQEeGYbsQaesEvqg _LveuEbfQEeGYbsQaesEvqg _LveuELfQEeGYbsQaesEvqg _QB0tALfQEeGYbsQaesEvqg _QB9P4LfQEeGYbsQaesEvqg _QF1DQLfQEeGYbsQaesEvqg _QF24cbfQEeGYbsQaesEvqg _QF24cLfQEeGYbsQaesEvqg"/>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_XiIusLfOEeGYbsQaesEvqg" name="CombinedFragment" covered="_JCnxILfOEeGYbsQaesEvqg" interactionOperator="loop">
+        <operand xmi:id="_XiLyALfOEeGYbsQaesEvqg" name="InteractionOperand" covered="_JCnxILfOEeGYbsQaesEvqg">
+          <guard xmi:id="_XiNnMLfOEeGYbsQaesEvqg">
+            <specification xmi:type="uml:LiteralString" xmi:id="_XiPcYLfOEeGYbsQaesEvqg" name="mXTileCount" value="mXTileCount"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_R0wdgKapEeGqF9qVXRepmg" name="0"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_XiQqgbfOEeGYbsQaesEvqg" value="1"/>
+          </guard>
+          <fragment xmi:type="uml:CombinedFragment" xmi:id="_b4dOsLfOEeGYbsQaesEvqg" name="CombinedFragment" interactionOperator="loop">
+            <operand xmi:id="_b4fD4LfOEeGYbsQaesEvqg" name="InteractionOperand">
+              <guard xmi:id="_b4gSALfOEeGYbsQaesEvqg">
+                <specification xmi:type="uml:LiteralString" xmi:id="_b4g5ELfOEeGYbsQaesEvqg" name="mYTileCount" value="mYTileCount"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_8IB5EKatEeGqF9qVXRepmg" name="0"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_b4iuQLfOEeGYbsQaesEvqg" value="1"/>
+              </guard>
+              <fragment xmi:type="uml:CombinedFragment" xmi:id="_hyx4ELfOEeGYbsQaesEvqg" name="CombinedFragment" interactionOperator="opt">
+                <operand xmi:id="_hyztQLfOEeGYbsQaesEvqg" name="InteractionOperand">
+                  <guard xmi:id="_hy07YLfOEeGYbsQaesEvqg">
+                    <specification xmi:type="uml:LiteralString" xmi:id="_hy1icLfOEeGYbsQaesEvqg" name="mTileGrid[x][y] > 0" value="mTileGrid[x][y] > 0"/>
+                    <minint xmi:type="uml:LiteralInteger" xmi:id="_hy2JgLfOEeGYbsQaesEvqg"/>
+                    <maxint xmi:type="uml:LiteralInteger" xmi:id="_hy2wkLfOEeGYbsQaesEvqg" value="1"/>
+                  </guard>
+                  <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_Fu8H8LfQEeGYbsQaesEvqg" name="BehaviorExecSpecStart" covered="_JCnxILfOEeGYbsQaesEvqg" event="_Fu6SwLfQEeGYbsQaesEvqg" execution="_Fu99ILfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_Fu99ILfQEeGYbsQaesEvqg" name="BehaviorExecSpec" covered="_JCnxILfOEeGYbsQaesEvqg" start="_Fu8H8LfQEeGYbsQaesEvqg" finish="_Fu-kMLfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_Fu-kMLfQEeGYbsQaesEvqg" name="BehaviorExecSpecFinish" covered="_JCnxILfOEeGYbsQaesEvqg" event="_Fu7g4LfQEeGYbsQaesEvqg" execution="_Fu99ILfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_LvbqwLfQEeGYbsQaesEvqg" name="BehaviorExecSpec0Start" covered="_JCnxILfOEeGYbsQaesEvqg" event="_LvZOgLfQEeGYbsQaesEvqg" execution="_LveuELfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_LveuELfQEeGYbsQaesEvqg" name="BehaviorExecSpec0" covered="_JCnxILfOEeGYbsQaesEvqg" start="_LvbqwLfQEeGYbsQaesEvqg" finish="_LveuEbfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_QB0tALfQEeGYbsQaesEvqg" name="drawBitmap_MessageSend" covered="_JCnxILfOEeGYbsQaesEvqg" event="_QByQwLfQEeGYbsQaesEvqg" message="_QBwbkLfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_QB9P4LfQEeGYbsQaesEvqg" name="drawBitmap_MessageRecv" covered="_JCnxILfOEeGYbsQaesEvqg" event="_QB7asLfQEeGYbsQaesEvqg" message="_QBwbkLfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_QF1DQLfQEeGYbsQaesEvqg" name="BehaviorExecSpec1Start" covered="_JCnxILfOEeGYbsQaesEvqg" event="_QFz1ILfQEeGYbsQaesEvqg" execution="_QF24cLfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_QF24cLfQEeGYbsQaesEvqg" name="BehaviorExecSpec1" covered="_JCnxILfOEeGYbsQaesEvqg" start="_QF1DQLfQEeGYbsQaesEvqg" finish="_QF24cbfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_QF24cbfQEeGYbsQaesEvqg" name="BehaviorExecSpec1Finish" covered="_JCnxILfOEeGYbsQaesEvqg" event="_QF0cMLfQEeGYbsQaesEvqg" execution="_QF24cLfQEeGYbsQaesEvqg"/>
+                  <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_LveuEbfQEeGYbsQaesEvqg" name="BehaviorExecSpec0Finish" covered="_JCnxILfOEeGYbsQaesEvqg" event="_LvacoLfQEeGYbsQaesEvqg" execution="_LveuELfQEeGYbsQaesEvqg"/>
+                </operand>
+              </fragment>
+            </operand>
+          </fragment>
+        </operand>
+      </fragment>
+      <message xmi:id="_QBwbkLfQEeGYbsQaesEvqg" name="drawBitmap_Message" receiveEvent="_QB9P4LfQEeGYbsQaesEvqg" sendEvent="_QB0tALfQEeGYbsQaesEvqg">
+        <argument xmi:type="uml:LiteralInteger" xmi:id="_XRWOwLfQEeGYbsQaesEvqg" name="mTileArray[mTileGrid[x][y]]"/>
+        <argument xmi:type="uml:LiteralInteger" xmi:id="_Ztp5ILfQEeGYbsQaesEvqg" name="mXOffset + x * mTileSize"/>
+        <argument xmi:type="uml:LiteralInteger" xmi:id="_b-xnMLfQEeGYbsQaesEvqg" name="mYOffset + y * mTileSize"/>
+        <argument xmi:type="uml:LiteralInteger" xmi:id="_erRCoLfQEeGYbsQaesEvqg" name="mPaint"/>
+      </message>
+    </ownedBehavior>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_FQyOUKajEeGqF9qVXRepmg" name="Paint"/>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_GwWjoKajEeGqF9qVXRepmg" name="Bitmap"/>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_xL4gIKajEeGqF9qVXRepmg" name="Context"/>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_yX3yIKajEeGqF9qVXRepmg" name="AttributeSet"/>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_xZcToKamEeGqF9qVXRepmg" name="Drawable"/>
-    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_gglDoKanEeGqF9qVXRepmg" name="Canvas"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_gglDoKanEeGqF9qVXRepmg" name="Canvas">
+      <ownedOperation xmi:id="_QBWy8LfQEeGYbsQaesEvqg" name="drawBitmap"/>
+    </nestedClassifier>
     <ownedOperation xmi:id="_hmZZAKajEeGqF9qVXRepmg" name="TileView">
       <ownedParameter xmi:id="_Eo3dQKakEeGqF9qVXRepmg" name="context" type="_xL4gIKajEeGqF9qVXRepmg" isUnique="false"/>
       <ownedParameter xmi:id="_HFQnMKakEeGqF9qVXRepmg" name="attrs" type="_yX3yIKajEeGqF9qVXRepmg" isUnique="false"/>
@@ -168,7 +217,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:id="_mJOD8KajEeGqF9qVXRepmg" name="onDraw">
+    <ownedOperation xmi:id="_mJOD8KajEeGqF9qVXRepmg" name="onDraw" method="_r5dpoLfNEeGYbsQaesEvqg">
       <ownedParameter xmi:id="_qMZosKanEeGqF9qVXRepmg" name="canvas" type="_gglDoKanEeGqF9qVXRepmg" isUnique="false"/>
     </ownedOperation>
   </packagedElement>
@@ -184,7 +233,6 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_1lx7wKanEeGqF9qVXRepmg" name="PAUSE">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_R0wdgKapEeGqF9qVXRepmg" name="0"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_2KfLUKanEeGqF9qVXRepmg" name="READY" isStatic="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -236,7 +284,6 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_DXzhMKaoEeGqF9qVXRepmg" name="mScore" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_8IB5EKatEeGqF9qVXRepmg" name="0"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_EnvfEKaoEeGqF9qVXRepmg" name="mMoveDelay" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -293,7 +340,13 @@
     </nestedClassifier>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_wAvhsKauEeGqF9qVXRepmg" name="TextView"/>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_ODRrwKawEeGqF9qVXRepmg" name="Random"/>
-    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_9-WVkKtPEeGng6mENPXXhA" name="Bundle"/>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_9-WVkKtPEeGng6mENPXXhA" name="Bundle">
+      <ownedOperation xmi:id="_imBz0LS2EeG_Feh5-QxkMg" name="putIntArray"/>
+      <ownedOperation xmi:id="_pchxkLS2EeG_Feh5-QxkMg" name="putIntArray"/>
+      <ownedOperation xmi:id="_vCFr4LS2EeG_Feh5-QxkMg" name="putInt"/>
+      <ownedOperation xmi:id="_3p9goLS2EeG_Feh5-QxkMg" name="putInt"/>
+      <ownedOperation xmi:id="_CBJW4LS3EeG_Feh5-QxkMg" name="putLong"/>
+    </nestedClassifier>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_z96rEKtSEeGng6mENPXXhA" name="KeyEvent"/>
     <ownedOperation xmi:id="_RFicgKaoEeGqF9qVXRepmg" name="SnakeView">
       <ownedParameter xmi:id="_dazPYKawEeGqF9qVXRepmg" name="context" type="_xL4gIKajEeGqF9qVXRepmg" isUnique="false"/>
@@ -396,4 +449,12 @@
   <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_fFa_0LQyEeGz58GUO985BQ" name="ExecutionEvent0"/>
   <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_MLxR4LQ1EeGxdM5xebHBAg" name="SendOperationEvent6" operation="_LJtUwLQxEeGz58GUO985BQ"/>
   <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_ML1jULQ1EeGxdM5xebHBAg" name="ReceiveOperationEvent6" operation="_LJtUwLQxEeGz58GUO985BQ"/>
+  <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_Fu6SwLfQEeGYbsQaesEvqg" name="ExecutionEvent1"/>
+  <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_Fu7g4LfQEeGYbsQaesEvqg" name="ExecutionEvent2"/>
+  <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_LvZOgLfQEeGYbsQaesEvqg" name="ExecutionEvent3"/>
+  <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_LvacoLfQEeGYbsQaesEvqg" name="ExecutionEvent4"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_QByQwLfQEeGYbsQaesEvqg" name="SendOperationEvent7" operation="_QBWy8LfQEeGYbsQaesEvqg"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_QB7asLfQEeGYbsQaesEvqg" name="ReceiveOperationEvent7" operation="_QBWy8LfQEeGYbsQaesEvqg"/>
+  <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_QFz1ILfQEeGYbsQaesEvqg" name="ExecutionEvent5"/>
+  <packagedElement xmi:type="uml:ExecutionEvent" xmi:id="_QF0cMLfQEeGYbsQaesEvqg" name="ExecutionEvent6"/>
 </uml:Model>
