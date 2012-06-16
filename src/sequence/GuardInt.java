@@ -9,10 +9,12 @@ public class GuardInt extends DataSequence{
 
 	public GuardInt(String name) {
 		super(name);
+		value = "0";
 	}
 
 	public void setValue(String value){
-		this.value = value != null ? value : "0"; 
+		if(!value.isEmpty())
+			this.value = value;
 	}
 	
 	public void printProp() {

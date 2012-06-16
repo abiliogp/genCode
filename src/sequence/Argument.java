@@ -16,6 +16,9 @@ public class Argument extends DataSequence {
 	public void parser(BufferedReader bf, String line) throws IOException{
 		type = Tool.manipulate(line, "xmi:type=");
 		value = line.contains("symbol=") ? Tool.manipulate(line, "symbol=") : Tool.manipulate(line, "value=");
+		if(value.equals("")) {
+			value = name;
+		}
 	}
 
 	public void genCode(BufferedWriter out) throws IOException {

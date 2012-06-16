@@ -88,7 +88,11 @@ public class Specification extends DataSequence{
 	}
 
 	public void genCode(BufferedWriter out) throws IOException {
-		out.write(variable + " " +  expression + " " + value);
+		if(variable != null) {
+			out.write(variable + " " +  expression + " " + value);
+		} else {
+			out.write(body);
+		}
 	}
 	
 	public void genCodeVariable(BufferedWriter out) throws IOException {

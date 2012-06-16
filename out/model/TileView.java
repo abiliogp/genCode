@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.TextView;
-import java.util.Random;
-import android.os.Bundle;
 
 public class TileView extends View{
 	/**Attributes */
@@ -17,34 +14,9 @@ public class TileView extends View{
 	private ArrayList<Bitmap> mTileArray;
 	
 	private ArrayList<int> mTileGrid;
-	private int mMode;
-	public int PAUSE;
-	public int READY = 1;
-	public int RUNNING = 2;
-	public int LOSE = 3;
-	public int mDirection;
-	public int mNextDirection;
-	private int NORTH = 1;
-	private int SOUTH = 2;
-	private int EAST = 3;
-	private int WEST = 4;
-	private int RED_STAR = 1;
-	private int YELLOW_STAR = 2;
-	private int GREEN_STAR = 3;
-	private int mScore;
-	private int mMoveDelay = 600;
-	private int mLastMove;
-	private TextView mStatusText;
-	private Random RNG;
-	
-	private ArrayList<Coordinate> mSnakeTrail;
-	
-	private ArrayList<Coordinate> mAppleList;
-	
-	private ArrayList<RefreshHandler> mRedrawHandler;
 
 	/** Constructor */
-	public TileView( int mTileSize , int mXTileCount , int mYTileCount , int mXOffset , int mYOffset , Paint mPaint ,,, int mMode , int PAUSE , int READY , int RUNNING , int LOSE , int mDirection , int mNextDirection , int NORTH , int SOUTH , int EAST , int WEST , int RED_STAR , int YELLOW_STAR , int GREEN_STAR , int mScore , int mMoveDelay , int mLastMove , TextView mStatusText , Random RNG ,,,){
+	public TileView( int mTileSize , int mXTileCount , int mYTileCount , int mXOffset , int mYOffset , Paint mPaint ,,){
 		super();
 		this.mTileSize = mTileSize;
 		this.mXTileCount = mXTileCount;
@@ -54,28 +26,6 @@ public class TileView extends View{
 		this.mPaint = mPaint;
 		this.mTileArray = new ArrayList<Bitmap>();
 		this.mTileGrid = new ArrayList<int>();
-		this.mMode = mMode;
-		this.PAUSE = PAUSE;
-		this.READY = READY;
-		this.RUNNING = RUNNING;
-		this.LOSE = LOSE;
-		this.mDirection = mDirection;
-		this.mNextDirection = mNextDirection;
-		this.NORTH = NORTH;
-		this.SOUTH = SOUTH;
-		this.EAST = EAST;
-		this.WEST = WEST;
-		this.RED_STAR = RED_STAR;
-		this.YELLOW_STAR = YELLOW_STAR;
-		this.GREEN_STAR = GREEN_STAR;
-		this.mScore = mScore;
-		this.mMoveDelay = mMoveDelay;
-		this.mLastMove = mLastMove;
-		this.mStatusText = mStatusText;
-		this.RNG = RNG;
-		this.mSnakeTrail = new ArrayList<Coordinate>();
-		this.mAppleList = new ArrayList<Coordinate>();
-		this.mRedrawHandler = new ArrayList<RefreshHandler>();
 	}
 
 	/** Get */
@@ -111,70 +61,6 @@ public class TileView extends View{
 		return this.mTileGrid;
 	}
 
-	public int getMMode(){
-		return this.mMode;
-	}
-
-	public int getNORTH(){
-		return this.NORTH;
-	}
-
-	public int getSOUTH(){
-		return this.SOUTH;
-	}
-
-	public int getEAST(){
-		return this.EAST;
-	}
-
-	public int getWEST(){
-		return this.WEST;
-	}
-
-	public int getRED_STAR(){
-		return this.RED_STAR;
-	}
-
-	public int getYELLOW_STAR(){
-		return this.YELLOW_STAR;
-	}
-
-	public int getGREEN_STAR(){
-		return this.GREEN_STAR;
-	}
-
-	public int getMScore(){
-		return this.mScore;
-	}
-
-	public int getMMoveDelay(){
-		return this.mMoveDelay;
-	}
-
-	public int getMLastMove(){
-		return this.mLastMove;
-	}
-
-	public TextView getMStatusText(){
-		return this.mStatusText;
-	}
-
-	public Random getRNG(){
-		return this.RNG;
-	}
-
-	public Coordinate getMSnakeTrail(){
-		return this.mSnakeTrail;
-	}
-
-	public Coordinate getMAppleList(){
-		return this.mAppleList;
-	}
-
-	public RefreshHandler getMRedrawHandler(){
-		return this.mRedrawHandler;
-	}
-
 	/** Set */
 	public void setMTileSize( int mTileSize ){
 		 this.mTileSize = mTileSize;
@@ -208,104 +94,37 @@ public class TileView extends View{
 		 this.mTileGrid = mTileGrid;
 	}
 
-	public void setMMode( int mMode ){
-		 this.mMode = mMode;
+	/** Methods */
+	public void TileView(Context context, AttributeSet attrs, int defStyle){
 	}
 
-	public void setNORTH( int NORTH ){
-		 this.NORTH = NORTH;
+	public void TileView(Context context, AttributeSet attrs){
 	}
 
-	public void setSOUTH( int SOUTH ){
-		 this.SOUTH = SOUTH;
+	public void resetTiles(int tilecount){
 	}
 
-	public void setEAST( int EAST ){
-		 this.EAST = EAST;
+	protected void onSizeChanged(int w, int h, int oldw, int oldh){
 	}
 
-	public void setWEST( int WEST ){
-		 this.WEST = WEST;
+	public void loadTile(int key, Drawable tile){
 	}
 
-	public void setRED_STAR( int RED_STAR ){
-		 this.RED_STAR = RED_STAR;
+	public void clearTiles(){
 	}
 
-	public void setYELLOW_STAR( int YELLOW_STAR ){
-		 this.YELLOW_STAR = YELLOW_STAR;
+	public void setTile(int tileindex, int x, int y){
 	}
 
-	public void setGREEN_STAR( int GREEN_STAR ){
-		 this.GREEN_STAR = GREEN_STAR;
-	}
-
-	public void setMScore( int mScore ){
-		 this.mScore = mScore;
-	}
-
-	public void setMMoveDelay( int mMoveDelay ){
-		 this.mMoveDelay = mMoveDelay;
-	}
-
-	public void setMLastMove( int mLastMove ){
-		 this.mLastMove = mLastMove;
-	}
-
-	public void setMStatusText( TextView mStatusText ){
-		 this.mStatusText = mStatusText;
-	}
-
-	public void setRNG( Random RNG ){
-		 this.RNG = RNG;
-	}
-
-	public void setMSnakeTrail( Coordinate mSnakeTrail ){
-		 this.mSnakeTrail = mSnakeTrail;
-	}
-
-	public void setMAppleList( Coordinate mAppleList ){
-		 this.mAppleList = mAppleList;
-	}
-
-	public void setMRedrawHandler( RefreshHandler mRedrawHandler ){
-		 this.mRedrawHandler = mRedrawHandler;
-	}
-
-	public class RefreshHandler extends Handler{
-
-		/** Constructor */
-		public RefreshHandler(){
-			super();
+	public void onDraw(Canvas canvas){
+		/** Specified from Sequence Diagram onDraw */
+		for(int i=0; i < mXTileCount; i++){
+			for(int i=0; i < mYTileCount; i++){
+				if(mTileGrid[x][y] > 0){
+					canvas.drawBitmap(mTileArray[mTileGrid[x][y]],mXOffset + x * mTileSize,mYOffset + y * mTileSize,mPaint);
+				}
+			}
 		}
-
-		/** Methods */
-		public void handleMessage(Message msg){
-		}
-
-		public void sleep(long delayMillis){
-		}
-
 	}
-	private class Coordinate{
-		/**Attributes */
-		public int x;
-		public int y;
 
-		/** Constructor */
-		public Coordinate( int x , int y ){
-		this.x = x;
-		this.y = y;
-		}
-
-		/** Methods */
-		public boolean equals(Coordinate other){
-		return boolean;
-		}
-
-		public String toString(){
-		return string;
-		}
-
-	}
 }

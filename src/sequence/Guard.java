@@ -21,8 +21,13 @@ public class Guard extends DataSequence{
 		return specification;
 	}
 	
-	
+	public String getMaxint() {
+		return maxint.getValue();
+	}
 
+	public String getMinint() {
+		return minint.getValue();
+	}
 	
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String value;
@@ -79,5 +84,9 @@ public class Guard extends DataSequence{
 	
 	public void genCodeVariable(BufferedWriter out) throws IOException {
 		specification.genCodeVariable(out);
+	}
+
+	public void genCodeFor(BufferedWriter out) throws IOException {
+		out.write("for(int i=" + minint.getValue() + "; i < " + this.specification.getBody() + "; i++");
 	}
 }

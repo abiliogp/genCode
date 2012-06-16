@@ -425,7 +425,6 @@ public class Classe {
 		if (line.contains("/>")) {
 			line = "</packagedElement";
 		} else {
-			System.err.println(line);
 			for (line = bf.readLine(); 
 					!((line.contains("</packagedElement")) || (line.contains("</nestedClassifier"))); 
 					line = bf.readLine()) {
@@ -447,8 +446,13 @@ public class Classe {
 					if (line.contains("uml:Stereotype")) {
 						Atributte stereotype = new Atributte(value);
 						listStereotype.add(stereotype);
-						stereotype.parser(bf, line);
 						Tool.putTrieAtributte(key, stereotype);
+						if(!line.contains("/>")) {
+							for (line = bf.readLine(); 
+									!line.contains("</nestedClassifier");
+									line = bf.readLine()) {
+							}
+						}
 					}
 				}
 				

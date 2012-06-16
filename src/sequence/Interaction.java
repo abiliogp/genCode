@@ -131,7 +131,7 @@ public class Interaction extends DataSequence{
 
 	public void genCode(BufferedWriter out, int tab) throws IOException{
 		String tabInd = Tool.indentation(tab);
-		out.write("\n" + tabInd + "/** Specified from Sequence Diagram " + name + " */");
+		out.write("\n" + tabInd + "/** Specified from Sequence Diagram " + name + " */\n");
 		if(!(listLifeline.isEmpty()))
 			this.listLifeline.get(0).genCode(out, tab);
 		//for(int i = 0 ; i < listLifeline.size() ; i++){

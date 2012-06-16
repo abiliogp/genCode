@@ -251,20 +251,25 @@ public class Fragment extends DataSequence{
 		String tabInd, tabSubInd;
 		tabInd = Tool.indentation(tab);
 		tabSubInd = Tool.indentation(tab + 1);
-		out.write(tabInd + "while(");
-		if(listOperand.get(0).getGuard().getSpecification().isLogic()){
-			if((listOperand.get(0).getGuard().getSpecification().getValue().equals("false")) ||
-			   (listOperand.get(0).getGuard().getSpecification().getExpression().equals("!=")))
-			{
-				out.write("!");
+		if(listOperand.get(0).getGuard().getMinint() != null) {
+			out.write(tabInd);
+			listOperand.get(0).getGuard().genCodeFor(out);
+		} else {
+			out.write(tabInd + "while(");
+			if(listOperand.get(0).getGuard().getSpecification().isLogic()){
+				if((listOperand.get(0).getGuard().getSpecification().getValue().equals("false")) ||
+				   (listOperand.get(0).getGuard().getSpecification().getExpression().equals("!=")))
+				{
+					out.write("!");
+				}
+				listOperand.get(0).getGuard().genCodeVariable(out);
+			} else{
+				listOperand.get(0).getGuard().getSpecification().genCode(out);
 			}
-			listOperand.get(0).getGuard().genCodeVariable(out);
-		} else{
-			listOperand.get(0).getGuard().getSpecification().genCode(out);
 		}
 		out.write("){\n");
 		listOperand.get(0).genCode(out, tab);
-		out.write(tabInd + "}//endWhile\n");
+		out.write("\n" + tabInd + "}");
 	}
 
 
