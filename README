@@ -1,2 +1,17 @@
-pasta: in entrada dos arquivo .uml 
-pasta: out saida dos arquivos .java
+GenCode provides automatic code generation from UML model. The code
+generation is based on class and sequence diagrams. Present version generates
+conventional Java code or Java-Android code. To generate code for the Android
+platform, the user should indicate the use of Android components (like Activity,
+Intent and Services) into the model.
+
+This is an academic efforts developed at the Federal University of Pelotas in
+Brazil and its evolution can be observed in the publications bellow.
+
+A. G. Parada, E. Siegert, L. B. Brisolara. Generating Java code from UML
+Class and Sequence Diagrams. Proc. of the Brazilian Symposium on
+Computing Systems Engineering (SBESC‘11), Florianópolis, 2011. DOI:
+10.1109/SBESC.2011.22
+
+A. G. Parada, L. B. Brisolara, A model driven approach for Android
+applications development. Proc. of the Brazilian Symposium on Computing
+Systems Engineering (SBESC’12), Natal, 2012.
