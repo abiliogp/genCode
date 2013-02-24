@@ -119,9 +119,6 @@ public class TileView extends View{
 	public void clearTiles(){
 	}
 
-	public void setTile(int tileindex, int x, int y){
-	}
-
 	public void onDraw(Canvas canvas){
 		/** Specified from Sequence Diagram onDraw */
 		for(int i=0; i < mXTileCount; i++){

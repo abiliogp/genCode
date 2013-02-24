@@ -19,6 +19,7 @@ public class Method extends DataModel {
 
 	private Interaction interaction;
 	private boolean isAbstract;
+	private boolean isSetGet;
 	
 
 	public Method(String name) {
@@ -82,6 +83,7 @@ public class Method extends DataModel {
 
 		System.out.println("\tMétodo: " + this.name);
 		System.out.println("\t\tVisibilidade: " + this.visibility);
+		System.out.println("\t\tisGetSet: " + this.isSetGet);
 
 		for (int i = 0; i < this.listOperacao.size(); i++) {
 			this.listOperacao.get(i).printProp();
@@ -106,6 +108,9 @@ public class Method extends DataModel {
 	}
 
 	public void genCode(BufferedWriter out, int tab) throws IOException {
+		if(this.isSetGet){
+			return;
+		}
 		genCodeH(out, tab);
 		genCodePmtCp(out, tab);
 	}
@@ -258,7 +263,11 @@ public class Method extends DataModel {
 
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String value, str, key;
-
+		
+		if(name.substring(0, 3).equals("set") || name.substring(0, 3).equals("get")){
+			this.isSetGet = true;
+		}
+		
 		if (line.contains("visibility=")) {
 			visibility = Tool.manipulate(line, "visibility=");
 		}

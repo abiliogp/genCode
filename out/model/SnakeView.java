@@ -251,12 +251,6 @@ public class SnakeView extends TileView{
 		return boolean;
 	}
 
-	public void setTextView(TextView newView){
-	}
-
-	public void setMode(int newMode){
-	}
-
 	private void addRandomApple(){
 	}
 
@@ -270,9 +264,6 @@ public class SnakeView extends TileView{
 	}
 
 	private void updateSnake(){
-	}
-
-	public void getBundle(){
 	}
 
 	public class RefreshHandler extends Handler{
