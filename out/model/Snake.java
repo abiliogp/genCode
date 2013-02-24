@@ -3,8 +3,10 @@ import android.os.Bundle;
 
 public class Snake extends Activity{
 	/**Attributes */
+	
 	private SnakeView mSnakeView;
-	private String ICICLE_KEY = "snake_view";
+	
+	private static final String ICICLE_KEY = "snake_view";
 
 	/** Constructor */
 	public Snake( SnakeView mSnakeView , String ICICLE_KEY ){

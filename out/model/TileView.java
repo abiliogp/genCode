@@ -4,11 +4,17 @@ import android.util.AttributeSet;
 
 public class TileView extends View{
 	/**Attributes */
+	
 	protected int mTileSize;
+	
 	protected int mXTileCount;
+	
 	protected int mYTileCount;
+	
 	private int mXOffset;
+	
 	private int mYOffset;
+	
 	private Paint mPaint;
 	
 	private ArrayList<Bitmap> mTileArray;

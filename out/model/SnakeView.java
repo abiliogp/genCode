@@ -6,25 +6,45 @@ import android.view.KeyEvent;
 
 public class SnakeView extends TileView{
 	/**Attributes */
-	private String TAG = "SnakeView";
+	
+	private static final String TAG = "SnakeView";
+	
 	private int mMode;
+	
 	public int PAUSE;
-	public int READY = 1;
-	public int RUNNING = 2;
-	public int LOSE = 3;
+	
+	public static final int READY = 1;
+	
+	public static final int RUNNING = 2;
+	
+	public static final int LOSE = 3;
+	
 	public int mDirection;
+	
 	public int mNextDirection;
-	private int NORTH = 1;
-	private int SOUTH = 2;
-	private int EAST = 3;
-	private int WEST = 4;
-	private int RED_STAR = 1;
-	private int YELLOW_STAR = 2;
-	private int GREEN_STAR = 3;
+	
+	private static final int NORTH = 1;
+	
+	private static final int SOUTH = 2;
+	
+	private static final int EAST = 3;
+	
+	private static final int WEST = 4;
+	
+	private static final int RED_STAR = 1;
+	
+	private static final int YELLOW_STAR = 2;
+	
+	private static final int GREEN_STAR = 3;
+	
 	private int mScore;
-	private int mMoveDelay = 600;
+	
+	private static final int mMoveDelay = 600;
+	
 	private int mLastMove;
+	
 	private TextView mStatusText;
+	
 	private Random RNG;
 	
 	private ArrayList<Coordinate> mSnakeTrail;
@@ -272,8 +292,10 @@ public class SnakeView extends TileView{
 	}
 	private class Coordinate{
 		/**Attributes */
-		public int x;
-		public int y;
+		
+	public int x;
+		
+	public int y;
 
 		/** Constructor */
 		public Coordinate( int x , int y ){

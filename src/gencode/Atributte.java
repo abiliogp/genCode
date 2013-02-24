@@ -13,6 +13,8 @@ public class Atributte extends DataModel {
 	private String aggregation;
 	private String defautlValue;
 	private String defautlValueType;
+	private boolean objectType;
+	private boolean primitiveType;
 	
 	public Atributte(String name) {
 		super(name);
@@ -24,6 +26,8 @@ public class Atributte extends DataModel {
 
 		System.out.println("\tAtributo: " + this.name);
 		System.out.println("\t\tTipo: " + this.type);
+		System.out.println("\t\tPrimitivo: " + this.primitiveType);
+		System.out.println("\t\tObjeto: " + this.primitiveType);
 		System.out.println("\t\tVisibilidade: " + this.visibility);
 		System.out.printf("\t\tUpper Value: %s\n", this.upperValue == -1 ? "*" : this.upperValue);
 		System.out.printf("\t\tLower Value: %s\n", this.lowerValue == -1 ? "*" : this.lowerValue);
@@ -40,11 +44,17 @@ public class Atributte extends DataModel {
 				}
 				out.write("\n\t");
 				out.write( !(this.visibility.equals("package")) ? "\n\t" + this.visibility + " " : "" );
-				out.write("ArrayList<" + this.type + "> " + this.name + ";" );
-			
+				out.write("ArrayList<" + this.type + "> " + this.name + ";" );	
 		} else{
 			out.write("\n" + tabInd);
-			out.write( !(this.visibility.equals("package")) ?  this.visibility + " " : "" );
+			out.write( !(this.visibility.equals("package")) ? "\n\t" + this.visibility + " " : "" );
+			//otimizações para android 
+			if(this.defautlValue != null || this.isStatic){
+				out.write("static ");
+				if(this.primitiveType){
+					out.write("final ");
+				}
+			}
 			out.write(this.type + " " + this.name);
 			if(this.defautlValue != null){
 				if(this.defautlValueType.equals("uml:LiteralString")){
@@ -153,7 +163,10 @@ public class Atributte extends DataModel {
 		if (line.contains("type=")) {
 			value = Tool.manipulate(line, "type=");
 			if (value.charAt(0) == '_') {
+				objectType = true;
 				value = Tool.getTrieID(value);
+			} else{
+				primitiveType = true;
 			}
 			type = value;
 		}
@@ -165,10 +178,12 @@ public class Atributte extends DataModel {
 					value = Tool.manipulate(line, "pathmap:", "#", "\"");
 					value = Tool.getTrieID(value);
 					type = value;
+					objectType = true;
 				}
 				if (line.contains("uml:PrimitiveType")) {
 					value = parserType(value, line);
 					type = value;
+					primitiveType = true;
 				}
 				if ( (line.contains("upperValue"))  && (line.contains("value=")) ) {
 					value = Tool.manipulate(line, "value");
