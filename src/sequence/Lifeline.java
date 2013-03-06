@@ -112,6 +112,15 @@ public class Lifeline extends DataSequence{
 		}
 	}
 
+	public void genCodeAttributeGetSet(BufferedWriter out) throws IOException {
+		if(parameter != null){
+			out.write(parameter);
+		} else {
+			if(represents != null) {
+				out.write(represents.getName());
+			}
+		}
+	}
 
 	public void genCodeCreate(BufferedWriter out) throws IOException {
 		if(represents != null){

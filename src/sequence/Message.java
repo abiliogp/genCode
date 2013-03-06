@@ -84,7 +84,7 @@ public class Message extends DataSequence{
 		}
 	}
 
-	private void genCodeVariable(BufferedWriter out) throws IOException {
+	public void genCodeVariable(BufferedWriter out) throws IOException {
 		if(variable != null){
 			out.write(variable);
 			out.write(" = ");
@@ -94,9 +94,15 @@ public class Message extends DataSequence{
 	/*
 	 * Faz chamadas de método da própria classe e de outros objetos
 	 */
-	private void genCodeAtributte(BufferedWriter out) throws IOException {
+	public void genCodeAtributte(BufferedWriter out) throws IOException {
 		//if(sendEvent.getCovered() != receiveEvent.getCovered()){
 			receiveEvent.genCodeAttribute(out);
+		//}
+	}
+	
+	public void genCodeAtributteGetSet(BufferedWriter out) throws IOException {
+		//if(sendEvent.getCovered() != receiveEvent.getCovered()){
+			receiveEvent.genCodeAttributeGetSet(out);
 		//}
 	}
 	

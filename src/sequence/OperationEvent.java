@@ -16,6 +16,10 @@ public class OperationEvent extends DataSequence{
 	public OperationEvent(String name){
 		super(name);
 	}
+	
+	public Method getOperation(){
+		return operation;
+	}
 
 	public static void load(BufferedReader bf, String line) throws IOException {
 		String key, value;

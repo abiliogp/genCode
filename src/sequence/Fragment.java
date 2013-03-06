@@ -199,14 +199,40 @@ public class Fragment extends DataSequence{
 
 	public void genCodeMessage(BufferedWriter out, int tab) throws IOException {
 		if(event.getType().equals("uml:SendOperationEvent")){
-			message.genCode(out, tab);
-			if(message.getMessageSort()!= null)
-			if(message.getMessageSort().equals("createMessage"))
-				return;
-			event.genCode(out);
-			message.genCodeArguments(out);
-			out.write(");");
+			if(event.getOperation().isSet()){
+				genCodeMessageSet(out, tab);
+			} else if(event.getOperation().isSet()){
+				genCodeMessageGet(out, tab);
+			} else{
+				genCodeMessageNormal(out, tab);
+			}
 		}
+	}
+	
+	private void genCodeMessageSet(BufferedWriter out, int tab) throws IOException {
+		String tabInd = Tool.indentation(tab);
+		out.write("\n" + tabInd);
+		message.genCodeAtributteGetSet(out);
+		out.write(" = ");
+		message.genCodeArguments(out);
+	}	
+	
+	private void genCodeMessageGet(BufferedWriter out, int tab) throws IOException {
+		String tabInd = Tool.indentation(tab);
+		out.write("\n" + tabInd);
+		message.genCodeVariable(out);
+		out.write(" = ");
+		message.genCodeAtributteGetSet(out);
+	}
+	
+	private void genCodeMessageNormal(BufferedWriter out, int tab) throws IOException {
+		message.genCode(out, tab);
+		if(message.getMessageSort()!= null)
+		if(message.getMessageSort().equals("createMessage"))
+			return;
+		event.genCode(out);
+		message.genCodeArguments(out);
+		out.write(");");
 	}
 	
 	private void genCodeOpt(BufferedWriter out, int tab) throws IOException {
@@ -279,6 +305,12 @@ public class Fragment extends DataSequence{
 		}
 	}
 
+
+	public void genCodeAttributeGetSet(BufferedWriter out) throws IOException {
+		if(covered != null){
+			covered.genCodeAttributeGetSet(out);
+		}
+	}
 
 	public void genCodeCreate(BufferedWriter out) throws IOException {
 		if(covered != null){

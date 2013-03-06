@@ -19,7 +19,8 @@ public class Method extends DataModel {
 
 	private Interaction interaction;
 	private boolean isAbstract;
-	private boolean isSetGet;
+	private boolean isSet;
+	private boolean isGet;
 	
 
 	public Method(String name) {
@@ -63,13 +64,23 @@ public class Method extends DataModel {
 		return this.listParametro.get(index);
 	}
 
+	public boolean isSet(){
+		return this.isSet;
+	}
+	
+	public boolean isGet(){
+		return this.isGet;
+	}
+	
 	public boolean isAbstract() {
 		return this.isAbstract;
 	}
-
+	
 	public void isAbstract(boolean isAbstract) {
 		this.isAbstract = isAbstract;
 	}
+	
+	
 
 	public Parametro getLastReturn() {
 		return this.listRetorno.get(this.listRetorno.size() - 1);
@@ -83,7 +94,7 @@ public class Method extends DataModel {
 
 		System.out.println("\tMétodo: " + this.name);
 		System.out.println("\t\tVisibilidade: " + this.visibility);
-		System.out.println("\t\tisGetSet: " + this.isSetGet);
+		System.out.println("\t\tisGetSet: " + (this.isSet || isGet));
 
 		for (int i = 0; i < this.listOperacao.size(); i++) {
 			this.listOperacao.get(i).printProp();
@@ -108,7 +119,7 @@ public class Method extends DataModel {
 	}
 
 	public void genCode(BufferedWriter out, int tab) throws IOException {
-		if(this.isSetGet){
+		if(this.isSet || this.isGet){
 			return;
 		}
 		genCodeH(out, tab);
@@ -264,8 +275,10 @@ public class Method extends DataModel {
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String value, str, key;
 		
-		if(name.substring(0, 3).equals("set") || name.substring(0, 3).equals("get")){
-			this.isSetGet = true;
+		if(name.substring(0, 3).equals("set")){
+			this.isSet = true;
+		} else if(name.substring(0, 3).equals("get")){
+			this.isGet = true;
 		}
 		
 		if (line.contains("visibility=")) {
