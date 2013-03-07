@@ -123,6 +123,7 @@ public class TileView extends View{
 		/** Specified from Sequence Diagram onDraw */
 		for(int i=0; i < mXTileCount; i++){
 			for(int i=0; i < mYTileCount; i++){
+
 				if(mTileGrid[x][y] > 0){
 					canvas.drawBitmap(mTileArray[mTileGrid[x][y]],mXOffset + x * mTileSize,mYOffset + y * mTileSize,mPaint);
 				}

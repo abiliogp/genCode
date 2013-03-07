@@ -473,7 +473,6 @@ public class Classe {
 				if (line.contains("<ownedOperation")) {
 					key = Tool.manipulate(line, "xmi:id=");
 					Method metodo = Tool.getTrieMetodo(key);
-					System.err.println("mtd " + metodo.getName());
 					listMethod.add(metodo);
 					metodo.parser(bf, line);
 				}

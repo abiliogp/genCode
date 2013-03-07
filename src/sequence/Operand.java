@@ -55,7 +55,7 @@ public class Operand extends DataSequence{
 		String tabInd, subInd;
 		tabInd = Tool.indentation(tab);
 		if( !(guard.getSpecification().getBody().equals("else")) ){
-			out.write(tabInd + "if(");
+			out.write("\n" + tabInd + "if(");
 			guard.genCode(out);	
 			out.write(")");
 		} 
