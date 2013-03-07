@@ -358,6 +358,7 @@ public class Method extends DataModel {
 		value = Tool.manipulate(line, "name=");
 		Method method = new Method(value);
 		Tool.putTrieMetodo(key,  method);
+		Tool.putTrieMetodoName(value, method);
 	}
 
 	

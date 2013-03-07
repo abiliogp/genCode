@@ -1,7 +1,6 @@
 
 public class Class0{
 	/**Attributes */
-	
 	public String par;
 
 	/** Constructor */
@@ -9,6 +8,8 @@ public class Class0{
 		this.par = par;
 	}
 
+	/** Get */
+	/** Set */
 	/** Methods */
 	public void mt(){
 		/** Specified from Sequence Diagram Interaction0 */

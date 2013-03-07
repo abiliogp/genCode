@@ -197,14 +197,7 @@ public class Fragment extends DataSequence{
 		
 	}
 
-	/**
-	 * Geração de chamadas de método:
-	 * 	para métodos get e set pertencentes ao modelo avaliado
-	 * 	realiza geração de acordo com as otimizações Android
-	 * @param out
-	 * @param tab
-	 * @throws IOException
-	 */
+
 	public void genCodeMessage(BufferedWriter out, int tab) throws IOException {
 		if(event.getType().equals("uml:SendOperationEvent")){
 			if(event.getOperation().isSet()){
@@ -216,7 +209,15 @@ public class Fragment extends DataSequence{
 			}
 		}
 	}
-	
+
+	/**
+	 * Geração de chamadas de método:
+	 * 	para métodos get e set pertencentes ao modelo avaliado
+	 * 	realiza geração de acordo com as otimizações Android
+	 * @param out
+	 * @param tab
+	 * @throws IOException
+	 */
 	private void genCodeMessageSet(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd);

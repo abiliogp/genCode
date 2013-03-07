@@ -29,6 +29,8 @@ public class Tool {
 	
 	private static TreeMap<String, Method> trieMethod = new TreeMap<String, Method>(); 
 	
+	private static TreeMap<String, Method> trieMethodName = new TreeMap<String, Method>(); 
+	
 	private static TreeMap< String, ArrayList<Method> > trieAbstractMethod = new TreeMap< String, ArrayList<Method> >();
 	
 	private static TreeMap<String, Atributte> trieAtributte = new TreeMap<String, Atributte>();
@@ -137,6 +139,10 @@ public class Tool {
 		trieMethod.put(key, metodo);
 	}
 	
+	public static void putTrieMetodoName(String name, Method metodo){
+		trieMethod.put(name, metodo);
+	}
+	
 	public static void putTrieAtributte(String key, Atributte atributte){
 		trieAtributte.put(key, atributte);
 	}
@@ -162,6 +168,10 @@ public class Tool {
 	 */
 	public static Method getTrieMetodo(String key){
 		return key == null ? null : trieMethod.get(key);
+	}
+	
+	public static Method getTrieMetodoName(String name){
+		return name == null ? null : trieMethod.get(name);
 	}
 	
 	public static Atributte getTrieAtributte(String key){

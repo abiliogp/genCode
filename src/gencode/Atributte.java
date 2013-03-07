@@ -15,6 +15,8 @@ public class Atributte extends DataModel {
 	private String defautlValueType;
 	private boolean objectType;
 	private boolean primitiveType;
+	private boolean hasGetMethod;
+	private boolean hasSetMethod;
 	
 	public Atributte(String name) {
 		super(name);
@@ -31,7 +33,9 @@ public class Atributte extends DataModel {
 		System.out.println("\t\tVisibilidade: " + this.visibility);
 		System.out.printf("\t\tUpper Value: %s\n", this.upperValue == -1 ? "*" : this.upperValue);
 		System.out.printf("\t\tLower Value: %s\n", this.lowerValue == -1 ? "*" : this.lowerValue);
-		System.out.printf("\t\tDefault Value: %s\n", this.defautlValue);		
+		System.out.printf("\t\tDefault Value: %s\n", this.defautlValue);	
+		System.out.println("\t\thasGet "  + this.hasGetMethod);
+		System.out.println("\t\thasGet "  + this.hasSetMethod);
 	}
 	
 	public void genCode(BufferedWriter out, int tab) throws IOException{
@@ -42,29 +46,39 @@ public class Atributte extends DataModel {
 					out.write("\n" + tabInd + "/** You must have at least ONE " +
 							"Occurrence of Attribute: " + this.name + " in this class*/");
 				}
-				out.write("\n\t");
-				out.write( !(this.visibility.equals("package")) ? "\n\t" + this.visibility + " " : "" );
-				out.write("ArrayList<" + this.type + "> " + this.name + ";" );	
+		} 
+		out.write("\n" + tabInd);
+	
+		//otimização p android get e set visibilidade public
+		if(this.hasGetMethod || this.hasSetMethod){
+			out.write("public ");
 		} else{
-			out.write("\n" + tabInd);
 			out.write( !(this.visibility.equals("package")) ? "\n\t" + this.visibility + " " : "" );
-			//otimizações para android 
-			if(this.defautlValue != null || this.isStatic){
-				out.write("static ");
-				if(this.primitiveType){
-					out.write("final ");
-				}
-			}
-			out.write(this.type + " " + this.name);
-			if(this.defautlValue != null){
-				if(this.defautlValueType.equals("uml:LiteralString")){
-					out.write(" = \"" + this.defautlValue + "\"");
-				} else{
-					out.write(" = " + this.defautlValue);	
-				}
-			}
-			out.write(";");
 		}
+		
+		//otimizações para android static final
+		if(this.defautlValue != null || this.isStatic){
+			out.write("static ");
+			if(this.primitiveType){
+				out.write("final ");
+			}
+		}
+		
+		if(lowerValue == '*' || upperValue == '*'){
+			out.write("ArrayList<" + this.type + "> " + this.name);
+		} else{
+			out.write(this.type + " " + this.name);			
+		}
+		
+		if(this.defautlValue != null){
+			if(this.defautlValueType.equals("uml:LiteralString")){
+				out.write(" = \"" + this.defautlValue + "\"");
+			} else{
+				out.write(" = " + this.defautlValue);	
+			}
+		}
+		out.write(";");
+	
 	}
 	
 	public void genCodeAtributteImplements(BufferedWriter out) throws IOException{
@@ -83,6 +97,10 @@ public class Atributte extends DataModel {
 	
 	public void genCodeGet(BufferedWriter out , int tab) throws IOException{
 		tabInd = Tool.indentation(tab); 
+		//otimização p android 
+		if(this.hasGetMethod){
+			return;
+		}
 		if( this.visbPrivate ){
 			out.write("\n" + tabInd + "public " + this.type + " get" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) + "(){");
 			out.write("\n" + tabInd + "\treturn this." + this.name + ";\n\t}\n");
@@ -91,6 +109,10 @@ public class Atributte extends DataModel {
 	
 	public void genCodeSet(BufferedWriter out, int tab) throws IOException{
 		tabInd = Tool.indentation(tab); 
+		//otimização p android 
+		if(this.hasSetMethod){
+			return;
+		}
 		if( this.visbPrivate ){
 			out.write("\n" + tabInd + "public void set" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) 
 					+ "( " + this.type + " " + this.name + " ){");
@@ -149,6 +171,16 @@ public class Atributte extends DataModel {
 	public boolean parser(BufferedReader bf, String line) throws IOException {
 		String value = null, key;
 		boolean needImport = false;
+		
+		if(Tool.getTrieMetodoName("get" + name.substring(0, 1).toUpperCase() + name.substring(1)) != null){
+			hasGetMethod = true;
+		}
+
+		
+		if(Tool.getTrieMetodoName("set" + name.substring(0, 1).toUpperCase() + name.substring(1)) != null){
+			hasSetMethod = true;
+		}
+		
 		if (line.contains("visibility=")) {
 			visibility = Tool.manipulate(line, "visibility=");
 			if( (visibility != null) && ((visibility.equals("private")) || (visibility.equals("protected"))) ){

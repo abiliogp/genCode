@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_942P4IccEeKeY-nQyA8ieQ" name="testeGetSet">
   <packagedElement xmi:type="uml:Class" xmi:id="_DlMHoIcdEeKeY-nQyA8ieQ" name="Class0">
-    <ownedAttribute xmi:id="_I1x3gIcdEeKeY-nQyA8ieQ" name="par">
+    <ownedAttribute xmi:id="_I1x3gIcdEeKeY-nQyA8ieQ" name="par" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#String"/>
     </ownedAttribute>
     <ownedOperation xmi:id="_F6jcgIcdEeKeY-nQyA8ieQ" name="getPar"/>

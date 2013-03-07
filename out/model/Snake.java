@@ -39,15 +39,15 @@ public class Snake extends Activity{
 		setContentView(R.layout.Snake);
 		/** Specified from Sequence Diagram onCreate */
 
-		mSnakeView = R.id.snake
+		mSnakeView = R.id.snake;
 		if(savedInstanceState  ==  null){
-			mSnakeView = SnakeView.READY
+			mSnakeView = SnakeView.READY;
 		} else {
-			Bundle map  = savedInstanceState.getBundle(SnakeView.PAUSE);
+			Bundle map  =  = savedInstanceState.bundle;
 			if(map  !=  null){
 				mSnakeView.restoreState(map);
 			} else {
-				mSnakeView = SnakeView.PAUSE
+				mSnakeView = SnakeView.PAUSE;
 			}
 		}
 	}
