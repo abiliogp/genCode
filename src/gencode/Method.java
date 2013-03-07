@@ -272,13 +272,20 @@ public class Method extends DataModel {
 		out.write(name + "(");
 	}
 
+	public void genCodeCallGet(BufferedWriter out) throws IOException {
+		String aux;
+		aux = name.substring(3).toLowerCase();
+		out.write(aux);
+	}
+	
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String value, str, key;
-		
-		if(name.substring(0, 3).equals("set")){
-			this.isSet = true;
-		} else if(name.substring(0, 3).equals("get")){
-			this.isGet = true;
+		if(name.length() > 3){
+			if(name.substring(0, 3).equals("set")){
+				this.isSet = true;
+			} else if(name.substring(0, 3).equals("get")){
+				this.isGet = true;
+			}
 		}
 		
 		if (line.contains("visibility=")) {
@@ -352,5 +359,7 @@ public class Method extends DataModel {
 		Method method = new Method(value);
 		Tool.putTrieMetodo(key,  method);
 	}
+
+	
 
 }// end class

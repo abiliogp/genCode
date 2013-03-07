@@ -209,7 +209,7 @@ public class Fragment extends DataSequence{
 		if(event.getType().equals("uml:SendOperationEvent")){
 			if(event.getOperation().isSet()){
 				genCodeMessageSet(out, tab);
-			} else if(event.getOperation().isSet()){
+			} else if(event.getOperation().isGet()){
 				genCodeMessageGet(out, tab);
 			} else{
 				genCodeMessageNormal(out, tab);
@@ -223,6 +223,7 @@ public class Fragment extends DataSequence{
 		message.genCodeAtributteGetSet(out);
 		out.write(" = ");
 		message.genCodeArguments(out);
+		out.write(";");
 	}	
 	
 	private void genCodeMessageGet(BufferedWriter out, int tab) throws IOException {
@@ -231,6 +232,9 @@ public class Fragment extends DataSequence{
 		message.genCodeVariable(out);
 		out.write(" = ");
 		message.genCodeAtributteGetSet(out);
+		out.write(".");
+		event.genCodeGet(out);
+		out.write(";");
 	}
 	
 	private void genCodeMessageNormal(BufferedWriter out, int tab) throws IOException {

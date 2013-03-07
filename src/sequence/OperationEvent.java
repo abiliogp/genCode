@@ -51,4 +51,9 @@ public class OperationEvent extends DataSequence{
 		}
 	}
 
+	public void genCodeGet(BufferedWriter out) throws IOException {
+		if(type.equals("uml:SendOperationEvent")){
+			operation.genCodeCallGet(out);
+		}
+	}
 }
