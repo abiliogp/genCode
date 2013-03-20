@@ -28,9 +28,7 @@ public class Tool {
 	private static TreeMap<String, String> trieID = new TreeMap<String, String>();
 	
 	private static TreeMap<String, Method> trieMethod = new TreeMap<String, Method>(); 
-	
-	private static TreeMap<String, Method> trieMethodName = new TreeMap<String, Method>(); 
-	
+		
 	private static TreeMap< String, ArrayList<Method> > trieAbstractMethod = new TreeMap< String, ArrayList<Method> >();
 	
 	private static TreeMap<String, Atributte> trieAtributte = new TreeMap<String, Atributte>();
