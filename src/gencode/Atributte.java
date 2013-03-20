@@ -236,5 +236,13 @@ public class Atributte extends DataModel {
 		}
 		return needImport;
 	}
+	
+	public static void load(BufferedReader bf, String line) {
+		String key, value;
+		key = Tool.manipulate(line, "xmi:id");
+		value = Tool.manipulate(line, "name=");
+		Atributte atributte = new Atributte(value);
+		Tool.putTrieAtributte(key,  atributte);
+	}
 
 }

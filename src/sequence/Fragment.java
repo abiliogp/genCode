@@ -154,6 +154,8 @@ public class Fragment extends DataSequence{
 			}
 			this.message.printProp();
 			this.event.printProp();
+			System.err.println("\trepresents " + this.covered.getRepresents().getName());
+			
 		} catch (NullPointerException e){}
 	}
 

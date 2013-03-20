@@ -22,6 +22,7 @@ public class Operand extends DataSequence{
 		return guard;
 	}
 	
+	
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String value;
 		if (line.contains("/>")){

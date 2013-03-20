@@ -2,6 +2,7 @@ package utilities;
 
 import gencode.AssocPacote;
 import gencode.Associacao;
+import gencode.Atributte;
 import gencode.Classe;
 import gencode.Interface;
 import gencode.Method;
@@ -68,6 +69,11 @@ public abstract class Parser {
 		while (bf.ready()) {
 			line = bf.readLine();
 			key = Tool.manipulate(line, "xmi:id");
+			
+			
+			if(line.contains("<ownedAttribute")){
+				Atributte.load(bf, line);
+			}
 			
 			/*
 			 * Associação

@@ -461,11 +461,9 @@ public class Classe {
 				 */
 				if (line.contains("<ownedAttribute")) {
 					key = Tool.manipulate(line, "xmi:id=");
-					value = Tool.manipulate(line, "name");
-					Atributte atributte = new Atributte(value);
+					Atributte atributte = Tool.getTrieAtributte(key);
 					listAtributte.add(atributte);
 					needImport = atributte.parser(bf, line);
-					Tool.putTrieAtributte(key, atributte);
 				}
 				/*
 				 * Método

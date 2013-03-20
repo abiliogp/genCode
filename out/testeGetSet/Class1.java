@@ -1,12 +1,14 @@
+import java.util.ArrayList;
 
 public class Class1{
 	/**Attributes */
+	/** You must have at least ONE Occurrence of Attribute: atrClass0 in this class*/
 	
-	public Class0 atrClass0;
+	public ArrayList<Class0> atrClass0;
 
 	/** Constructor */
-	public Class1( Class0 atrClass0 ){
-		this.atrClass0 = atrClass0;
+	public Class1(){
+		this.atrClass0 = new ArrayList<Class0>();
 	}
 
 }
