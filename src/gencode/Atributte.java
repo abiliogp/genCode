@@ -22,7 +22,10 @@ public class Atributte extends DataModel {
 		super(name);
 		this.aggregation = "simple";
 	}
-
+			
+	public boolean isPrimitiveType(){
+		return this.primitiveType; 
+	}
 	
 	public void printProp() {
 

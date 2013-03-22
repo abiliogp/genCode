@@ -86,7 +86,9 @@ public class Guard extends DataSequence{
 		specification.genCodeVariable(out);
 	}
 
-	public void genCodeFor(BufferedWriter out) throws IOException {
+	public void genCodeForNormal(BufferedWriter out) throws IOException {
 		out.write("for(int i=" + minint.getValue() + "; i < " + this.specification.getBody() + "; i++");
 	}
+
+	
 }

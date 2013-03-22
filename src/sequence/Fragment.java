@@ -251,9 +251,7 @@ public class Fragment extends DataSequence{
 	}
 	
 	private void genCodeOpt(BufferedWriter out, int tab) throws IOException {
-		//out.write("\r\t\tif(");
 		listOperand.get(0).genCodeOpt(out, tab);
-		//out.write("\r\t\t}");
 	}
 
 	private void genCodeAlt(BufferedWriter out, int tab) throws IOException {
@@ -289,31 +287,51 @@ public class Fragment extends DataSequence{
 	}
 	
 	private void genCodeLoop(BufferedWriter out, int tab) throws IOException {
-		String tabInd, tabSubInd;
-		tabInd = Tool.indentation(tab);
-		tabSubInd = Tool.indentation(tab + 1);
-		if(listOperand.get(0).getGuard().getMinint() != null) {
-			out.write(tabInd);
-			listOperand.get(0).getGuard().genCodeFor(out);
-		} else {
-			out.write(tabInd + "while(");
-			if(listOperand.get(0).getGuard().getSpecification().isLogic()){
-				if((listOperand.get(0).getGuard().getSpecification().getValue().equals("false")) ||
-				   (listOperand.get(0).getGuard().getSpecification().getExpression().equals("!=")))
-				{
-					out.write("!");
-				}
-				listOperand.get(0).getGuard().genCodeVariable(out);
-			} else{
-				listOperand.get(0).getGuard().getSpecification().genCode(out);
-			}
+		String tabInd = Tool.indentation(tab);
+		if(listOperand.get(0).getGuard().getMinint() != null){
+			genCodeFor(out,tab);
+		}
+		else {
+			 genCodeWhile(out,tab);
 		}
 		out.write("){\n");
 		listOperand.get(0).genCode(out, tab);
 		out.write("\n" + tabInd + "}");
 	}
 
+	
+	private void genCodeWhile(BufferedWriter out, int tab) throws IOException {
+		String tabInd = Tool.indentation(tab);
+		out.write(tabInd + "while(");
+		if(listOperand.get(0).getGuard().getSpecification().isLogic()){
+			if((listOperand.get(0).getGuard().getSpecification().getValue().equals("false")) ||
+			   (listOperand.get(0).getGuard().getSpecification().getExpression().equals("!=")))
+			{
+				out.write("!");
+			}
+			listOperand.get(0).getGuard().genCodeVariable(out);
+		} else{
+			listOperand.get(0).getGuard().getSpecification().genCode(out);
+		}
+	}
 
+	private void genCodeFor(BufferedWriter out, int tab) throws IOException {
+		String tabInd = Tool.indentation(tab);
+		out.write(tabInd);
+		if(this.covered.getRepresents().getUpperValue() == '*'){//for		
+			if(this.covered.getRepresents().isPrimitiveType()){
+				out.write("for(int i=" + listOperand.get(0).getGuard().getMinint() + "; " +
+						  "i < " + this.covered.getRepresents().getName() + "length() ; i++");
+			} else{
+				out.write("for(" + this.covered.getRepresents().getType() + " : " + this.covered.getRepresents().getName());
+			}
+		}
+		if(listOperand.get(0).getGuard().getMinint() != null) {
+			listOperand.get(0).getGuard().genCodeForNormal(out);
+		}
+		
+	}
+	
 	public void genCodeAttribute(BufferedWriter out) throws IOException {
 		if(covered != null){
 			covered.genCodeAttribute(out);
