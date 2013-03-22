@@ -294,7 +294,7 @@ public class Fragment extends DataSequence{
 		else {
 			 genCodeWhile(out,tab);
 		}
-		out.write("){\n");
+		out.write("){");
 		listOperand.get(0).genCode(out, tab);
 		out.write("\n" + tabInd + "}");
 	}
@@ -317,16 +317,16 @@ public class Fragment extends DataSequence{
 
 	private void genCodeFor(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
-		out.write(tabInd);
+		out.write("\n" + tabInd);
 		if(this.covered.getRepresents().getUpperValue() == '*'){//for		
 			if(this.covered.getRepresents().isPrimitiveType()){
 				out.write("for(int i=" + listOperand.get(0).getGuard().getMinint() + "; " +
 						  "i < " + this.covered.getRepresents().getName() + "length() ; i++");
 			} else{
-				out.write("for(" + this.covered.getRepresents().getType() + " : " + this.covered.getRepresents().getName());
+				out.write("for(" + this.covered.getRepresents().getType() + " c : " + this.covered.getRepresents().getName());
 			}
 		}
-		if(listOperand.get(0).getGuard().getMinint() != null) {
+		else if(listOperand.get(0).getGuard().getMinint() != null) {
 			listOperand.get(0).getGuard().genCodeForNormal(out);
 		}
 		

@@ -13,7 +13,7 @@
     <ownedOperation xmi:id="_G_rRgIcdEeKeY-nQyA8ieQ" name="mt" method="_y9HssIcdEeKeY-nQyA8ieQ"/>
     <ownedOperation xmi:id="_9OjK4JF-EeKla5QYttVOlw" name="add"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interaction" xmi:id="_y9HssIcdEeKeY-nQyA8ieQ" name="Interaction0" specification="_G_rRgIcdEeKeY-nQyA8ieQ">
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_y9HssIcdEeKeY-nQyA8ieQ" name="Interaction0" visibility="package" specification="_G_rRgIcdEeKeY-nQyA8ieQ">
     <lifeline xmi:id="_7Es30IcdEeKq58O8lDabMQ" name="Lifeline" represents="_c6OAwIceEeKq58O8lDabMQ" coveredBy="_neU4sIceEeKq58O8lDabMQ _neWG0IceEeKq58O8lDabMQ _rmvfkYceEeKq58O8lDabMQ _rmwGoYceEeKq58O8lDabMQ _uYM6kYceEeKq58O8lDabMQ _uYNhoYceEeKq58O8lDabMQ _nEY10JF-EeKla5QYttVOlw _nEb5IJF-EeKla5QYttVOlw _Nks58ZF_EeKla5QYttVOlw _NkthAJF_EeKla5QYttVOlw"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rmvfkYceEeKq58O8lDabMQ" name="setPar_MessageSend" covered="_7Es30IcdEeKq58O8lDabMQ" event="_rmvfkIceEeKq58O8lDabMQ" message="_rmu4gIceEeKq58O8lDabMQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_uYM6kYceEeKq58O8lDabMQ" name="mt_MessageSend" covered="_7Es30IcdEeKq58O8lDabMQ" event="_uYM6kIceEeKq58O8lDabMQ" message="_uYMTgIceEeKq58O8lDabMQ"/>
@@ -26,7 +26,7 @@
         <guard xmi:id="_nEduUJF-EeKla5QYttVOlw">
           <specification xmi:type="uml:LiteralString" xmi:id="_nEe8cJF-EeKla5QYttVOlw" value="undefined"/>
           <minint xmi:type="uml:LiteralInteger" xmi:id="_nEe8cZF-EeKla5QYttVOlw"/>
-          <maxint xmi:type="uml:LiteralInteger" xmi:id="_nEe8cpF-EeKla5QYttVOlw" value="1"/>
+          <maxint xmi:type="uml:LiteralInteger" xmi:id="_nEe8cpF-EeKla5QYttVOlw" name="" value="1"/>
         </guard>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Nks58ZF_EeKla5QYttVOlw" name="add_MessageSend" covered="_7Es30IcdEeKq58O8lDabMQ" event="_Nks58JF_EeKla5QYttVOlw" message="_NksS4JF_EeKla5QYttVOlw"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_NkthAJF_EeKla5QYttVOlw" name="add_MessageRecv" covered="_7Es30IcdEeKq58O8lDabMQ" event="_Nks58pF_EeKla5QYttVOlw" message="_NksS4JF_EeKla5QYttVOlw"/>

@@ -16,8 +16,8 @@ public class Class0{
 
 		aux  =  = atrClass0.par;
 		atrClass0 = 1;
-		atrClass0.mt();		for(int i=0; i < undefined; i++){
-
+		atrClass0.mt();
+		for(Class0 c : atrClass0){
 			atrClass0.add();
 		}
 	}
