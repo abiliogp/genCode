@@ -18,6 +18,7 @@ public class Message extends DataSequence{
 	private Fragment receiveEvent;
 	
 	private String messageSort;
+	private String number;
 	
 	//variavel que pega o retorno de um método
 	private String variable;
@@ -45,6 +46,8 @@ public class Message extends DataSequence{
 		if(line.contains("messageSort=")){
 			messageSort = Tool.manipulate(line, "messageSort=");
 		}
+		number = name.substring(0, 1);
+		name = Tool.manipulate(name, number, ":", "_Message");
 		key = Tool.manipulate(line, "receiveEvent=");
 		receiveEvent = Tool.getTrieFragment(key);
 		key = Tool.manipulate(line, "sendEvent=");
@@ -67,6 +70,7 @@ public class Message extends DataSequence{
 		System.out.println("Message: " + name);
 		System.out.println("\tsort: " + messageSort);
 		System.out.println("\tvariable: " + (variable == null ? "NOT!" : variable));
+		System.out.println("\tnumber: " + number);
 		for(int i = 0 ; i <  this.listArgument.size(); i++){
 			System.out.print("\targument" + (i + 1) + ": ");
 			listArgument.get(i).printProp();

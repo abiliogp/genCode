@@ -20,6 +20,7 @@ public class Fragment extends DataSequence{
 	
 	private String visibility;
 	private String xmi;
+	private boolean send;
 	
 	private ArrayList<Operand> listOperand;
 
@@ -36,6 +37,10 @@ public class Fragment extends DataSequence{
 	 */
 	public Fragment(String name){
 		super(name);
+		if(name.contains("_MessageSend")){
+			send = true;
+			this.name = name.substring(0, name.indexOf("_MessageSend"));
+		}
 		listOperand = new ArrayList<Operand>();
 		refersTo = null;
 	}
@@ -109,8 +114,8 @@ public class Fragment extends DataSequence{
 		xmi = Tool.manipulate(line,"xmi:id=");
 		type = Tool.manipulate(line, "xmi:type=");
 		visibility = Tool.manipulate(line, "visibility=");
-		key = Tool.manipulate(line, "event=");
-		event = Tool.getTrieOperationEvent(key);
+		//key = Tool.manipulate(line, "event=");
+		//event = Tool.getTrieOperationEvent(key);
 		key = Tool.manipulate(line, "message="); 
 		message = Tool.getTrieMessage(key);
 		key = Tool.manipulate(line, "covered=");
@@ -153,7 +158,7 @@ public class Fragment extends DataSequence{
 				this.listOperand.get(i).printProp();
 			}
 			this.message.printProp();
-			this.event.printProp();
+			//this.event.printProp();
 			System.err.println("\trepresents " + this.covered.getRepresents().getUpperValue());
 			
 		} catch (NullPointerException e){}
@@ -201,15 +206,18 @@ public class Fragment extends DataSequence{
 
 
 	public void genCodeMessage(BufferedWriter out, int tab) throws IOException {
-		if(event.getType().equals("uml:SendOperationEvent")){
-			if(event.getOperation().isSet()){
-				genCodeMessageSet(out, tab);
-			} else if(event.getOperation().isGet()){
-				genCodeMessageGet(out, tab);
-			} else{
-				genCodeMessageNormal(out, tab);
-			}
+		if(this.send){
+			genCodeMessageNormal(out, tab);
 		}
+//		if(event.getType().equals("uml:SendOperationEvent")){
+//			if(event.getOperation().isSet()){
+//				genCodeMessageSet(out, tab);
+//			} else if(event.getOperation().isGet()){
+//				genCodeMessageGet(out, tab);
+//			} else{
+//				genCodeMessageNormal(out, tab);
+//			}
+//		}
 	}
 
 	/**
@@ -242,10 +250,11 @@ public class Fragment extends DataSequence{
 	
 	private void genCodeMessageNormal(BufferedWriter out, int tab) throws IOException {
 		message.genCode(out, tab);
+		out.write(name +"(");
 		if(message.getMessageSort()!= null)
 		if(message.getMessageSort().equals("createMessage"))
 			return;
-		event.genCode(out);
+		//event.genCode(out);
 		message.genCodeArguments(out);
 		out.write(");");
 	}

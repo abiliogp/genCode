@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_942P4IccEeKeY-nQyA8ieQ" name="testeGetSet">
+  <packagedElement xmi:type="uml:Class" xmi:id="_DlMHoIcdEeKeY-nQyA8ieQ" name="Class0">
+    <ownedAttribute xmi:id="_I1x3gIcdEeKeY-nQyA8ieQ" name="par" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/UML.metamodel.uml#String"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_F6jcgIcdEeKeY-nQyA8ieQ" name="getPar"/>
+    <ownedOperation xmi:id="_GYYoAIcdEeKeY-nQyA8ieQ" name="setPar">
+      <ownedParameter xmi:id="_AkzN4IcfEeKq58O8lDabMQ" name="parSet">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_G_rRgIcdEeKeY-nQyA8ieQ" name="mt" method="_y9HssIcdEeKeY-nQyA8ieQ"/>
+    <ownedOperation xmi:id="_9OjK4JF-EeKla5QYttVOlw" name="add"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_y9HssIcdEeKeY-nQyA8ieQ" name="Interaction0" visibility="package" specification="_G_rRgIcdEeKeY-nQyA8ieQ">
+    <lifeline xmi:id="_7Es30IcdEeKq58O8lDabMQ" name="Lifeline" represents="_c6OAwIceEeKq58O8lDabMQ" coveredBy="_neU4sIceEeKq58O8lDabMQ _neWG0IceEeKq58O8lDabMQ _rmvfkYceEeKq58O8lDabMQ _rmwGoYceEeKq58O8lDabMQ _uYM6kYceEeKq58O8lDabMQ _uYNhoYceEeKq58O8lDabMQ _nEY10JF-EeKla5QYttVOlw _nEb5IJF-EeKla5QYttVOlw _Nks58ZF_EeKla5QYttVOlw _NkthAJF_EeKla5QYttVOlw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rmvfkYceEeKq58O8lDabMQ" name="setPar_MessageSend" covered="_7Es30IcdEeKq58O8lDabMQ" event="_rmvfkIceEeKq58O8lDabMQ" message="_rmu4gIceEeKq58O8lDabMQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_uYM6kYceEeKq58O8lDabMQ" name="mt_MessageSend" covered="_7Es30IcdEeKq58O8lDabMQ" event="_uYM6kIceEeKq58O8lDabMQ" message="_uYMTgIceEeKq58O8lDabMQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_neU4sIceEeKq58O8lDabMQ" name="getPar_MessageSend" covered="_7Es30IcdEeKq58O8lDabMQ" event="_neROUIceEeKq58O8lDabMQ" message="_neOLAIceEeKq58O8lDabMQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_rmwGoYceEeKq58O8lDabMQ" name="setPar_MessageRecv" covered="_7Es30IcdEeKq58O8lDabMQ" event="_rmwGoIceEeKq58O8lDabMQ" message="_rmu4gIceEeKq58O8lDabMQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_neWG0IceEeKq58O8lDabMQ" name="getPar_MessageRecv" covered="_7Es30IcdEeKq58O8lDabMQ" event="_neVfwIceEeKq58O8lDabMQ" message="_neOLAIceEeKq58O8lDabMQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_uYNhoYceEeKq58O8lDabMQ" name="mt_MessageRecv" covered="_7Es30IcdEeKq58O8lDabMQ" event="_uYNhoIceEeKq58O8lDabMQ" message="_uYMTgIceEeKq58O8lDabMQ"/>
+    <fragment xmi:type="uml:CombinedFragment" xmi:id="_nEY10JF-EeKla5QYttVOlw" name="CombinedFragment" covered="_7Es30IcdEeKq58O8lDabMQ" interactionOperator="loop">
+      <operand xmi:id="_nEb5IJF-EeKla5QYttVOlw" name="InteractionOperand" covered="_7Es30IcdEeKq58O8lDabMQ">
+        <guard xmi:id="_nEduUJF-EeKla5QYttVOlw">
+          <specification xmi:type="uml:LiteralString" xmi:id="_nEe8cJF-EeKla5QYttVOlw" value="undefined"/>
+          <minint xmi:type="uml:LiteralInteger" xmi:id="_nEe8cZF-EeKla5QYttVOlw"/>
+          <maxint xmi:type="uml:LiteralInteger" xmi:id="_nEe8cpF-EeKla5QYttVOlw" name="" value="1"/>
+        </guard>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Nks58ZF_EeKla5QYttVOlw" name="add_MessageSend" covered="_7Es30IcdEeKq58O8lDabMQ" event="_Nks58JF_EeKla5QYttVOlw" message="_NksS4JF_EeKla5QYttVOlw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_NkthAJF_EeKla5QYttVOlw" name="add_MessageRecv" covered="_7Es30IcdEeKq58O8lDabMQ" event="_Nks58pF_EeKla5QYttVOlw" message="_NksS4JF_EeKla5QYttVOlw"/>
+      </operand>
+    </fragment>
+    <message xmi:id="_neOLAIceEeKq58O8lDabMQ" name="aux = getPar_Message" messageSort="asynchCall" receiveEvent="_neWG0IceEeKq58O8lDabMQ" sendEvent="_neU4sIceEeKq58O8lDabMQ"/>
+    <message xmi:id="_rmu4gIceEeKq58O8lDabMQ" name="setPar_Message" messageSort="asynchCall" receiveEvent="_rmwGoYceEeKq58O8lDabMQ" sendEvent="_rmvfkYceEeKq58O8lDabMQ">
+      <argument xmi:type="uml:StringExpression" xmi:id="_-HWpIIcgEeKq58O8lDabMQ" name="teste" symbol="1"/>
+    </message>
+    <message xmi:id="_uYMTgIceEeKq58O8lDabMQ" name="mt_Message" messageSort="asynchCall" receiveEvent="_uYNhoYceEeKq58O8lDabMQ" sendEvent="_uYM6kYceEeKq58O8lDabMQ"/>
+    <message xmi:id="_NksS4JF_EeKla5QYttVOlw" name="add_Message" messageSort="asynchCall" receiveEvent="_NkthAJF_EeKla5QYttVOlw" sendEvent="_Nks58ZF_EeKla5QYttVOlw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WQ6xgIceEeKq58O8lDabMQ" name="Class1">
+    <ownedAttribute xmi:id="_c6OAwIceEeKq58O8lDabMQ" name="atrClass0" type="_DlMHoIcdEeKeY-nQyA8ieQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c6REEIceEeKq58O8lDabMQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c6QdAIceEeKq58O8lDabMQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_neROUIceEeKq58O8lDabMQ" name="SendOperationEvent" operation="_F6jcgIcdEeKeY-nQyA8ieQ"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_neVfwIceEeKq58O8lDabMQ" name="ReceiveOperationEvent" operation="_F6jcgIcdEeKeY-nQyA8ieQ"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_rmvfkIceEeKq58O8lDabMQ" name="SendOperationEvent0" operation="_GYYoAIcdEeKeY-nQyA8ieQ"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_rmwGoIceEeKq58O8lDabMQ" name="ReceiveOperationEvent0" operation="_GYYoAIcdEeKeY-nQyA8ieQ"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_uYM6kIceEeKq58O8lDabMQ" name="SendOperationEvent1" operation="_G_rRgIcdEeKeY-nQyA8ieQ"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_uYNhoIceEeKq58O8lDabMQ" name="ReceiveOperationEvent1" operation="_G_rRgIcdEeKeY-nQyA8ieQ"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_Nks58JF_EeKla5QYttVOlw" name="SendOperationEvent2" operation="_9OjK4JF-EeKla5QYttVOlw"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_Nks58pF_EeKla5QYttVOlw" name="ReceiveOperationEvent2" operation="_9OjK4JF-EeKla5QYttVOlw"/>
+</uml:Model>

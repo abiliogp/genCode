@@ -195,8 +195,9 @@ public class Atributte extends DataModel {
 		if (line.contains("aggregation=")) {
 			aggregation = Tool.manipulate(line, "aggregation=");
 		}
-		if (line.contains("type=")) {
-			value = Tool.manipulate(line, "type=");
+		if (line.contains(" type=")) {
+			
+			value = Tool.manipulate(line, " type=");
 			if (value.charAt(0) == '_') {
 				objectType = true;
 				value = Tool.getTrieID(value);
