@@ -1,11 +1,10 @@
-package sequence;
-
-import gencode.Method;
+package model.sequence;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import model.structure.Method;
 import utilities.Tool;
 
 

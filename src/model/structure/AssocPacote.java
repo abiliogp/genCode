@@ -1,4 +1,4 @@
-package gencode;
+package model.structure;
 
 public class AssocPacote {
 	

@@ -1,4 +1,4 @@
-package sequence;
+package model.sequence;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import model.structure.Atributte;
+import model.structure.Parametro;
 import utilities.Tool;
-import gencode.Atributte;
-import gencode.Parametro;
 
 public class Lifeline extends DataSequence{
 

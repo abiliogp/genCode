@@ -1,4 +1,4 @@
-package gencode;
+package model.structure;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import sequence.Interaction;
-import sequence.Lifeline;
+import model.sequence.Interaction;
+import model.sequence.Lifeline;
 import utilities.Parser;
 import utilities.Tool;
 

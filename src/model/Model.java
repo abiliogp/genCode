@@ -1,23 +1,27 @@
-package utilities;
+package model;
 
-import gencode.Classe;
-import gencode.Interface;
+import generator.generatorStrategy;
+import generator.Android.ClasseAndroid;
+import generator.Android.ModelAndroid;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import sequence.Interaction;
+import model.sequence.Interaction;
+import model.structure.Classe;
+import model.structure.Interface;
 
 public class Model {
 
+	private generatorStrategy generator;
+	
 	protected String name;
 	
 	protected ArrayList<Classe> listClasse;
+	private ArrayList<Interface> listInterface;
 	
 	private ArrayList<Interaction> listInteraction;
-	
-	private ArrayList<Interface> listInterface;
 	
 	private File dir;
 	
@@ -47,12 +51,17 @@ public class Model {
 		return this.listClasse.get(this.listClasse.size()-1);
 	}
 	
-	public Classe getIndexOfClasse(int index){
-		
+	public Classe getIndexOfClasse(int index){		
 		return this.listClasse.get(index);
 	}
 	
+	public ArrayList<Classe> getListClasse() {
+		return this.listClasse;
+	}
 
+	public ArrayList<Interface> getListInterface() {
+		return this.listInterface;
+	}
 	
 	
 	public String getName(){
@@ -74,7 +83,14 @@ public class Model {
 		
 	}
 	
+	
 	public void genCode() throws IOException{
+		generator = new ModelAndroid(this);
+		generator.codeGenerator();
+	}
+	
+	
+	public void genCode2() throws IOException{
 		
 		dir = new File("out/" + name);
 		dir.mkdir();
@@ -85,4 +101,6 @@ public class Model {
 			listInterface.get(i).genCode();
 		}
 	}
+
+	
 }

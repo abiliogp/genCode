@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import model.structure.Classe;
 import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
-import gencode.Classe;
 import generator.generatorStrategy;
 
 
@@ -27,7 +27,7 @@ public class ClasseAndroid implements generatorStrategy{
 
 	@Override
 	public void codeGenerator() throws IOException {
-		System.out.println("gerado no strategy");
+		System.out.println("strategy classe");
 		 genCode();
 		
 	}

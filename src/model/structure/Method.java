@@ -1,13 +1,12 @@
-package gencode;
+package model.structure;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import sequence.Interaction;
-import sequence.OperationEvent;
-
+import model.sequence.Interaction;
+import model.sequence.OperationEvent;
 import utilities.Parser;
 import utilities.Tool;
 

@@ -1,4 +1,4 @@
-package gencode;
+package model.structure;
 
 
 import generator.generatorStrategy;
@@ -11,7 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import sequence.Interaction;
+import model.sequence.Interaction;
 import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;

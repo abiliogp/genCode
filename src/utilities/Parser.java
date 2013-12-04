@@ -1,23 +1,22 @@
 package utilities;
 
-import gencode.AssocPacote;
-import gencode.Associacao;
-import gencode.Atributte;
-import gencode.Classe;
-import gencode.Interface;
-import gencode.Method;
-import gencode.Operation;
-import gencode.Pacote;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-
-import sequence.Interaction;
-import sequence.OperationEvent;
+import model.Model;
+import model.sequence.Interaction;
+import model.sequence.OperationEvent;
+import model.structure.AssocPacote;
+import model.structure.Associacao;
+import model.structure.Atributte;
+import model.structure.Classe;
+import model.structure.Interface;
+import model.structure.Method;
+import model.structure.Operation;
+import model.structure.Pacote;
 
 
 

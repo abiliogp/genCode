@@ -1,22 +1,21 @@
 package utilities;
 
-import gencode.Atributte;
-import gencode.Interface;
-import gencode.Method;
-import gencode.Operation;
-import gencode.Parametro;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import sequence.Fragment;
-import sequence.Interaction;
-import sequence.Lifeline;
-import sequence.Message;
-import sequence.OperationEvent;
+import model.sequence.Fragment;
+import model.sequence.Interaction;
+import model.sequence.Lifeline;
+import model.sequence.Message;
+import model.sequence.OperationEvent;
+import model.structure.Atributte;
+import model.structure.Interface;
+import model.structure.Method;
+import model.structure.Operation;
+import model.structure.Parametro;
 
 
 

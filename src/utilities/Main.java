@@ -4,7 +4,8 @@ package utilities;
 
 import java.io.IOException;
 
-import sequence.Interaction;
+import model.Model;
+import model.sequence.Interaction;
 
 
 
@@ -20,6 +21,7 @@ public class Main {
 		inputFileName = "in/" + inputFileName;
 
 		//Parser.loadXMI("UML4Java");
+		
 
 		Parser.loadXMI(inputFileName);
 
