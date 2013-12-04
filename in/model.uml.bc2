@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_-Df1IFkcEeOlPIhq3_7agw" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_-sSTcFkcEeOlPIhq3_7agw" name="Agenda" classifierBehavior="_7nzZUFkdEeOlPIhq3_7agw">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Cxvs8FkdEeOlPIhq3_7agw" name="contato" type="__EsMYFkcEeOlPIhq3_7agw" association="_CxwUAFkdEeOlPIhq3_7agw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Cxvs8VkdEeOlPIhq3_7agw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Cxvs8lkdEeOlPIhq3_7agw" value="*"/>
+    </ownedAttribute>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_7nzZUFkdEeOlPIhq3_7agw" name="addContato" specification="_xwFtUFkdEeOlPIhq3_7agw">
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gBIi0FkeEeOlPIhq3_7agw" name="criaContato_MessageSend" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_gBDqUFkeEeOlPIhq3_7agw"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gBJJ4FkeEeOlPIhq3_7agw" name="criaContato_MessageRecv" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_gBDqUFkeEeOlPIhq3_7agw"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_OgwcUFkeEeOlPIhq3_7agw" name="Lifeline" represents="_Cxvs8FkdEeOlPIhq3_7agw" coveredBy="_gBIi0FkeEeOlPIhq3_7agw _gBJJ4FkeEeOlPIhq3_7agw"/>
+      <message xmi:type="uml:Message" xmi:id="_gBDqUFkeEeOlPIhq3_7agw" name="1:criaContato_Message" messageSort="asynchCall" receiveEvent="_gBJJ4FkeEeOlPIhq3_7agw" sendEvent="_gBIi0FkeEeOlPIhq3_7agw" signature="_Y54zUFkeEeOlPIhq3_7agw"/>
+    </ownedBehavior>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xwFtUFkdEeOlPIhq3_7agw" name="addContato" method="_7nzZUFkdEeOlPIhq3_7agw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__EsMYFkcEeOlPIhq3_7agw" name="Contato">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Y54zUFkeEeOlPIhq3_7agw" name="criaContato"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CxwUAFkdEeOlPIhq3_7agw" name="contatos" memberEnd="_CxwUAVkdEeOlPIhq3_7agw _Cxvs8FkdEeOlPIhq3_7agw">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CxwUAVkdEeOlPIhq3_7agw" name="agenda" type="_-sSTcFkcEeOlPIhq3_7agw" association="_CxwUAFkdEeOlPIhq3_7agw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CxwUAlkdEeOlPIhq3_7agw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CxwUA1kdEeOlPIhq3_7agw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

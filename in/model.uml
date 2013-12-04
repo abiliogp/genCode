@@ -8,8 +8,29 @@
     <ownedBehavior xmi:type="uml:Interaction" xmi:id="_7nzZUFkdEeOlPIhq3_7agw" name="addContato" specification="_xwFtUFkdEeOlPIhq3_7agw">
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gBIi0FkeEeOlPIhq3_7agw" name="criaContato_MessageSend" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_gBDqUFkeEeOlPIhq3_7agw"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gBJJ4FkeEeOlPIhq3_7agw" name="criaContato_MessageRecv" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_gBDqUFkeEeOlPIhq3_7agw"/>
-      <lifeline xmi:type="uml:Lifeline" xmi:id="_OgwcUFkeEeOlPIhq3_7agw" name="Lifeline" represents="_Cxvs8FkdEeOlPIhq3_7agw" coveredBy="_gBIi0FkeEeOlPIhq3_7agw _gBJJ4FkeEeOlPIhq3_7agw"/>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_EhHNAFw3EeOeI6dXmiZLAA" name="CombinedFragment" covered="_OgwcUFkeEeOlPIhq3_7agw" interactionOperator="loop">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_EhJpQFw3EeOeI6dXmiZLAA" name="InteractionOperand" covered="_OgwcUFkeEeOlPIhq3_7agw">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_EhJpQVw3EeOeI6dXmiZLAA" name="">
+            <specification xmi:type="uml:LiteralString" xmi:id="_EhKQUFw3EeOeI6dXmiZLAA" value="n &lt; 100"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_EhKQUlw3EeOeI6dXmiZLAA" value="1"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_EhKQUVw3EeOeI6dXmiZLAA"/>
+          </guard>
+          <fragment xmi:type="uml:CombinedFragment" xmi:id="_SQxosFw8EeOeI6dXmiZLAA" name="CombinedFragment" covered="_OgwcUFkeEeOlPIhq3_7agw" interactionOperator="opt">
+            <operand xmi:type="uml:InteractionOperand" xmi:id="_SQyPwFw8EeOeI6dXmiZLAA" name="InteractionOperand" covered="_OgwcUFkeEeOlPIhq3_7agw">
+              <guard xmi:type="uml:InteractionConstraint" xmi:id="_SQy20Fw8EeOeI6dXmiZLAA" name="n == ">
+                <specification xmi:type="uml:LiteralString" xmi:id="_SQy20Vw8EeOeI6dXmiZLAA" name="n == 1" value="n == 1"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_SQy201w8EeOeI6dXmiZLAA" value="1"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_SQy20lw8EeOeI6dXmiZLAA"/>
+              </guard>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lLInoFxBEeOeI6dXmiZLAA" name="criaContato_MessageSend" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_lLHZgFxBEeOeI6dXmiZLAA"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lLJOsFxBEeOeI6dXmiZLAA" name="criaContato_MessageRecv" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_lLHZgFxBEeOeI6dXmiZLAA"/>
+            </operand>
+          </fragment>
+        </operand>
+      </fragment>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_OgwcUFkeEeOlPIhq3_7agw" name="Lifeline" represents="_Cxvs8FkdEeOlPIhq3_7agw" coveredBy="_gBIi0FkeEeOlPIhq3_7agw _gBJJ4FkeEeOlPIhq3_7agw _EhHNAFw3EeOeI6dXmiZLAA _EhJpQFw3EeOeI6dXmiZLAA _SQxosFw8EeOeI6dXmiZLAA _SQyPwFw8EeOeI6dXmiZLAA _lLInoFxBEeOeI6dXmiZLAA _lLJOsFxBEeOeI6dXmiZLAA"/>
       <message xmi:type="uml:Message" xmi:id="_gBDqUFkeEeOlPIhq3_7agw" name="1:criaContato_Message" messageSort="asynchCall" receiveEvent="_gBJJ4FkeEeOlPIhq3_7agw" sendEvent="_gBIi0FkeEeOlPIhq3_7agw" signature="_Y54zUFkeEeOlPIhq3_7agw"/>
+      <message xmi:type="uml:Message" xmi:id="_lLHZgFxBEeOeI6dXmiZLAA" name="2:criaContato_Message" messageSort="asynchCall" receiveEvent="_lLJOsFxBEeOeI6dXmiZLAA" sendEvent="_lLInoFxBEeOeI6dXmiZLAA" signature="_Y54zUFkeEeOlPIhq3_7agw"/>
     </ownedBehavior>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_xwFtUFkdEeOlPIhq3_7agw" name="addContato" method="_7nzZUFkdEeOlPIhq3_7agw"/>
   </packagedElement>

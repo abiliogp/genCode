@@ -1,6 +1,9 @@
 package gencode;
 
 
+import generator.generatorStrategy;
+import generator.Android.ClasseAndroid;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,28 +18,31 @@ import utilities.Tool;
 
 public class Classe {
 
-	private String name;
-
-	private Pacote pacote;
-	private String general;
-	private String visibility;
-
-	private boolean abstrata;
-	private boolean ativa;
-
-	private ArrayList<Classe> listInnerClass;
-	private ArrayList<Atributte> listAtributte;
-	private ArrayList<Method> listMethod;
-	private ArrayList<Associacao> listAssociacao;
-	private ArrayList<Operation> listOperacao;
-	private ArrayList<Interaction> listInteraction;
-	private ArrayList<RealizationInterface> listRealInter;
-	private ArrayList<Atributte> listStereotype;
+	private generatorStrategy generator;
 	
-	private boolean needImport;
-	private boolean needGetSet;
+	
+	public String name;
 
-	private boolean generalActivity;
+	public Pacote pacote;
+	public String general;
+	public String visibility;
+
+	public boolean abstrata;
+	public boolean ativa;
+
+	public ArrayList<Classe> listInnerClass;
+	public ArrayList<Atributte> listAtributte;
+	public ArrayList<Method> listMethod;
+	public ArrayList<Associacao> listAssociacao;
+	public ArrayList<Operation> listOperacao;
+	public ArrayList<Interaction> listInteraction;
+	public ArrayList<RealizationInterface> listRealInter;
+	public ArrayList<Atributte> listStereotype;
+	
+	public boolean needImport;
+	public boolean needGetSet;
+
+	public boolean generalActivity;
 
 	
 
@@ -234,6 +240,11 @@ public class Classe {
 	}
 
 	public void genCode() throws IOException {
+		generator = new ClasseAndroid(this);
+		generator.codeGenerator();
+	}
+	
+	public void genCode2() throws IOException {
 		try {
 			if (Android.Classes.valueOf(name) != null) {
 				return;
@@ -273,7 +284,7 @@ public class Classe {
 	 * @param tab
 	 * @throws IOException
 	 */
-	private void genInnerClass(BufferedWriter out, int tab) throws IOException {
+	public void genInnerClass(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		// Name Class and General
 		out.write("\n" + tabInd + visibility
