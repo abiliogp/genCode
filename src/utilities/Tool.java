@@ -11,7 +11,7 @@ import model.sequence.Interaction;
 import model.sequence.Lifeline;
 import model.sequence.Message;
 import model.sequence.OperationEvent;
-import model.structure.Atributte;
+import model.structure.Attribute;
 import model.structure.Interface;
 import model.structure.Method;
 import model.structure.Operation;
@@ -30,7 +30,7 @@ public class Tool {
 		
 	private static TreeMap< String, ArrayList<Method> > trieAbstractMethod = new TreeMap< String, ArrayList<Method> >();
 	
-	private static TreeMap<String, Atributte> trieAtributte = new TreeMap<String, Atributte>();
+	private static TreeMap<String, Attribute> trieAtributte = new TreeMap<String, Attribute>();
 	
 	private static TreeMap<String, Operation> trieOperation = new TreeMap<String, Operation>();
 	
@@ -140,7 +140,7 @@ public class Tool {
 		trieMethod.put(name, metodo);
 	}
 	
-	public static void putTrieAtributte(String key, Atributte atributte){
+	public static void putTrieAtributte(String key, Attribute atributte){
 		trieAtributte.put(key, atributte);
 	}
 	
@@ -171,7 +171,7 @@ public class Tool {
 		return name == null ? null : trieMethod.get(name);
 	}
 	
-	public static Atributte getTrieAtributte(String key){
+	public static Attribute getTrieAtributte(String key){
 		return key == null ? null : trieAtributte.get(key);
 	}
 	

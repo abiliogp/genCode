@@ -8,7 +8,7 @@ import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
 
-public class Atributte extends DataModel {
+public class Attribute extends DataStructure {
 
 	private String aggregation;
 	private String defautlValue;
@@ -18,7 +18,7 @@ public class Atributte extends DataModel {
 	private boolean hasGetMethod;
 	private boolean hasSetMethod;
 	
-	public Atributte(String name) {
+	public Attribute(String name) {
 		super(name);
 		this.aggregation = "simple";
 	}
@@ -245,7 +245,7 @@ public class Atributte extends DataModel {
 		String key, value;
 		key = Tool.manipulate(line, "xmi:id");
 		value = Tool.manipulate(line, "name=");
-		Atributte atributte = new Atributte(value);
+		Attribute atributte = new Attribute(value);
 		Tool.putTrieAtributte(key,  atributte);
 	}
 

@@ -21,7 +21,7 @@ public class Interface {
 	private boolean abstrata;
 	private boolean ativa;
 	
-	private ArrayList<Atributte> listAtributte;
+	private ArrayList<Attribute> listAtributte;
 	private ArrayList<Method> listMetodo;
 	private ArrayList<Operation> listOperacao;
 	
@@ -32,7 +32,7 @@ public class Interface {
 		abstrata = false;
 		ativa = false;
 		needImport = false;
-		listAtributte = new ArrayList<Atributte>();
+		listAtributte = new ArrayList<Attribute>();
 		listMetodo = new ArrayList<Method>();
 		listOperacao = new ArrayList<Operation>(); 
 	}
@@ -66,7 +66,7 @@ public class Interface {
 	}
 	
 	public void genCode() throws IOException{
-		File inter = new File(Parser.getModel().getFile() ,name.concat(".java"));
+		File inter = new File("out/" + Parser.getModel().getName() ,name.concat(".java"));
 		BufferedWriter out = new BufferedWriter( new FileWriter(inter));
 		
 		out.write("\n" + this.visibility + " interface " + name  + "{");
@@ -142,7 +142,7 @@ public class Interface {
 				if (line.contains("<ownedAttribute")) {
 					key = Tool.manipulate(line, "xmi:id=");
 					value = Tool.manipulate(line, "name");
-					Atributte atributte = new Atributte(value);
+					Attribute atributte = new Attribute(value);
 					listAtributte.add(atributte);
 					needImport = atributte.parser(bf, line); 
 					Tool.putTrieAtributte(key, atributte);

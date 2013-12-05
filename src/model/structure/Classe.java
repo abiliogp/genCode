@@ -1,7 +1,6 @@
 package model.structure;
 
-
-import generator.generatorStrategy;
+import generator.GeneratorStrategy;
 import generator.Android.ClasseAndroid;
 
 import java.io.BufferedReader;
@@ -16,67 +15,80 @@ import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
 
-public class Classe {
+public class Classe extends DataStructure {
 
-	private generatorStrategy generator;
-	
-	
-	public String name;
+	private GeneratorStrategy generator;
 
 	public Pacote pacote;
 	public String general;
-	public String visibility;
 
-	public boolean abstrata;
 	public boolean ativa;
 
 	public ArrayList<Classe> listInnerClass;
-	public ArrayList<Atributte> listAtributte;
-	public ArrayList<Method> listMethod;
+	private ArrayList<Attribute> attributes;
+	private ArrayList<Method> methods;
 	public ArrayList<Associacao> listAssociacao;
 	public ArrayList<Operation> listOperacao;
 	public ArrayList<Interaction> listInteraction;
 	public ArrayList<RealizationInterface> listRealInter;
-	public ArrayList<Atributte> listStereotype;
-	
+	public ArrayList<Attribute> listStereotype;
+
 	public boolean needImport;
 	public boolean needGetSet;
 
 	public boolean generalActivity;
 
-	
-
-
 	public Classe(String name) {
-
-		this.name = name;
-
-		visibility = "public";
-		abstrata = false;
+		super(name);
 		ativa = false;
 		general = null;
 		listInnerClass = new ArrayList<Classe>();
-		listAtributte = new ArrayList<Atributte>();
-		listStereotype = new ArrayList<Atributte>();
-		listMethod = new ArrayList<Method>();
+		attributes = new ArrayList<Attribute>();
+		listStereotype = new ArrayList<Attribute>();
+		methods = new ArrayList<Method>();
 		listAssociacao = new ArrayList<Associacao>();
 		listOperacao = new ArrayList<Operation>();
 		listInteraction = new ArrayList<Interaction>();
 		listRealInter = new ArrayList<RealizationInterface>();
 	}
 
-	public boolean isAbstract() {
-		return this.abstrata;
+	// Operation
+	public void addOperation(Operation operation) {
+
+		this.listOperacao.add(operation);
 	}
 
-	public boolean isActive() {
-		return this.ativa;
+	// Atributo
+	public void addAtributo(String name, String key) {
+		Attribute atributte = new Attribute(name);
+		this.attributes.add(atributte);
+		Tool.putTrieAtributte(key, atributte);
 	}
 
-	public void setAbstract(boolean abstrata) {
-		this.abstrata = abstrata;
+	// Metodo
+	public void addMetodo(String name, String key) {
+		Method metodo = new Method(name);
+		this.methods.add(metodo);
+		Tool.putTrieMetodo(key, metodo);
 	}
 
+	/*
+	 * Interaction
+	 */
+	public void addInteraction(Interaction interaction) {
+		listInteraction.add(interaction);
+	}
+	
+	// Associação
+	public void addAssociacao(String nameAssoc) {
+		this.listAssociacao.add(new Associacao(nameAssoc));
+	}
+
+	public void addAssociacao(Associacao assoc) {
+		this.listAssociacao.add(assoc);
+	}
+	
+	
 	public void setActive(boolean ativa) {
 		this.ativa = ativa;
 	}
@@ -88,11 +100,19 @@ public class Classe {
 	public void setNeedGetSet(boolean needGetSet) {
 		this.needGetSet = needGetSet;
 	}
+	
+	// General
+	public void setGeneral(String general) {
+		this.general = general;
+	}
 
-	// Operation
-	public void addOperation(Operation operation) {
+	public void setPacote(Pacote pacote) {
+		this.pacote = pacote;
+	}
 
-		this.listOperacao.add(operation);
+
+	public boolean isActive() {
+		return this.ativa;
 	}
 
 	public Operation getLastOperation() {
@@ -104,64 +124,32 @@ public class Classe {
 		return this.listOperacao.get(index);
 	}
 
-	// Visibilidade
-	public void setVisibility(String visibility) {
+	public Attribute getLastAtributo() {
 
-		this.visibility = visibility;
+		return this.attributes.get(this.attributes.size() - 1);
 	}
 
-	public String getVisibility() {
-
-		return this.visibility;
+	public Attribute getIndexOfAtributo(int index) {
+		return this.attributes.get(index);
 	}
 
-	// Atributo
-	public void addAtributo(String name, String key) {
-		Atributte atributte = new Atributte(name);
-		this.listAtributte.add(atributte);
-		Tool.putTrieAtributte(key, atributte);
+	public ArrayList<Attribute> getAttributes(){
+		return this.attributes;
 	}
-
-	public Atributte getLastAtributo() {
-
-		return this.listAtributte.get(this.listAtributte.size() - 1);
-	}
-
-	public Atributte getIndexOfAtributo(int index) {
-
-		return this.listAtributte.get(index);
-	}
-
-	// Metodo
-	public void addMetodo(String name, String key) {
-		Method metodo = new Method(name);
-		this.listMethod.add(metodo);
-		Tool.putTrieMetodo(key, metodo);
-	}
-
+	
 	public Method getLastMetodo() {
-
-		return this.listMethod.get(this.listMethod.size() - 1);
+		return this.methods.get(this.methods.size() - 1);
 	}
 
 	public Method getIndexOfMetodo(int index) {
-
-		return this.listMethod.get(index);
+		return this.methods.get(index);
 	}
-
-	// Associação
-	public void addAssociacao(String nameAssoc) {
-
-		this.listAssociacao.add(new Associacao(nameAssoc));
-	}
-
-	public void addAssociacao(Associacao assoc) {
-
-		this.listAssociacao.add(assoc);
+	
+	public ArrayList<Method> getMethods(){
+		return this.methods;
 	}
 
 	public Associacao getLastAssociacao() {
-
 		return this.listAssociacao.get(this.listAssociacao.size() - 1);
 	}
 
@@ -169,34 +157,15 @@ public class Classe {
 		return this.listAssociacao.get(index);
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
-	// General
-
-	public void setGeneral(String general) {
-		this.general = general;
-	}
-
 	public String getGeneral() {
 		return this.general;
-	}
-
-	public void setPacote(Pacote pacote) {
-		this.pacote = pacote;
 	}
 
 	public Pacote getPacote() {
 		return this.pacote;
 	}
 
-	/*
-	 * Interaction
-	 */
-	public void addInteraction(Interaction interaction) {
-		listInteraction.add(interaction);
-	}
+	
 
 	public void printProp() {
 
@@ -206,7 +175,7 @@ public class Classe {
 		}
 		System.out.println("Classe: " + this.name);
 		System.out.println("\tVisibilidade: " + this.visibility);
-		if (this.abstrata) {
+		if (this.isAbstract) {
 			System.out.println("\tClasse Abstrata");
 		}
 		if (this.ativa) {
@@ -221,12 +190,12 @@ public class Classe {
 			this.listInnerClass.get(i).printProp();
 		}
 
-		for (int i = 0; i < this.listAtributte.size(); i++) {
-			this.listAtributte.get(i).printProp();
+		for (int i = 0; i < this.attributes.size(); i++) {
+			this.attributes.get(i).printProp();
 		}
 
-		for (int i = 0; i < this.listMethod.size(); i++) {
-			this.listMethod.get(i).printProp();
+		for (int i = 0; i < this.methods.size(); i++) {
+			this.methods.get(i).printProp();
 		}
 
 		for (int i = 0; i < this.listAssociacao.size(); i++) {
@@ -240,17 +209,19 @@ public class Classe {
 	}
 
 	public void genCode() throws IOException {
+
 		generator = new ClasseAndroid(this);
 		generator.codeGenerator();
 	}
-	
+
+	//
 	public void genCode2() throws IOException {
 		try {
 			if (Android.Classes.valueOf(name) != null) {
 				return;
 			}
 		} catch (java.lang.IllegalArgumentException ex) {
-			File cls = new File(Parser.getModel().getFile(),
+			File cls = new File(Parser.getModel().getName(),
 					name.concat(".java"));
 			BufferedWriter out = new BufferedWriter(new FileWriter(cls));
 			// Pacote
@@ -262,18 +233,18 @@ public class Classe {
 				}
 			}
 			// Imports
-			if(this.generalActivity) {
+			if (this.generalActivity) {
 				out.write("import android.app.Activity;\n");
 			}
 			if (needImport) {
 				out.write("import java.util.ArrayList;\n");
 			}
-			if(!listStereotype.isEmpty()){
-				for(int i=0 ; i < listStereotype.size() ; i++){
+			if (!listStereotype.isEmpty()) {
+				for (int i = 0; i < listStereotype.size(); i++) {
 					listStereotype.get(i).genCodeImports(out);
 				}
 			}
-			
+
 			genInnerClass(out, 0);
 			out.close();
 		}
@@ -288,8 +259,8 @@ public class Classe {
 		String tabInd = Tool.indentation(tab);
 		// Name Class and General
 		out.write("\n" + tabInd + visibility
-				+ (abstrata == true ? " abstract " : " ") + "class " + name
-				+ (general != null ? " extends " + general : ""));
+				+ (this.isAbstract == true ? " abstract " : " ") + "class "
+				+ name + (general != null ? " extends " + general : ""));
 
 		// Implements
 		if (listRealInter.size() > 0) {
@@ -305,42 +276,42 @@ public class Classe {
 		out.write("{");
 
 		// Atributos
-		if (this.listAtributte.size() > 0) {
+		if (this.attributes.size() > 0) {
 			out.write("\n" + tabInd + "\t/**Attributes */");
-			for (int i = 0; i < listAtributte.size(); i++) {
-				this.listAtributte.get(i).genCode(out, tab + 1);
+			for (int i = 0; i < attributes.size(); i++) {
+				this.attributes.get(i).genCode(out, tab + 1);
 			}
 		}
 
 		// Atributos Return dos Métodos
-//		for (int i = 0; i < listMethod.size(); i++) {
-//			if (!((listMethod.get(i).getName().substring(0, 3).equals("get")) || (listMethod
-//					.get(i).getName().substring(0, 3).equals("set")))) {
-//				if (listMethod.get(i).getListReturn().size() > 0) {
-//					out.write("\n" + tabInd + "/**Attribute of Return Method "
-//							+ listMethod.get(i).getName() + " */");
-//					for (int j = 0; j < listMethod.get(i).getListReturn()
-//							.size(); j++) {
-//						listMethod.get(i).getListReturn().get(j)
-//								.genCodeReturn(out);
-//					}
-//				}
-//			}
-//		}
-		
-		
+		// for (int i = 0; i < listMethod.size(); i++) {
+		// if (!((listMethod.get(i).getName().substring(0, 3).equals("get")) ||
+		// (listMethod
+		// .get(i).getName().substring(0, 3).equals("set")))) {
+		// if (listMethod.get(i).getListReturn().size() > 0) {
+		// out.write("\n" + tabInd + "/**Attribute of Return Method "
+		// + listMethod.get(i).getName() + " */");
+		// for (int j = 0; j < listMethod.get(i).getListReturn()
+		// .size(); j++) {
+		// listMethod.get(i).getListReturn().get(j)
+		// .genCodeReturn(out);
+		// }
+		// }
+		// }
+		// }
+
 		// Atributtes from Interface
 		for (int i = 0; i < listRealInter.size(); i++) {
 			listRealInter.get(i).genCodeAtributte(out);
 		}
 
 		// Construtor
-		if (!(this.abstrata)) {
+		if (!(this.isAbstract)) {
 			out.write("\n\n" + tabInd + "\t/** Constructor */");
 			out.write("\n" + tabInd + "\tpublic " + name + "(");
-			for (int i = 0; i < listAtributte.size(); i++) {
-				listAtributte.get(i).genCodeConstructorSignature(out);
-				if (i < listAtributte.size() - 1) {
+			for (int i = 0; i < attributes.size(); i++) {
+				attributes.get(i).genCodeConstructorSignature(out);
+				if (i < attributes.size() - 1) {
 					out.write(",");
 				}
 			}
@@ -348,40 +319,38 @@ public class Classe {
 			if (general != null) {
 				out.write("\n" + tabInd + "\t\tsuper();");
 			}
-			for (int i = 0; i < listAtributte.size(); i++) {
-				this.listAtributte.get(i).genCodeConstructor(out);
+			for (int i = 0; i < attributes.size(); i++) {
+				this.attributes.get(i).genCodeConstructor(out);
 			}
 			out.write("\n" + tabInd + "\t}\n");
 		}
 
-
 		// Get
 		if (needGetSet) {
 			out.write("\n" + tabInd + "\t/** Get */");
-			for (int i = 0; i < listAtributte.size(); i++) {
-				listAtributte.get(i).genCodeGet(out, tab+1);
+			for (int i = 0; i < attributes.size(); i++) {
+				attributes.get(i).genCodeGet(out, tab + 1);
 			}
 		}
 
 		// Set
 		if (needGetSet) {
 			out.write("\n" + tabInd + "\t/** Set */");
-			for (int i = 0; i < listAtributte.size(); i++) {
-				listAtributte.get(i).genCodeSet(out,tab+1);
+			for (int i = 0; i < attributes.size(); i++) {
+				attributes.get(i).genCodeSet(out, tab + 1);
 			}
 		}
 
-		// Metodo 
-		if (listMethod.size() > 0) {
+		// Metodo
+		if (methods.size() > 0) {
 			out.write("\n" + tabInd + "\t/** Methods */");
-			for (int i = 0; i < this.listMethod.size(); i++) {
+			for (int i = 0; i < this.methods.size(); i++) {
 				try {
-					if (Android.Methods.valueOf(listMethod.get(i)
-							.getName()) != null) {
-						listMethod.get(i).genCodeAndroid(name, out, tab + 1);
+					if (Android.Methods.valueOf(methods.get(i).getName()) != null) {
+						methods.get(i).genCodeAndroid(name, out, tab + 1);
 					}
 				} catch (java.lang.IllegalArgumentException ex) {
-					listMethod.get(i).genCode(out, tab + 1);
+					methods.get(i).genCode(out, tab + 1);
 				}
 			}
 		}
@@ -401,11 +370,11 @@ public class Classe {
 			listRealInter.get(i).genCodeMethods(out);
 		}
 
-		//Inner Class
+		// Inner Class
 		for (int i = 0; i < listInnerClass.size(); i++) {
 			listInnerClass.get(i).genInnerClass(out, tab + 1);
 		}
-		
+
 		out.write("\n" + tabInd + "}");
 
 	}
@@ -418,7 +387,7 @@ public class Classe {
 		}
 
 		if (line.contains("isAbstract=")) {
-			abstrata = true;
+			this.isAbstract(true);
 		}
 
 		if (line.contains("classifierBehavior=")) {
@@ -436,9 +405,8 @@ public class Classe {
 		if (line.contains("/>")) {
 			line = "</packagedElement";
 		} else {
-			for (line = bf.readLine(); 
-					!((line.contains("</packagedElement")) || (line.contains("</nestedClassifier"))); 
-					line = bf.readLine()) {
+			for (line = bf.readLine(); !((line.contains("</packagedElement")) || (line
+					.contains("</nestedClassifier"))); line = bf.readLine()) {
 				if (line.contains("<generalization")) {
 					key = Tool.manipulate(line, "general=");
 					value = Tool.getTrieID(key);
@@ -455,25 +423,25 @@ public class Classe {
 						innerClass.parser(bf, line);
 					}
 					if (line.contains("uml:Stereotype")) {
-						Atributte stereotype = new Atributte(value);
+						Attribute stereotype = new Attribute(value);
 						listStereotype.add(stereotype);
 						Tool.putTrieAtributte(key, stereotype);
-						if(!line.contains("/>")) {
-							for (line = bf.readLine(); 
-									!line.contains("</nestedClassifier");
-									line = bf.readLine()) {
+						if (!line.contains("/>")) {
+							for (line = bf.readLine(); !line
+									.contains("</nestedClassifier"); line = bf
+									.readLine()) {
 							}
 						}
 					}
 				}
-				
+
 				/*
 				 * Atributo
 				 */
 				if (line.contains("<ownedAttribute")) {
 					key = Tool.manipulate(line, "xmi:id=");
-					Atributte atributte = Tool.getTrieAtributte(key);
-					listAtributte.add(atributte);
+					Attribute atributte = Tool.getTrieAtributte(key);
+					attributes.add(atributte);
 					needImport = atributte.parser(bf, line);
 				}
 				/*
@@ -482,7 +450,7 @@ public class Classe {
 				if (line.contains("<ownedOperation")) {
 					key = Tool.manipulate(line, "xmi:id=");
 					Method metodo = Tool.getTrieMetodo(key);
-					listMethod.add(metodo);
+					methods.add(metodo);
 					metodo.parser(bf, line);
 				}
 

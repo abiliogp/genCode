@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 import model.Model;
-import generator.generatorStrategy;
+import model.structure.Classe;
+import model.structure.Interface;
+import generator.GeneratorStrategy;
 
-public class ModelAndroid implements generatorStrategy{
+public class ModelAndroid implements GeneratorStrategy{
 
 	
 	private Model model;
@@ -19,14 +21,15 @@ public class ModelAndroid implements generatorStrategy{
 	@Override
 	public void codeGenerator() throws IOException {
 		System.out.println("strategy model");
-		
-		dir = new File("./out/" + model.getName());
+
+		dir = new File("out/" + model.getName());
 		dir.mkdir();
-		for(int i = 0; i < model.getListClasse().size(); i++){
-			model.getListClasse().get(i).genCode();
+		for(Classe classe :  model.getListClasse()){
+			classe.genCode();
 		}
-		for(int i = 0; i < model.getListInterface().size(); i++){
-			model.getListInterface().get(i).genCode();
+		
+		for(Interface inter : model.getListInterface()){
+			inter.genCode();
 		}	
 	}
 

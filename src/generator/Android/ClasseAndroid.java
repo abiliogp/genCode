@@ -5,15 +5,17 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import model.structure.Attribute;
 import model.structure.Classe;
+import model.structure.Method;
 import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
-import generator.generatorStrategy;
+import generator.GeneratorStrategy;
 
 
 
-public class ClasseAndroid implements generatorStrategy{
+public class ClasseAndroid implements GeneratorStrategy{
 
 	private Classe classe;
 
@@ -24,22 +26,19 @@ public class ClasseAndroid implements generatorStrategy{
 		this.classe = classe;
 	}
 
+	
+
 
 	@Override
 	public void codeGenerator() throws IOException {
 		System.out.println("strategy classe");
-		 genCode();
 		
-	}
-	
-	
-	public void genCode() throws IOException {
 		try {
-			if (Android.Classes.valueOf(classe.name) != null) {
+			if (Android.Classes.valueOf(classe.getName()) != null) {
 				return;
 			}
 		} catch (java.lang.IllegalArgumentException ex) {
-			File cls = new File(Parser.getModel().getFile(),
+			File cls = new File("out/" + Parser.getModel().getName(),
 					classe.getName().concat(".java"));
 			BufferedWriter out = new BufferedWriter(new FileWriter(cls));
 			// Pacote
@@ -67,6 +66,8 @@ public class ClasseAndroid implements generatorStrategy{
 			out.close();
 		}
 	}
+	
+	
 
 	/**
 	 * @param out
@@ -76,8 +77,8 @@ public class ClasseAndroid implements generatorStrategy{
 	public void genInnerClass(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		// Name Class and General
-		out.write("\n" + tabInd + classe.visibility
-				+ (classe.abstrata == true ? " abstract " : " ") + "class " + classe.name
+		out.write("\n" + tabInd + classe.getVisibility()
+				+ (classe.isAbstract() == true ? " abstract " : " ") + "class " + classe.getName()
 				+ (classe.general != null ? " extends " + classe.general : ""));
 
 		// Implements
@@ -94,10 +95,10 @@ public class ClasseAndroid implements generatorStrategy{
 		out.write("{");
 
 		// Atributos
-		if (classe.listAtributte.size() > 0) {
+		if (classe.getAttributes().size() > 0) {
 			out.write("\n" + tabInd + "\t/**Attributes */");
-			for (int i = 0; i < classe.listAtributte.size(); i++) {
-				classe.listAtributte.get(i).genCode(out, tab + 1);
+			for (Attribute atr : classe.getAttributes()) {
+				atr.genCode(out, tab + 1);
 			}
 		}
 
@@ -124,12 +125,14 @@ public class ClasseAndroid implements generatorStrategy{
 		}
 
 		// Construtor
-		if (!(classe.abstrata)) {
+		if (!(classe.isAbstract())) {
 			out.write("\n\n" + tabInd + "\t/** Constructor */");
-			out.write("\n" + tabInd + "\tpublic " + classe.name + "(");
-			for (int i = 0; i < classe.listAtributte.size(); i++) {
-				classe.listAtributte.get(i).genCodeConstructorSignature(out);
-				if (i < classe.listAtributte.size() - 1) {
+			out.write("\n" + tabInd + "\tpublic " + classe.getName() + "(");
+			int i=0;
+			for (Attribute atr : classe.getAttributes()) {
+				atr.genCodeConstructorSignature(out);
+				i++;
+				if (i < classe.getAttributes().size() - 1) {
 					out.write(",");
 				}
 			}
@@ -137,8 +140,8 @@ public class ClasseAndroid implements generatorStrategy{
 			if (classe.general != null) {
 				out.write("\n" + tabInd + "\t\tsuper();");
 			}
-			for (int i = 0; i < classe.listAtributte.size(); i++) {
-				classe.listAtributte.get(i).genCodeConstructor(out);
+			for (Attribute atr : classe.getAttributes()) {
+				atr.genCodeConstructor(out);
 			}
 			out.write("\n" + tabInd + "\t}\n");
 		}
@@ -147,30 +150,29 @@ public class ClasseAndroid implements generatorStrategy{
 		// Get
 		if (classe.needGetSet) {
 			out.write("\n" + tabInd + "\t/** Get */");
-			for (int i = 0; i < classe.listAtributte.size(); i++) {
-				classe.listAtributte.get(i).genCodeGet(out, tab+1);
+			for (Attribute atr : classe.getAttributes()) {
+				atr.genCodeGet(out, tab+1);
 			}
 		}
 
 		// Set
 		if (classe.needGetSet) {
 			out.write("\n" + tabInd + "\t/** Set */");
-			for (int i = 0; i < classe.listAtributte.size(); i++) {
-				classe.listAtributte.get(i).genCodeSet(out,tab+1);
+			for (Attribute atr : classe.getAttributes()) {
+				atr.genCodeSet(out,tab+1);
 			}
 		}
 
 		// Metodo 
-		if (classe.listMethod.size() > 0) {
+		if (classe.getMethods().size() > 0) {
 			out.write("\n" + tabInd + "\t/** Methods */");
-			for (int i = 0; i < classe.listMethod.size(); i++) {
+			for (Method met : classe.getMethods()) {
 				try {
-					if (Android.Methods.valueOf(classe.listMethod.get(i)
-							.getName()) != null) {
-						classe.listMethod.get(i).genCodeAndroid(classe.name, out, tab + 1);
+					if (Android.Methods.valueOf(met.getName()) != null) {
+						met.genCodeAndroid(classe.getName(), out, tab + 1);
 					}
 				} catch (java.lang.IllegalArgumentException ex) {
-					classe.listMethod.get(i).genCode(out, tab + 1);
+					met.genCode(out, tab + 1);
 				}
 			}
 		}
@@ -199,5 +201,7 @@ public class ClasseAndroid implements generatorStrategy{
 
 	}
 
+
+	
 
 }

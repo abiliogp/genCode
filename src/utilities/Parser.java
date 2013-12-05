@@ -11,7 +11,7 @@ import model.sequence.Interaction;
 import model.sequence.OperationEvent;
 import model.structure.AssocPacote;
 import model.structure.Associacao;
-import model.structure.Atributte;
+import model.structure.Attribute;
 import model.structure.Classe;
 import model.structure.Interface;
 import model.structure.Method;
@@ -71,7 +71,7 @@ public abstract class Parser {
 			
 			
 			if(line.contains("<ownedAttribute")){
-				Atributte.load(bf, line);
+				Attribute.load(bf, line);
 			}
 			
 			/*

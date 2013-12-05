@@ -1,6 +1,6 @@
 package model;
 
-import generator.generatorStrategy;
+import generator.GeneratorStrategy;
 import generator.Android.ClasseAndroid;
 import generator.Android.ModelAndroid;
 
@@ -14,20 +14,19 @@ import model.structure.Interface;
 
 public class Model {
 
-	private generatorStrategy generator;
+	private GeneratorStrategy generator;
 	
 	protected String name;
+	
 	
 	protected ArrayList<Classe> listClasse;
 	private ArrayList<Interface> listInterface;
 	
 	private ArrayList<Interaction> listInteraction;
 	
-	private File dir;
 	
 	public Model(String name){
 		this.name = name;
-		
 		listClasse = new ArrayList<Classe>();
 		listInteraction = new ArrayList<Interaction>();
 		listInterface = new ArrayList<Interface>();
@@ -68,8 +67,10 @@ public class Model {
 		return this.name;
 	}
 	
-	public File getFile(){
-		return this.dir;
+	
+	
+	public GeneratorStrategy getStrategy(){
+		return generator;
 	}
 	
 	public void printProp(){
@@ -87,20 +88,10 @@ public class Model {
 	public void genCode() throws IOException{
 		generator = new ModelAndroid(this);
 		generator.codeGenerator();
-	}
-	
-	
-	public void genCode2() throws IOException{
 		
-		dir = new File("out/" + name);
-		dir.mkdir();
-		for(int i = 0; i < listClasse.size(); i++){
-			listClasse.get(i).genCode();
-		}
-		for(int i = 0; i < listInterface.size(); i++){
-			listInterface.get(i).genCode();
-		}
 	}
-
+	
+	
+	
 	
 }

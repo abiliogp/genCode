@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 import utilities.Tool;
 
-public class Associacao extends DataModel {
+public class Associacao extends DataStructure {
 
 	
-	private Atributte member1;
-	private Atributte member2;
+	private Attribute member1;
+	private Attribute member2;
 	
 
 	public Associacao(String name) {
@@ -37,7 +37,7 @@ public class Associacao extends DataModel {
 				if (line.contains("<ownedEnd")) {
 					key = Tool.manipulate(line, "xmi:id=");
 					value = Tool.manipulate(line, "name");
-					Atributte atributte = new Atributte(value);
+					Attribute atributte = new Attribute(value);
 					//listAtributte.add(atributte);
 					//boolean needImport = atributte.parser(bf, line);
 					

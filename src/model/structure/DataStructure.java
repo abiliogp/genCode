@@ -2,7 +2,7 @@ package model.structure;
 
 import utilities.Tool;
 
-public abstract class DataModel {
+public abstract class DataStructure {
 
 	protected String name;
 
@@ -14,12 +14,14 @@ public abstract class DataModel {
 	
 	protected boolean visbPrivate;
 	protected boolean isStatic;
-
+	protected boolean isAbstract;
 	protected String tabInd;
 	protected int tab;
 	
-	public DataModel(String name) {
+	
+	public DataStructure(String name) {
 		this.name = name;
+		this.isAbstract = false;
 		this.visibility = "public";
 		this.upperValue = '-';
 		this.lowerValue = '-';
@@ -50,6 +52,9 @@ public abstract class DataModel {
 		this.type = type;
 	}
 
+	public void isAbstract(boolean isAbstract) {
+		this.isAbstract = isAbstract;
+	}
 	
 	
 	// get
@@ -75,6 +80,9 @@ public abstract class DataModel {
 		return this.type;
 	}
 
+	public boolean isAbstract() {
+		return this.isAbstract;
+	}
 	
 	/**
 	 * Função auxiliar: parserAtribute, parserParameter, parserReturn

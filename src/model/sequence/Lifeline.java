@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import model.structure.Atributte;
+import model.structure.Attribute;
 import model.structure.Parametro;
 import utilities.Tool;
 
@@ -15,7 +15,7 @@ public class Lifeline extends DataSequence{
 	/*
 	 *Attributes
 	 */
-	private Atributte represents;
+	private Attribute represents;
 	private String parameter;
 	
 	private ArrayList<Fragment> coveredBy;
@@ -34,7 +34,7 @@ public class Lifeline extends DataSequence{
 	/*
 	 *Get
 	 */
-	public Atributte getRepresents(){
+	public Attribute getRepresents(){
 		return this.represents;
 	}
 
@@ -50,7 +50,7 @@ public class Lifeline extends DataSequence{
 	/*
 	 *Set
 	 */
-	public void setRepresents( Atributte represents ){
+	public void setRepresents( Attribute represents ){
 		 this.represents = represents;
 	}
 

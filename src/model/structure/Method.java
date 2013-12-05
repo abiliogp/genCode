@@ -10,7 +10,7 @@ import model.sequence.OperationEvent;
 import utilities.Parser;
 import utilities.Tool;
 
-public class Method extends DataModel {
+public class Method extends DataStructure {
 
 	private ArrayList<Parametro> listParametro;
 	private ArrayList<Operation> listOperacao;

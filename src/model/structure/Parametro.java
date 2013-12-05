@@ -7,7 +7,7 @@ import java.io.IOException;
 import utilities.Parser;
 import utilities.Tool;
 
-public class Parametro extends DataModel {
+public class Parametro extends DataStructure {
 
 	private String direction;
 
