@@ -55,7 +55,7 @@ public class Interface {
 	
 	public void genCodeAtributte(BufferedWriter out) throws IOException{
 		for(int i = 0 ; i < this.listAtributte.size() ; i++){
-			this.listAtributte.get(i).genCode(out, 0);
+			//this.listAtributte.get(i).genCode(out, 0);
 		}
 	}
 	

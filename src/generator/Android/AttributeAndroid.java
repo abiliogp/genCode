@@ -19,12 +19,7 @@ public class AttributeAndroid implements GeneratorStrategy {
 	}
 
 	@Override
-	public void codeGenerator() throws IOException {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void genCode(BufferedWriter out, int tab) throws IOException {
+	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
 		this.tab = tab;
 		tabInd = Tool.indentation(tab);
 		if (attribute.getLowerValue() == '*'
@@ -86,7 +81,7 @@ public class AttributeAndroid implements GeneratorStrategy {
 		}
 	}
 
-	public void genCodeGet(BufferedWriter out, int tab) throws IOException {
+	public void generatorGet(BufferedWriter out, int tab) throws IOException {
 		tabInd = Tool.indentation(tab);
 		// otimização p android
 		if (attribute.hasGetMethod()) {
@@ -116,7 +111,7 @@ public class AttributeAndroid implements GeneratorStrategy {
 		}
 	}
 
-	public void genCodeConstructor(BufferedWriter out) throws IOException {
+	public void generatorConstructor(BufferedWriter out) throws IOException {
 		if (attribute.getLowerValue() == '*'
 				|| attribute.getUpperValue() == '*') {
 			out.write("\n\t\tthis." + attribute.getName() + " = new ArrayList<"
@@ -127,7 +122,7 @@ public class AttributeAndroid implements GeneratorStrategy {
 		}
 	}
 
-	public void genCodeConstructorSignature(BufferedWriter out)
+	public void generatorConstructorSignature(BufferedWriter out)
 			throws IOException {
 		if (attribute.getLowerValue() != '*'
 				&& attribute.getUpperValue() != '*') {

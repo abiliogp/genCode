@@ -1,38 +1,30 @@
 package model.structure;
 
-import generator.GeneratorStrategy;
-import generator.Android.ClasseAndroid;
-
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import model.sequence.Interaction;
-import utilities.Android;
-import utilities.Parser;
 import utilities.Tool;
 
 public class Classe extends DataStructure {
-
-	private GeneratorStrategy generator;
 
 	public Pacote pacote;
 	public String general;
 
 	public boolean ativa;
 
-	public ArrayList<Classe> innerClasses;
+	private ArrayList<Classe> innerClasses;
+	
 	private ArrayList<Attribute> attributes;
+	private ArrayList<Attribute> stereotypes;
 	private ArrayList<Method> methods;
+	
 	public ArrayList<Associacao> listAssociacao;
 	public ArrayList<Operation> listOperacao;
 	public ArrayList<Interaction> listInteraction;
-	public ArrayList<RealizationInterface> listRealInter;
-	public ArrayList<Attribute> listStereotype;
-
+	private ArrayList<RealizationInterface> realInterfaces;
+	
 	public boolean needImport;
 	public boolean needGetSet;
 
@@ -44,12 +36,12 @@ public class Classe extends DataStructure {
 		general = null;
 		innerClasses = new ArrayList<Classe>();
 		attributes = new ArrayList<Attribute>();
-		listStereotype = new ArrayList<Attribute>();
+		stereotypes = new ArrayList<Attribute>();
 		methods = new ArrayList<Method>();
 		listAssociacao = new ArrayList<Associacao>();
 		listOperacao = new ArrayList<Operation>();
 		listInteraction = new ArrayList<Interaction>();
-		listRealInter = new ArrayList<RealizationInterface>();
+		realInterfaces = new ArrayList<RealizationInterface>();
 	}
 
 	// Operation
@@ -137,6 +129,10 @@ public class Classe extends DataStructure {
 		return this.attributes;
 	}
 	
+	public ArrayList<Attribute> getStereotypes(){
+		return this.stereotypes;
+	}
+	
 	public Method getLastMetodo() {
 		return this.methods.get(this.methods.size() - 1);
 	}
@@ -153,6 +149,10 @@ public class Classe extends DataStructure {
 		return this.innerClasses;
 	}
 
+	public ArrayList<RealizationInterface> getRealInterfaces(){
+		return this.realInterfaces;
+	}
+	
 	public Associacao getLastAssociacao() {
 		return this.listAssociacao.get(this.listAssociacao.size() - 1);
 	}
@@ -212,11 +212,7 @@ public class Classe extends DataStructure {
 
 	}
 
-	public void genCode() throws IOException {
-
-		generator = new ClasseAndroid(this);
-		generator.codeGenerator();
-	}
+	
 
 	
 
@@ -265,7 +261,7 @@ public class Classe extends DataStructure {
 					}
 					if (line.contains("uml:Stereotype")) {
 						Attribute stereotype = new Attribute(value);
-						listStereotype.add(stereotype);
+						stereotypes.add(stereotype);
 						Tool.putTrieAtributte(key, stereotype);
 						if (!line.contains("/>")) {
 							for (line = bf.readLine(); !line
@@ -306,7 +302,7 @@ public class Classe extends DataStructure {
 					value = Tool.manipulate(line, "name");
 					RealizationInterface realInter = new RealizationInterface(
 							value);
-					listRealInter.add(realInter);
+					realInterfaces.add(realInter);
 					realInter.parser(bf, line);
 				}
 			}

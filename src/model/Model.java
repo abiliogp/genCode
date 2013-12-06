@@ -4,6 +4,7 @@ import generator.GeneratorStrategy;
 import generator.Android.ClasseAndroid;
 import generator.Android.ModelAndroid;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -85,11 +86,7 @@ public class Model {
 	}
 	
 	
-	public void genCode() throws IOException{
-		generator = new ModelAndroid(this);
-		generator.codeGenerator();
-		
-	}
+	
 	
 	
 	

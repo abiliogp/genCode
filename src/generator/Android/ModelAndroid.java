@@ -1,5 +1,6 @@
 package generator.Android;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 
@@ -10,22 +11,24 @@ import generator.GeneratorStrategy;
 
 public class ModelAndroid implements GeneratorStrategy{
 
-	
 	private Model model;
 	private File dir;
+	
+	private GeneratorStrategy generator;
 	
 	public ModelAndroid(Model model){
 		this.model = model;
 	}
 	
 	@Override
-	public void codeGenerator() throws IOException {
+	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
 		System.out.println("strategy model");
 
 		dir = new File("out/" + model.getName());
 		dir.mkdir();
 		for(Classe classe :  model.getListClasse()){
-			classe.genCode();
+			generator = new ClasseAndroid(classe);
+			generator.codeGenerator(out, tab);
 		}
 		
 		for(Interface inter : model.getListInterface()){

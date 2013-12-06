@@ -8,6 +8,7 @@ import java.io.IOException;
 import model.structure.Attribute;
 import model.structure.Classe;
 import model.structure.Method;
+import model.structure.RealizationInterface;
 import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
@@ -19,10 +20,9 @@ public class ClasseAndroid implements GeneratorStrategy{
 
 	private Classe classe;
 
-	
+	private AttributeAndroid generatorAttribute;
 	
 	public ClasseAndroid(Classe classe) {
-		// TODO Auto-generated constructor stub
 		this.classe = classe;
 	}
 
@@ -30,7 +30,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 
 
 	@Override
-	public void codeGenerator() throws IOException {
+	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
 		System.out.println("strategy classe");
 		
 		try {
@@ -40,7 +40,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 		} catch (java.lang.IllegalArgumentException ex) {
 			File cls = new File("out/" + Parser.getModel().getName(),
 					classe.getName().concat(".java"));
-			BufferedWriter out = new BufferedWriter(new FileWriter(cls));
+			out = new BufferedWriter(new FileWriter(cls));
 			// Pacote
 			if (classe.pacote != null) {
 				out.write("package " + classe.pacote.getName() + ";\n");
@@ -56,12 +56,11 @@ public class ClasseAndroid implements GeneratorStrategy{
 			if (classe.needImport) {
 				out.write("import java.util.ArrayList;\n");
 			}
-			if(!classe.listStereotype.isEmpty()){
-				for(int i=0 ; i < classe.listStereotype.size() ; i++){
-					classe.listStereotype.get(i).genCodeImports(out);
-				}
-			}
 			
+			for(Attribute stereoType : classe.getStereotypes()){
+				stereoType.genCodeImports(out);
+			}
+						
 			genInnerClass(classe, out, 0);
 			out.close();
 		}
@@ -82,11 +81,12 @@ public class ClasseAndroid implements GeneratorStrategy{
 				+ (classe.general != null ? " extends " + classe.general : ""));
 
 		// Implements
-		if (classe.listRealInter.size() > 0) {
+		if (!classe.getRealInterfaces().isEmpty()) {
 			out.write(" implements ");
-			for (int i = 0; i < classe.listRealInter.size(); i++) {
-				out.write(classe.listRealInter.get(i).getNameSupplier());
-				if (i < classe.listRealInter.size() - 1) {
+			int i = 0;
+			for (RealizationInterface realization : classe.getRealInterfaces()) {
+				out.write(realization.getNameSupplier());
+				if (i++ < classe.getRealInterfaces().size() - 1) {
 					out.write(", ");
 				}
 			}
@@ -98,7 +98,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 		if (classe.getAttributes().size() > 0) {
 			out.write("\n" + tabInd + "\t/**Attributes */");
 			for (Attribute atr : classe.getAttributes()) {
-				atr.genCode(out, tab + 1);
+				generatorAttribute = new AttributeAndroid(atr);
+				generatorAttribute.codeGenerator(out, tab + 1);
 			}
 		}
 
@@ -120,8 +121,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 		
 		
 		// Atributtes from Interface
-		for (int i = 0; i < classe.listRealInter.size(); i++) {
-			classe.listRealInter.get(i).genCodeAtributte(out);
+		for (RealizationInterface realization : classe.getRealInterfaces()) {
+			realization.genCodeAtributte(out);
 		}
 
 		// Construtor
@@ -130,9 +131,9 @@ public class ClasseAndroid implements GeneratorStrategy{
 			out.write("\n" + tabInd + "\tpublic " + classe.getName() + "(");
 			int i=0;
 			for (Attribute atr : classe.getAttributes()) {
-				atr.genCodeConstructorSignature(out);
-				i++;
-				if (i < classe.getAttributes().size() - 1) {
+				generatorAttribute = new AttributeAndroid(atr);
+				generatorAttribute.generatorConstructorSignature(out);
+				if (i++ < classe.getAttributes().size() - 1) {
 					out.write(",");
 				}
 			}
@@ -141,7 +142,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 				out.write("\n" + tabInd + "\t\tsuper();");
 			}
 			for (Attribute atr : classe.getAttributes()) {
-				atr.genCodeConstructor(out);
+				generatorAttribute = new AttributeAndroid(atr);
+				generatorAttribute.generatorConstructor(out);
 			}
 			out.write("\n" + tabInd + "\t}\n");
 		}
@@ -151,7 +153,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 		if (classe.needGetSet) {
 			out.write("\n" + tabInd + "\t/** Get */");
 			for (Attribute atr : classe.getAttributes()) {
-				atr.genCodeGet(out, tab+1);
+				generatorAttribute = new AttributeAndroid(atr);
+				generatorAttribute.generatorGet(out, tab+1);
 			}
 		}
 
@@ -159,7 +162,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 		if (classe.needGetSet) {
 			out.write("\n" + tabInd + "\t/** Set */");
 			for (Attribute atr : classe.getAttributes()) {
-				atr.genCodeSet(out,tab+1);
+				generatorAttribute = new AttributeAndroid(atr);
+				generatorAttribute.genCodeSet(out,tab+1);
 			}
 		}
 
@@ -188,9 +192,10 @@ public class ClasseAndroid implements GeneratorStrategy{
 		}
 
 		// Methods form Interface
-		for (int i = 0; i < classe.listRealInter.size(); i++) {
-			classe.listRealInter.get(i).genCodeMethods(out);
+		for (RealizationInterface realization : classe.getRealInterfaces()) {
+			realization.genCodeMethods(out);
 		}
+		
 
 		//Inner Class
 		for (Classe inner : classe.getInnerClasses()) {
