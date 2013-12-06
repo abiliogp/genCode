@@ -12,15 +12,14 @@ public class AttributeAndroid implements GeneratorStrategy {
 
 	private Attribute attribute;
 	private String tabInd;
-	private int tab;
+	
 
 	public AttributeAndroid(Attribute attribute) {
 		this.attribute = attribute;
 	}
 
 	@Override
-	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
-		this.tab = tab;
+	public void codeGenerator(BufferedWriter out, int tab) throws IOException {		
 		tabInd = Tool.indentation(tab);
 		if (attribute.getLowerValue() == '*'
 				|| attribute.getUpperValue() == '*') {
@@ -30,7 +29,7 @@ public class AttributeAndroid implements GeneratorStrategy {
 						+ " in this class*/");
 			}
 		}
-		out.write("\n" + tabInd);
+		out.write(tabInd);
 
 		// otimização p android get e set visibilidade public
 		if (attribute.hasGetMethod() || attribute.hasSetMethod()) {
@@ -131,7 +130,7 @@ public class AttributeAndroid implements GeneratorStrategy {
 		}
 	}
 
-	public void genCodeImports(BufferedWriter out) throws IOException {
+	public void generatorAndroidImports(BufferedWriter out) throws IOException {
 		if (Android.os.contains(this.attribute.getName())) {
 			out.write("import android.os." + attribute.getName() + ";\n");
 		} else if (Android.Widget.contains(attribute.getName())) {

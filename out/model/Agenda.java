@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Agenda{
-	/**Attributes */
-	
+
+	/**Attributes */	
 	public ArrayList<Contato> contato;
 
 	/** Constructor */

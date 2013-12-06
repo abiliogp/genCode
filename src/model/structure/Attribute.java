@@ -75,33 +75,7 @@ public class Attribute extends DataStructure {
 	
 
 	
-	
-	public void genCodeImports(BufferedWriter out) throws IOException{
-		if (Android.os.contains(this.name)) {
-			out.write("import android.os." + name + ";\n");
-		}
-		else if (Android.Widget.contains(name)) {
-			out.write("import android.widget." + name + ";\n");
-		}
-		else if  (Android.View.contains(name)) {
-			out.write("import android.view." + name + ";\n");
-		}
-		else if (Android.view.contains(name)) {
-			out.write("import android.view.View." + name + ";\n");
-		}
-		else if (Android.Content.contains(name)) {
-			out.write("import android.content." + name + ";\n");
-		}
-		else if (Android.res.contains(name)) {
-			out.write("import android.content.res." + name + ";\n");
-		}
-		else if (Android.adntroidUtil.contains(name)) {
-			out.write("import android.util." + name + ";\n");
-		}
-		else if (Android.javaUtil.contains(name)) {
-			out.write("import java.util." + name + ";\n");
-		}
-	}
+
 
 	/**
 	 * 

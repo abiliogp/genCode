@@ -58,7 +58,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 			}
 			
 			for(Attribute stereoType : classe.getStereotypes()){
-				stereoType.genCodeImports(out);
+				generatorAttribute = new AttributeAndroid(stereoType);
+				generatorAttribute.generatorAndroidImports(out);
 			}
 						
 			genInnerClass(classe, out, 0);
@@ -96,7 +97,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 
 		// Atributos
 		if (classe.getAttributes().size() > 0) {
-			out.write("\n" + tabInd + "\t/**Attributes */");
+			out.write("\n\n" + tabInd + "\t/**Attributes */");
 			for (Attribute atr : classe.getAttributes()) {
 				generatorAttribute = new AttributeAndroid(atr);
 				generatorAttribute.codeGenerator(out, tab + 1);
