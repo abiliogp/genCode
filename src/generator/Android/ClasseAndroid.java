@@ -171,13 +171,13 @@ public class ClasseAndroid implements GeneratorStrategy{
 		// Metodo 
 		if (classe.getMethods().size() > 0) {
 			out.write("\n" + tabInd + "\t/** Methods */");
-			for (Method met : classe.getMethods()) {
+			for (Method method : classe.getMethods()) {
 				try {
-					if (Android.Methods.valueOf(met.getName()) != null) {
-						met.genCodeAndroid(classe.getName(), out, tab + 1);
+					if (Android.Methods.valueOf(method.getName()) != null) {
+						method.genCodeAndroid(classe.getName(), out, tab + 1);
 					}
 				} catch (java.lang.IllegalArgumentException ex) {
-					met.genCode(out, tab + 1);
+					method.genCode(out, tab + 1);
 				}
 			}
 		}
