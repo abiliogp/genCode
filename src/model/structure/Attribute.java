@@ -27,6 +27,22 @@ public class Attribute extends DataStructure {
 		return this.primitiveType; 
 	}
 	
+	public boolean hasGetMethod(){
+		return this.hasGetMethod;
+	}
+	
+	public boolean hasSetMethod(){
+		return this.hasSetMethod;
+	}
+	
+	public String getDefaultValue(){
+		return this.getDefaultValue();
+	}
+	
+	public String getDefaultValueType(){
+		return this.getDefaultValue();
+	}
+	
 	public void printProp() {
 
 		System.out.println("\tAtributo: " + this.name);
@@ -104,7 +120,7 @@ public class Attribute extends DataStructure {
 		if(this.hasGetMethod){
 			return;
 		}
-		if( this.visbPrivate ){
+		if( this.isPrivate ){
 			out.write("\n" + tabInd + "public " + this.type + " get" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) + "(){");
 			out.write("\n" + tabInd + "\treturn this." + this.name + ";\n\t}\n");
 		}
@@ -116,7 +132,7 @@ public class Attribute extends DataStructure {
 		if(this.hasSetMethod){
 			return;
 		}
-		if( this.visbPrivate ){
+		if( this.isPrivate ){
 			out.write("\n" + tabInd + "public void set" + this.name.substring(0, 1).toUpperCase().concat(this.name.substring(1)) 
 					+ "( " + this.type + " " + this.name + " ){");
 			out.write("\n"+ tabInd + "\t this." + this.name + " = " + this.name + ";\n\t}\n");
@@ -188,7 +204,7 @@ public class Attribute extends DataStructure {
 			visibility = Tool.manipulate(line, "visibility=");
 			if( (visibility != null) && ((visibility.equals("private")) || (visibility.equals("protected"))) ){
 				Parser.getModel().getLastClasse().setNeedGetSet(true);
-				visbPrivate = true;
+				isPrivate = true;
 			}
 		} 
 		

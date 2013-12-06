@@ -24,7 +24,7 @@ public class Classe extends DataStructure {
 
 	public boolean ativa;
 
-	public ArrayList<Classe> listInnerClass;
+	public ArrayList<Classe> innerClasses;
 	private ArrayList<Attribute> attributes;
 	private ArrayList<Method> methods;
 	public ArrayList<Associacao> listAssociacao;
@@ -42,7 +42,7 @@ public class Classe extends DataStructure {
 		super(name);
 		ativa = false;
 		general = null;
-		listInnerClass = new ArrayList<Classe>();
+		innerClasses = new ArrayList<Classe>();
 		attributes = new ArrayList<Attribute>();
 		listStereotype = new ArrayList<Attribute>();
 		methods = new ArrayList<Method>();
@@ -148,6 +148,10 @@ public class Classe extends DataStructure {
 	public ArrayList<Method> getMethods(){
 		return this.methods;
 	}
+	
+	public ArrayList<Classe> getInnerClasses(){
+		return this.innerClasses;
+	}
 
 	public Associacao getLastAssociacao() {
 		return this.listAssociacao.get(this.listAssociacao.size() - 1);
@@ -185,9 +189,9 @@ public class Classe extends DataStructure {
 			System.out.printf("\tSuper Classe %s \n", this.general);
 		}
 
-		for (int i = 0; i < this.listInnerClass.size(); i++) {
+		for (int i = 0; i < this.innerClasses.size(); i++) {
 			System.out.println("Inner Class of " + name);
-			this.listInnerClass.get(i).printProp();
+			this.innerClasses.get(i).printProp();
 		}
 
 		for (int i = 0; i < this.attributes.size(); i++) {
@@ -214,170 +218,7 @@ public class Classe extends DataStructure {
 		generator.codeGenerator();
 	}
 
-	//
-	public void genCode2() throws IOException {
-		try {
-			if (Android.Classes.valueOf(name) != null) {
-				return;
-			}
-		} catch (java.lang.IllegalArgumentException ex) {
-			File cls = new File(Parser.getModel().getName(),
-					name.concat(".java"));
-			BufferedWriter out = new BufferedWriter(new FileWriter(cls));
-			// Pacote
-			if (pacote != null) {
-				out.write("package " + pacote.getName() + ";\n");
-				if (this.pacote.getAssocPacote() != null) {
-					out.write("import " + pacote.getAssocPacote().getSupplier()
-							+ ".*;\n");
-				}
-			}
-			// Imports
-			if (this.generalActivity) {
-				out.write("import android.app.Activity;\n");
-			}
-			if (needImport) {
-				out.write("import java.util.ArrayList;\n");
-			}
-			if (!listStereotype.isEmpty()) {
-				for (int i = 0; i < listStereotype.size(); i++) {
-					listStereotype.get(i).genCodeImports(out);
-				}
-			}
-
-			genInnerClass(out, 0);
-			out.close();
-		}
-	}
-
-	/**
-	 * @param out
-	 * @param tab
-	 * @throws IOException
-	 */
-	public void genInnerClass(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
-		// Name Class and General
-		out.write("\n" + tabInd + visibility
-				+ (this.isAbstract == true ? " abstract " : " ") + "class "
-				+ name + (general != null ? " extends " + general : ""));
-
-		// Implements
-		if (listRealInter.size() > 0) {
-			out.write(" implements ");
-			for (int i = 0; i < listRealInter.size(); i++) {
-				out.write(listRealInter.get(i).getNameSupplier());
-				if (i < listRealInter.size() - 1) {
-					out.write(", ");
-				}
-			}
-		}
-
-		out.write("{");
-
-		// Atributos
-		if (this.attributes.size() > 0) {
-			out.write("\n" + tabInd + "\t/**Attributes */");
-			for (int i = 0; i < attributes.size(); i++) {
-				this.attributes.get(i).genCode(out, tab + 1);
-			}
-		}
-
-		// Atributos Return dos Métodos
-		// for (int i = 0; i < listMethod.size(); i++) {
-		// if (!((listMethod.get(i).getName().substring(0, 3).equals("get")) ||
-		// (listMethod
-		// .get(i).getName().substring(0, 3).equals("set")))) {
-		// if (listMethod.get(i).getListReturn().size() > 0) {
-		// out.write("\n" + tabInd + "/**Attribute of Return Method "
-		// + listMethod.get(i).getName() + " */");
-		// for (int j = 0; j < listMethod.get(i).getListReturn()
-		// .size(); j++) {
-		// listMethod.get(i).getListReturn().get(j)
-		// .genCodeReturn(out);
-		// }
-		// }
-		// }
-		// }
-
-		// Atributtes from Interface
-		for (int i = 0; i < listRealInter.size(); i++) {
-			listRealInter.get(i).genCodeAtributte(out);
-		}
-
-		// Construtor
-		if (!(this.isAbstract)) {
-			out.write("\n\n" + tabInd + "\t/** Constructor */");
-			out.write("\n" + tabInd + "\tpublic " + name + "(");
-			for (int i = 0; i < attributes.size(); i++) {
-				attributes.get(i).genCodeConstructorSignature(out);
-				if (i < attributes.size() - 1) {
-					out.write(",");
-				}
-			}
-			out.write("){");
-			if (general != null) {
-				out.write("\n" + tabInd + "\t\tsuper();");
-			}
-			for (int i = 0; i < attributes.size(); i++) {
-				this.attributes.get(i).genCodeConstructor(out);
-			}
-			out.write("\n" + tabInd + "\t}\n");
-		}
-
-		// Get
-		if (needGetSet) {
-			out.write("\n" + tabInd + "\t/** Get */");
-			for (int i = 0; i < attributes.size(); i++) {
-				attributes.get(i).genCodeGet(out, tab + 1);
-			}
-		}
-
-		// Set
-		if (needGetSet) {
-			out.write("\n" + tabInd + "\t/** Set */");
-			for (int i = 0; i < attributes.size(); i++) {
-				attributes.get(i).genCodeSet(out, tab + 1);
-			}
-		}
-
-		// Metodo
-		if (methods.size() > 0) {
-			out.write("\n" + tabInd + "\t/** Methods */");
-			for (int i = 0; i < this.methods.size(); i++) {
-				try {
-					if (Android.Methods.valueOf(methods.get(i).getName()) != null) {
-						methods.get(i).genCodeAndroid(name, out, tab + 1);
-					}
-				} catch (java.lang.IllegalArgumentException ex) {
-					methods.get(i).genCode(out, tab + 1);
-				}
-			}
-		}
-
-		// Métodos da Super
-		if (general != null) {
-			if ((Tool.containsKeyTrieAbstractMethod(general))) {
-				for (int i = 0; i < Tool.getTrieAbstractMethod(general).size(); i++) {
-					Tool.getTrieAbstractMethod(general).get(i)
-							.genCodeMtSuper(out, tab + 1);
-				}
-			}
-		}
-
-		// Methods form Interface
-		for (int i = 0; i < listRealInter.size(); i++) {
-			listRealInter.get(i).genCodeMethods(out);
-		}
-
-		// Inner Class
-		for (int i = 0; i < listInnerClass.size(); i++) {
-			listInnerClass.get(i).genInnerClass(out, tab + 1);
-		}
-
-		out.write("\n" + tabInd + "}");
-
-	}
+	
 
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String key, value;
@@ -419,7 +260,7 @@ public class Classe extends DataStructure {
 					value = Tool.manipulate(line, "name=");
 					if (line.contains("uml:Class")) {
 						Classe innerClass = new Classe(value);
-						listInnerClass.add(innerClass);
+						innerClasses.add(innerClass);
 						innerClass.parser(bf, line);
 					}
 					if (line.contains("uml:Stereotype")) {

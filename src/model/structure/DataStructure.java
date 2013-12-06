@@ -12,7 +12,7 @@ public abstract class DataStructure {
 	protected String type;
 	protected String visibility;
 	
-	protected boolean visbPrivate;
+	protected boolean isPrivate;
 	protected boolean isStatic;
 	protected boolean isAbstract;
 	protected String tabInd;
@@ -41,7 +41,7 @@ public abstract class DataStructure {
 	public void setVisibility(String visibility) {
 		if((visibility != null)){
 			if( (visibility.equals("protected")) || (visibility.equals("private")) ){
-				this.visbPrivate = true;
+				this.isPrivate = true;
 			}
 			this.visibility = visibility;
 		}
@@ -56,6 +56,9 @@ public abstract class DataStructure {
 		this.isAbstract = isAbstract;
 	}
 	
+	public boolean isPrivate(){
+		return this.isPrivate;
+	}
 	
 	// get
 
@@ -84,6 +87,9 @@ public abstract class DataStructure {
 		return this.isAbstract;
 	}
 	
+	public boolean isStatic(){
+		return this.isStatic;
+	}
 	/**
 	 * Função auxiliar: parserAtribute, parserParameter, parserReturn
 	 * @param str

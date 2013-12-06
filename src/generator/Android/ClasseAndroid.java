@@ -62,7 +62,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 				}
 			}
 			
-			genInnerClass(out, 0);
+			genInnerClass(classe, out, 0);
 			out.close();
 		}
 	}
@@ -74,7 +74,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 	 * @param tab
 	 * @throws IOException
 	 */
-	public void genInnerClass(BufferedWriter out, int tab) throws IOException {
+	public void genInnerClass(Classe classe, BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		// Name Class and General
 		out.write("\n" + tabInd + classe.getVisibility()
@@ -193,8 +193,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 		}
 
 		//Inner Class
-		for (int i = 0; i < classe.listInnerClass.size(); i++) {
-			classe.listInnerClass.get(i).genInnerClass(out, tab + 1);
+		for (Classe inner : classe.getInnerClasses()) {
+			genInnerClass(inner,out, tab + 1);
 		}
 		
 		out.write("\n" + tabInd + "}");
