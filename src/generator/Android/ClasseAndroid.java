@@ -22,6 +22,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 
 	private AttributeAndroid generatorAttribute;
 	private MethodAndroid generatorMethod;
+	private RealizationAndroid generatorRealization;
+			
 	
 	public ClasseAndroid(Classe classe) {
 		this.classe = classe;
@@ -80,7 +82,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 		// Name Class and General
 		out.write("\n" + tabInd + classe.getVisibility()
 				+ (classe.isAbstract() == true ? " abstract " : " ") + "class " + classe.getName()
-				+ (classe.general != null ? " extends " + classe.general : ""));
+				+ (classe.getGeneral() != null ? " extends " + classe.getGeneral() : ""));
 
 		// Implements
 		if (!classe.getRealInterfaces().isEmpty()) {
@@ -124,9 +126,11 @@ public class ClasseAndroid implements GeneratorStrategy{
 		
 		// Atributtes from Interface
 		for (RealizationInterface realization : classe.getRealInterfaces()) {
-			realization.genCodeAtributte(out);
+			generatorRealization = new RealizationAndroid(realization);
+			generatorRealization.generatorAttributes(out);
 		}
 
+		
 		// Construtor
 		if (!(classe.isAbstract())) {
 			out.write("\n\n" + tabInd + "\t/** Constructor */");
@@ -140,7 +144,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 				}
 			}
 			out.write("){");
-			if (classe.general != null) {
+			if (classe.getGeneral() != null) {
 				out.write("\n" + tabInd + "\t\tsuper();");
 			}
 			for (Attribute atr : classe.getAttributes()) {
@@ -185,9 +189,9 @@ public class ClasseAndroid implements GeneratorStrategy{
 		}
 
 		// Métodos da Super
-		if (classe.general != null) {
-			if ((Tool.containsKeyTrieAbstractMethod(classe.general))) {
-				for (Method method : Tool.getTrieAbstractMethod(classe.general)) {
+		if (classe.getGeneral() != null) {
+			if ((Tool.containsKeyTrieAbstractMethod(classe.getGeneral()))) {
+				for (Method method : Tool.getTrieAbstractMethod(classe.getGeneral())) {
 					generatorMethod = new MethodAndroid(method);
 					generatorMethod.genCodeMtSuper(out, tab + 1);
 				}
@@ -196,7 +200,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 
 		// Methods form Interface
 		for (RealizationInterface realization : classe.getRealInterfaces()) {
-			realization.genCodeMethods(out);
+			generatorRealization = new RealizationAndroid(realization);
+			generatorRealization.generatorMethods(out);
 		}
 		
 

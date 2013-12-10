@@ -15,22 +15,17 @@ public class RealizationInterface {
 		this.name = name;
 	}
 	
+	
+	public String getName(){
+		return this.name;
+	}
+	
 	public String getNameSupplier(){
 		return supplier.getName();
 	}
 
-	public void genCodeAtributte(BufferedWriter out) throws IOException{
-		if(supplier.tamListAtributte() > 0){
-			out.write("\n\t/** Atributte From " + name + " */");
-			supplier.genCodeAtributte(out);
-		}
-	}
-	
-	public void genCodeMethods(BufferedWriter out) throws IOException{
-		if(supplier.tamListMethod() > 0){
-			out.write("\n\t/** Methods From " + name + " */");
-			supplier.genCodeMethods(out, 0);
-		}
+	public Interface getSupplier(){
+		return this.supplier;
 	}
 	
 	public void parser(BufferedReader bf, String line) throws IOException{

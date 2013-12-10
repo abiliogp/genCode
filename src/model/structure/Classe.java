@@ -10,7 +10,7 @@ import utilities.Tool;
 public class Classe extends DataStructure {
 
 	public Pacote pacote;
-	public String general;
+	private String general;
 
 	public boolean ativa;
 
