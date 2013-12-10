@@ -137,20 +137,7 @@ public class Method extends DataStructure {
 		out.write(this.name);
 	}
 
-	private void genCodePmtCp(BufferedWriter out, int tab) throws IOException {
-		if (this.name.equals("main")) {
-			out.write("( String args[] )");
-		} else {
-			genCodePmtIn(out);
-		}
-		if ((this.isAbstract)) {
-			out.write(";");
-		} else {
-			genCodeCpMet(out);
-			out.write("\n" + tabInd + "}\n");
-		}
-	}
-
+	
 	
 	// Gera os Parametros de Entrada
 	private void genCodePmtIn(BufferedWriter out) throws IOException {
@@ -170,68 +157,7 @@ public class Method extends DataStructure {
 		out.write("){");
 	}
 
-	// gera o corpo do método
-	private void genCodeCpMet(BufferedWriter out) throws IOException {
-		// gera declaração dos out dentro do método
-		this.genCodeDeclPmtOut(out);
-		if (interaction != null) {
-			interaction.genCode(out, tab + 1);
-		}
-		this.genCodeReturnPmtOut(out);
-		this.genCodeReturn(out, tab);
-
-	}
-
-	// gera declaração dos parametros out dentro do método
-	private void genCodeDeclPmtOut(BufferedWriter out) throws IOException {
-		for (int i = 0; i < this.parameters.size(); i++) {
-			if (this.parameters.get(i).getDirection().equals("out")) {
-				out.write(tabInd);
-				this.parameters.get(i).genCode(out);
-				out.write(";");
-			}
-		}
-	}
-
-	// gera return dos out dentro do método
-	private void genCodeReturnPmtOut(BufferedWriter out) throws IOException {
-		for (int i = 0; i < this.parameters.size(); i++) {
-			if (this.parameters.get(i).getDirection().equals("out")) {
-				if (!(this.parameters.get(i).getType().equals(this.type))) {
-					out.write("\n" + tabInd
-							+ "\t/**WARNING: The Type of Return <"
-							+ this.parameters.get(i).getType()
-							+ "> *disagree of type the Method*/");
-				}
-				out.write(tabInd);
-				out.write("return " + this.parameters.get(i).getName() + ";");
-			}
-		}
-	}
-
-	// gera return
-	private void genCodeReturn(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
-		for (int i = 0; i < this.returns.size(); i++) {
-			if (!(this.returns.get(i).getType().equals(this.type))) {
-				out.write("\n" + tabInd + "\t/**WARNING: The Type of Return <"
-						+ this.returns.get(i).getType()
-						+ "> disagree of type the Method*/");
-			}
-			out.write("\n\t\treturn " + this.returns.get(i).getName() + ";");
-		}
-	}
-
-	public void genCodeMtSuper(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
-		out.write("\n" + tabInd + "/** Abstract Method of Super*/");
-		out.write("\n\t" + this.visibility);
-		out.write(" " + this.type + " " + this.name);
-		this.genCodePmtIn(out);
-		this.genCodeCpMet(out);
-		out.write("\n" + tabInd + "}\n");
-	}
-
+	
 	public void genCodeCall(BufferedWriter out) throws IOException {
 		out.write(name + "(");
 	}

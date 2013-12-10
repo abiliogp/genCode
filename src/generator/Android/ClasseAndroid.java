@@ -187,9 +187,9 @@ public class ClasseAndroid implements GeneratorStrategy{
 		// Métodos da Super
 		if (classe.general != null) {
 			if ((Tool.containsKeyTrieAbstractMethod(classe.general))) {
-				for (int i = 0; i < Tool.getTrieAbstractMethod(classe.general).size(); i++) {
-					Tool.getTrieAbstractMethod(classe.general).get(i)
-							.genCodeMtSuper(out, tab + 1);
+				for (Method method : Tool.getTrieAbstractMethod(classe.general)) {
+					generatorMethod = new MethodAndroid(method);
+					generatorMethod.genCodeMtSuper(out, tab + 1);
 				}
 			}
 		}
@@ -202,7 +202,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 
 		//Inner Class
 		for (Classe inner : classe.getInnerClasses()) {
-			genInnerClass(inner,out, tab + 1);
+			this.genInnerClass(inner,out, tab + 1);
 		}
 		
 		out.write("\n" + tabInd + "}");
