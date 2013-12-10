@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 import model.structure.Attribute;
-import model.structure.Parametro;
+import model.structure.Parameter;
 import utilities.Tool;
 
 public class Lifeline extends DataSequence{

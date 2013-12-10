@@ -7,16 +7,16 @@ import java.io.IOException;
 import utilities.Parser;
 import utilities.Tool;
 
-public class Parametro extends DataStructure {
+public class Parameter extends DataStructure {
 
 	private String direction;
 
-	public Parametro(String name) {
+	public Parameter(String name) {
 		super(name);
 		this.direction = "in";
 	}
 
-	public Parametro(String name, String type) {
+	public Parameter(String name, String type) {
 		super(name);
 		this.type = type;
 		this.direction = "in";

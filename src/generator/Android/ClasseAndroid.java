@@ -21,6 +21,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 	private Classe classe;
 
 	private AttributeAndroid generatorAttribute;
+	private MethodAndroid generatorMethod;
 	
 	public ClasseAndroid(Classe classe) {
 		this.classe = classe;
@@ -162,8 +163,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 		// Set
 		if (classe.needGetSet) {
 			out.write("\n" + tabInd + "\t/** Set */");
-			for (Attribute atr : classe.getAttributes()) {
-				generatorAttribute = new AttributeAndroid(atr);
+			for (Attribute attr : classe.getAttributes()) {
+				generatorAttribute = new AttributeAndroid(attr);
 				generatorAttribute.genCodeSet(out,tab+1);
 			}
 		}
@@ -172,12 +173,13 @@ public class ClasseAndroid implements GeneratorStrategy{
 		if (classe.getMethods().size() > 0) {
 			out.write("\n" + tabInd + "\t/** Methods */");
 			for (Method method : classe.getMethods()) {
+				generatorMethod = new MethodAndroid(method);
 				try {
 					if (Android.Methods.valueOf(method.getName()) != null) {
-						method.genCodeAndroid(classe.getName(), out, tab + 1);
+						generatorMethod.genCodeAndroid(classe.getName(), out, tab + 1);
 					}
 				} catch (java.lang.IllegalArgumentException ex) {
-					method.genCode(out, tab + 1);
+					generatorMethod.codeGenerator(out, tab + 1);
 				}
 			}
 		}

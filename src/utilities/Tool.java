@@ -15,7 +15,7 @@ import model.structure.Attribute;
 import model.structure.Interface;
 import model.structure.Method;
 import model.structure.Operation;
-import model.structure.Parametro;
+import model.structure.Parameter;
 
 
 

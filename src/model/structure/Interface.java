@@ -61,7 +61,7 @@ public class Interface {
 	
 	public void genCodeMethods(BufferedWriter out,int tab) throws IOException{
 		for(int i = 0 ; i < this.listMetodo.size() ; i++){
-			this.listMetodo.get(i).genCode(out,tab);	
+			//this.listMetodo.get(i).genCode(out,tab);	
 		}
 	}
 	
