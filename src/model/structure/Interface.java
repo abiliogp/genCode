@@ -12,91 +12,39 @@ import model.sequence.Lifeline;
 import utilities.Parser;
 import utilities.Tool;
 
-public class Interface {
+public class Interface extends DataStructure{
 	
-	private String name;
-	private String visibility;
 
 	private boolean needImport;
-	private boolean abstrata;
 	private boolean ativa;
 	
-	private ArrayList<Attribute> listAtributte;
-	private ArrayList<Method> listMetodo;
+	private ArrayList<Attribute> attributes;
+	private ArrayList<Method> methods;
 	private ArrayList<Operation> listOperacao;
 	
 	
 	public Interface(String name) {
-		this.name = name;
-		visibility = "public";
-		abstrata = false;
+		super(name);
 		ativa = false;
 		needImport = false;
-		listAtributte = new ArrayList<Attribute>();
-		listMetodo = new ArrayList<Method>();
+		attributes = new ArrayList<Attribute>();
+		methods = new ArrayList<Method>();
 		listOperacao = new ArrayList<Operation>(); 
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
+	
+	
+	public boolean isNeedImport(){
+		return this.needImport;
 	}
 	
-	public int tamListAtributte(){
-		return listAtributte.size();
+	public ArrayList<Attribute> getAttributes(){
+		return this.attributes;
 	}
 	
-	public int tamListMethod(){
-		return listMetodo.size();
+	public ArrayList<Method> getMethods(){
+		return this.methods;
 	}
-	
-	public void genCodeAtributte(BufferedWriter out) throws IOException{
-		for(int i = 0 ; i < this.listAtributte.size() ; i++){
-			//this.listAtributte.get(i).genCode(out, 0);
-		}
-	}
-	
-	public void genCodeMethods(BufferedWriter out,int tab) throws IOException{
-		for(int i = 0 ; i < this.listMetodo.size() ; i++){
-			//this.listMetodo.get(i).genCode(out,tab);	
-		}
-	}
-	
-	public void genCode() throws IOException{
-		File inter = new File("out/" + Parser.getModel().getName() ,name.concat(".java"));
-		BufferedWriter out = new BufferedWriter( new FileWriter(inter));
-		
-		out.write("\n" + this.visibility + " interface " + name  + "{");
-		
-		//Imports
-		if(this.needImport){
-			out.write("import java.util.ArrayList;\n");
-		}
-		
-		//Atributos
-		if(this.listAtributte.size() > 0){
-			out.write("\n\n\t/*\n\t *Attributes\n\t */");
-			for(int i = 0 ; i < this.listAtributte.size() ; i++){
-				this.listAtributte.get(i).genCodeAtributteImplements(out);
-			}
-		}
-		
-		
-		//Metodo
-		if(this.listMetodo.size() > 0){
-			out.write("\n\n\t/*\n\t *Method\n\t */");
-			for(int i = 0 ; i < this.listMetodo.size() ; i++){
-				this.listMetodo.get(i).genCodeMtImplements(out);	
-			}
-		}
-		
-		out.write("\n}");
-		out.close();
-	}
-	
 	
 	
 
@@ -117,7 +65,7 @@ public class Interface {
 		} 
 
 		if (line.contains("isAbstract=")) {
-			abstrata = true;
+			isAbstract = true;
 		} 
 
 		if (line.contains("classifierBehavior=")) {
@@ -143,7 +91,7 @@ public class Interface {
 					key = Tool.manipulate(line, "xmi:id=");
 					value = Tool.manipulate(line, "name");
 					Attribute atributte = new Attribute(value);
-					listAtributte.add(atributte);
+					attributes.add(atributte);
 					needImport = atributte.parser(bf, line); 
 					Tool.putTrieAtributte(key, atributte);
 				}
@@ -154,12 +102,18 @@ public class Interface {
 					key = Tool.manipulate(line, "xmi:id=");
 					value = Tool.manipulate(line, "name");
 					Method metodo = new Method(value);
-					listMetodo.add(metodo);
+					methods.add(metodo);
 					metodo.parser(bf, line);
 					Tool.putTrieMetodo(key, metodo);
 				}
 			}
 		}// end for PackagedElement	
 	}//end class parser
+
+	@Override
+	public void printProp() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

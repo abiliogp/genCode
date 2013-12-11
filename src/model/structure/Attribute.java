@@ -58,20 +58,6 @@ public class Attribute extends DataStructure {
 	}
 	
 	
-	public void genCodeAtributteImplements(BufferedWriter out) throws IOException{
-		if(lowerValue == '*' || upperValue == '*'){
-				if(this.getLowerValue() == '1'){
-					out.write("\n" + tabInd + "/** You must have at least ONE " +
-							"Occurrence of Attribute: " + this.name + " in this class*/");
-				}
-				out.write("\n\tArrayList<" + this.type + "> " + this.name + ";" );
-			
-		} else{
-			out.write("\n" + tabInd);
-			out.write(this.type + " " +  this.name + ";" );
-		}
-	}
-	
 	
 
 	

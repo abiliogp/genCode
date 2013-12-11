@@ -9,6 +9,7 @@ import generator.GeneratorStrategy;
 public class RealizationAndroid implements GeneratorStrategy{
 
 	private RealizationInterface realization;
+	private InterfaceAndroid generator; 
 	
 	public RealizationAndroid(RealizationInterface realization){
 		this.realization = realization;
@@ -25,16 +26,18 @@ public class RealizationAndroid implements GeneratorStrategy{
 	
 	
 	public void generatorAttributes(BufferedWriter out) throws IOException{
-		if(realization.getSupplier().tamListAtributte() > 0){
+		if(!realization.getSupplier().getAttributes().isEmpty()){
 			out.write("\n\t/** Atributte From " + realization.getName() + " */");
-			realization.getSupplier().genCodeAtributte(out);
+			generator = new InterfaceAndroid(realization.getSupplier());
+			generator.genCodeAtributte(out);
 		}
 	}
 	
 	public void generatorMethods(BufferedWriter out) throws IOException{
-		if(realization.getSupplier().tamListMethod() > 0){
+		if(!realization.getSupplier().getMethods().isEmpty()){
 			out.write("\n\t/** Methods From " + realization.getName() + " */");
-			realization.getSupplier().genCodeMethods(out, 0);
+			generator = new InterfaceAndroid(realization.getSupplier());
+			generator.genCodeMethods(out, 0);
 		}
 	}
 

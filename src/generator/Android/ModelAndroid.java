@@ -14,7 +14,8 @@ public class ModelAndroid implements GeneratorStrategy{
 	private Model model;
 	private File dir;
 	
-	private GeneratorStrategy generator;
+	private GeneratorStrategy generatorClasse;
+	private GeneratorStrategy generatorInterface;
 	
 	public ModelAndroid(Model model){
 		this.model = model;
@@ -27,12 +28,13 @@ public class ModelAndroid implements GeneratorStrategy{
 		dir = new File("out/" + model.getName());
 		dir.mkdir();
 		for(Classe classe :  model.getListClasse()){
-			generator = new ClasseAndroid(classe);
-			generator.codeGenerator(out, tab);
+			generatorClasse = new ClasseAndroid(classe);
+			generatorClasse.codeGenerator(out, tab);
 		}
 		
 		for(Interface inter : model.getListInterface()){
-			inter.genCode();
+			generatorInterface = new InterfaceAndroid(inter);
+			generatorInterface.codeGenerator(out, tab);
 		}	
 	}
 
