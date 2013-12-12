@@ -31,6 +31,23 @@ public class Lifeline extends DataSequence{
 	}
 
 
+
+
+	/*
+ 	* Add
+ 	*/
+	public void addFragment( Fragment coveredBy ){
+		this.coveredBy.add(coveredBy);
+	}
+
+
+	/*
+	 *Set
+	 */
+	public void setRepresents( Attribute represents ){
+		 this.represents = represents;
+	}
+
 	/*
 	 *Get
 	 */
@@ -44,23 +61,20 @@ public class Lifeline extends DataSequence{
 	
 	public Fragment getIndexOfFragment(int index){
 		return this.coveredBy.get(index);
+	}	
+	
+	public ArrayList<Fragment> getOrder(){
+		return this.order;
 	}
-
-
-	/*
-	 *Set
-	 */
-	public void setRepresents( Attribute represents ){
-		 this.represents = represents;
+	
+	public ArrayList<Fragment> getCoveredBy(){
+		return this.coveredBy;
 	}
-
-	/*
-	 * Add
-	 */
-	public void addFragment( Fragment coveredBy ){
-		 this.coveredBy.add(coveredBy);
+	
+	public String getParameter(){
+		return this.parameter;
 	}
-
+	
 	/*
 	 *Abstract Method of Super
 	 */

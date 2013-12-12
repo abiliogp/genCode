@@ -111,11 +111,7 @@ public class Method extends DataStructure {
 		}
 	}
 
-	public void genCodeMtImplements(BufferedWriter out) throws IOException {
-		out.write("\n\t" + this.type + " " + this.name);
-		genCodePmtIn(out);
-		out.write(";");
-	}
+	
 
 	
 	public void genCodeH(BufferedWriter out, int tab) throws IOException {
@@ -139,23 +135,7 @@ public class Method extends DataStructure {
 
 	
 	
-	// Gera os Parametros de Entrada
-	private void genCodePmtIn(BufferedWriter out) throws IOException {
-		out.write("(");
-		for (int i = 0; i < this.parameters.size(); i++) {
-			if ((this.parameters.get(i).getDirection().equals("in"))
-					|| (this.parameters.get(i).getDirection()
-							.equals("inout"))) {
-				this.parameters.get(i).genCode(out);
-			}
-			if (this.parameters.size() > (i + 1)) {
-				if (!this.parameters.get(i + 1).getDirection().equals("out")) {
-					out.write(", ");
-				}
-			}
-		}
-		out.write("){");
-	}
+	
 
 	
 	public void genCodeCall(BufferedWriter out) throws IOException {

@@ -18,25 +18,29 @@ public class Interaction extends DataSequence{
 
 	
 	
-	private  ArrayList<Lifeline> listLifeline = new ArrayList<Lifeline>();
-	private  ArrayList<Fragment> listFragment = new ArrayList<Fragment>();
+	private  ArrayList<Lifeline> lifelines;
+	private  ArrayList<Fragment> fragments;
 	
 	/*
 	 * trieXMIfragment <XMI, Interaction.name > 
 	 */
 	private  TreeMap<String, String> trieXMIfragment = new TreeMap<String, String>();
 	
-	/*
-	 *Constructor
-	 */
 	public Interaction(String name){
 		super(name);
+		lifelines = new ArrayList<Lifeline>();
+		fragments = new ArrayList<Fragment>();
+	}
+	
+	public ArrayList<Lifeline> getLifelines(){
+		return this.lifelines;
+	}
+	
+	public ArrayList<Fragment> getFragments(){
+		return this.fragments;
 	}
 
 
-	/*
-	 *Abstract Method of Super
-	 */
 	public  void parser(BufferedReader bf, String line) throws IOException{
 		String value, key, str;
 		if (line.contains("/>"))
@@ -44,29 +48,20 @@ public class Interaction extends DataSequence{
 		for ( ; !((line.contains("</ownedBehavior>")) || (line.contains("</packagedElement>"))) ; line = bf.readLine() ) {
 			key = Tool.manipulate(line, "xmi:id");
 			
-			/*
-			 * LifelineInteraction.get
-			 */
 			if (line.contains("<lifeline")) {
 				key = Tool.manipulate(line, "xmi:id");
 				Lifeline lifeline = Tool.getTrieLifeline(key);
 				lifeline.parser(bf, line);
-				listLifeline.add(lifeline);
+				lifelines.add(lifeline);
 			}
 
-			/*
-			 * Fragment
-			 */
 			if (line.contains("<fragment")) {
 				key = Tool.manipulate(line, "xmi:id");
 				Fragment fragment = Tool.getTrieFragment(key);
-				listFragment.add(fragment);
+				fragments.add(fragment);
 				fragment.parser(bf, line);
 			}
 			
-			/*
-			 * Message
-			 */
 			if (line.contains("<message")) { 		
 				key = Tool.manipulate(line, "xmi:id");
 				Message message = Tool.getTrieMessage(key);
@@ -92,9 +87,6 @@ public class Interaction extends DataSequence{
 			for ( ; !((line.contains("</ownedBehavior>")) || (line.contains("</packagedElement>"))); line = bf.readLine() ) {
 				key = Tool.manipulate(line, "xmi:id");
 				
-				/*
-				 * Lifeline
-				 */
 				if (line.contains("<lifeline")) {
 					key = Tool.manipulate(line, "xmi:id");
 					value = Tool.manipulate(line, "name=");
@@ -102,9 +94,6 @@ public class Interaction extends DataSequence{
 					Tool.putTrieLifeline(key, lifeline);
 				}
 	
-				/*
-				 * Fragment
-				 */
 				if (line.contains("<fragment")) {
 					key = Tool.manipulate(line, "xmi:id");
 					Tool.putTrieXMIfragment(key);
@@ -114,9 +103,6 @@ public class Interaction extends DataSequence{
 					Tool.putTrieFragment(key, fragment);
 				}
 				
-				/*
-				 * Message
-				 */
 				if (line.contains("<message")) { 		
 					key = Tool.manipulate(line, "xmi:id");
 					value = Tool.manipulate(line, "name=");
@@ -128,16 +114,6 @@ public class Interaction extends DataSequence{
 	}//end loadSequence
 	
 	
-
-	public void genCode(BufferedWriter out, int tab) throws IOException{
-		String tabInd = Tool.indentation(tab);
-		out.write("\n" + tabInd + "/** Specified from Sequence Diagram " + name + " */\n");
-		if(!(listLifeline.isEmpty()))
-			this.listLifeline.get(0).genCode(out, tab);
-		//for(int i = 0 ; i < listLifeline.size() ; i++){
-		//	this.listLifeline.get(i).genCode(out,tab);
-		//}
-	}
 	
 	
 	/*
@@ -146,8 +122,8 @@ public class Interaction extends DataSequence{
 	 */
 	public void printProp(){
 		System.out.println("Interaction : " + name);
-		for(int i = 0 ; i < listLifeline.size() ; i++){
-			listLifeline.get(i).printProp();
+		for(int i = 0 ; i < lifelines.size() ; i++){
+			lifelines.get(i).printProp();
 		}
 	
 		

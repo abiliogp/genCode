@@ -1,5 +1,7 @@
 package model.sequence;
 
+import generator.Android.InteractionAndroid;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -198,7 +200,9 @@ public class Fragment extends DataSequence{
 		
 		if(type.equals("uml:InteractionUse")){
 			if(refersTo != null){
-				refersTo.genCode(out, tab);
+				InteractionAndroid generatorInteraction = new InteractionAndroid(refersTo);
+				generatorInteraction.codeGenerator(out, tab);
+				//refersTo.genCode(out, tab);
 			}
 		}
 		

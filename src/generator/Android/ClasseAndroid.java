@@ -9,7 +9,6 @@ import model.structure.Attribute;
 import model.structure.Classe;
 import model.structure.Method;
 import model.structure.RealizationInterface;
-import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
 import generator.GeneratorStrategy;

@@ -1,4 +1,4 @@
-package utilities;
+package generator.Android;
 
 import java.util.ArrayList;
 import java.util.Arrays;

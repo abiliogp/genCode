@@ -1,10 +1,11 @@
 package model.structure;
 
+import generator.Android.Android;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import utilities.Android;
 import utilities.Parser;
 import utilities.Tool;
 

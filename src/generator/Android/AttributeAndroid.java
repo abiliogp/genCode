@@ -3,7 +3,6 @@ package generator.Android;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import utilities.Android;
 import utilities.Tool;
 import model.structure.Attribute;
 import generator.GeneratorStrategy;

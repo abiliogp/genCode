@@ -12,6 +12,8 @@ public class MethodAndroid implements GeneratorStrategy {
 
 	private Method method;
 	
+	private InteractionAndroid generatorInteraction;
+	
 	private String tabInd;
 	private int tab;
 
@@ -93,7 +95,8 @@ public class MethodAndroid implements GeneratorStrategy {
 			out.write("\n" + tabInd + "\tsuper." + method.getName() + "();");
 		}
 		if (method.getInteraction() != null) {
-			method.getInteraction().genCode(out, tab + 1);
+			generatorInteraction = new InteractionAndroid(method.getInteraction());
+			generatorInteraction.codeGenerator(out, tab + 1);
 		}
 		out.write("\n" + tabInd + "}\n");
 	}
@@ -122,7 +125,8 @@ public class MethodAndroid implements GeneratorStrategy {
 		// gera declaração dos out dentro do método
 		this.genCodeDeclPmtOut(out);
 		if (method.getInteraction() != null) {
-			method.getInteraction().genCode(out, tab + 1);
+			generatorInteraction = new InteractionAndroid(method.getInteraction());
+			generatorInteraction.codeGenerator(out, tab + 1);
 		}
 		this.genCodeReturnPmtOut(out);
 		this.genCodeReturn(out, tab);
