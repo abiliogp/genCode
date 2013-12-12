@@ -1,5 +1,7 @@
 package model.sequence;
 
+import generator.Android.FragmentAndroid;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -65,9 +67,13 @@ public class Operand extends DataSequence{
 		out.write("\n" + tabInd + "}");
 	}
 	
+	
+	private FragmentAndroid generatorFragment;
+	
 	public void genCode(BufferedWriter out, int tab) throws IOException {
-		for(int i=0 ; i < this.listFragment.size() ; i++){	
-			listFragment.get(i).genCode(out, tab + 1);
+		for(Fragment fragment : listFragment){
+			generatorFragment = new FragmentAndroid(fragment);
+			generatorFragment.codeGenerator(out, tab + 1);
 		}
 	}
 	
@@ -76,8 +82,9 @@ public class Operand extends DataSequence{
 		out.write("case ");
 		guard.genCodeValue(out);
 		out.write(":\n");
-		for(int i=0 ; i < this.listFragment.size() ; i++){	
-			listFragment.get(i).genCode(out, tab + 1);
+		for(Fragment fragment : listFragment){
+			generatorFragment = new FragmentAndroid(fragment);
+			generatorFragment.codeGenerator(out, tab + 1);
 		}
 		tabInd = Tool.indentation(tab);
 		out.write("\t" + tabInd +"break;\n");

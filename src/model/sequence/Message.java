@@ -1,5 +1,7 @@
 package model.sequence;
 
+import generator.Android.FragmentAndroid;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -94,19 +96,25 @@ public class Message extends DataSequence{
 			out.write(" = ");
 		}
 	} 
+	
+	
+	
+	private FragmentAndroid generatorFragment;
 
 	/*
 	 * Faz chamadas de método da própria classe e de outros objetos
 	 */
 	public void genCodeAtributte(BufferedWriter out) throws IOException {
 		//if(sendEvent.getCovered() != receiveEvent.getCovered()){
-			receiveEvent.genCodeAttribute(out);
+		generatorFragment = new FragmentAndroid(receiveEvent);
+		generatorFragment.genCodeAttribute(out);
 		//}
 	}
 	
 	public void genCodeAtributteGetSet(BufferedWriter out) throws IOException {
 		//if(sendEvent.getCovered() != receiveEvent.getCovered()){
-			receiveEvent.genCodeAttributeGetSet(out);
+		generatorFragment = new FragmentAndroid(receiveEvent);
+		generatorFragment.genCodeAttributeGetSet(out);
 		//}
 	}
 	
@@ -123,7 +131,8 @@ public class Message extends DataSequence{
 	}
 
 	private void genCodeCreate(BufferedWriter out) throws IOException {		
-		receiveEvent.genCodeCreate(out);
+		generatorFragment = new FragmentAndroid(receiveEvent);
+		generatorFragment.genCodeCreate(out);
 	}
 	
 }

@@ -1,13 +1,10 @@
 package model.sequence;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 import model.structure.Attribute;
-import model.structure.Parameter;
 import utilities.Tool;
 
 public class Lifeline extends DataSequence{
@@ -109,40 +106,5 @@ public class Lifeline extends DataSequence{
 	}
 
 
-	public void genCode(BufferedWriter out, int tab) throws IOException{
-		for(int i = 0; i < order.size(); i++){
-			order.get(i).genCode(out, tab);
-		}
-	}
-
-
-	public void genCodeAttribute(BufferedWriter out) throws IOException {
-		if(parameter != null){
-			out.write(parameter + ".");
-		} else {
-			if(represents != null) {
-				out.write(represents.getName() + ".");
-			}
-		}
-	}
-
-	public void genCodeAttributeGetSet(BufferedWriter out) throws IOException {
-		if(parameter != null){
-			out.write(parameter);
-		} else {
-			if(represents != null) {
-				out.write(represents.getName());
-			}
-		}
-	}
-
-	public void genCodeCreate(BufferedWriter out) throws IOException {
-		if(represents != null){
-			out.write(represents.getName() + " = new " + represents.getType() + "();");
-		}
-	}
-
-
-	
 
 }

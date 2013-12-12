@@ -10,6 +10,7 @@ import generator.GeneratorStrategy;
 public class LifelineAndroid implements GeneratorStrategy{
 	
 	private Lifeline lifeline;
+	private FragmentAndroid generatorFragment;
 	
 	public LifelineAndroid(Lifeline lifeline){
 		this.lifeline = lifeline;
@@ -18,7 +19,8 @@ public class LifelineAndroid implements GeneratorStrategy{
 	@Override
 	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
 		for(Fragment order : lifeline.getOrder()){
-			order.genCode(out, tab);
+			generatorFragment = new FragmentAndroid(order);
+			generatorFragment.codeGenerator(out, tab);
 		}		
 	}
 
