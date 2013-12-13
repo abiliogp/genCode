@@ -1,7 +1,6 @@
 package model.sequence;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 import utilities.Tool;
@@ -21,9 +20,6 @@ public class Argument extends DataSequence {
 		}
 	}
 
-	public void genCode(BufferedWriter out) throws IOException {
-		out.write(value);
-	}
 	
 	public void printProp() {
 		System.out.println("\t" + type);

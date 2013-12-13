@@ -1,9 +1,6 @@
 package model.sequence;
 
-import generator.Android.FragmentAndroid;
-
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -14,12 +11,12 @@ public class Message extends DataSequence{
 	/*
 	 *Attributes
 	 */
-	private ArrayList<Argument> listArgument;
+	private ArrayList<Argument> arguments;
 	
 	private Fragment sendEvent;
 	private Fragment receiveEvent;
 	
-	private String messageSort;
+	private String sort;
 	private String number;
 	
 	//variavel que pega o retorno de um método
@@ -30,14 +27,25 @@ public class Message extends DataSequence{
 	 */
 	public Message(String name){
 		super(name);
-		this.messageSort = "syn";
-		this.listArgument = new ArrayList<Argument>();
+		this.sort = "syn";
+		this.arguments = new ArrayList<Argument>();
 	}
 
-	public String getMessageSort(){
-		return messageSort;
+	public String getSort(){
+		return this.sort;
 	}
 	
+	public String getVariable(){
+		return this.variable;
+	}
+	
+	public Fragment getReceiveEvent(){
+		return this.receiveEvent;
+	}
+	
+	public ArrayList<Argument> getArguments(){
+		return this.arguments;
+	}
 	
 	public void parser(BufferedReader bf, String line) throws IOException{
 		String value, key;
@@ -46,7 +54,7 @@ public class Message extends DataSequence{
 			name = name.substring(name.indexOf("=") + 1);
 		}
 		if(line.contains("messageSort=")){
-			messageSort = Tool.manipulate(line, "messageSort=");
+			sort = Tool.manipulate(line, "messageSort=");
 		}
 		number = name.substring(0, 1);
 		name = Tool.manipulate(name, number, ":", "_Message");
@@ -62,7 +70,7 @@ public class Message extends DataSequence{
 					value = Tool.manipulate(line, "name=");
 					Argument argument = new Argument(value);
 					argument.parser(bf, line);
-					listArgument.add(argument);
+					arguments.add(argument);
 				}
 			}
 		}
@@ -70,69 +78,14 @@ public class Message extends DataSequence{
 
 	public void printProp() {
 		System.out.println("Message: " + name);
-		System.out.println("\tsort: " + messageSort);
+		System.out.println("\tsort: " + sort);
 		System.out.println("\tvariable: " + (variable == null ? "NOT!" : variable));
 		System.out.println("\tnumber: " + number);
-		for(int i = 0 ; i <  this.listArgument.size(); i++){
+		for(int i = 0 ; i <  this.arguments.size(); i++){
 			System.out.print("\targument" + (i + 1) + ": ");
-			listArgument.get(i).printProp();
+			arguments.get(i).printProp();
 		}
 	}
 
-	public void genCode(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
-		out.write("\n" + tabInd);
-		if(messageSort.equals("createMessage")){
-			genCodeCreate(out);
-		} else{
-			genCodeVariable(out);
-			genCodeAtributte(out);
-		}
-	}
-
-	public void genCodeVariable(BufferedWriter out) throws IOException {
-		if(variable != null){
-			out.write(variable);
-			out.write(" = ");
-		}
-	} 
-	
-	
-	
-	private FragmentAndroid generatorFragment;
-
-	/*
-	 * Faz chamadas de método da própria classe e de outros objetos
-	 */
-	public void genCodeAtributte(BufferedWriter out) throws IOException {
-		//if(sendEvent.getCovered() != receiveEvent.getCovered()){
-		generatorFragment = new FragmentAndroid(receiveEvent);
-		generatorFragment.genCodeAttribute(out);
-		//}
-	}
-	
-	public void genCodeAtributteGetSet(BufferedWriter out) throws IOException {
-		//if(sendEvent.getCovered() != receiveEvent.getCovered()){
-		generatorFragment = new FragmentAndroid(receiveEvent);
-		generatorFragment.genCodeAttributeGetSet(out);
-		//}
-	}
-	
-	/*
-	 * Gera os n argumentos para um chamada de método
-	 */
-	public void genCodeArguments(BufferedWriter out) throws IOException {
-		for(int i=0; i < listArgument.size(); i++){
-			listArgument.get(i).genCode(out);
-			if(i < listArgument.size() - 1){
-				out.write(",");
-			}
-		}
-	}
-
-	private void genCodeCreate(BufferedWriter out) throws IOException {		
-		generatorFragment = new FragmentAndroid(receiveEvent);
-		generatorFragment.genCodeCreate(out);
-	}
 	
 }

@@ -11,6 +11,8 @@ public class FragmentAndroid implements GeneratorStrategy{
 
 	private Fragment fragment;
 	private LifelineAndroid generatorLifeline;
+	private MessageAndroid generatorMessage;
+	private String tabInd;
 	
 	private enum Operator{
 		opt, alt, loop, seq, par, ref;
@@ -39,8 +41,10 @@ public class FragmentAndroid implements GeneratorStrategy{
 	}
 	
 	public void genCodeCombined(BufferedWriter out, int tab) throws IOException {
-		if(fragment.getMessage() != null)
-			fragment.getMessage().genCode(out, tab);
+		if(fragment.getMessage() != null){
+			generatorMessage = new MessageAndroid(fragment.getMessage());
+			generatorMessage.codeGenerator(out, tab);
+		}
 		if(fragment.getOperator() != null){
 			switch(Operator.valueOf(fragment.getOperator())){
 				case opt:
@@ -85,33 +89,36 @@ public class FragmentAndroid implements GeneratorStrategy{
 	 * @throws IOException
 	 */
 	private void genCodeMessageSet(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
+		tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd);
-		fragment.getMessage().genCodeAtributteGetSet(out);
+		generatorMessage = new MessageAndroid(fragment.getMessage());
+		generatorMessage.genCodeAtributteGetSet(out);
 		out.write(" = ");
-		fragment.getMessage().genCodeArguments(out);
+		generatorMessage.genCodeArguments(out);
 		out.write(";");
 	}	
 	
 	private void genCodeMessageGet(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
+		tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd);
-		fragment.getMessage().genCodeVariable(out);
+		generatorMessage = new MessageAndroid(fragment.getMessage());
+		generatorMessage.genCodeVariable(out);
 		out.write(" = ");
-		fragment.getMessage().genCodeAtributteGetSet(out);
+		generatorMessage.genCodeAtributteGetSet(out);
 		out.write(".");
 		fragment.getEvent().genCodeGet(out);
 		out.write(";");
 	}
 	
 	private void genCodeMessageNormal(BufferedWriter out, int tab) throws IOException {
-		fragment.getMessage().genCode(out, tab);
+		generatorMessage = new MessageAndroid(fragment.getMessage());
+		generatorMessage.codeGenerator(out, tab);
 		out.write(fragment.getName() +"(");
-		if(fragment.getMessage().getMessageSort()!= null)
-		if(fragment.getMessage().getMessageSort().equals("createMessage"))
+		if(fragment.getMessage().getSort()!= null)
+		if(fragment.getMessage().getSort().equals("createMessage"))
 			return;
 		//event.genCode(out);
-		fragment.getMessage().genCodeArguments(out);
+		generatorMessage.genCodeArguments(out);
 		out.write(");");
 	}
 	
@@ -120,7 +127,7 @@ public class FragmentAndroid implements GeneratorStrategy{
 	}
 
 	private void genCodeAlt(BufferedWriter out, int tab) throws IOException {
-		String tabInd, tabSubInd;
+		String tabSubInd;
 		tabInd = Tool.indentation(tab);
 		tabSubInd = Tool.indentation(tab + 1);
 		if(fragment.getOperands().size() > 2){
@@ -152,7 +159,7 @@ public class FragmentAndroid implements GeneratorStrategy{
 	}
 	
 	private void genCodeLoop(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
+		tabInd = Tool.indentation(tab);
 		if(fragment.getOperands().get(0).getGuard().getMinint() != null){
 			genCodeFor(out,tab);
 		}
@@ -166,7 +173,7 @@ public class FragmentAndroid implements GeneratorStrategy{
 
 	
 	private void genCodeWhile(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
+		tabInd = Tool.indentation(tab);
 		out.write(tabInd + "while(");
 		if(fragment.getOperands().get(0).getGuard().getSpecification().isLogic()){
 			if((fragment.getOperands().get(0).getGuard().getSpecification().getValue().equals("false")) ||
@@ -181,7 +188,7 @@ public class FragmentAndroid implements GeneratorStrategy{
 	}
 
 	private void genCodeFor(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
+		tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd);
 		if(fragment.getCovered().getRepresents().getUpperValue() == '*'){//for		
 			if(fragment.getCovered().getRepresents().isPrimitiveType()){
