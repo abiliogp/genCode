@@ -10,8 +10,10 @@ import generator.GeneratorStrategy;
 public class FragmentAndroid implements GeneratorStrategy{
 
 	private Fragment fragment;
+	
 	private LifelineAndroid generatorLifeline;
 	private MessageAndroid generatorMessage;
+	private OperandAndroid generatorOperand;
 	private String tabInd;
 	
 	private enum Operator{
@@ -123,7 +125,8 @@ public class FragmentAndroid implements GeneratorStrategy{
 	}
 	
 	private void genCodeOpt(BufferedWriter out, int tab) throws IOException {
-		fragment.getOperands().get(0).genCodeOpt(out, tab);
+		generatorOperand = new OperandAndroid(fragment.getOperands().get(0));
+		generatorOperand.genCodeOpt(out, tab);
 	}
 
 	private void genCodeAlt(BufferedWriter out, int tab) throws IOException {
@@ -141,19 +144,23 @@ public class FragmentAndroid implements GeneratorStrategy{
 						break;
 					}
 					out.write("\n" + tabSubInd);
-					fragment.getOperands().get(i).genCodeCaseSwitch(out, tab + 1);
+					generatorOperand = new OperandAndroid(fragment.getOperands().get(i));
+					generatorOperand.genCodeCaseSwitch(out, tab + 1);
 				}
 				out.write("\n" + tabSubInd + "default:");
 				out.write("\n\t" + tabSubInd + "break;");
 				out.write("\n" + tabSubInd + "}//endSwitch\n");
 				for(; i < fragment.getOperands().size() ; i++){
-					fragment.getOperands().get(i).genCodeOpt(out, tab);
+					generatorOperand = new OperandAndroid(fragment.getOperands().get(i));
+					generatorOperand.genCodeOpt(out, tab);
 				}
 			}
 		} else{
-			fragment.getOperands().get(0).genCodeOpt(out, tab);
+			generatorOperand = new OperandAndroid(fragment.getOperands().get(0));
+			generatorOperand.genCodeOpt(out, tab);
 			out.write(" else ");
-			fragment.getOperands().get(1).genCodeOpt(out, tab);
+			generatorOperand = new OperandAndroid(fragment.getOperands().get(1));
+			generatorOperand.genCodeOpt(out, tab);
 		}
 		
 	}
@@ -167,7 +174,8 @@ public class FragmentAndroid implements GeneratorStrategy{
 			 genCodeWhile(out,tab);
 		}
 		out.write("){");
-		fragment.getOperands().get(0).genCode(out, tab);
+		generatorOperand = new OperandAndroid(fragment.getOperands().get(0));
+		generatorOperand.codeGenerator(out, tab);
 		out.write("\n" + tabInd + "}");
 	}
 

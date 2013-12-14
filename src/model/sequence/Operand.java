@@ -1,9 +1,7 @@
 package model.sequence;
 
-import generator.Android.FragmentAndroid;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -11,17 +9,21 @@ import utilities.Tool;
 
 public class Operand extends DataSequence{
 	
-	private ArrayList<Fragment> listFragment;
+	private ArrayList<Fragment> fragments;
 	private Guard guard;
 	
 	
 	public Operand(String name) {
 		super(name);
-		listFragment = new ArrayList<Fragment>();
+		fragments = new ArrayList<Fragment>();
 	}
 	
 	public Guard getGuard(){
 		return guard;
+	}
+	
+	public ArrayList<Fragment> getFragments(){
+		return this.fragments;
 	}
 	
 	
@@ -40,7 +42,7 @@ public class Operand extends DataSequence{
 					value = Tool.manipulate(line, "xmi:id=");
 					Fragment fragment = Tool.getTrieFragment(value);
 					fragment.parser(bf, line);
-					listFragment.add(fragment);
+					fragments.add(fragment);
 				}
 			}
 		}	
@@ -49,45 +51,11 @@ public class Operand extends DataSequence{
 	public void printProp(){
 		System.err.println("Operand"+this.name);
 		this.guard.printProp();
-		for(int i=0 ; i < this.listFragment.size() ; i++){
-			this.listFragment.get(i).printProp();
+		for(int i=0 ; i < this.fragments.size() ; i++){
+			this.fragments.get(i).printProp();
 		}
 	}
 
-	public void genCodeOpt(BufferedWriter out, int tab) throws IOException {
-		String tabInd, subInd;
-		tabInd = Tool.indentation(tab);
-		if( !(guard.getSpecification().getBody().equals("else")) ){
-			out.write("\n" + tabInd + "if(");
-			guard.genCode(out);	
-			out.write(")");
-		} 
-		out.write("{");
-		genCode(out, tab);
-		out.write("\n" + tabInd + "}");
-	}
 	
-	
-	private FragmentAndroid generatorFragment;
-	
-	public void genCode(BufferedWriter out, int tab) throws IOException {
-		for(Fragment fragment : listFragment){
-			generatorFragment = new FragmentAndroid(fragment);
-			generatorFragment.codeGenerator(out, tab + 1);
-		}
-	}
-	
-	public void genCodeCaseSwitch(BufferedWriter out, int tab) throws IOException {
-		String tabInd;
-		out.write("case ");
-		guard.genCodeValue(out);
-		out.write(":\n");
-		for(Fragment fragment : listFragment){
-			generatorFragment = new FragmentAndroid(fragment);
-			generatorFragment.codeGenerator(out, tab + 1);
-		}
-		tabInd = Tool.indentation(tab);
-		out.write("\t" + tabInd +"break;\n");
-	}
 
 }
