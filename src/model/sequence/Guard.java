@@ -29,6 +29,15 @@ public class Guard extends DataSequence{
 		return minint.getValue();
 	}
 	
+	public boolean isExpressionLogic(){
+		return specification.isExpressionLogic();
+	}
+	
+	public boolean isValueNumeric(){
+		return specification.isNumeric();
+	}
+	
+	
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String value;
 		if (line.contains("/>")){
@@ -54,7 +63,6 @@ public class Guard extends DataSequence{
 				}
 			}
 		}
-		
 	}
 
 	
@@ -66,29 +74,11 @@ public class Guard extends DataSequence{
 		this.minint.printProp();
 	}
 
-	public boolean isExpressionLogic(){
-		return specification.isExpressionLogic();
-	}
 	
-	public boolean isValueNumeric(){
-		return specification.isNumeric();
-	}
 	
-	public void genCode(BufferedWriter out) throws IOException {
-		specification.genCode(out);
-	}
-	
-	public void genCodeValue(BufferedWriter out) throws IOException {
-		specification.genCodeValue(out);
-	}
-	
-	public void genCodeVariable(BufferedWriter out) throws IOException {
-		specification.genCodeVariable(out);
-	}
 
-	public void genCodeForNormal(BufferedWriter out) throws IOException {
-		out.write("for(int i=" + minint.getValue() + "; i < " + this.specification.getBody() + "; i++");
-	}
-
+	
+	
+	
 	
 }

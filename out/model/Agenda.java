@@ -16,7 +16,7 @@ public class Agenda{
 
 		contato.criaContato();
 		for(Contato c : contato){
-			if(n  ==  1){
+			if(n == 1){
 				contato.criaContato();
 			}
 		}

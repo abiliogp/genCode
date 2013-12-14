@@ -13,6 +13,8 @@ public class OperandAndroid implements GeneratorStrategy{
 	private Operand operand;
 	
 	private FragmentAndroid generatorFragment;
+	private GuardAndroid generatorGuard;
+	
 	private String tabInd;
 	
 	public OperandAndroid(Operand operand){
@@ -33,7 +35,8 @@ public class OperandAndroid implements GeneratorStrategy{
 		tabInd = Tool.indentation(tab);
 		if( !(operand.getGuard().getSpecification().getBody().equals("else")) ){
 			out.write("\n" + tabInd + "if(");
-			operand.getGuard().genCode(out);	
+			generatorGuard = new GuardAndroid(operand.getGuard());
+			generatorGuard.codeGenerator(out, tab);	
 			out.write(")");
 		} 
 		out.write("{");
@@ -45,7 +48,8 @@ public class OperandAndroid implements GeneratorStrategy{
 	
 	public void genCodeCaseSwitch(BufferedWriter out, int tab) throws IOException {
 		out.write("case ");
-		operand.getGuard().genCodeValue(out);
+		generatorGuard = new GuardAndroid(operand.getGuard());
+		generatorGuard.genCodeValue(out);
 		out.write(":\n");
 		for(Fragment fragment : operand.getFragments()){
 			generatorFragment = new FragmentAndroid(fragment);

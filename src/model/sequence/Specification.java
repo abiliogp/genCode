@@ -1,7 +1,6 @@
 package model.sequence;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 import utilities.Tool;
@@ -34,6 +33,21 @@ public class Specification extends DataSequence{
 		return expression;
 	}
 	
+	public String getVariable(){
+		return this.variable;
+	}
+	
+	public boolean isLogic(){
+		return isLogic;
+	}
+	
+	public boolean isNumeric(){
+		return isNumeric; 
+	}
+	
+	public boolean isExpressionLogic(){
+		return isExpressionLogic;
+	}
 	
 	public void parser(BufferedReader bf, String line) throws IOException {
 		type = Tool.manipulate(line,"xmi:type=");
@@ -80,38 +94,14 @@ public class Specification extends DataSequence{
 	public void printProp() {
 		System.out.println("Specification: " + this.name);
 		System.out.println("\tBody: " + this.body);
-		System.err.println("\tvariable: " +variable);
-		System.err.println("\texpression: " +expression);
-		System.err.println("\tvalue: " +value);
+		System.out.println("\tvariable: " +variable);
+		System.out.println("\texpression: " +expression);
+		System.out.println("\tvalue: " +value);
 		System.out.println("\tLanguage: " + this.language);
 		System.out.println("\tType: " + this.type);
 	}
 
-	public void genCode(BufferedWriter out) throws IOException {
-		if(variable != null) {
-			out.write(variable + " " +  expression + " " + value);
-		} else {
-			out.write(body);
-		}
-	}
-	
-	public void genCodeVariable(BufferedWriter out) throws IOException {
-		out.write(variable);
-	}
-	
-	public void genCodeValue(BufferedWriter out) throws IOException {
-		out.write(value);
-	}
 
-	public boolean isLogic(){
-		return isLogic;
-	}
+
 	
-	public boolean isNumeric(){
-		return isNumeric; 
-	}
-	
-	public boolean isExpressionLogic(){
-		return isExpressionLogic;
-	}
 }

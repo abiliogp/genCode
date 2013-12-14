@@ -14,6 +14,8 @@ public class FragmentAndroid implements GeneratorStrategy{
 	private LifelineAndroid generatorLifeline;
 	private MessageAndroid generatorMessage;
 	private OperandAndroid generatorOperand;
+	private GuardAndroid generatorGuard;
+	
 	private String tabInd;
 	
 	private enum Operator{
@@ -136,7 +138,8 @@ public class FragmentAndroid implements GeneratorStrategy{
 		if(fragment.getOperands().size() > 2){
 			if(fragment.getOperands().get(0).getGuard().isExpressionLogic()){
 				out.write(tabInd + "switch(");
-				fragment.getOperands().get(0).getGuard().genCodeVariable(out);
+				generatorGuard = new GuardAndroid(fragment.getOperands().get(0).getGuard());
+				generatorGuard.genCodeVariable(out);
 				out.write("){");
 				int i = 0;
 				for(; i < fragment.getOperands().size() ; i++){
@@ -189,9 +192,11 @@ public class FragmentAndroid implements GeneratorStrategy{
 			{
 				out.write("!");
 			}
-			fragment.getOperands().get(0).getGuard().genCodeVariable(out);
+			generatorGuard = new GuardAndroid(fragment.getOperands().get(0).getGuard());
+			generatorGuard.genCodeVariable(out);
 		} else{
-			fragment.getOperands().get(0).getGuard().getSpecification().genCode(out);
+			generatorGuard = new GuardAndroid(fragment.getOperands().get(0).getGuard());
+			generatorGuard.codeGenerator(out, tab);
 		}
 	}
 
@@ -208,7 +213,8 @@ public class FragmentAndroid implements GeneratorStrategy{
 			}
 		}
 		else if(fragment.getOperands().get(0).getGuard().getMinint() != null) {
-			fragment.getOperands().get(0).getGuard().genCodeForNormal(out);
+			generatorGuard = new GuardAndroid(fragment.getOperands().get(0).getGuard());
+			generatorGuard.genCodeForNormal(out);
 		}
 		
 	}
