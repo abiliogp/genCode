@@ -50,7 +50,12 @@ public class MethodAndroid implements GeneratorStrategy {
 		}
 		out.write(" ");
 		if (!method.getReturns().isEmpty()) {
-			method.getReturns().get(0).genCodeMult(out);
+			if (method.getReturns().get(0).getUpperValue() == '*' 
+				|| method.getReturns().get(0).getLowerValue() == '*') {
+				out.write("ArrayList<" + method.getReturns().get(0).getType() + "> ");
+			} else {
+				out.write(method.getReturns().get(0).getType() + " ");
+			}
 		} else {
 			out.write(method.getType() + " ");
 		}
@@ -108,7 +113,12 @@ public class MethodAndroid implements GeneratorStrategy {
 		for (Parameter parameter : method.getParameters()) {
 			if ((parameter.getDirection().equals("in"))
 					|| (parameter.getDirection().equals("inout"))) {
-				parameter.genCode(out);
+				if (parameter.getUpperValue() == '*' || parameter.getLowerValue() == '*') {
+					out.write("ArrayList<" + parameter.getType() + "> ");
+				} else {
+					out.write(parameter.getType() + " ");
+				}
+				out.write(parameter.getName());
 			}
 			i++;
 			if (method.getParameters().size() > (i + 1)) {
@@ -138,7 +148,12 @@ public class MethodAndroid implements GeneratorStrategy {
 		for (Parameter parameter : method.getParameters()) {
 			if (parameter.getDirection().equals("out")) {
 				out.write(tabInd);
-				parameter.genCode(out);
+				if (parameter.getUpperValue() == '*' || parameter.getLowerValue() == '*') {
+					out.write("ArrayList<" + parameter.getType() + "> ");
+				} else {
+					out.write(parameter.getType() + " ");
+				}
+				out.write(parameter.getName());
 				out.write(";");
 			}
 		}
@@ -183,9 +198,9 @@ public class MethodAndroid implements GeneratorStrategy {
 		out.write("\n" + tabInd + "}\n");
 	}
 
-	public void genCodeCall(BufferedWriter out) throws IOException {
-		out.write(method.getName() + "(");
-	}
+//	public void genCodeCall(BufferedWriter out) throws IOException {
+//		out.write(method.getName() + "(");
+//	}
 
 	public void genCodeCallGet(BufferedWriter out) throws IOException {
 		String aux;

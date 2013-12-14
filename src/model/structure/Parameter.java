@@ -1,7 +1,6 @@
 package model.structure;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 import utilities.Parser;
@@ -44,24 +43,7 @@ public class Parameter extends DataStructure {
 						this.upperValue, this.lowerValue);
 	}
 
-	public void genCode(BufferedWriter out) throws IOException {
-		genCodeMult(out);
-		out.write(this.name);
-	}
 
-	public void genCodeMult(BufferedWriter out) throws IOException {
-		if (this.upperValue == '*' || this.lowerValue == '*') {
-			out.write("ArrayList<" + this.type + "> ");
-		} else {
-			out.write(this.type + " ");
-		}
-	}
-	
-	// Return
-	public void genCodeReturn(BufferedWriter out) throws IOException {
-		genCodeMult(out);
-		out.write(";");
-	}
 
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String value = null;
