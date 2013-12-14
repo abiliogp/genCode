@@ -1,7 +1,6 @@
 package model.sequence;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 import model.structure.Method;
@@ -43,16 +42,5 @@ public class OperationEvent extends DataSequence{
 		System.out.println("\tMt Chamado " + operation.getName());
 	}
 
-
-	public void genCode(BufferedWriter out) throws IOException {
-		if(type.equals("uml:SendOperationEvent")){
-			operation.genCodeCall(out);
-		}
-	}
-
-	public void genCodeGet(BufferedWriter out) throws IOException {
-		if(type.equals("uml:SendOperationEvent")){
-			operation.genCodeCallGet(out);
-		}
-	}
+	
 }

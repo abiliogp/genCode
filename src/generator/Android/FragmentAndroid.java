@@ -14,7 +14,9 @@ public class FragmentAndroid implements GeneratorStrategy{
 	private LifelineAndroid generatorLifeline;
 	private MessageAndroid generatorMessage;
 	private OperandAndroid generatorOperand;
+	private MethodAndroid generatorMethod;
 	private GuardAndroid generatorGuard;
+	
 	
 	private String tabInd;
 	
@@ -110,7 +112,10 @@ public class FragmentAndroid implements GeneratorStrategy{
 		out.write(" = ");
 		generatorMessage.genCodeAtributteGetSet(out);
 		out.write(".");
-		fragment.getEvent().genCodeGet(out);
+		if(fragment.getEvent().getType().equals("uml:SendOperationEvent")){
+			generatorMethod = new MethodAndroid(fragment.getEvent().getOperation());
+			generatorMethod.genCodeCallGet(out);
+		}
 		out.write(";");
 	}
 	

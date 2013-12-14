@@ -114,39 +114,7 @@ public class Method extends DataStructure {
 	
 
 	
-	public void genCodeH(BufferedWriter out, int tab) throws IOException {
-		this.tab = tab;
-		tabInd = Tool.indentation(tab);
-		out.write("\n" + tabInd + this.visibility);
-		if ((this.isStatic)) {
-			out.write(" static");
-		}
-		if ((this.isAbstract)) {
-			out.write(" abstract");
-		}
-		out.write(" ");
-		if(!this.returns.isEmpty()){
-			this.returns.get(0).genCodeMult(out);
-		} else{
-			out.write(this.type + " ");
-		}
-		out.write(this.name);
-	}
 
-	
-	
-	
-
-	
-	public void genCodeCall(BufferedWriter out) throws IOException {
-		out.write(name + "(");
-	}
-
-	public void genCodeCallGet(BufferedWriter out) throws IOException {
-		String aux;
-		aux = name.substring(3).toLowerCase();
-		out.write(aux);
-	}
 	
 	public void parser(BufferedReader bf, String line) throws IOException {
 		String value, str, key;

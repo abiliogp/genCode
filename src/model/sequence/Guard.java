@@ -1,7 +1,6 @@
 package model.sequence;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 import utilities.Tool;
@@ -65,8 +64,6 @@ public class Guard extends DataSequence{
 		}
 	}
 
-	
-
 	public void printProp() {
 		System.out.println("Guard " + this.name);
 		this.specification.printProp();
@@ -74,11 +71,4 @@ public class Guard extends DataSequence{
 		this.minint.printProp();
 	}
 
-	
-	
-
-	
-	
-	
-	
 }
