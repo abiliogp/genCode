@@ -8,9 +8,7 @@ import utilities.Tool;
 
 public class Message extends DataSequence{
 
-	/*
-	 *Attributes
-	 */
+	/*Attributes*/
 	private ArrayList<Argument> arguments;
 	
 	private Fragment sendEvent;
@@ -22,9 +20,7 @@ public class Message extends DataSequence{
 	//variavel que pega o retorno de um método
 	private String variable;
 	
-	/*
-	 *Constructor
-	 */
+	/*Constructor*/
 	public Message(String name){
 		super(name);
 		this.sort = "syn";

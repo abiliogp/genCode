@@ -9,15 +9,17 @@ import utilities.Tool;
 
 public class Operand extends DataSequence{
 	
+	/*Attributes*/
 	private ArrayList<Fragment> fragments;
 	private Guard guard;
 	
-	
+	/*Constructor*/
 	public Operand(String name) {
 		super(name);
 		fragments = new ArrayList<Fragment>();
 	}
 	
+	/*Get*/
 	public Guard getGuard(){
 		return guard;
 	}

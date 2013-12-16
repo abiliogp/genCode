@@ -4,32 +4,32 @@ import utilities.Tool;
 
 public abstract class DataStructure {
 
+	/*Attributes*/
 	protected String name;
-
-	protected char upperValue;
-	protected char lowerValue;
-	
 	protected String type;
 	protected String visibility;
+	
+	protected char upperValue;
+	protected char lowerValue;
 	
 	protected boolean isPrivate;
 	protected boolean isStatic;
 	protected boolean isAbstract;
-	protected String tabInd;
-	protected int tab;
 	
-	
+	/*Constructor*/
 	public DataStructure(String name) {
 		this.name = name;
-		this.isAbstract = false;
 		this.visibility = "public";
 		this.upperValue = '-';
 		this.lowerValue = '-';
 		this.type = "void";
 	}
 
-	// set
-
+	/*Set*/
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	public void setUpperValue(char upperValue) {
 		this.upperValue = upperValue;
 	}
@@ -47,29 +47,12 @@ public abstract class DataStructure {
 		}
 	}
 	
-	// set
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	public void isAbstract(boolean isAbstract) {
 		this.isAbstract = isAbstract;
 	}
 	
-	public boolean isPrivate(){
-		return this.isPrivate;
-	}
 	
-	// get
-
-	public char getUpperValue() {
-		return this.upperValue;
-	}
-
-	public char getLowerValue() {
-		return this.lowerValue;
-	}
-
+	/*Get*/
 	public String getName() {
 		return this.name;
 	}
@@ -78,9 +61,16 @@ public abstract class DataStructure {
 		return this.visibility;
 	}
 	
-	// get
 	public String getType() {
 		return this.type;
+	}
+	
+	public char getUpperValue() {
+		return this.upperValue;
+	}
+
+	public char getLowerValue() {
+		return this.lowerValue;
 	}
 
 	public boolean isAbstract() {
@@ -90,6 +80,11 @@ public abstract class DataStructure {
 	public boolean isStatic(){
 		return this.isStatic;
 	}
+	
+	public boolean isPrivate(){
+		return this.isPrivate;
+	}
+	
 	/**
 	 * Função auxiliar: parserAtribute, parserParameter, parserReturn
 	 * @param str
@@ -112,7 +107,5 @@ public abstract class DataStructure {
 		return str;
 	}
 
-	
-	public abstract void printProp();
 	
 }

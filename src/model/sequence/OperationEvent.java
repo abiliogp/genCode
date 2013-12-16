@@ -9,12 +9,15 @@ import utilities.Tool;
 
 public class OperationEvent extends DataSequence{
 
+	/*Attributes*/
 	private Method operation;
 
+	/*Constructor*/
 	public OperationEvent(String name){
 		super(name);
 	}
 	
+	/*Get*/
 	public Method getOperation(){
 		return operation;
 	}
@@ -34,7 +37,6 @@ public class OperationEvent extends DataSequence{
 		key = Tool.manipulate(line, "operation=");
 		operation = Tool.getTrieMetodo(key);
 	}
-
 
 	public void printProp() {
 		System.err.println("OperationEvent " + name);

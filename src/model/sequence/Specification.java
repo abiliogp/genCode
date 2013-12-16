@@ -7,8 +7,8 @@ import utilities.Tool;
 
 public class Specification extends DataSequence{
 	
+	/*Attributes*/
 	private String language;
-
 	private String body;
 	private String variable;
 	private String expression;
@@ -17,14 +17,12 @@ public class Specification extends DataSequence{
 	private boolean isNumeric;
 	private boolean isExpressionLogic;
 	
-	
+	/*Constructor*/
 	public Specification(String name) {
 		super(name);
-		isLogic = false;
-		isNumeric = false;
-		isExpressionLogic = false;
 	}
 	
+	/*Get*/
 	public String getBody(){
 		return body;
 	}

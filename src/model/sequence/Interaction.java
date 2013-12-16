@@ -8,28 +8,21 @@ import java.util.TreeMap;
 import utilities.Tool;
 
 
-/*
- * This "package code" was generate by GenCode
- */
-
 public class Interaction extends DataSequence{
 
-	
-	
+	/*Attributes*/
 	private  ArrayList<Lifeline> lifelines;
 	private  ArrayList<Fragment> fragments;
 	
-	/*
-	 * trieXMIfragment <XMI, Interaction.name > 
-	 */
-	private  TreeMap<String, String> trieXMIfragment = new TreeMap<String, String>();
-	
+	/*Constructor*/
 	public Interaction(String name){
 		super(name);
 		lifelines = new ArrayList<Lifeline>();
 		fragments = new ArrayList<Fragment>();
+		new TreeMap<String, String>();
 	}
 	
+	/*Get*/
 	public ArrayList<Lifeline> getLifelines(){
 		return this.lifelines;
 	}
@@ -40,7 +33,7 @@ public class Interaction extends DataSequence{
 
 
 	public  void parser(BufferedReader bf, String line) throws IOException{
-		String value, key, str;
+		String key;
 		if (line.contains("/>"))
 			line = "</ownedBehavior>"; 		
 		for ( ; !((line.contains("</ownedBehavior>")) || (line.contains("</packagedElement>"))) ; line = bf.readLine() ) {
@@ -65,7 +58,7 @@ public class Interaction extends DataSequence{
 				Message message = Tool.getTrieMessage(key);
 				message.parser(bf, line);
 			}
-		}//end for
+		}
 	}
 	
 	/*
@@ -74,7 +67,7 @@ public class Interaction extends DataSequence{
 	 * Na segunda passagem apenas busca na trie e vai referenciado
 	 */
 	public static  void load(BufferedReader bf, String line) throws IOException {
-		String key, value, str;
+		String key, value;
 		key = Tool.manipulate(line, "xmi:id=");
 		value = Tool.manipulate(line, "name");
 		Interaction interaction = new Interaction(value);
@@ -107,9 +100,9 @@ public class Interaction extends DataSequence{
 					Message message = new Message(value);
 					Tool.putTrieMessage(key, message);
 				}
-			}//end for
+			}
 		}
-	}//end loadSequence
+	}
 	
 	
 	

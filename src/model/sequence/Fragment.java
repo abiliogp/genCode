@@ -8,17 +8,15 @@ import utilities.Tool;
 
 public class Fragment extends DataSequence{
 
-	/*
-	 *Attributes
-	 */
+	/*Attributes*/
+	private String operator;	
+	private String xmi;
+	
 	private OperationEvent event;
 	
 	private Message message;
 	
-	private String operator;
-	
-	private String xmi;
-	private boolean send;
+	private boolean isSend;
 	
 	private ArrayList<Operand> operands;
 
@@ -30,15 +28,11 @@ public class Fragment extends DataSequence{
 
 	private Lifeline covered;
 	
-	
-	
-	/*
-	 *Constructor
-	 */
+	/*Constructor*/
 	public Fragment(String name){
 		super(name);
 		if(name.contains("_MessageSend")){
-			send = true;
+			isSend = true;
 			this.name = name.substring(0, name.indexOf("_MessageSend"));
 		}
 		operands = new ArrayList<Operand>();
@@ -46,13 +40,10 @@ public class Fragment extends DataSequence{
 	}
 
 	
-	/*
-	 *Set
-	 */
+	/*Set*/
 	public void setOperator(String operator){
 		this.operator = operator;
 	}
-	
 	
 	public void setEvent( OperationEvent event ){
 		this.event = event;
@@ -62,14 +53,7 @@ public class Fragment extends DataSequence{
 		this.message = message;
 	}
 	
-
-	/*
-	 *Get
-	 */
-	public boolean isSend(){
-		return this.send;
-	}
-	
+	/*Get*/
 	public OperationEvent getEvent(){
 		return event;
 	}
@@ -97,9 +81,10 @@ public class Fragment extends DataSequence{
 	public ArrayList<Operand> getOperands(){
 		return this.operands;
 	}
-	
-	
-	
+
+	public boolean isSend(){
+		return this.isSend;
+	}
 	
 	public void load(BufferedReader bf, String line) throws IOException{
 		String value, key;

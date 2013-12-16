@@ -11,19 +11,23 @@ import utilities.Tool;
 
 public class Attribute extends DataStructure {
 
+	/*Attributes*/
 	private String aggregation;
 	private String defautlValue;
 	private String defautlValueType;
+	
 	private boolean objectType;
 	private boolean primitiveType;
 	private boolean hasGetMethod;
 	private boolean hasSetMethod;
 	
+	/*Constructor*/
 	public Attribute(String name) {
 		super(name);
 		this.aggregation = "simple";
 	}
-			
+	
+	/*Get*/		
 	public boolean isPrimitiveType(){
 		return this.primitiveType; 
 	}
@@ -45,7 +49,6 @@ public class Attribute extends DataStructure {
 	}
 	
 	public void printProp() {
-
 		System.out.println("\tAtributo: " + this.name);
 		System.out.println("\t\tTipo: " + this.type);
 		System.out.println("\t\tPrimitivo: " + this.primitiveType);
@@ -78,7 +81,6 @@ public class Attribute extends DataStructure {
 		if(Tool.getTrieMetodoName("get" + name.substring(0, 1).toUpperCase() + name.substring(1)) != null){
 			hasGetMethod = true;
 		}
-
 		
 		if(Tool.getTrieMetodoName("set" + name.substring(0, 1).toUpperCase() + name.substring(1)) != null){
 			hasSetMethod = true;

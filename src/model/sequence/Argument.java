@@ -6,8 +6,7 @@ import java.io.IOException;
 import utilities.Tool;
 
 public class Argument extends DataSequence {
-	
-	
+		
 	public Argument(String name){
 		super(name);
 	}
@@ -19,7 +18,6 @@ public class Argument extends DataSequence {
 			value = name;
 		}
 	}
-
 	
 	public void printProp() {
 		System.out.println("\t" + type);

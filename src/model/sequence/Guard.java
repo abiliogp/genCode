@@ -7,15 +7,18 @@ import utilities.Tool;
 
 public class Guard extends DataSequence{
 
+	/*Attribute*/
 	private Specification specification;
 	
 	private GuardInt maxint;
 	private GuardInt minint;
 	
+	/*Constructor*/
 	public Guard(String name) {
 		super(name);
 	}
 	
+	/*Get*/
 	public Specification getSpecification(){
 		return specification;
 	}

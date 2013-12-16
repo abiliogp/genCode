@@ -9,18 +9,14 @@ import utilities.Tool;
 
 public class Lifeline extends DataSequence{
 
-	/*
-	 *Attributes
-	 */
+	/*Attributes*/
 	private Attribute represents;
 	private String parameter;
 	
 	private ArrayList<Fragment> coveredBy;
 	private ArrayList<Fragment> order;
 
-	/*
-	 *Constructor
-	 */
+	/*Constructor*/
 	public Lifeline(String name){
 		super(name);
 		this.coveredBy = new ArrayList<Fragment>();
@@ -28,26 +24,18 @@ public class Lifeline extends DataSequence{
 	}
 
 
-
-
-	/*
- 	* Add
- 	*/
+	/*Add*/
 	public void addFragment( Fragment coveredBy ){
 		this.coveredBy.add(coveredBy);
 	}
 
 
-	/*
-	 *Set
-	 */
+	/*Set*/
 	public void setRepresents( Attribute represents ){
 		 this.represents = represents;
 	}
 
-	/*
-	 *Get
-	 */
+	/*Get*/
 	public Attribute getRepresents(){
 		return this.represents;
 	}
@@ -72,9 +60,8 @@ public class Lifeline extends DataSequence{
 		return this.parameter;
 	}
 	
-	/*
-	 *Abstract Method of Super
-	 */
+	
+
 	public void parser(BufferedReader bf, String line) throws IOException{
 		String value, key;
 		if(line.contains("represents=")){//se tiver atributo associado a lifeline

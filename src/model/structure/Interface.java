@@ -110,10 +110,6 @@ public class Interface extends DataStructure{
 		}// end for PackagedElement	
 	}//end class parser
 
-	@Override
-	public void printProp() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 }

@@ -9,10 +9,11 @@ import utilities.Tool;
 
 public class Classe extends DataStructure {
 
+	/*Attributes*/
 	public Pacote pacote;
 	private String general;
 
-	public boolean ativa;
+	public boolean active;
 
 	private ArrayList<Classe> innerClasses;
 	
@@ -27,13 +28,11 @@ public class Classe extends DataStructure {
 	
 	public boolean needImport;
 	public boolean needGetSet;
-
 	public boolean generalActivity;
 
+	/*Constructor*/
 	public Classe(String name) {
 		super(name);
-		ativa = false;
-		general = null;
 		innerClasses = new ArrayList<Classe>();
 		attributes = new ArrayList<Attribute>();
 		stereotypes = new ArrayList<Attribute>();
@@ -44,29 +43,23 @@ public class Classe extends DataStructure {
 		realInterfaces = new ArrayList<RealizationInterface>();
 	}
 
-	// Operation
+	/*Add*/
 	public void addOperation(Operation operation) {
-
 		this.listOperacao.add(operation);
 	}
 
-	// Atributo
-	public void addAtributo(String name, String key) {
+	public void addAttribute(String name, String key) {
 		Attribute atributte = new Attribute(name);
 		this.attributes.add(atributte);
 		Tool.putTrieAtributte(key, atributte);
 	}
 
-	// Metodo
-	public void addMetodo(String name, String key) {
+	public void addMethod(String name, String key) {
 		Method metodo = new Method(name);
 		this.methods.add(metodo);
 		Tool.putTrieMetodo(key, metodo);
 	}
 
-	/*
-	 * Interaction
-	 */
 	public void addInteraction(Interaction interaction) {
 		listInteraction.add(interaction);
 	}
@@ -80,9 +73,9 @@ public class Classe extends DataStructure {
 		this.listAssociacao.add(assoc);
 	}
 	
-	
+	/*set*/
 	public void setActive(boolean ativa) {
-		this.ativa = ativa;
+		this.active = ativa;
 	}
 
 	public void setNeedImport(boolean needImport) {
@@ -93,7 +86,6 @@ public class Classe extends DataStructure {
 		this.needGetSet = needGetSet;
 	}
 	
-	// General
 	public void setGeneral(String general) {
 		this.general = general;
 	}
@@ -102,11 +94,7 @@ public class Classe extends DataStructure {
 		this.pacote = pacote;
 	}
 
-
-	public boolean isActive() {
-		return this.ativa;
-	}
-
+	/*Get*/
 	public Operation getLastOperation() {
 		return this.listOperacao.get(this.listOperacao.size() - 1);
 	}
@@ -169,8 +157,11 @@ public class Classe extends DataStructure {
 		return this.pacote;
 	}
 
-	
+	public boolean isActive() {
+		return this.active;
+	}
 
+	
 	public void printProp() {
 
 		if (this.pacote != null) {
@@ -182,7 +173,7 @@ public class Classe extends DataStructure {
 		if (this.isAbstract) {
 			System.out.println("\tClasse Abstrata");
 		}
-		if (this.ativa) {
+		if (this.active) {
 			System.out.println("\tClasse Ativa");
 		}
 		if (this.general != null) {
@@ -236,7 +227,7 @@ public class Classe extends DataStructure {
 		}
 
 		if (line.contains("isActive=")) {
-			ativa = true;
+			active = true;
 		}
 
 		if (line.contains("/>")) {
