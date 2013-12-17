@@ -19,7 +19,7 @@ public class InteractionAndroid implements GeneratorStrategy{
 	@Override
 	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
-		out.write("\n" + tabInd + "/** Specified from Sequence Diagram " + interaction.getName() + " */\n");
+		out.write("\n" + tabInd + "/** Specified from Sequence Diagram " + interaction.getName() + " */");
 		if(!(interaction.getLifelines().isEmpty()))
 			generatorLifeline = new LifelineAndroid(interaction.getLifelines().get(0));
 			generatorLifeline.codeGenerator(out, tab);

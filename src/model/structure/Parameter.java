@@ -8,8 +8,10 @@ import utilities.Tool;
 
 public class Parameter extends DataStructure {
 
+	/*Attributes*/
 	private String direction;
 
+	/*Constructor*/
 	public Parameter(String name) {
 		super(name);
 		this.direction = "in";
@@ -21,22 +23,17 @@ public class Parameter extends DataStructure {
 		this.direction = "in";
 	}
 
-	// set
-
+	/*Set*/
 	public void setDirection(String direction) {
-
 		this.direction = direction;
 	}
 
-	// get
-
+	/*Get*/
 	public String getDirection() {
-
 		return this.direction;
 	}
 
 	public void printProp() {
-
 		System.out
 				.printf("\t\tParâmetro: %s Tipo: %s Direção: %s Visibilidade: %s Upper: %s Lower: %s \n",
 						this.name, this.type, this.direction, this.visibility,
@@ -87,7 +84,7 @@ public class Parameter extends DataStructure {
 						}
 					}
 				}
-			}// end for
+			}
 		}
 	}
 

@@ -7,15 +7,18 @@ import java.io.IOException;
 import utilities.Tool;
 
 public class RealizationInterface {
+	
+	/*Attributes*/
 	private String name;
 	private Interface supplier;
 	private Interface contract;
 	
+	/*Constructor*/
 	public RealizationInterface(String name) {
 		this.name = name;
 	}
 	
-	
+	/*Get*/
 	public String getName(){
 		return this.name;
 	}

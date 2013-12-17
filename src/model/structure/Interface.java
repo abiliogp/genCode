@@ -14,30 +14,23 @@ import utilities.Tool;
 
 public class Interface extends DataStructure{
 	
-
+	/*Attributes*/
 	private boolean needImport;
-	private boolean ativa;
+	private boolean active;
 	
 	private ArrayList<Attribute> attributes;
 	private ArrayList<Method> methods;
 	private ArrayList<Operation> listOperacao;
 	
-	
+	/*Constructor*/
 	public Interface(String name) {
 		super(name);
-		ativa = false;
-		needImport = false;
 		attributes = new ArrayList<Attribute>();
 		methods = new ArrayList<Method>();
 		listOperacao = new ArrayList<Operation>(); 
 	}
 
-	
-	
-	public boolean isNeedImport(){
-		return this.needImport;
-	}
-	
+	/*Get*/
 	public ArrayList<Attribute> getAttributes(){
 		return this.attributes;
 	}
@@ -46,8 +39,11 @@ public class Interface extends DataStructure{
 		return this.methods;
 	}
 	
-	
+	public boolean isNeedImport(){
+		return this.needImport;
+	}
 
+	
 	public static void load(BufferedReader bf, String line) {
 		String key, value;
 		key = Tool.manipulate(line, "xmi:id");
@@ -77,7 +73,7 @@ public class Interface extends DataStructure{
 		}
 
 		if (line.contains("isActive=")) {
-			ativa = true;
+			active = true;
 		} 
 			
 		if (line.contains("/>")) {
@@ -107,8 +103,8 @@ public class Interface extends DataStructure{
 					Tool.putTrieMetodo(key, metodo);
 				}
 			}
-		}// end for PackagedElement	
-	}//end class parser
+		}	
+	}
 
 	
 	

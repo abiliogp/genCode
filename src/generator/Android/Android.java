@@ -1,14 +1,10 @@
 package generator.Android;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Android {
+public abstract class Android {
 
 	public enum Classes {
 		Activity, ListActivity, MapActivity, R, Thread, View, Handler;

@@ -2,44 +2,36 @@ package model.structure;
 
 public class Operation {
 
-	private String name;
-	
+	/*Attributes*/
+	private String name;	
 	private String type;
 	private String visibility;
 	
-	public Operation(String type){
-		
+	/*Constructor*/
+	public Operation(String type){	
 		this.type = type;
 		this.visibility = "public";
 	}
 	
-	
-	
-	//set
+	/*Set*/
 	public void setName(String name){
-		
 		this.name = name;
 	}
 	
 	public void setVisibility(String visibility){
-		
 		this.visibility = visibility;
 	}
 	
-	
-	//get
+	/*Get*/
 	public String getName(){
-		
 		return this.name;
 	}
 	
 	public String getVisibility(){
-		
 		return this.visibility;
 	}
 	
 	public String getType(){
-		
 		return this.type;
 	}
 	

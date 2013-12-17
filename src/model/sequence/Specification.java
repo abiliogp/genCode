@@ -50,7 +50,6 @@ public class Specification extends DataSequence{
 	public void parser(BufferedReader bf, String line) throws IOException {
 		type = Tool.manipulate(line,"xmi:type=");
 		body = Tool.manipulate(line, "value=");
-		
 		if (line.contains("/>")){
 			line = "</specification>";
 		} else{

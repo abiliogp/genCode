@@ -12,6 +12,7 @@ import utilities.Tool;
 
 public class Method extends DataStructure {
 
+	/*Attributes*/
 	private ArrayList<Parameter> parameters;
 	private ArrayList<Operation> listOperacao;
 	private ArrayList<Parameter> returns;
@@ -20,7 +21,7 @@ public class Method extends DataStructure {
 	private boolean isSet;
 	private boolean isGet;
 	
-
+	/*Constructor*/
 	public Method(String name) {
 		super(name);
 		parameters = new ArrayList<Parameter>();
@@ -29,7 +30,7 @@ public class Method extends DataStructure {
 		isAbstract = false;
 	}
 
-	// add
+	/*Add*/
 	public void addParameter(String name) {
 		this.parameters.add(new Parameter(name));
 	}
@@ -46,7 +47,7 @@ public class Method extends DataStructure {
 		this.returns.add(new Parameter(name));
 	}
 
-	// get
+	/*Get*/
 	public Operation getLastOperation() {
 		return this.listOperacao.get(this.listOperacao.size() - 1);
 	}
@@ -67,15 +68,6 @@ public class Method extends DataStructure {
 	public Parameter getParameterAtIndex(int index) {
 		return this.parameters.get(index);
 	}
-
-	public boolean isSet(){
-		return this.isSet;
-	}
-	
-	public boolean isGet(){
-		return this.isGet;
-	}
-	
 	
 	public Parameter getLastReturn() {
 		return this.returns.get(this.returns.size() - 1);
@@ -89,6 +81,15 @@ public class Method extends DataStructure {
 		return this.interaction;
 	}
 
+	public boolean isSet(){
+		return this.isSet;
+	}
+	
+	public boolean isGet(){
+		return this.isGet;
+	}
+
+	
 	public void printProp() {
 
 		System.out.println("\tMétodo: " + this.name);
@@ -111,9 +112,6 @@ public class Method extends DataStructure {
 		}
 	}
 
-	
-
-	
 
 	
 	public void parser(BufferedReader bf, String line) throws IOException {
@@ -169,8 +167,8 @@ public class Method extends DataStructure {
 					} else {
 						parameters.add(parametro);
 					}
-				}// end if owedParameter
-			}// end for
+				}
+			}
 		}
 		if (isAbstract) {
 			parserMetodoAbstrato();
