@@ -25,11 +25,7 @@ public class AttributeCsharp implements GeneratorStrategy {
 
 	public void generatorGet(BufferedWriter out, int tab) throws IOException {
 		tabInd = Tool.indentation(tab);
-		out.write("\n"
-				+ tabInd
-				+ "public "
-				+ attribute.getType()
-				+ " "
+		out.write("\n" + tabInd + "public " + attribute.getType() + " "
 				+ attribute.getName().substring(0, 1).toUpperCase()
 						.concat(attribute.getName().substring(1))
 				+ "{ get; set; }");

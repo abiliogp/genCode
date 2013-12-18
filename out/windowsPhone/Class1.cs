@@ -18,5 +18,10 @@ namespace windowsPhone
 			this.att2 = att2;
 		}
 
+		//Methods
+		public void Operation1()
+		{
+		}
+
 	}
 }

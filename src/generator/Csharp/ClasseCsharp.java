@@ -9,6 +9,7 @@ import utilities.Parser;
 import utilities.Tool;
 import model.structure.Attribute;
 import model.structure.Classe;
+import model.structure.Method;
 import model.structure.RealizationInterface;
 import generator.GeneratorStrategy;
 import generator.Android.Android;
@@ -22,6 +23,7 @@ public class ClasseCsharp implements GeneratorStrategy {
 	private String modelName;
 
 	private AttributeCsharp generatorAttribute;
+	private MethodCsharp generatorMethod;
 
 	public ClasseCsharp(Classe classe, String modelName) {
 		this.classe = classe;
@@ -38,14 +40,10 @@ public class ClasseCsharp implements GeneratorStrategy {
 		out.write("\nnamespace " + modelName + "\n{");
 
 		// Name Class and General
-		out.write("\n"
-				+ tabInd
-				+ classe.getVisibility()
+		out.write("\n" + tabInd + classe.getVisibility()
 				+ (classe.isAbstract() == true ? " abstract " : " ")
-				+ "class "
-				+ classe.getName()
-				+ (classe.getGeneral() != null ? " : " + classe.getGeneral()
-						: ""));
+				+ "class " + classe.getName()
+				+ (classe.getGeneral() != null ? " : " + classe.getGeneral() : ""));
 
 		out.write("\n" + tabInd + "{");
 
@@ -90,6 +88,18 @@ public class ClasseCsharp implements GeneratorStrategy {
 			out.write("\n" + tabInd + "\t}\n");
 		}
 
+		
+		// Metodo 
+		if (classe.getMethods().size() > 0) {
+			out.write("\n" + tabInd + "\t//Methods");
+			for (Method method : classe.getMethods()) {
+				generatorMethod = new MethodCsharp(method);
+				generatorMethod.codeGenerator(out, tab + 1);
+			}
+		}
+
+		
+		
 		out.write("\n" + tabInd + "}");
 
 		out.write("\n}");
