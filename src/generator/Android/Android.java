@@ -6,16 +6,17 @@ import java.util.Set;
 
 public abstract class Android {
 
-	public enum Classes {
+	/*Android General Classes*/
+	public enum General {
 		Activity, ListActivity, MapActivity, R, Thread, View, Handler;
 	}
 	
+	/*Methods Android*/
 	public enum Methods{
 		onCreate, onStop, onPause, onResume, onDestroy, onStart, onClick, onSaveInstanceState;
 	}
 	
-
-	//Imports
+	/*Imports*/
 	public static Set<String> Widget = new HashSet<String>(Arrays.asList(new String[]{ 
 		"ListView", "EditText", "Button", "TextView", "ProgressBar", "LinearLayout", "ImageView", "ImageButton" 
 	})); 
@@ -24,7 +25,6 @@ public abstract class Android {
 		"Menu", "SubMenu", "MenuItem", "MenuInflater", "Window", "View", "KeyEvent"
 	}));
 	
-	//import android.view.View.OnClickListener;
 	public static Set<String> view = new HashSet<String>(Arrays.asList(new String[]{
 		"OnClickListener"
 	}));
@@ -41,7 +41,6 @@ public abstract class Android {
 		"Bundle", "Handler", "Message"
 	}));
 	
-	//import android.app.ActionBar;
 	public static Set<String> app = new HashSet<String>(Arrays.asList(new String[]{
 		"ActionBar"
 	}));

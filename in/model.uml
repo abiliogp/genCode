@@ -1,49 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_-Df1IFkcEeOlPIhq3_7agw" name="model">
-  <packagedElement xmi:type="uml:Class" xmi:id="_-sSTcFkcEeOlPIhq3_7agw" name="Agenda" classifierBehavior="_7nzZUFkdEeOlPIhq3_7agw">
-    <generalization xmi:type="uml:Generalization" xmi:id="_P6LKMGavEeOcP7H0xkr5qQ" general="_N4SyAGavEeOcP7H0xkr5qQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Cxvs8FkdEeOlPIhq3_7agw" name="contato" type="__EsMYFkcEeOlPIhq3_7agw" association="_CxwUAFkdEeOlPIhq3_7agw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Cxvs8VkdEeOlPIhq3_7agw"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Cxvs8lkdEeOlPIhq3_7agw" value="*"/>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_-pXz4Gd2EeOxkIB2SFRtdQ" name="windowsPhone">
+  <packagedElement xmi:type="uml:Class" xmi:id="_RGB8cGd3EeOxkIB2SFRtdQ" name="Class1">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_mxAbIGd3EeOxkIB2SFRtdQ" name="att1" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
     </ownedAttribute>
-    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_7nzZUFkdEeOlPIhq3_7agw" name="addContato" specification="_xwFtUFkdEeOlPIhq3_7agw">
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gBIi0FkeEeOlPIhq3_7agw" name="criaContato_MessageSend" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_gBDqUFkeEeOlPIhq3_7agw"/>
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gBJJ4FkeEeOlPIhq3_7agw" name="criaContato_MessageRecv" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_gBDqUFkeEeOlPIhq3_7agw"/>
-      <fragment xmi:type="uml:CombinedFragment" xmi:id="_EhHNAFw3EeOeI6dXmiZLAA" name="CombinedFragment" covered="_OgwcUFkeEeOlPIhq3_7agw" interactionOperator="loop">
-        <operand xmi:type="uml:InteractionOperand" xmi:id="_EhJpQFw3EeOeI6dXmiZLAA" name="InteractionOperand" covered="_OgwcUFkeEeOlPIhq3_7agw">
-          <guard xmi:type="uml:InteractionConstraint" xmi:id="_EhJpQVw3EeOeI6dXmiZLAA" name="">
-            <specification xmi:type="uml:LiteralString" xmi:id="_EhKQUFw3EeOeI6dXmiZLAA" value="n &lt; 100"/>
-            <maxint xmi:type="uml:LiteralInteger" xmi:id="_EhKQUlw3EeOeI6dXmiZLAA" value="1"/>
-            <minint xmi:type="uml:LiteralInteger" xmi:id="_EhKQUVw3EeOeI6dXmiZLAA"/>
-          </guard>
-          <fragment xmi:type="uml:CombinedFragment" xmi:id="_SQxosFw8EeOeI6dXmiZLAA" name="CombinedFragment" covered="_OgwcUFkeEeOlPIhq3_7agw" interactionOperator="opt">
-            <operand xmi:type="uml:InteractionOperand" xmi:id="_SQyPwFw8EeOeI6dXmiZLAA" name="InteractionOperand" covered="_OgwcUFkeEeOlPIhq3_7agw">
-              <guard xmi:type="uml:InteractionConstraint" xmi:id="_SQy20Fw8EeOeI6dXmiZLAA" name="n == ">
-                <specification xmi:type="uml:LiteralString" xmi:id="_SQy20Vw8EeOeI6dXmiZLAA" name="n == 1" value="n == 1"/>
-                <maxint xmi:type="uml:LiteralInteger" xmi:id="_SQy201w8EeOeI6dXmiZLAA" value="1"/>
-                <minint xmi:type="uml:LiteralInteger" xmi:id="_SQy20lw8EeOeI6dXmiZLAA"/>
-              </guard>
-              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lLInoFxBEeOeI6dXmiZLAA" name="criaContato_MessageSend" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_lLHZgFxBEeOeI6dXmiZLAA"/>
-              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lLJOsFxBEeOeI6dXmiZLAA" name="criaContato_MessageRecv" covered="_OgwcUFkeEeOlPIhq3_7agw" message="_lLHZgFxBEeOeI6dXmiZLAA"/>
-            </operand>
-          </fragment>
-        </operand>
-      </fragment>
-      <lifeline xmi:type="uml:Lifeline" xmi:id="_OgwcUFkeEeOlPIhq3_7agw" name="Lifeline" represents="_Cxvs8FkdEeOlPIhq3_7agw" coveredBy="_gBIi0FkeEeOlPIhq3_7agw _gBJJ4FkeEeOlPIhq3_7agw _EhHNAFw3EeOeI6dXmiZLAA _EhJpQFw3EeOeI6dXmiZLAA _SQxosFw8EeOeI6dXmiZLAA _SQyPwFw8EeOeI6dXmiZLAA _lLInoFxBEeOeI6dXmiZLAA _lLJOsFxBEeOeI6dXmiZLAA"/>
-      <message xmi:type="uml:Message" xmi:id="_gBDqUFkeEeOlPIhq3_7agw" name="1:criaContato_Message" messageSort="asynchCall" receiveEvent="_gBJJ4FkeEeOlPIhq3_7agw" sendEvent="_gBIi0FkeEeOlPIhq3_7agw" signature="_Y54zUFkeEeOlPIhq3_7agw"/>
-      <message xmi:type="uml:Message" xmi:id="_lLHZgFxBEeOeI6dXmiZLAA" name="2:criaContato_Message" messageSort="asynchCall" receiveEvent="_lLJOsFxBEeOeI6dXmiZLAA" sendEvent="_lLInoFxBEeOeI6dXmiZLAA" signature="_Y54zUFkeEeOlPIhq3_7agw"/>
-    </ownedBehavior>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_xwFtUFkdEeOlPIhq3_7agw" name="addContato" method="_7nzZUFkdEeOlPIhq3_7agw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_-sTTgGavEeOcP7H0xkr5qQ" name="onCreate"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DIiRYGd4EeOxkIB2SFRtdQ" name="att2" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DgmMEGd4EeOxkIB2SFRtdQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DgmzIGd4EeOxkIB2SFRtdQ" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_DgnaMGd4EeOxkIB2SFRtdQ">
+        <value xsi:nil="true"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_K7kv4Gd4EeOxkIB2SFRtdQ" name="Operation1"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="__EsMYFkcEeOlPIhq3_7agw" name="Contato">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Y54zUFkeEeOlPIhq3_7agw" name="criaContato"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_CxwUAFkdEeOlPIhq3_7agw" name="contatos" memberEnd="_CxwUAVkdEeOlPIhq3_7agw _Cxvs8FkdEeOlPIhq3_7agw">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_CxwUAVkdEeOlPIhq3_7agw" name="agenda" type="_-sSTcFkcEeOlPIhq3_7agw" association="_CxwUAFkdEeOlPIhq3_7agw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CxwUAlkdEeOlPIhq3_7agw" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CxwUA1kdEeOlPIhq3_7agw" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_N4SyAGavEeOcP7H0xkr5qQ" name="Activity"/>
 </uml:Model>

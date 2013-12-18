@@ -36,7 +36,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 		System.out.println("strategy classe");
 		
 		try {
-			if (Android.Classes.valueOf(classe.getName()) != null) {
+			if (Android.General.valueOf(classe.getName()) != null) {
 				return;
 			}
 		} catch (java.lang.IllegalArgumentException ex) {

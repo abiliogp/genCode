@@ -93,7 +93,7 @@ public abstract class DataStructure {
 	 */
 	protected static String parserType(String str, String line){		
 		str = Tool.manipulate(line, "pathmap:", "#", "\"");
-		if(line.contains("Ecore.metamodel.uml")){
+		if(line.contains("EcorePrimitiveTypes")){
 			str = str.substring(1).toLowerCase();
 		}
 		if(line.contains("UMLPrimitiveTypes")){

@@ -4,6 +4,7 @@ package utilities;
 
 import generator.GeneratorStrategy;
 import generator.Android.ModelAndroid;
+import generator.Csharp.ModelCsharp;
 
 import java.io.IOException;
 
@@ -24,7 +25,6 @@ public class Main {
 		inputFileName = "in/" + inputFileName;
 
 		GeneratorStrategy generator;
-		//Parser.loadXMI("UML4Java");
 		
 
 		Parser.loadXMI(inputFileName);
@@ -33,8 +33,14 @@ public class Main {
 
 		Parser.getModel().printProp();
 		
-		generator = new ModelAndroid(Parser.getModel());
+//		generator = new ModelAndroid(Parser.getModel());
+//		generator.codeGenerator(null, 0);
+		
+		
+		generator = new ModelCsharp(Parser.getModel());
 		generator.codeGenerator(null, 0);
+		
+		
 		//Interaction.printProp();
 		
 
