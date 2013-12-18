@@ -25,11 +25,24 @@ public class AttributeCsharp implements GeneratorStrategy {
 
 	public void generatorGet(BufferedWriter out, int tab) throws IOException {
 		tabInd = Tool.indentation(tab);
-		out.write("\n" + tabInd + "public "
-				+ attribute.getType() + " "
+		out.write("\n"
+				+ tabInd
+				+ "public "
+				+ attribute.getType()
+				+ " "
 				+ attribute.getName().substring(0, 1).toUpperCase()
-						.concat(attribute.getName().substring(1)) + 
-						"{ get; set;}");
+						.concat(attribute.getName().substring(1))
+				+ "{ get; set; }");
+	}
+
+	public void generatorConstructor(BufferedWriter out) throws IOException {
+		out.write("\n\t\t\tthis." + attribute.getName() + " = " + attribute.getName() + ";");
+	}
+
+	public void generatorConstructorSignature(BufferedWriter out) throws IOException {
+		if (attribute.getLowerValue() != '*' && attribute.getUpperValue() != '*') {
+			out.write(" " + attribute.getType() + " " + attribute.getName() + " ");
+		}
 	}
 
 }

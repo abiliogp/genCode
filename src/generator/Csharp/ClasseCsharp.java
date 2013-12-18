@@ -16,32 +16,36 @@ import generator.Android.AttributeAndroid;
 import generator.Android.MethodAndroid;
 import generator.Android.RealizationAndroid;
 
-public class ClasseCsharp implements GeneratorStrategy{
-	
+public class ClasseCsharp implements GeneratorStrategy {
+
 	private Classe classe;
 	private String modelName;
-	
+
 	private AttributeCsharp generatorAttribute;
-	
-	public ClasseCsharp(Classe classe, String modelName){
+
+	public ClasseCsharp(Classe classe, String modelName) {
 		this.classe = classe;
 		this.modelName = modelName;
 	}
-	
+
 	@Override
 	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
-		File cls = new File("out/" + Parser.getModel().getName(),
-				classe.getName().concat(".cs"));
+		File cls = new File("out/" + Parser.getModel().getName(), classe
+				.getName().concat(".cs"));
 		out = new BufferedWriter(new FileWriter(cls));
-		
-		out.write("\nnamespace " + modelName +"\n{");
-		
-		
+
+		out.write("\nnamespace " + modelName + "\n{");
+
 		// Name Class and General
-		out.write("\n" + tabInd + classe.getVisibility()
-				+ (classe.isAbstract() == true ? " abstract " : " ") + "class " + classe.getName()
-				+ (classe.getGeneral() != null ? " : " + classe.getGeneral() : ""));
+		out.write("\n"
+				+ tabInd
+				+ classe.getVisibility()
+				+ (classe.isAbstract() == true ? " abstract " : " ")
+				+ "class "
+				+ classe.getName()
+				+ (classe.getGeneral() != null ? " : " + classe.getGeneral()
+						: ""));
 
 		out.write("\n" + tabInd + "{");
 
@@ -54,7 +58,6 @@ public class ClasseCsharp implements GeneratorStrategy{
 			}
 		}
 
-
 		// Get
 		if (classe.needGetSet) {
 			out.write("\n\n" + tabInd + "\t//Get and Set");
@@ -64,12 +67,33 @@ public class ClasseCsharp implements GeneratorStrategy{
 			}
 		}
 
+		// Construtor
+		if (!(classe.isAbstract())) {
+			out.write("\n\n" + tabInd + "\t//Constructor");
+			out.write("\n" + tabInd + "\tpublic " + classe.getName() + "(");
+			int i = 0;
+			for (Attribute atr : classe.getAttributes()) {
+				generatorAttribute = new AttributeCsharp(atr);
+				generatorAttribute.generatorConstructorSignature(out);
+				if (i++ < classe.getAttributes().size() - 1) {
+					out.write(",");
+				}
+			}
+			out.write(")\n" +tabInd + "\t{");
+			if (classe.getGeneral() != null) {
+				out.write("\n" + tabInd + "\t\tsuper();");
+			}
+			for (Attribute atr : classe.getAttributes()) {
+				generatorAttribute = new AttributeCsharp(atr);
+				generatorAttribute.generatorConstructor(out);
+			}
+			out.write("\n" + tabInd + "\t}\n");
+		}
 
-		
 		out.write("\n" + tabInd + "}");
-				
+
 		out.write("\n}");
-		
+
 		out.close();
 	}
 
