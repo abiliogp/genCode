@@ -106,6 +106,7 @@ public class ClasseCsharp implements GeneratorStrategy {
 				out.write("\n" + tabInd + "\t\tsuper();");
 			}
 			for (Attribute atr : classe.getAttributes()) {
+				
 				generatorAttribute = new AttributeCsharp(atr);
 				generatorAttribute.generatorConstructor(out);
 			}
