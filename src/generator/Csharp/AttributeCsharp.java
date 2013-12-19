@@ -19,11 +19,15 @@ public class AttributeCsharp implements GeneratorStrategy {
 	@Override
 	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
 		tabInd = Tool.indentation(tab);
+		if(attribute.getVisibility().equals("public")){
+			generatorGetSet(out, tab);
+			return;
+		} 
 		out.write("\n" + tabInd + attribute.getVisibility() + " "
 				+ attribute.getType() + " " + attribute.getName() + ";");
 	}
 
-	public void generatorGet(BufferedWriter out, int tab) throws IOException {
+	public void generatorGetSet(BufferedWriter out, int tab) throws IOException {
 		tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd + "public " + attribute.getType() + " "
 				+ attribute.getName().substring(0, 1).toUpperCase()

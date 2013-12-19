@@ -7,7 +7,6 @@ import utilities.Tool;
 import model.structure.Method;
 import model.structure.Parameter;
 import generator.GeneratorStrategy;
-import generator.Android.InteractionAndroid;
 
 public class MethodCsharp implements GeneratorStrategy{
 

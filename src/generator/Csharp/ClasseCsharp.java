@@ -25,6 +25,9 @@ public class ClasseCsharp implements GeneratorStrategy {
 	private AttributeCsharp generatorAttribute;
 	private MethodCsharp generatorMethod;
 
+	private String tabInd;
+	
+	
 	public ClasseCsharp(Classe classe, String modelName) {
 		this.classe = classe;
 		this.modelName = modelName;
@@ -32,13 +35,26 @@ public class ClasseCsharp implements GeneratorStrategy {
 
 	@Override
 	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
-		String tabInd = Tool.indentation(tab);
 		File cls = new File("out/" + Parser.getModel().getName(), classe
 				.getName().concat(".cs"));
 		out = new BufferedWriter(new FileWriter(cls));
 
+		//Imports
+		generatorUsing(out);
+		
 		out.write("\nnamespace " + modelName + "\n{");
 
+		generatorClass(out,tab);
+
+		out.write("\n}");
+
+		out.close();
+	}
+
+	
+	private void generatorClass(BufferedWriter out, int tab) throws IOException {
+		String tabInd = Tool.indentation(tab);
+		
 		// Name Class and General
 		out.write("\n" + tabInd + classe.getVisibility()
 				+ (classe.isAbstract() == true ? " abstract " : " ")
@@ -61,7 +77,7 @@ public class ClasseCsharp implements GeneratorStrategy {
 			out.write("\n\n" + tabInd + "\t//Get and Set");
 			for (Attribute atr : classe.getAttributes()) {
 				generatorAttribute = new AttributeCsharp(atr);
-				generatorAttribute.generatorGet(out, tab + 1);
+				generatorAttribute.generatorGetSet(out, tab + 1);
 			}
 		}
 
@@ -97,14 +113,25 @@ public class ClasseCsharp implements GeneratorStrategy {
 				generatorMethod.codeGenerator(out, tab + 1);
 			}
 		}
-
-		
 		
 		out.write("\n" + tabInd + "}");
 
-		out.write("\n}");
-
-		out.close();
 	}
-
+	
+	
+	private void generatorUsing(BufferedWriter out) throws IOException{
+		out.write("using System;\n");
+		out.write("using System.Net;\n");
+		out.write("using System.Windows;\n");
+		out.write("using System.Windows.Controls;\n");
+		out.write("using System.Windows.Documents;\n");
+		out.write("using System.Windows.Ink;\n");
+		out.write("using System.Windows.Input;\n");
+		out.write("using System.Windows.Media;\n");
+		out.write("using System.Windows.Media.Animation;\n");
+		out.write("using System.Windows.Shapes;\n");
+		
+		//gerar import dos atributos
+	}
+	
 }
