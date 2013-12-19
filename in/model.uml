@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_-pXz4Gd2EeOxkIB2SFRtdQ" name="windowsPhone">
+  <packagedElement xmi:type="uml:Class" xmi:id="_YRI1wGjLEeOpVaW-Q_byzg" name="MainPage &lt;&lt;Partial>>">
+    <generalization xmi:type="uml:Generalization" xmi:id="_m94-EGjLEeOpVaW-Q_byzg" general="_iL4noGjLEeOpVaW-Q_byzg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_iL4noGjLEeOpVaW-Q_byzg" name="PhoneApplicationPage"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_RGB8cGd3EeOxkIB2SFRtdQ" name="Class1">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_mxAbIGd3EeOxkIB2SFRtdQ" name="att1" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
@@ -13,5 +17,15 @@
       </defaultValue>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_K7kv4Gd4EeOxkIB2SFRtdQ" name="Operation1"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_njHyEGjLEeOpVaW-Q_byzg" name="InnerClass2">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_t6aEQGjLEeOpVaW-Q_byzg" name="att1" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uiwdsGjLEeOpVaW-Q_byzg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uixr0GjLEeOpVaW-Q_byzg" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_uiy58GjLEeOpVaW-Q_byzg">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </nestedClassifier>
   </packagedElement>
 </uml:Model>

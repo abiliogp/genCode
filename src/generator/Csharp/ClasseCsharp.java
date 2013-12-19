@@ -43,16 +43,20 @@ public class ClasseCsharp implements GeneratorStrategy {
 		generatorUsing(out);
 		
 		out.write("\nnamespace " + modelName + "\n{");
+		//Class
+		for(Classe inner : classe.getInnerClasses()){
+					generatorClass(inner, out, tab);
+		}
+		
+		generatorClass(classe, out,tab);
 
-		generatorClass(out,tab);
-
-		out.write("\n}");
+		out.write("}");
 
 		out.close();
 	}
 
 	
-	private void generatorClass(BufferedWriter out, int tab) throws IOException {
+	private void generatorClass(Classe classe, BufferedWriter out, int tab) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		
 		// Name Class and General
@@ -63,6 +67,10 @@ public class ClasseCsharp implements GeneratorStrategy {
 
 		out.write("\n" + tabInd + "{");
 
+		
+		
+		
+		
 		// Atributos
 		if (classe.getAttributes().size() > 0) {
 			out.write("\n" + tabInd + "\t//Attributes");
@@ -114,7 +122,7 @@ public class ClasseCsharp implements GeneratorStrategy {
 			}
 		}
 		
-		out.write("\n" + tabInd + "}");
+		out.write("\n" + tabInd + "}\n");
 
 	}
 	

@@ -11,6 +11,19 @@ using System.Windows.Shapes;
 
 namespace windowsPhone
 {
+	public class InnerClass2
+	{
+		//Attributes
+		public int Att1{ get; set; }
+
+		//Constructor
+		public InnerClass2( int att1 )
+		{
+			this.att1 = att1;
+		}
+
+	}
+
 	public class Class1
 	{
 		//Attributes
