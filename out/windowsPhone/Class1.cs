@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 
 namespace windowsPhone
 {
-	public class InnerClass2
+	public class InnerClass2 : 
 	{
 		//Attributes
 		public int Att1{ get; set; }
@@ -24,7 +24,7 @@ namespace windowsPhone
 
 	}
 
-	public class Class1
+	public class Class1 : 
 	{
 		//Attributes
 		private int att1;

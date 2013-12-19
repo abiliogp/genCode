@@ -33,6 +33,7 @@ public class Classe extends DataStructure {
 	/*Constructor*/
 	public Classe(String name) {
 		super(name);
+		general = "";
 		innerClasses = new ArrayList<Classe>();
 		attributes = new ArrayList<Attribute>();
 		stereotypes = new ArrayList<Attribute>();
@@ -74,6 +75,10 @@ public class Classe extends DataStructure {
 	}
 	
 	/*set*/
+	public void setName(String name){
+		this.name = name;
+	}
+	
 	public void setActive(boolean ativa) {
 		this.active = ativa;
 	}
