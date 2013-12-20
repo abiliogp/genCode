@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.Model;
 import model.structure.Attribute;
 import utilities.Tool;
 
@@ -66,16 +67,16 @@ public class Lifeline extends DataSequence{
 		String value, key;
 		if(line.contains("represents=")){//se tiver atributo associado a lifeline
 			key = Tool.manipulate(line, "represents=");
-			represents = Tool.getTrieAtributte(key);
+			represents = Model.getTrieAtributte(key);
 			if( represents == null) {
-				parameter = Tool.getTrieID(key);
+				parameter = Model.getTrieID(key);
 			}
 		}
 		value = Tool.manipulate(line, "coveredBy=");
 		for(int i = 0; i < value.length() ; i+=24){
 			key = value.substring(i, i + 23);
-			if(Tool.containsTrieXMIfragment(key)){
-				order.add(Tool.getTrieFragment(key));
+			if(Model.containsTrieXMIfragment(key)){
+				order.add(Model.getTrieFragment(key));
 			}
 		}
 	}

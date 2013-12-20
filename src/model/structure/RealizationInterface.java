@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import model.Model;
 import utilities.Tool;
 
 public class RealizationInterface {
@@ -35,8 +36,8 @@ public class RealizationInterface {
 		String key;
 		name = Tool.manipulate(line, "name=");
 		key = Tool.manipulate(line, "supplier=");
-		supplier = Tool.getTrieInterface(key);
+		supplier = Model.getTrieInterface(key);
 		key = Tool.manipulate(line, "contract=");
-		contract = Tool.getTrieInterface(key);
+		contract = Model.getTrieInterface(key);
 	}
 }

@@ -3,6 +3,7 @@ package model.structure;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import model.Model;
 import utilities.Parser;
 import utilities.Tool;
 
@@ -49,7 +50,7 @@ public class Parameter extends DataStructure {
 		}
 		if (line.contains("type=")) {
 			value = Tool.manipulate(line, "type=");
-			type = Tool.getTrieID(value);
+			type = Model.getTrieID(value);
 		}
 
 		if (line.contains("direction=")) {
@@ -62,7 +63,7 @@ public class Parameter extends DataStructure {
 			for (; !(line.contains("</ownedParameter>")); line = bf.readLine()) {
 				if (line.contains("uml:Stereotype")) {
 					value = Tool.manipulate(line, "pathmap:", "#", "\"");
-					type = Tool.getTrieID(value);
+					type = Model.getTrieID(value);
 				}
 				if (line.contains("uml:PrimitiveType")) {
 					type = parserType(value, line);

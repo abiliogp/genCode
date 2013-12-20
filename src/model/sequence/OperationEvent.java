@@ -3,6 +3,7 @@ package model.sequence;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import model.Model;
 import model.structure.Method;
 import utilities.Tool;
 
@@ -29,13 +30,13 @@ public class OperationEvent extends DataSequence{
 		OperationEvent event = new OperationEvent(value);
 		value = Tool.manipulate(line, "type=");
 		event.setType(value);
-		Tool.putTrieOperationEvent(key,  event);
+		Model.putTrieOperationEvent(key,  event);
 	}
 	
 	public void parser(BufferedReader bf, String line) throws IOException{
 		String key;
 		key = Tool.manipulate(line, "operation=");
-		operation = Tool.getTrieMetodo(key);
+		operation = Model.getTrieMetodo(key);
 	}
 
 	public void printProp() {

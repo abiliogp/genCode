@@ -133,7 +133,7 @@ public abstract class Parser {
 			else {
 				if (key != null) {
 					value = Tool.manipulate(line, "name=");
-					Tool.putTrieID(key, value);
+					Model.putTrieID(key, value);
 				}
 			}
 		}
@@ -180,7 +180,7 @@ public abstract class Parser {
 			 */
 			if (line.contains("uml:Interaction")) {// nome da classe
 				value = Tool.manipulate(line, "xmi:id=");
-				Interaction interaction = Tool.getTrieInteraction(value);
+				Interaction interaction = Model.getTrieInteraction(value);
 				model.addInteraction(interaction);
 				interaction.parser(bf, line);
 						
@@ -188,7 +188,7 @@ public abstract class Parser {
 			
 			if ( (line.contains("uml:SendOperationEvent")) || (line.contains("uml:ReceiveOperationEvent")) ) {
 				value = Tool.manipulate(line, "xmi:id");
-				OperationEvent event = Tool.getTrieOperationEvent(value);
+				OperationEvent event = Model.getTrieOperationEvent(value);
 				event.parser(bf, line);
 			}
 			
@@ -197,7 +197,7 @@ public abstract class Parser {
 			 */
 			if (line.contains("uml:Interface")) {
 				value = Tool.manipulate(line, "xmi:id");
-				Interface inter = Tool.getTrieInterface(value);
+				Interface inter = Model.getTrieInterface(value);
 				model.addInterface(inter);
 				inter.parser(bf, line);
 			}
@@ -224,7 +224,7 @@ public abstract class Parser {
 			value = Tool.manipulate(line, "visibility=");
 			operacao.setVisibility(value);
 		} 
-		Tool.putTrieOperation(key, operacao);
+		Model.putTrieOperation(key, operacao);
 	}//end loadOperation
 	
 	/**
@@ -246,7 +246,7 @@ public abstract class Parser {
 		} 
 		
 		value = Tool.manipulate(line, "supplier=");
-		value = Tool.getTrieID(value);
+		value = Model.getTrieID(value);
 		assoc.setSupplier(value);
 			
 		trieAssocPacote.put(key, assoc);

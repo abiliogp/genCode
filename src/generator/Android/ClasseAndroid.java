@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import model.Model;
 import model.structure.Attribute;
 import model.structure.Classe;
 import model.structure.Method;
@@ -189,8 +190,8 @@ public class ClasseAndroid implements GeneratorStrategy{
 
 		// Métodos da Super
 		if (classe.getGeneral() != null) {
-			if ((Tool.containsKeyTrieAbstractMethod(classe.getGeneral()))) {
-				for (Method method : Tool.getTrieAbstractMethod(classe.getGeneral())) {
+			if ((Model.containsKeyTrieAbstractMethod(classe.getGeneral()))) {
+				for (Method method : Model.getTrieAbstractMethod(classe.getGeneral())) {
 					generatorMethod = new MethodAndroid(method);
 					generatorMethod.genCodeMtSuper(out, tab + 1);
 				}

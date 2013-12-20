@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.Model;
 import model.sequence.Interaction;
 import model.sequence.Lifeline;
 import utilities.Parser;
@@ -49,7 +50,7 @@ public class Interface extends DataStructure{
 		key = Tool.manipulate(line, "xmi:id");
 		value = Tool.manipulate(line, "name=");
 		Interface inter = new Interface(value);
-		Tool.putTrieInterface(key, inter);
+		Model.putTrieInterface(key, inter);
 	}
 
 
@@ -68,7 +69,7 @@ public class Interface extends DataStructure{
 			value = Tool.manipulate(line, "classifierBehavior=");
 			for (int i = 0; i < value.length(); i = +23) {
 				key = value.substring(i, i + 23);
-				this.listOperacao.add(Tool.getTrieOperation(key));
+				this.listOperacao.add(Model.getTrieOperation(key));
 			}
 		}
 
@@ -89,7 +90,7 @@ public class Interface extends DataStructure{
 					Attribute atributte = new Attribute(value);
 					attributes.add(atributte);
 					needImport = atributte.parser(bf, line); 
-					Tool.putTrieAtributte(key, atributte);
+					Model.putTrieAtributte(key, atributte);
 				}
 				/*
 				 * Método
@@ -100,7 +101,7 @@ public class Interface extends DataStructure{
 					Method metodo = new Method(value);
 					methods.add(metodo);
 					metodo.parser(bf, line);
-					Tool.putTrieMetodo(key, metodo);
+					Model.putTrieMetodo(key, metodo);
 				}
 			}
 		}	

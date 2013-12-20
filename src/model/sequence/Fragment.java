@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.Model;
 import utilities.Tool;
 
 public class Fragment extends DataSequence{
@@ -96,7 +97,7 @@ public class Fragment extends DataSequence{
 					key = Tool.manipulate(line, "xmi:id");
 					value = Tool.manipulate(line, "name=");
 					Fragment fragment = new Fragment(value);
-					Tool.putTrieFragment(key, fragment);
+					Model.putTrieFragment(key, fragment);
 				}
 			}
 		}
@@ -113,20 +114,20 @@ public class Fragment extends DataSequence{
 		//key = Tool.manipulate(line, "event=");
 		//event = Tool.getTrieOperationEvent(key);
 		key = Tool.manipulate(line, "message="); 
-		message = Tool.getTrieMessage(key);
+		message = Model.getTrieMessage(key);
 		key = Tool.manipulate(line, "covered=");
-		covered = Tool.getTrieLifeline(key);
+		covered = Model.getTrieLifeline(key);
 		operator = Tool.manipulate(line,"interactionOperator=");
 		key = Tool.manipulate(line, "start=");
-		start = Tool.getTrieFragment(key);
+		start = Model.getTrieFragment(key);
 		key = Tool.manipulate(line, "start=");
-		start = Tool.getTrieFragment(key);
+		start = Model.getTrieFragment(key);
 		key = Tool.manipulate(line, "finish=");
-		finish = Tool.getTrieFragment(key);
+		finish = Model.getTrieFragment(key);
 		key = Tool.manipulate(line, "execution=");
-		execution = Tool.getTrieFragment(key);
+		execution = Model.getTrieFragment(key);
 		key = Tool.manipulate(line, "refersTo=");
-		refersTo = Tool.getTrieInteraction(key);
+		refersTo = Model.getTrieInteraction(key);
 		if (line.contains("/>")){
 			line = "</fragment>";
 		} else{

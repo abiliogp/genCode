@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.Model;
 import utilities.Tool;
 
 public class Operand extends DataSequence{
@@ -42,7 +43,7 @@ public class Operand extends DataSequence{
 				}
 				if(line.contains("<fragment")){
 					value = Tool.manipulate(line, "xmi:id=");
-					Fragment fragment = Tool.getTrieFragment(value);
+					Fragment fragment = Model.getTrieFragment(value);
 					fragment.parser(bf, line);
 					fragments.add(fragment);
 				}

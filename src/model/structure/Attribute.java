@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import model.Model;
 import utilities.Parser;
 import utilities.Tool;
 
@@ -78,11 +79,11 @@ public class Attribute extends DataStructure {
 		String value = null, key;
 		boolean needImport = false;
 		
-		if(Tool.getTrieMetodoName("get" + name.substring(0, 1).toUpperCase() + name.substring(1)) != null){
+		if(Model.getTrieMetodoName("get" + name.substring(0, 1).toUpperCase() + name.substring(1)) != null){
 			hasGetMethod = true;
 		}
 		
-		if(Tool.getTrieMetodoName("set" + name.substring(0, 1).toUpperCase() + name.substring(1)) != null){
+		if(Model.getTrieMetodoName("set" + name.substring(0, 1).toUpperCase() + name.substring(1)) != null){
 			hasSetMethod = true;
 		}
 		
@@ -102,7 +103,7 @@ public class Attribute extends DataStructure {
 			value = Tool.manipulate(line, " type=");
 			if (value.charAt(0) == '_') {
 				objectType = true;
-				value = Tool.getTrieID(value);
+				value = Model.getTrieID(value);
 			} else{
 				primitiveType = true;
 			}
@@ -114,7 +115,7 @@ public class Attribute extends DataStructure {
 			for (line = bf.readLine(); !((line.contains("</ownedAttribute>")) ||  (line.contains(" </ownedEnd>"))) ; line = bf.readLine() ) {
 				if (line.contains("uml:Stereotype")) {
 					value = Tool.manipulate(line, "pathmap:", "#", "\"");
-					value = Tool.getTrieID(value);
+					value = Model.getTrieID(value);
 					type = value;
 					objectType = true;
 				}
@@ -148,7 +149,7 @@ public class Attribute extends DataStructure {
 		key = Tool.manipulate(line, "xmi:id");
 		value = Tool.manipulate(line, "name=");
 		Attribute atributte = new Attribute(value);
-		Tool.putTrieAtributte(key,  atributte);
+		Model.putTrieAtributte(key,  atributte);
 	}
 
 }

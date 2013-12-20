@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.Model;
 import model.sequence.Interaction;
 import utilities.Tool;
 
@@ -51,13 +52,13 @@ public class Classe extends DataStructure {
 	public void addAttribute(String name, String key) {
 		Attribute atributte = new Attribute(name);
 		this.attributes.add(atributte);
-		Tool.putTrieAtributte(key, atributte);
+		Model.putTrieAtributte(key, atributte);
 	}
 
 	public void addMethod(String name, String key) {
 		Method metodo = new Method(name);
 		this.methods.add(metodo);
-		Tool.putTrieMetodo(key, metodo);
+		Model.putTrieMetodo(key, metodo);
 	}
 
 	public void addInteraction(Interaction interaction) {
@@ -226,7 +227,7 @@ public class Classe extends DataStructure {
 			value = Tool.manipulate(line, "classifierBehavior=");
 			for (int i = 0; i < value.length(); i = +23) {
 				key = value.substring(i, i + 23);
-				this.listOperacao.add(Tool.getTrieOperation(key));
+				this.listOperacao.add(Model.getTrieOperation(key));
 			}
 		}
 
@@ -241,7 +242,7 @@ public class Classe extends DataStructure {
 					.contains("</nestedClassifier"))); line = bf.readLine()) {
 				if (line.contains("<generalization")) {
 					key = Tool.manipulate(line, "general=");
-					value = Tool.getTrieID(key);
+					value = Model.getTrieID(key);
 					general = value;
 				}
 
@@ -256,7 +257,7 @@ public class Classe extends DataStructure {
 					if (line.contains("uml:Stereotype")) {
 						Attribute stereotype = new Attribute(value);
 						stereotypes.add(stereotype);
-						Tool.putTrieAtributte(key, stereotype);
+						Model.putTrieAtributte(key, stereotype);
 						if (!line.contains("/>")) {
 							for (line = bf.readLine(); !line
 									.contains("</nestedClassifier"); line = bf
@@ -271,7 +272,7 @@ public class Classe extends DataStructure {
 				 */
 				if (line.contains("<ownedAttribute")) {
 					key = Tool.manipulate(line, "xmi:id=");
-					Attribute atributte = Tool.getTrieAtributte(key);
+					Attribute atributte = Model.getTrieAtributte(key);
 					attributes.add(atributte);
 					needImport = atributte.parser(bf, line);
 				}
@@ -280,14 +281,14 @@ public class Classe extends DataStructure {
 				 */
 				if (line.contains("<ownedOperation")) {
 					key = Tool.manipulate(line, "xmi:id=");
-					Method metodo = Tool.getTrieMetodo(key);
+					Method metodo = Model.getTrieMetodo(key);
 					methods.add(metodo);
 					metodo.parser(bf, line);
 				}
 
 				if (line.contains("uml:Interaction")) {// nome da classe
 					key = Tool.manipulate(line, "xmi:id=");
-					Interaction interaction = Tool.getTrieInteraction(key);
+					Interaction interaction = Model.getTrieInteraction(key);
 					listInteraction.add(interaction);
 					interaction.parser(bf, line);
 				}

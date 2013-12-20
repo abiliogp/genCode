@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.Model;
 import model.sequence.Interaction;
 import model.sequence.OperationEvent;
 import utilities.Parser;
@@ -138,7 +139,7 @@ public class Method extends DataStructure {
 
 		if (line.contains("method=")) {
 			value = Tool.manipulate(line, "method=");
-			interaction = Tool.getTrieInteraction(value);
+			interaction = Model.getTrieInteraction(value);
 			/*
 			 * for (int i = 0; i < value.length(); i = +23) { str =
 			 * value.substring(i, i + 23);
@@ -178,13 +179,13 @@ public class Method extends DataStructure {
 	private static void parserMetodoAbstrato() {
 		String str;
 		str = Parser.getModel().getLastClasse().getName();
-		if (Tool.containsKeyTrieAbstractMethod(str)) {
-			Tool.addTrieAbstractMethod(str, Parser.getModel().getLastClasse()
+		if (Model.containsKeyTrieAbstractMethod(str)) {
+			Model.addTrieAbstractMethod(str, Parser.getModel().getLastClasse()
 					.getLastMetodo());
 		} else {
 			ArrayList<Method> listMetAbs = new ArrayList<Method>();
 			listMetAbs.add(Parser.getModel().getLastClasse().getLastMetodo());
-			Tool.putTrieAbstractMethod(str, listMetAbs);
+			Model.putTrieAbstractMethod(str, listMetAbs);
 		}
 	}
 
@@ -193,8 +194,8 @@ public class Method extends DataStructure {
 		key = Tool.manipulate(line, "xmi:id");
 		value = Tool.manipulate(line, "name=");
 		Method method = new Method(value);
-		Tool.putTrieMetodo(key,  method);
-		Tool.putTrieMetodoName(value, method);
+		Model.putTrieMetodo(key,  method);
+		Model.putTrieMetodoName(value, method);
 	}
 
 	

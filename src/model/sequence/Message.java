@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.Model;
 import utilities.Tool;
 
 public class Message extends DataSequence{
@@ -55,9 +56,9 @@ public class Message extends DataSequence{
 		number = name.substring(0, 1);
 		name = Tool.manipulate(name, number, ":", "_Message");
 		key = Tool.manipulate(line, "receiveEvent=");
-		receiveEvent = Tool.getTrieFragment(key);
+		receiveEvent = Model.getTrieFragment(key);
 		key = Tool.manipulate(line, "sendEvent=");
-		sendEvent = Tool.getTrieFragment(key);
+		sendEvent = Model.getTrieFragment(key);
 		if (line.contains("/>")){
 			line = "</message>";
 		} else{

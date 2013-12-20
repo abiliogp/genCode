@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import model.Model;
 import utilities.Tool;
 
 
@@ -41,21 +42,21 @@ public class Interaction extends DataSequence{
 			
 			if (line.contains("<lifeline")) {
 				key = Tool.manipulate(line, "xmi:id");
-				Lifeline lifeline = Tool.getTrieLifeline(key);
+				Lifeline lifeline = Model.getTrieLifeline(key);
 				lifeline.parser(bf, line);
 				lifelines.add(lifeline);
 			}
 
 			if (line.contains("<fragment")) {
 				key = Tool.manipulate(line, "xmi:id");
-				Fragment fragment = Tool.getTrieFragment(key);
+				Fragment fragment = Model.getTrieFragment(key);
 				fragments.add(fragment);
 				fragment.parser(bf, line);
 			}
 			
 			if (line.contains("<message")) { 		
 				key = Tool.manipulate(line, "xmi:id");
-				Message message = Tool.getTrieMessage(key);
+				Message message = Model.getTrieMessage(key);
 				message.parser(bf, line);
 			}
 		}
@@ -71,7 +72,7 @@ public class Interaction extends DataSequence{
 		key = Tool.manipulate(line, "xmi:id=");
 		value = Tool.manipulate(line, "name");
 		Interaction interaction = new Interaction(value);
-		Tool.putTrieInteraction(key, interaction);
+		Model.putTrieInteraction(key, interaction);
 		if (line.contains("/>")){
 			line = "</ownedBehavior>";
 		} else{
@@ -82,23 +83,23 @@ public class Interaction extends DataSequence{
 					key = Tool.manipulate(line, "xmi:id");
 					value = Tool.manipulate(line, "name=");
 					Lifeline lifeline = new Lifeline(value);
-					Tool.putTrieLifeline(key, lifeline);
+					Model.putTrieLifeline(key, lifeline);
 				}
 	
 				if (line.contains("<fragment")) {
 					key = Tool.manipulate(line, "xmi:id");
-					Tool.putTrieXMIfragment(key);
+					Model.putTrieXMIfragment(key);
 					value = Tool.manipulate(line, "name=");
 					Fragment fragment = new Fragment(value);
 					fragment.load(bf, line);
-					Tool.putTrieFragment(key, fragment);
+					Model.putTrieFragment(key, fragment);
 				}
 				
 				if (line.contains("<message")) { 		
 					key = Tool.manipulate(line, "xmi:id");
 					value = Tool.manipulate(line, "name=");
 					Message message = new Message(value);
-					Tool.putTrieMessage(key, message);
+					Model.putTrieMessage(key, message);
 				}
 			}
 		}

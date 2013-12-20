@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.Model;
 import utilities.Tool;
 
 public class Associacao extends DataStructure {
@@ -41,7 +42,7 @@ public class Associacao extends DataStructure {
 					//listAtributte.add(atributte);
 					//boolean needImport = atributte.parser(bf, line);
 					
-					Tool.putTrieAtributte(key, atributte);
+					Model.putTrieAtributte(key, atributte);
 				}
 			}// end else
 		}
