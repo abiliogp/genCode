@@ -14,7 +14,6 @@ public class XamlCsharp implements GeneratorStrategy {
 	
 	@Override
 	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
-		// TODO Auto-generated method stub
 		
 	}
 
