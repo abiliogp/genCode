@@ -19,7 +19,11 @@ import model.structure.Parameter;
 
 
 
-public class Tool {
+public final class Tool {
+
+	private Tool() {
+		throw new AssertionError();
+	}
 	
 	/*
 	 * Trie Structural 
