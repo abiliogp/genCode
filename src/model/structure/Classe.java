@@ -28,7 +28,6 @@ public class Classe extends DataStructure {
 	
 	public boolean needImport;
 	public boolean needGetSet;
-	public boolean generalActivity;
 
 	/*Constructor*/
 	public Classe(String name) {
@@ -244,7 +243,6 @@ public class Classe extends DataStructure {
 					key = Tool.manipulate(line, "general=");
 					value = Tool.getTrieID(key);
 					general = value;
-					generalActivity = general.equals("Activity");
 				}
 
 				if (line.contains("<nestedClassifier")) {

@@ -52,7 +52,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 				}
 			}
 			// Imports
-			if(classe.generalActivity) {
+			if(classe.getGeneral().equals("Activity")) {
 				out.write("import android.app.Activity;\n");
 			}
 			if (classe.needImport) {
