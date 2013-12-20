@@ -24,6 +24,7 @@ public class ClasseCsharp implements GeneratorStrategy {
 
 	private AttributeCsharp generatorAttribute;
 	private MethodCsharp generatorMethod;
+	private XamlCsharp generatorXaml;
 
 	private String tabInd;
 	
@@ -66,14 +67,12 @@ public class ClasseCsharp implements GeneratorStrategy {
 	private void generatorClass(Classe classe, BufferedWriter out, int tab, boolean isPartial) throws IOException {
 		String tabInd = Tool.indentation(tab);
 		
-		
-		
 		// Name Class and General
 		out.write("\n" + tabInd + classe.getVisibility()
 				+ (classe.isAbstract() == true ? " abstract " : " ")
 				+ (isPartial == true ? "partial " : "") 
 				+ "class " + classe.getName()
-				+ (classe.getGeneral() != null ? " : " + classe.getGeneral() : ""));
+				+ (classe.getGeneral().isEmpty() == false ? " : " + classe.getGeneral() : ""));
 
 		out.write("\n" + tabInd + "{");
 

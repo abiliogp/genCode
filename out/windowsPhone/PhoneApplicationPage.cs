@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 
 namespace windowsPhone
 {
-	public class PhoneApplicationPage : 
+	public class PhoneApplicationPage
 	{
 		//Constructor
 		public PhoneApplicationPage()
