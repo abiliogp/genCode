@@ -143,17 +143,21 @@ public class ClasseCsharp implements GeneratorStrategy {
 	
 	private void generatorUsing(BufferedWriter out) throws IOException{
 		out.write("using System;\n");
-		out.write("using System.Net;\n");
-		out.write("using System.Windows;\n");
-		out.write("using System.Windows.Controls;\n");
-		out.write("using System.Windows.Documents;\n");
-		out.write("using System.Windows.Ink;\n");
-		out.write("using System.Windows.Input;\n");
-		out.write("using System.Windows.Media;\n");
-		out.write("using System.Windows.Media.Animation;\n");
-		out.write("using System.Windows.Shapes;\n");
+		out.write("using System.Collections.Generic;\n");
+		out.write("using System.Linq;\n");
 		if(classe.getGeneral().equals("PhoneApplicationPage")){
+			out.write("using System.Net;\n");
+			out.write("using System.Windows;\n");
+			out.write("using System.Windows.Controls;\n");
+			out.write("using System.Windows.Navigation;\n");
 			out.write("using Microsoft.Phone.Controls;\n");
+			out.write("using Microsoft.Phone.Shell;\n");
+			if(classe.getName().equals("MainPage")){
+				out.write("using "+ modelName +".Resources;\n");
+			}
+		} else{
+			out.write("using System.Text;\n");
+			out.write("using System.Threading.Tasks;\n");
 		}
 		//gerar import dos atributos
 	}
