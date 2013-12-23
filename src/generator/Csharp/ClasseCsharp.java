@@ -45,6 +45,8 @@ public class ClasseCsharp implements GeneratorStrategy {
 			isPartial = classe.getName().contains("&lt;&lt;Partial>>");
 			if(isPartial){
 				classe.setName(classe.getName().substring(0, classe.getName().indexOf("&lt;") - 1));
+				generatorXaml = new XamlCsharp(classe.getName(), modelName);
+				generatorXaml.codeGenerator(null, 0);
 			}
 			
 			File cls = new File("out/" + Parser.getModel().getName(), 
