@@ -37,30 +37,35 @@ public class ClasseCsharp implements GeneratorStrategy {
 	@Override
 	public void codeGenerator(BufferedWriter out, int tab) throws IOException {
 		boolean isPartial;
-		
-		isPartial = classe.getName().contains("&lt;&lt;Partial>>");
-		if(isPartial){
-			classe.setName(classe.getName().substring(0, classe.getName().indexOf("&lt;") - 1));
-		}
-		
-		File cls = new File("out/" + Parser.getModel().getName(), 
-				(isPartial == true ? classe.getName().concat(".xaml.cs") : 
-					classe.getName().concat(".cs")));
-		out = new BufferedWriter(new FileWriter(cls));
+		try {
+			if (WindowsPhone.General.valueOf(classe.getName()) != null) {
+				return;
+			}
+		} catch (java.lang.IllegalArgumentException ex) {
+			isPartial = classe.getName().contains("&lt;&lt;Partial>>");
+			if(isPartial){
+				classe.setName(classe.getName().substring(0, classe.getName().indexOf("&lt;") - 1));
+			}
+			
+			File cls = new File("out/" + Parser.getModel().getName(), 
+					(isPartial == true ? classe.getName().concat(".xaml.cs") : 
+						classe.getName().concat(".cs")));
+			out = new BufferedWriter(new FileWriter(cls));
+	
+			//Imports
+			generatorUsing(out);
+			
+			out.write("\nnamespace " + modelName + "\n{");
+			//Class
+			for(Classe inner : classe.getInnerClasses()){
+				generatorClass(inner, out, tab, false);
+			}
+			
+			generatorClass(classe, out,tab, isPartial);
 
-		//Imports
-		generatorUsing(out);
-		
-		out.write("\nnamespace " + modelName + "\n{");
-		//Class
-		for(Classe inner : classe.getInnerClasses()){
-			generatorClass(inner, out, tab, false);
+			out.write("}");
+			out.close();
 		}
-		
-		generatorClass(classe, out,tab, isPartial);
-
-		out.write("}");
-		out.close();
 	}
 
 	
