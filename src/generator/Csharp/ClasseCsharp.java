@@ -184,7 +184,7 @@ public class ClasseCsharp implements GeneratorStrategy {
 		out.write("using System.Windows.Navigation;\n");
 		out.write("using Microsoft.Phone.Controls;\n");
 		out.write("using Microsoft.Phone.Shell;\n");
-		out.write("using PureProject.Resources;\n");
+		out.write("using " + modelName + ".Resources;\n");
 		
 		out.write("\nnamespace " + modelName + "\n{\n");
 		out.write(tab1 + "public partial class App : Application\n" + tab1 + "{\n");
