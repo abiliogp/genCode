@@ -7,7 +7,7 @@
 
 	<!--Application Resources-->
 	<Application.Resources>
-		<local:LocalizedStrings xmlns:local="clr-namespace:PureProject" x:Key="LocalizedStrings"/>
+		<local:LocalizedStrings xmlns:local="clr-namespace:windowsPhone" x:Key="LocalizedStrings"/>
 	</Application.Resources>
 
 	<Application.ApplicationLifetimeObjects>

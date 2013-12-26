@@ -89,7 +89,7 @@ public class XamlCsharp implements GeneratorStrategy {
 
 		out.write("\n\n" + tab1 + "<!--Application Resources-->");
 		out.write("\n" + tab1 + "<Application.Resources>");
-		out.write("\n" + tab2 + "<local:LocalizedStrings xmlns:local=\"clr-namespace:PureProject\" x:Key=\"LocalizedStrings\"/>");
+		out.write("\n" + tab2 + "<local:LocalizedStrings xmlns:local=\"clr-namespace:" + modelName +"\" x:Key=\"LocalizedStrings\"/>");
 		out.write("\n" + tab1 + "</Application.Resources>");
 
 		out.write("\n\n" + tab1 + "<Application.ApplicationLifetimeObjects>");
