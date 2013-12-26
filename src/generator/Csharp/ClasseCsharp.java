@@ -26,12 +26,14 @@ public class ClasseCsharp implements GeneratorStrategy {
 	private MethodCsharp generatorMethod;
 	private XamlCsharp generatorXaml;
 
-	private String tabInd;
+	private String tab1, tab2, tab3;
 	
 	public ClasseCsharp(Classe classe, String modelName) {
 		this.classe = classe;
 		this.modelName = modelName;
-		
+		this.tab1 = Tool.indentation(1);
+		this.tab2 = Tool.indentation(2);
+		this.tab3 = Tool.indentation(3);
 	}
 
 	@Override
@@ -63,7 +65,7 @@ public class ClasseCsharp implements GeneratorStrategy {
 				generatorClass(inner, out, tab, false);
 			}
 			
-			generatorClass(classe, out,tab, isPartial);
+			generatorClass(classe, out, tab, isPartial);
 
 			out.write("}");
 			out.close();
@@ -163,5 +165,131 @@ public class ClasseCsharp implements GeneratorStrategy {
 		}
 		//gerar import dos atributos
 	}
+	
+	
+	public void generatorAppClass(BufferedWriter out) throws IOException{
+		generatorXaml = new XamlCsharp("App", modelName);
+		generatorXaml.generatorApp();
+		
+		String tab4 = Tool.indentation(4);
+		File cls = new File("out/" + Parser.getModel().getName(), "App.xaml.cs");
+		
+		out = new BufferedWriter(new FileWriter(cls));
+		
+		out.write("using System;\n");
+		out.write("using System.Diagnostics;\n");
+		out.write("using System.Resources;\n");
+		out.write("using System.Windows;\n");
+		out.write("using System.Windows.Markup;\n");
+		out.write("using System.Windows.Navigation;\n");
+		out.write("using Microsoft.Phone.Controls;\n");
+		out.write("using Microsoft.Phone.Shell;\n");
+		out.write("using PureProject.Resources;\n");
+		
+		out.write("\nnamespace " + modelName + "\n{\n");
+		out.write(tab1 + "public partial class App : Application\n" + tab1 + "{\n");
+		
+		out.write(tab2 + "public static PhoneApplicationFrame RootFrame { get; private set; }\n\n");
+		
+		out.write(tab2 + "public App()\n" + tab2 + "{\n");
+		
+		out.write(tab3 + "UnhandledException += Application_UnhandledException;\n");
+		out.write(tab3 + "InitializeComponent();\n");
+		out.write(tab3 + "InitializePhoneApplication();\n");
+		out.write(tab3 + "InitializeLanguage();\n");
+
+		out.write(tab3 + "if (Debugger.IsAttached)\n" + tab3 + "{\n");
+		out.write(tab4 + "Application.Current.Host.Settings.EnableFrameRateCounter = true;\n");
+		out.write(tab4 + "PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;\n");
+		out.write(tab3 + "}\n" + tab2 + "}\n\n");
+        
+		out.write(tab2 + "private void Application_Launching(object sender, LaunchingEventArgs e)\n" +
+				tab2 + "{\n" + tab2 + "}\n\n" );
+		
+		out.write(tab2 + "private void Application_Activated(object sender, ActivatedEventArgs e)\n" +
+				tab2 + "{\n" + tab2 + "}\n\n" );
+		
+		out.write(tab2 + "private void Application_Deactivated(object sender, DeactivatedEventArgs e)\n" +
+				tab2 + "{\n" + tab2 + "}\n\n" );
+		
+		out.write(tab2 + "private void Application_Closing(object sender, ClosingEventArgs e)\n" +
+				tab2 + "{\n" + tab2 + "}\n\n" );
+		
+		out.write(tab2 + "private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)\n" +
+				tab2 + "{\n" );
+		out.write(tab3 + "if (Debugger.IsAttached)\n" + tab3 + "{\n");
+		out.write(tab4 + "Debugger.Break();\n");
+		out.write(tab3 + "}\n" + tab2 + "}\n\n");
+		
+		
+		out.write(tab2 + "private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)\n" +
+				tab2 + "{\n" );
+		out.write(tab3 + "if (Debugger.IsAttached)\n" + tab3 + "{\n");
+		out.write(tab4 + "Debugger.Break();\n");
+		out.write(tab3 + "}\n" + tab2 + "}\n\n");
+		
+		
+		out.write(tab2 + "#region Phone application initialization\n\n");
+		
+		out.write(tab2 + "private bool phoneApplicationInitialized = false;\n\n");
+		
+		out.write(tab2 + "private void InitializePhoneApplication()\n" + tab2 + "{\n");
+		out.write(tab3 + "if (phoneApplicationInitialized)\n");
+		out.write(tab4 + "return;\n");
+		
+		out.write(tab3 + "RootFrame = new PhoneApplicationFrame();\n");
+		out.write(tab3 + "RootFrame.Navigated += CompleteInitializePhoneApplication;\n");
+		out.write(tab3 + "RootFrame.NavigationFailed += RootFrame_NavigationFailed;\n");
+		out.write(tab3 + "RootFrame.Navigated += CheckForResetNavigation;\n");
+		out.write(tab3 + "phoneApplicationInitialized = true;\n");
+		out.write(tab2 + "}\n\n");
+		
+		
+		out.write(tab2 + "private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)"
+				+ "\n" + tab2 + "{\n");
+		out.write(tab3 + "if (RootVisual != RootFrame)\n");
+		out.write(tab4 + "RootVisual = RootFrame;\n");
+		out.write(tab3 + "RootFrame.Navigated -= CompleteInitializePhoneApplication;\n");
+		out.write(tab2 + "}\n\n");
+		
+		
+		out.write(tab2 + "private void CheckForResetNavigation(object sender, NavigationEventArgs e)"
+				+ "\n" + tab2 + "{\n");
+		out.write(tab3 + "if (e.NavigationMode == NavigationMode.Reset)\n");
+		out.write(tab4 + "RootFrame.Navigated += ClearBackStackAfterReset;\n");
+		out.write(tab2 + "}\n\n");
+
+		
+		out.write(tab2 + "private void ClearBackStackAfterReset(object sender, NavigationEventArgs e)"
+				+ "\n" + tab2 + "{\n");
+		out.write(tab3 + "RootFrame.Navigated -= ClearBackStackAfterReset;\n");
+		out.write(tab3 + "if (e.NavigationMode != NavigationMode.New && e.NavigationMode != NavigationMode.Refresh)\n");
+		out.write(tab4 + "return;\n");
+		out.write(tab3 + "while (RootFrame.RemoveBackEntry() != null)\n" + tab3 +"{\n" + tab4 + ";\n" + tab3 + "}\n");
+		
+		out.write(tab2 + "}\n\n");
+		
+		out.write(tab2 + "#endregion\n\n");
+		
+		
+		out.write(tab2 + "private void InitializeLanguage()" + "\n" + tab2 + "{\n");
+		out.write(tab3 + "try\n" + tab3 + "{\n");
+		out.write(tab4 + "RootFrame.Language = XmlLanguage.GetLanguage(AppResources.ResourceLanguage);\n");
+		out.write(tab4 + "FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);\n");
+		out.write(tab4 + "RootFrame.FlowDirection = flow;\n" + tab3 + "}\n");
+		
+		out.write(tab3 + "catch\n" + tab3 + "{\n");
+		out.write(tab4 + "if (Debugger.IsAttached)\n" + tab4 + "{\n");
+		out.write(tab4 + tab1 + "Debugger.Break();\n");
+		out.write(tab4 + "}\n");
+		out.write(tab4 + "throw;\n");
+		out.write(tab3 + "}\n");
+		out.write(tab2 + "}\n");
+		out.write(tab1 + "}\n");
+		out.write("}");
+		
+		out.close();
+	}
+	
 	
 }

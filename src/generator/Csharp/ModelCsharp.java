@@ -30,6 +30,9 @@ public class ModelCsharp implements GeneratorStrategy{
 			generatorClasse = new ClasseCsharp(classe, model.getName());
 			generatorClasse.codeGenerator(out, tab + 1);
 		}
+		
+		generatorClasse = new ClasseCsharp(null, model.getName());
+		generatorClasse.generatorAppClass(out);
 //		
 //		for(Interface inter : model.getListInterface()){
 //			generatorInterface = new InterfaceAndroid(inter);
