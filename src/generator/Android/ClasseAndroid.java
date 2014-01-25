@@ -82,7 +82,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 		// Name Class and General
 		out.write("\n" + tabInd + classe.getVisibility()
 				+ (classe.isAbstract() == true ? " abstract " : " ") + "class " + classe.getName()
-				+ (classe.getGeneral() != null ? " extends " + classe.getGeneral() : ""));
+				+ ( !classe.getGeneral().isEmpty() ? " extends " + classe.getGeneral() : ""));
 
 		// Implements
 		if (!classe.getRealInterfaces().isEmpty()) {
@@ -144,7 +144,7 @@ public class ClasseAndroid implements GeneratorStrategy{
 				}
 			}
 			out.write("){");
-			if (classe.getGeneral() != null) {
+			if (!classe.getGeneral().isEmpty()) {
 				out.write("\n" + tabInd + "\t\tsuper();");
 			}
 			for (Attribute atr : classe.getAttributes()) {
@@ -173,6 +173,9 @@ public class ClasseAndroid implements GeneratorStrategy{
 			}
 		}
 
+		if(classe.getGeneral().equals("Activity")){
+			classe.addMethod("onCreate", "");
+		}
 		// Metodo 
 		if (classe.getMethods().size() > 0) {
 			out.write("\n" + tabInd + "\t/** Methods */");

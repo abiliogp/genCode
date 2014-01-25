@@ -33,12 +33,12 @@ public class Main {
 
 		Parser.getModel().printProp();
 		
-//		generator = new ModelAndroid(Parser.getModel());
-//		generator.codeGenerator(null, 0);
-		
-		
-		generator = new ModelCsharp(Parser.getModel());
+		generator = new ModelAndroid(Parser.getModel());
 		generator.codeGenerator(null, 0);
+		
+		
+	//	generator = new ModelCsharp(Parser.getModel());
+	//	generator.codeGenerator(null, 0);
 		
 		
 		//Interaction.printProp();

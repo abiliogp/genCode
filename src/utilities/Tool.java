@@ -55,13 +55,17 @@ public final class Tool {
 	 */
 	public static String manipulate(String str, String key, String first,
 			String last) {
-
+		int x, x1;
 		int n = str.indexOf(key);
 		if (n == -1) {
 			return "";
 		}
-		int x = str.indexOf(first, n);
-		int x1 = str.indexOf(last, x + 1);
+		x = str.indexOf(first, n);
+		if(str.contains(last)){
+			x1 = str.indexOf(last, x + 1);
+		} else{
+			x1 = str.length();
+		}
 		return str.substring(x + 1, x1);
 	}
 	
