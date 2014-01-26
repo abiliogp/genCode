@@ -94,7 +94,7 @@ public abstract class DataStructure {
 	protected static String parserType(String str, String line){		
 		str = Tool.manipulate(line, "pathmap:", "#", "\"");
 		if(line.contains("EcorePrimitiveTypes")){
-			str = str.substring(1).toLowerCase();
+			str = str.substring(1);
 		}
 		if(line.contains("UMLPrimitiveTypes")){
 			if(str.contains("Integer")){

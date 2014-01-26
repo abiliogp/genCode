@@ -37,7 +37,7 @@ public class Method extends DataStructure {
 	}
 
 	public void addParameter(String name, String type) {
-		this.parameters.add(new Parameter(name));
+		this.parameters.add(new Parameter(name, type));
 	}
 	
 	public void addOperation(Operation operation) {

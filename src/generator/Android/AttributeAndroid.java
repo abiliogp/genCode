@@ -86,8 +86,15 @@ public class AttributeAndroid implements GeneratorStrategy {
 			return;
 		}
 		if (attribute.isPrivate()) {
-			out.write("\n" + tabInd + "public " + attribute.getType()
-					+ " get" + attribute.getName().substring(0, 1).toUpperCase()
+			out.write("\n" + tabInd + "public "); 
+			
+			if (attribute.getLowerValue() == '*' || attribute.getUpperValue() == '*') {
+				out.write("ArrayList<" + attribute.getType());
+			} else{
+				out.write(attribute.getType());
+			}
+			
+			out.write(" get" + attribute.getName().substring(0, 1).toUpperCase()
 					.concat(attribute.getName().substring(1)) + "(){");
 			out.write("\n" + tabInd + "\treturn this." + attribute.getName() + ";\n\t}\n");
 		}
@@ -102,8 +109,16 @@ public class AttributeAndroid implements GeneratorStrategy {
 		if (attribute.isPrivate()) {
 			out.write("\n" + tabInd + "public void set"
 					+ attribute.getName().substring(0, 1).toUpperCase()
-							.concat(attribute.getName().substring(1)) + "( "
-					+ attribute.getType() + " " + attribute.getName() + " ){");
+							.concat(attribute.getName().substring(1)) + "(");
+			
+			if (attribute.getLowerValue() == '*' || attribute.getUpperValue() == '*') {
+				out.write("ArrayList<" + attribute.getType() + "> " + attribute.getName());
+			} else{
+				out.write(attribute.getType() + " " + attribute.getName());
+			}
+			
+			out.write("){");
+			
 			out.write("\n" + tabInd + "\t this." + attribute.getName() + " = "
 					+ attribute.getName() + ";\n\t}\n");
 		}
@@ -122,11 +137,12 @@ public class AttributeAndroid implements GeneratorStrategy {
 
 	public void generatorConstructorSignature(BufferedWriter out)
 			throws IOException {
-		if (attribute.getLowerValue() != '*'
-				&& attribute.getUpperValue() != '*') {
-			out.write(" " + attribute.getType() + " " + attribute.getName()
-					+ " ");
+		if (attribute.getLowerValue() == '*' || attribute.getUpperValue() == '*') {
+			out.write(" ArrayList<" + attribute.getType() + "> " + attribute.getName());
+		} else{
+			out.write(" " + attribute.getType() + " " + attribute.getName());
 		}
+		
 	}
 
 	public void generatorAndroidImports(BufferedWriter out) throws IOException {

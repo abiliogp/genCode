@@ -48,8 +48,8 @@ public class Parameter extends DataStructure {
 		if (line.contains("visibility=")) {
 			visibility = Tool.manipulate(line, "visibility=");
 		}
-		if (line.contains("type=")) {
-			value = Tool.manipulate(line, "type=");
+		if (line.contains(" type=")) {
+			value = Tool.manipulate(line, " type=");
 			type = Model.getTrieID(value);
 		}
 

@@ -174,8 +174,11 @@ public class ClasseAndroid implements GeneratorStrategy{
 		}
 
 		if(classe.getGeneral().equals("Activity")){
-			classe.addMethod("onCreate", "");
+			if(Model.getTrieMetodoName("onCreate") == null){
+				classe.addMethod("onCreate", "");
+			}
 		}
+		
 		// Metodo 
 		if (classe.getMethods().size() > 0) {
 			out.write("\n" + tabInd + "\t/** Methods */");

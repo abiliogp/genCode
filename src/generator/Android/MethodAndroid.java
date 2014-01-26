@@ -121,8 +121,8 @@ public class MethodAndroid implements GeneratorStrategy {
 				out.write(parameter.getName());
 			}
 			i++;
-			if (method.getParameters().size() > (i + 1)) {
-				if (!method.getParameters().get(i + 1).getDirection().equals("out")) {
+			if (method.getParameters().size() > (i)) {
+				if (!method.getParameters().get(i).getDirection().equals("out")) {
 					out.write(", ");
 				}
 			}
