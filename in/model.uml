@@ -65,6 +65,39 @@
         <value xsi:nil="true"/>
       </defaultValue>
     </ownedAttribute>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_cv124IYxEeOg57J2c2fleg" name="onDraw" specification="_soSwkIYhEeOg57J2c2fleg">
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_KdedUIYyEeOh3p5g0cqA6w" name="CombinedFragment" covered="_2V98gIYxEeOh3p5g0cqA6w" interactionOperator="loop">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_KdfrcIYyEeOh3p5g0cqA6w" name="InteractionOperand" covered="_2V98gIYxEeOh3p5g0cqA6w">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_KdgSgIYyEeOh3p5g0cqA6w" name="">
+            <specification xmi:type="uml:LiteralString" xmi:id="_oI0E0IYyEeOh3p5g0cqA6w" name="x &lt; mXTileCount" value="x &lt; mXTileCount"/>
+            <maxint xmi:type="uml:LiteralString" xmi:id="_XY8t4IY1EeOh3p5g0cqA6w" name="*" value="*"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_KdgSgoYyEeOh3p5g0cqA6w"/>
+          </guard>
+          <fragment xmi:type="uml:CombinedFragment" xmi:id="_LUbokIY0EeOh3p5g0cqA6w" name="CombinedFragment" covered="_2V98gIYxEeOh3p5g0cqA6w" interactionOperator="loop">
+            <operand xmi:type="uml:InteractionOperand" xmi:id="_LUc2sIY0EeOh3p5g0cqA6w" name="InteractionOperand" covered="_2V98gIYxEeOh3p5g0cqA6w">
+              <guard xmi:type="uml:InteractionConstraint" xmi:id="_LUc2sYY0EeOh3p5g0cqA6w" name="">
+                <specification xmi:type="uml:LiteralString" xmi:id="_aCk4AIY0EeOh3p5g0cqA6w" name="y &lt; mYTileCount" value="y &lt; mYTileCount"/>
+                <maxint xmi:type="uml:LiteralString" xmi:id="_aT7RQIY1EeOh3p5g0cqA6w" name="*" value="*"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_LUc2s4Y0EeOh3p5g0cqA6w"/>
+              </guard>
+              <fragment xmi:type="uml:CombinedFragment" xmi:id="_moeBgIY0EeOh3p5g0cqA6w" name="CombinedFragment" covered="_2V98gIYxEeOh3p5g0cqA6w" interactionOperator="opt">
+                <operand xmi:type="uml:InteractionOperand" xmi:id="_moeBgYY0EeOh3p5g0cqA6w" name="InteractionOperand" covered="_2V98gIYxEeOh3p5g0cqA6w">
+                  <guard xmi:type="uml:InteractionConstraint" xmi:id="_moeokIY0EeOh3p5g0cqA6w" name="">
+                    <specification xmi:type="uml:LiteralString" xmi:id="_moeokYY0EeOh3p5g0cqA6w" name="mTileGrid[x][y] > 0" value="mTileGrid[x][y] > 0"/>
+                    <maxint xmi:type="uml:LiteralInteger" xmi:id="_moeok4Y0EeOh3p5g0cqA6w" value="1"/>
+                    <minint xmi:type="uml:LiteralInteger" xmi:id="_moeokoY0EeOh3p5g0cqA6w"/>
+                  </guard>
+                  <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5fxesIY0EeOh3p5g0cqA6w" name="MessageSend" covered="_2V98gIYxEeOh3p5g0cqA6w" message="_5fwQkIY0EeOh3p5g0cqA6w"/>
+                  <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5fyFwIY0EeOh3p5g0cqA6w" name="MessageRecv" covered="_2V98gIYxEeOh3p5g0cqA6w" message="_5fwQkIY0EeOh3p5g0cqA6w"/>
+                </operand>
+              </fragment>
+            </operand>
+          </fragment>
+        </operand>
+      </fragment>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_2V98gIYxEeOh3p5g0cqA6w" name="Lifeline" represents="_xZXS4IYhEeOg57J2c2fleg" coveredBy="_KdedUIYyEeOh3p5g0cqA6w _KdfrcIYyEeOh3p5g0cqA6w _LUbokIY0EeOh3p5g0cqA6w _LUc2sIY0EeOh3p5g0cqA6w _moeBgIY0EeOh3p5g0cqA6w _moeBgYY0EeOh3p5g0cqA6w _5fxesIY0EeOh3p5g0cqA6w _5fyFwIY0EeOh3p5g0cqA6w"/>
+      <message xmi:type="uml:Message" xmi:id="_5fwQkIY0EeOh3p5g0cqA6w" name="1:drawBitmap(mTileArray[mTileGrid[x][y]], mXOffset + x * mTileSize, mYOffset + y * mTileSize, mPaint)" messageSort="asynchCall" receiveEvent="_5fyFwIY0EeOh3p5g0cqA6w" sendEvent="_5fxesIY0EeOh3p5g0cqA6w"/>
+    </ownedBehavior>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_yyvykIYfEeOg57J2c2fleg" name="TileView">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_30enEIYfEeOg57J2c2fleg" name="context" type="_PkZOcIYfEeOg57J2c2fleg"/>
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8paVsIYfEeOg57J2c2fleg" name="attrs" type="_VoDaAIYfEeOg57J2c2fleg"/>
@@ -113,7 +146,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_soSwkIYhEeOg57J2c2fleg" name="onDraw">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_soSwkIYhEeOg57J2c2fleg" name="onDraw" method="_cv124IYxEeOg57J2c2fleg">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_xZXS4IYhEeOg57J2c2fleg" name="canvas" type="_dFDXEIYfEeOg57J2c2fleg"/>
     </ownedOperation>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_cnzP0IYeEeOg57J2c2fleg" name="Bitmap"/>
@@ -136,10 +169,27 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1VLMsIYXEeOg57J2c2fleg" value="1"/>
       <defaultValue xmi:type="uml:LiteralString" xmi:id="_1VNo8IYXEeOg57J2c2fleg" value="&quot;snake_view&quot;"/>
     </ownedAttribute>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_jgbcEIZAEeOh3p5g0cqA6w" name="onBackPressed" specification="_6gL9MIYQEeOg57J2c2fleg">
+      <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_1ncEwIZAEeOh3p5g0cqA6w" name="Intent"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_eh9hgYZBEeOh3p5g0cqA6w" name="MessageSend" covered="_rEUrUIZAEeOh3p5g0cqA6w" message="_eh9hgIZBEeOh3p5g0cqA6w"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_eh-IkIZBEeOh3p5g0cqA6w" name="MessageRecv" covered="_uuWtEIZAEeOh3p5g0cqA6w" message="_eh9hgIZBEeOh3p5g0cqA6w"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ou2MQIZBEeOh3p5g0cqA6w" name="MessageSend0" covered="_rEUrUIZAEeOh3p5g0cqA6w" message="_ou1lMIZBEeOh3p5g0cqA6w"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ou2zUIZBEeOh3p5g0cqA6w" name="MessageRecv0" covered="_uuWtEIZAEeOh3p5g0cqA6w" message="_ou1lMIZBEeOh3p5g0cqA6w"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_sIpZoIZBEeOh3p5g0cqA6w" name="MessageSend1" covered="_rEUrUIZAEeOh3p5g0cqA6w" message="_sIoykIZBEeOh3p5g0cqA6w"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_sIpZoYZBEeOh3p5g0cqA6w" name="MessageRecv1" covered="_uuWtEIZAEeOh3p5g0cqA6w" message="_sIoykIZBEeOh3p5g0cqA6w"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_xwWB8IZBEeOh3p5g0cqA6w" name="MessageSend2" covered="_rEUrUIZAEeOh3p5g0cqA6w" message="_xwVa4IZBEeOh3p5g0cqA6w"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_xwWB8YZBEeOh3p5g0cqA6w" name="MessageRecv2" covered="_rEUrUIZAEeOh3p5g0cqA6w" message="_xwVa4IZBEeOh3p5g0cqA6w"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_rEUrUIZAEeOh3p5g0cqA6w" name="Snake" coveredBy="_eh9hgYZBEeOh3p5g0cqA6w _ou2MQIZBEeOh3p5g0cqA6w _sIpZoIZBEeOh3p5g0cqA6w _xwWB8IZBEeOh3p5g0cqA6w _xwWB8YZBEeOh3p5g0cqA6w"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_uuWtEIZAEeOh3p5g0cqA6w" name="setIntent : Intent" coveredBy="_eh-IkIZBEeOh3p5g0cqA6w _ou2zUIZBEeOh3p5g0cqA6w _sIpZoYZBEeOh3p5g0cqA6w"/>
+      <message xmi:type="uml:Message" xmi:id="_eh9hgIZBEeOh3p5g0cqA6w" name="1:ACTION_MAIN" messageSort="createMessage" receiveEvent="_eh-IkIZBEeOh3p5g0cqA6w" sendEvent="_eh9hgYZBEeOh3p5g0cqA6w"/>
+      <message xmi:type="uml:Message" xmi:id="_ou1lMIZBEeOh3p5g0cqA6w" name="2:addCategory( CATEGORY_HOME)" messageSort="asynchCall" receiveEvent="_ou2zUIZBEeOh3p5g0cqA6w" sendEvent="_ou2MQIZBEeOh3p5g0cqA6w"/>
+      <message xmi:type="uml:Message" xmi:id="_sIoykIZBEeOh3p5g0cqA6w" name="3:setFlags( FLAG_ACTIVITY_NEW_TASK)" messageSort="asynchCall" receiveEvent="_sIpZoYZBEeOh3p5g0cqA6w" sendEvent="_sIpZoIZBEeOh3p5g0cqA6w"/>
+      <message xmi:type="uml:Message" xmi:id="_xwVa4IZBEeOh3p5g0cqA6w" name="4:startActivity( setIntent)" messageSort="asynchCall" receiveEvent="_xwWB8YZBEeOh3p5g0cqA6w" sendEvent="_xwWB8IZBEeOh3p5g0cqA6w"/>
+    </ownedBehavior>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_r64gsIYQEeOg57J2c2fleg" name="onCreate"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_veTkIIYQEeOg57J2c2fleg" name="onPause" visibility="protected"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_0O8BkIYQEeOg57J2c2fleg" name="onSavedInstanceState"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_6gL9MIYQEeOg57J2c2fleg" name="onBackPressed"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6gL9MIYQEeOg57J2c2fleg" name="onBackPressed" method="_jgbcEIZAEeOh3p5g0cqA6w"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_tVFKoIYMEeOg57J2c2fleg" name="SnakeView">
     <generalization xmi:type="uml:Generalization" xmi:id="_C8WOAIYNEeOg57J2c2fleg" general="_isqacIYMEeOg57J2c2fleg"/>

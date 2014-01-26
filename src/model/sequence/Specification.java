@@ -60,16 +60,25 @@ public class Specification extends DataSequence{
 	}
 	
 	private void separate(){
-		int delimiter, delimiterValue;
+		int delimiter = -1, delimiterValue;
 		delimiterValue = 1;
+		if(body.contains("&lt;")){
+			body = body.replace("&lt;", "<"); 
+			delimiter = body.indexOf("<");
+		} 
+		if(body.contains(">")){
+			delimiter = body.indexOf(">");
+		}
 		if(body.contains("!")){
 			delimiter = body.indexOf("!");
-		} else{
+		} 
+		if(body.contains("=")){
 			delimiter = body.indexOf("=");
-		} if(delimiter == -1) {
+		} 
+		if(delimiter == -1) {
 			return;
 		}
-		variable = body.substring(0, delimiter);
+		variable = body.substring(0, delimiter-1);
 		expression = body.substring(delimiter, delimiter + 1);
 		if(body.substring(delimiter, delimiter + 2).equals("==") || 
 		   body.substring(delimiter, delimiter + 2).equals("!="))

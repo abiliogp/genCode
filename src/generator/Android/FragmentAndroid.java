@@ -119,7 +119,9 @@ public class FragmentAndroid implements GeneratorStrategy {
 			throws IOException {
 		generatorMessage = new MessageAndroid(fragment.getMessage());
 		generatorMessage.codeGenerator(out, tab);
-		out.write(fragment.getName() + "(");
+		if(fragment.getMessage() != null){
+			out.write(fragment.getMessage().getName());
+		}
 		if (fragment.getMessage().getSort() != null)
 			if (fragment.getMessage().getSort().equals("createMessage"))
 				return;
@@ -209,15 +211,17 @@ public class FragmentAndroid implements GeneratorStrategy {
 	}
 
 	private void genCodeFor(BufferedWriter out, int tab) throws IOException {
+		String variable;
 		tabInd = Tool.indentation(tab);
 		out.write("\n" + tabInd);
-		if (fragment.getCovered().getRepresents().getUpperValue() == '*') {// for
-			if (fragment.getCovered().getRepresents().isPrimitiveType()) {
-				out.write("for(int i="
+		if (fragment.getOperands().get(0).getGuard().getMaxint().equals("*")) {// for
+			if (fragment.getOperands().get(0).getGuard().getSpecification().getExpression().equals("<")) {
+				variable = fragment.getOperands().get(0).getGuard().getSpecification().getVariable();
+				out.write("for(int " + variable + " = "
 						+ fragment.getOperands().get(0).getGuard().getMinint()
-						+ "; " + "i < "
-						+ fragment.getCovered().getRepresents().getName()
-						+ "length() ; i++");
+						+ "; " 
+						+ fragment.getOperands().get(0).getGuard().getSpecification().getBody()
+						+ "; " + variable + "++");
 			} else {
 				out.write("for("
 						+ fragment.getCovered().getRepresents().getType()
@@ -247,6 +251,7 @@ public class FragmentAndroid implements GeneratorStrategy {
 	}
 
 	public void genCodeCreate(BufferedWriter out) throws IOException {
+		System.out.println("++" + fragment.getMessage().getName());
 		if (fragment.getCovered() != null) {
 			generatorLifeline = new LifelineAndroid(fragment.getCovered());
 			generatorLifeline.genCodeCreate(out);

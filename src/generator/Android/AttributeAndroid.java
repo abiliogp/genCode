@@ -103,9 +103,11 @@ public class AttributeAndroid implements GeneratorStrategy {
 	public void genCodeSet(BufferedWriter out, int tab) throws IOException {
 		tabInd = Tool.indentation(tab);
 		// otimização p android
-		if (attribute.hasSetMethod()) {
+		
+		if (attribute.hasSetMethod() || attribute.isStatic()) {
 			return;
 		}
+		
 		if (attribute.isPrivate()) {
 			out.write("\n" + tabInd + "public void set"
 					+ attribute.getName().substring(0, 1).toUpperCase()

@@ -5,12 +5,12 @@ import android.util.AttributeSet;
 public class TileView extends View{
 
 	/**Attributes */	
-	protected int mTileSize;	
-	protected int mXTileCount;	
-	protected int mYTileCount;	
-	private int mXOffset;	
-	private int mYOffset;	
-	private Paint mPaint;	
+	protected static final int mTileSize;	
+	protected static final int mXTileCount;	
+	protected static final int mYTileCount;	
+	private static final int mXOffset;	
+	private static final int mYOffset;	
+	private static Paint mPaint;	
 	private ArrayList<Bitmap> mTileArray;	
 	private ArrayList<int> mTileGrid;
 
@@ -61,30 +61,6 @@ public class TileView extends View{
 	}
 
 	/** Set */
-	public void setMTileSize(int mTileSize){
-		 this.mTileSize = mTileSize;
-	}
-
-	public void setMXTileCount(int mXTileCount){
-		 this.mXTileCount = mXTileCount;
-	}
-
-	public void setMYTileCount(int mYTileCount){
-		 this.mYTileCount = mYTileCount;
-	}
-
-	public void setMXOffset(int mXOffset){
-		 this.mXOffset = mXOffset;
-	}
-
-	public void setMYOffset(int mYOffset){
-		 this.mYOffset = mYOffset;
-	}
-
-	public void setMPaint(Paint mPaint){
-		 this.mPaint = mPaint;
-	}
-
 	public void setMTileArray(ArrayList<Bitmap> mTileArray){
 		 this.mTileArray = mTileArray;
 	}
@@ -113,6 +89,14 @@ public class TileView extends View{
 	}
 
 	public void onDraw(Canvas canvas){
+		/** Specified from Sequence Diagram onDraw */
+		for(int x = 0; x < mXTileCount; x++){
+			for(int y = 0; y < mYTileCount; y++){
+				if(mTileGrid[x][y]> 0){
+					canvas.drawBitmap(mTileArray[mTileGrid[x][y]], mXOffset + x * mTileSize, mYOffset + y * mTileSize, mPaint));
+				}
+			}
+		}
 	}
 
 }

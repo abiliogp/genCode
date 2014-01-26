@@ -22,6 +22,7 @@ public class Attribute extends DataStructure {
 	private boolean hasGetMethod;
 	private boolean hasSetMethod;
 	
+	
 	/*Constructor*/
 	public Attribute(String name) {
 		super(name);
@@ -95,6 +96,10 @@ public class Attribute extends DataStructure {
 			}
 		} 
 		
+		if(line.contains("isStatic")){
+			this.isStatic = true;
+		}
+		
 		if (line.contains("aggregation=")) {
 			aggregation = Tool.manipulate(line, "aggregation=");
 		}
@@ -138,6 +143,9 @@ public class Attribute extends DataStructure {
 				if ( (line.contains("defaultValue")) && (line.contains("value=")) ) {
 					defautlValueType = Tool.manipulate(line, "type");
 					defautlValue = Tool.manipulate(line, "value");
+					if(defautlValue.contains("&quot;")){
+						defautlValue = defautlValue.replaceAll("&quot;", "\"");
+					}
 				}  
 			}// end for
 		}

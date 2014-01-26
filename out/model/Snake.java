@@ -4,7 +4,7 @@ public class Snake extends Activity{
 
 	/**Attributes */	
 	private SnakeView mSnakeView;	
-	private static final String ICICLE_KEY = &quot;snake_view&quot;;
+	private static final String ICICLE_KEY = "snake_view";
 
 	/** Constructor */
 	public Snake( SnakeView mSnakeView, String ICICLE_KEY){
@@ -27,10 +27,6 @@ public class Snake extends Activity{
 		 this.mSnakeView = mSnakeView;
 	}
 
-	public void setICICLE_KEY(String ICICLE_KEY){
-		 this.ICICLE_KEY = ICICLE_KEY;
-	}
-
 	/** Methods */
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -45,6 +41,8 @@ public class Snake extends Activity{
 	}
 
 	public void onBackPressed(){
+		/** Specified from Sequence Diagram onBackPressed */
+		ACTION_MAIN
 	}
 
 }

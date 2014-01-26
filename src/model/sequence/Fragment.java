@@ -113,6 +113,9 @@ public class Fragment extends DataSequence{
 		visibility = Tool.manipulate(line, "visibility=");
 		//key = Tool.manipulate(line, "event=");
 		//event = Tool.getTrieOperationEvent(key);
+		if(name.equals("MessageSend")){
+			isSend = true;
+		}
 		key = Tool.manipulate(line, "message="); 
 		message = Model.getTrieMessage(key);
 		key = Tool.manipulate(line, "covered=");
