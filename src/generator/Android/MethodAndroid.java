@@ -82,7 +82,9 @@ public class MethodAndroid implements GeneratorStrategy {
 		tabInd = Tool.indentation(tab);
 		genCodeH(out, tab);
 		if (method.getName().equals("onCreate")) {
-			method.addParameter("savedInstanceState", "Bundle");
+			if(method.getParameters().isEmpty()){
+				method.addParameter("savedInstanceState", "Bundle");
+			}
 			genCodePmtIn(out);
 			out.write("\n" + tabInd + "\tsuper.onCreate(savedInstanceState);");
 			out.write("\n" + tabInd + "\tsetContentView(R.layout." + nameClass

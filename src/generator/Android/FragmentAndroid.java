@@ -119,15 +119,18 @@ public class FragmentAndroid implements GeneratorStrategy {
 			throws IOException {
 		generatorMessage = new MessageAndroid(fragment.getMessage());
 		generatorMessage.codeGenerator(out, tab);
+		if (fragment.getMessage().getSort() != null){
+			if (fragment.getMessage().getSort().equals("createMessage")){
+				return;
+			}
+		}
 		if(fragment.getMessage() != null){
 			out.write(fragment.getMessage().getName());
 		}
-		if (fragment.getMessage().getSort() != null)
-			if (fragment.getMessage().getSort().equals("createMessage"))
-				return;
+		
 		// event.genCode(out);
 		generatorMessage.genCodeArguments(out);
-		out.write(");");
+		out.write(";");
 	}
 
 	private void genCodeOpt(BufferedWriter out, int tab) throws IOException {
@@ -251,7 +254,6 @@ public class FragmentAndroid implements GeneratorStrategy {
 	}
 
 	public void genCodeCreate(BufferedWriter out) throws IOException {
-		System.out.println("++" + fragment.getMessage().getName());
 		if (fragment.getCovered() != null) {
 			generatorLifeline = new LifelineAndroid(fragment.getCovered());
 			generatorLifeline.genCodeCreate(out);

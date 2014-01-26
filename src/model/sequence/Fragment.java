@@ -113,7 +113,7 @@ public class Fragment extends DataSequence{
 		visibility = Tool.manipulate(line, "visibility=");
 		//key = Tool.manipulate(line, "event=");
 		//event = Tool.getTrieOperationEvent(key);
-		if(name.equals("MessageSend")){
+		if(name.contains("MessageSend")){
 			isSend = true;
 		}
 		key = Tool.manipulate(line, "message="); 

@@ -31,18 +31,33 @@ public class Snake extends Activity{
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.Snake);
+		/** Specified from Sequence Diagram onCreate */
+		if(savedInstanceState== null){
+			mSnakeView.setMode( SnakeView.READY);
+		} else {
+			Bundle map = savedInstanceState.getBundle( SnakeView.PAUSE);
+			if(map = null){
+				mSnakeView.restoreState( map);
+			} else {
+				mSnakeView.setMode( SnakeView.PAUSE);
+			}
+		}
 	}
 
 	protected void onPause(){
 		super.onPause();
 	}
 
-	public void onSavedInstanceState(){
+	public void onSaveInstanceState(Bundle outState){
+		outState.putBundle();
 	}
 
 	public void onBackPressed(){
 		/** Specified from Sequence Diagram onBackPressed */
-		ACTION_MAIN
+		Intent setIntent = new Intent(ACTION_MAIN);
+		setIntent.addCategory( CATEGORY_HOME);
+		setIntent.setFlags( FLAG_ACTIVITY_NEW_TASK);
+		startActivity( setIntent);
 	}
 
 }

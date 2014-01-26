@@ -3,8 +3,10 @@ package generator.Android;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import utilities.Tool;
 import model.sequence.Fragment;
 import model.sequence.Lifeline;
+import model.structure.Attribute;
 import generator.GeneratorStrategy;
 
 public class LifelineAndroid implements GeneratorStrategy{
@@ -47,7 +49,18 @@ public class LifelineAndroid implements GeneratorStrategy{
 	}
 
 	public void genCodeCreate(BufferedWriter out) throws IOException {
-		if(lifeline.getRepresents() != null){
+		if(lifeline.getName().contains("Intent")){
+			int n;
+			n = lifeline.getName().indexOf(":");
+			lifeline.setRepresents(new Attribute(lifeline.getName().substring(0, n - 1)));
+			lifeline.getRepresents().setType(lifeline.getName().substring(n + 2));
+			out.write(lifeline.getName().substring(n + 2) + " ");
+			out.write(lifeline.getName().substring(0, n - 1) + " = new " );
+			out.write(lifeline.getName().substring(n + 2) + "(");
+			out.write(lifeline.getOrder().get(0).getMessage().getName());
+			out.write(");");
+		}
+		else if(lifeline.getRepresents() != null){
 			out.write(lifeline.getRepresents().getName() + " = new " + lifeline.getRepresents().getType() + "();");
 		}
 	}

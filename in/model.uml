@@ -186,9 +186,62 @@
       <message xmi:type="uml:Message" xmi:id="_sIoykIZBEeOh3p5g0cqA6w" name="3:setFlags( FLAG_ACTIVITY_NEW_TASK)" messageSort="asynchCall" receiveEvent="_sIpZoYZBEeOh3p5g0cqA6w" sendEvent="_sIpZoIZBEeOh3p5g0cqA6w"/>
       <message xmi:type="uml:Message" xmi:id="_xwVa4IZBEeOh3p5g0cqA6w" name="4:startActivity( setIntent)" messageSort="asynchCall" receiveEvent="_xwWB8YZBEeOh3p5g0cqA6w" sendEvent="_xwWB8IZBEeOh3p5g0cqA6w"/>
     </ownedBehavior>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_r64gsIYQEeOg57J2c2fleg" name="onCreate"/>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_gcoRQIarEeOkp_zrIJAdqQ" name="onCreate" specification="_r64gsIYQEeOg57J2c2fleg">
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_JIUAwIasEeOkp_zrIJAdqQ" name="MessageSend" message="_JIDiEIasEeOkp_zrIJAdqQ"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_JIUn0IasEeOkp_zrIJAdqQ" name="MessageRecv" message="_JIDiEIasEeOkp_zrIJAdqQ"/>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_VC904IasEeOkp_zrIJAdqQ" name="CombinedFragment" covered="_0N74kIarEeOkp_zrIJAdqQ _0tap4IarEeOkp_zrIJAdqQ" interactionOperator="alt">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_VC_DAIasEeOkp_zrIJAdqQ" name="InteractionOperand" covered="_0N74kIarEeOkp_zrIJAdqQ _0tap4IarEeOkp_zrIJAdqQ">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_VC_qEIasEeOkp_zrIJAdqQ" name="">
+            <specification xmi:type="uml:LiteralString" xmi:id="_VC_qEYasEeOkp_zrIJAdqQ" name="savedInstanceState == null" value="savedInstanceState == null"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_VDARIYasEeOkp_zrIJAdqQ" value="1"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_VDARIIasEeOkp_zrIJAdqQ"/>
+          </guard>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_jiuqEIasEeOkp_zrIJAdqQ" name="MessageSend" covered="_0N74kIarEeOkp_zrIJAdqQ" message="_jiuDAIasEeOkp_zrIJAdqQ"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_jivRIIasEeOkp_zrIJAdqQ" name="MessageRecv" covered="_0N74kIarEeOkp_zrIJAdqQ" message="_jiuDAIasEeOkp_zrIJAdqQ"/>
+        </operand>
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_aVvWEIasEeOkp_zrIJAdqQ" name="InteractionOperand0" covered="_0N74kIarEeOkp_zrIJAdqQ _0tap4IarEeOkp_zrIJAdqQ">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_aVwkMIasEeOkp_zrIJAdqQ" name="">
+            <specification xmi:type="uml:LiteralString" xmi:id="_aVxLQIasEeOkp_zrIJAdqQ" value="else"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_aVxLQoasEeOkp_zrIJAdqQ" value="1"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_aVxLQYasEeOkp_zrIJAdqQ"/>
+          </guard>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-mvqAIasEeOkp_zrIJAdqQ" name="MessageSend" covered="_0N74kIarEeOkp_zrIJAdqQ" message="_-mub4IasEeOkp_zrIJAdqQ"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-mw4IIasEeOkp_zrIJAdqQ" name="MessageRecv" covered="_0tap4IarEeOkp_zrIJAdqQ" message="_-mub4IasEeOkp_zrIJAdqQ"/>
+          <fragment xmi:type="uml:CombinedFragment" xmi:id="_JMXk4IatEeOkp_zrIJAdqQ" name="CombinedFragment" covered="_0N74kIarEeOkp_zrIJAdqQ _0tap4IarEeOkp_zrIJAdqQ" interactionOperator="alt">
+            <operand xmi:type="uml:InteractionOperand" xmi:id="_JMYL8IatEeOkp_zrIJAdqQ" name="InteractionOperand" covered="_0N74kIarEeOkp_zrIJAdqQ _0tap4IarEeOkp_zrIJAdqQ">
+              <guard xmi:type="uml:InteractionConstraint" xmi:id="_JMYzAIatEeOkp_zrIJAdqQ" name="">
+                <specification xmi:type="uml:LiteralString" xmi:id="_JMYzAYatEeOkp_zrIJAdqQ" name="map != null" value="map != null"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_JMYzA4atEeOkp_zrIJAdqQ" value="1"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_JMYzAoatEeOkp_zrIJAdqQ"/>
+              </guard>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_a_4CwIatEeOkp_zrIJAdqQ" name="MessageSend" covered="_0N74kIarEeOkp_zrIJAdqQ" message="_a_3bsIatEeOkp_zrIJAdqQ"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_a_4CwYatEeOkp_zrIJAdqQ" name="MessageRecv" covered="_0N74kIarEeOkp_zrIJAdqQ" message="_a_3bsIatEeOkp_zrIJAdqQ"/>
+            </operand>
+            <operand xmi:type="uml:InteractionOperand" xmi:id="_OCCTUIatEeOkp_zrIJAdqQ" name="InteractionOperand0" covered="_0N74kIarEeOkp_zrIJAdqQ _0tap4IarEeOkp_zrIJAdqQ">
+              <guard xmi:type="uml:InteractionConstraint" xmi:id="_OCC6YIatEeOkp_zrIJAdqQ" name="">
+                <specification xmi:type="uml:LiteralString" xmi:id="_OCC6YYatEeOkp_zrIJAdqQ" name="else" value="else"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_OCC6Y4atEeOkp_zrIJAdqQ" value="1"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_OCC6YoatEeOkp_zrIJAdqQ"/>
+              </guard>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_tDYEcYatEeOkp_zrIJAdqQ" name="MessageSend" covered="_0N74kIarEeOkp_zrIJAdqQ" message="_tDYEcIatEeOkp_zrIJAdqQ"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_tDYrgIatEeOkp_zrIJAdqQ" name="MessageRecv" covered="_0N74kIarEeOkp_zrIJAdqQ" message="_tDYEcIatEeOkp_zrIJAdqQ"/>
+            </operand>
+          </fragment>
+        </operand>
+      </fragment>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_0N74kIarEeOkp_zrIJAdqQ" name="Lifeline" represents="_FxIp0IYNEeOg57J2c2fleg" coveredBy="_VC904IasEeOkp_zrIJAdqQ _VC_DAIasEeOkp_zrIJAdqQ _aVvWEIasEeOkp_zrIJAdqQ _jiuqEIasEeOkp_zrIJAdqQ _jivRIIasEeOkp_zrIJAdqQ _-mvqAIasEeOkp_zrIJAdqQ _JMXk4IatEeOkp_zrIJAdqQ _JMYL8IatEeOkp_zrIJAdqQ _OCCTUIatEeOkp_zrIJAdqQ _a_4CwIatEeOkp_zrIJAdqQ _a_4CwYatEeOkp_zrIJAdqQ _tDYEcYatEeOkp_zrIJAdqQ _tDYrgIatEeOkp_zrIJAdqQ"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_0tap4IarEeOkp_zrIJAdqQ" name="Lifeline0" represents="_enrh0IarEeOkp_zrIJAdqQ" coveredBy="_VC904IasEeOkp_zrIJAdqQ _VC_DAIasEeOkp_zrIJAdqQ _aVvWEIasEeOkp_zrIJAdqQ _-mw4IIasEeOkp_zrIJAdqQ _JMXk4IatEeOkp_zrIJAdqQ _JMYL8IatEeOkp_zrIJAdqQ _OCCTUIatEeOkp_zrIJAdqQ"/>
+      <message xmi:type="uml:Message" xmi:id="_JIDiEIasEeOkp_zrIJAdqQ" name="1:setTextView( R.id.snake)" messageSort="asynchCall" receiveEvent="_JIUn0IasEeOkp_zrIJAdqQ" sendEvent="_JIUAwIasEeOkp_zrIJAdqQ"/>
+      <message xmi:type="uml:Message" xmi:id="_jiuDAIasEeOkp_zrIJAdqQ" name="2:setMode( SnakeView.READY)" messageSort="asynchCall" receiveEvent="_jivRIIasEeOkp_zrIJAdqQ" sendEvent="_jiuqEIasEeOkp_zrIJAdqQ"/>
+      <message xmi:type="uml:Message" xmi:id="_-mub4IasEeOkp_zrIJAdqQ" name="3:Bundle map  = getBundle( SnakeView.PAUSE)" messageSort="asynchCall" receiveEvent="_-mw4IIasEeOkp_zrIJAdqQ" sendEvent="_-mvqAIasEeOkp_zrIJAdqQ"/>
+      <message xmi:type="uml:Message" xmi:id="_a_3bsIatEeOkp_zrIJAdqQ" name="4:restoreState( map)" messageSort="asynchCall" receiveEvent="_a_4CwYatEeOkp_zrIJAdqQ" sendEvent="_a_4CwIatEeOkp_zrIJAdqQ"/>
+      <message xmi:type="uml:Message" xmi:id="_tDYEcIatEeOkp_zrIJAdqQ" name="5:setMode( SnakeView.PAUSE)" messageSort="asynchCall" receiveEvent="_tDYrgIatEeOkp_zrIJAdqQ" sendEvent="_tDYEcYatEeOkp_zrIJAdqQ"/>
+    </ownedBehavior>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_r64gsIYQEeOg57J2c2fleg" name="onCreate" method="_gcoRQIarEeOkp_zrIJAdqQ">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_enrh0IarEeOkp_zrIJAdqQ" name="savedInstanceState" type="_8hv2MIYZEeOg57J2c2fleg"/>
+    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_veTkIIYQEeOg57J2c2fleg" name="onPause" visibility="protected"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_0O8BkIYQEeOg57J2c2fleg" name="onSavedInstanceState"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_0O8BkIYQEeOg57J2c2fleg" name="onSaveInstanceState"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_6gL9MIYQEeOg57J2c2fleg" name="onBackPressed" method="_jgbcEIZAEeOh3p5g0cqA6w"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_tVFKoIYMEeOg57J2c2fleg" name="SnakeView">

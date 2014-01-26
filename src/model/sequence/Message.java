@@ -46,15 +46,16 @@ public class Message extends DataSequence{
 	
 	public void parser(BufferedReader bf, String line) throws IOException{
 		String value, key;
+
+		number = name.substring(0, 1);
+		name = Tool.manipulate(name, number, ":", "_Message");
 		if(name.contains("=")){
-			variable = name.substring(0, name.indexOf("="));
-			name = name.substring(name.indexOf("=") + 1);
+			variable = name.substring(0, name.indexOf("=")-2);
+			name = name.substring(name.indexOf("=") + 2);
 		}
 		if(line.contains("messageSort=")){
 			sort = Tool.manipulate(line, "messageSort=");
 		}
-		number = name.substring(0, 1);
-		name = Tool.manipulate(name, number, ":", "_Message");
 		key = Tool.manipulate(line, "receiveEvent=");
 		receiveEvent = Model.getTrieFragment(key);
 		key = Tool.manipulate(line, "sendEvent=");
