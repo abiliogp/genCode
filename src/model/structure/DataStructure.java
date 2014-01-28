@@ -96,9 +96,12 @@ public abstract class DataStructure {
 		if(line.contains("EcorePrimitiveTypes")){
 			str = str.substring(1);
 		}
-		if(line.contains("UMLPrimitiveTypes")){
+		if(line.contains("PrimitiveType") ){
 			if(str.contains("Integer")){
 				str = "int";
+			}
+			if(str.contains("Double")){
+				str = "double";
 			}
 			if(!(str.equals("String"))){
 				str = str.toLowerCase();

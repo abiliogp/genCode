@@ -14,6 +14,9 @@ public class AttributeCsharp implements GeneratorStrategy {
 
 	public AttributeCsharp(Attribute attribute) {
 		this.attribute = attribute;
+		if(attribute.getType().equals("boolean")){
+			attribute.setType("bool");
+		}
 	}
 
 	@Override
@@ -23,16 +26,19 @@ public class AttributeCsharp implements GeneratorStrategy {
 			generatorGetSet(out, tab);
 			return;
 		} 
-		out.write("\n" + tabInd + attribute.getVisibility() + " "
-				+ attribute.getType() + " " + attribute.getName() + ";");
+		out.write("\n" + tabInd + attribute.getVisibility());
+		out.write((attribute.isStatic()) ? " static " : " ");
+		out.write(attribute.getType() + (attribute.getUpperValue() == '*' ? "[] " : " ") );
+		out.write(attribute.getName());
+		out.write((attribute.getDefaultValue() != null) ? " = " + attribute.getDefaultValue() : ";");
 	}
 
 	public void generatorGetSet(BufferedWriter out, int tab) throws IOException {
 		tabInd = Tool.indentation(tab);
-		out.write("\n" + tabInd + "public " + attribute.getType() + " "
-				+ attribute.getName().substring(0, 1).toUpperCase()
-						.concat(attribute.getName().substring(1))
-				+ "{ get; set; }");
+		out.write("\n" + tabInd + "public " + attribute.getType());
+		out.write((attribute.getUpperValue() == '*' ? "[] " : " ") );
+		out.write( attribute.getName().substring(0, 1).toUpperCase()
+				.concat(attribute.getName().substring(1)) + "{ get; set; }");
 	}
 
 	public void generatorConstructor(BufferedWriter out) throws IOException {
@@ -40,9 +46,8 @@ public class AttributeCsharp implements GeneratorStrategy {
 	}
 
 	public void generatorConstructorSignature(BufferedWriter out) throws IOException {
-		if (attribute.getLowerValue() != '*' && attribute.getUpperValue() != '*') {
-			out.write(" " + attribute.getType() + " " + attribute.getName() + " ");
-		}
+		out.write(attribute.getType() + (attribute.getUpperValue() == '*' ? "[] " : " ") );
+		out.write(attribute.getName());
 	}
 
 }

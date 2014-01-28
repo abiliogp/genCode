@@ -10,4 +10,9 @@ public final class WindowsPhone {
 	public enum General {
 		EventArgs, PhoneApplicationPage;
 	}
+	
+	public enum Method {
+		_MouseLeftButton, _MouseRightButton, _MouseUpButton, _MouseLeftButtonDown, 
+		_Click, _ManipulationStarted, _ManipulationDelta, _ManipulationCompleted;
+	}
 }

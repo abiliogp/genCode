@@ -95,12 +95,14 @@ public class ClasseCsharp implements GeneratorStrategy {
 			out.write("\n");
 		}
 
-		// Get
+		// GetSet
 		if (classe.needGetSet) {
 			out.write("\n" + tabInd + "\t//Get and Set");
 			for (Attribute atr : classe.getAttributes()) {
-				generatorAttribute = new AttributeCsharp(atr);
-				generatorAttribute.generatorGetSet(out, tab + 1);
+				if(!atr.getVisibility().equals("public")){
+					generatorAttribute = new AttributeCsharp(atr);
+					generatorAttribute.generatorGetSet(out, tab + 1);
+				}
 			}
 			out.write("\n");
 		}
@@ -114,7 +116,7 @@ public class ClasseCsharp implements GeneratorStrategy {
 				generatorAttribute = new AttributeCsharp(atr);
 				generatorAttribute.generatorConstructorSignature(out);
 				if (i++ < classe.getAttributes().size() - 1) {
-					out.write(",");
+					out.write(", ");
 				}
 			}
 			out.write(")\n" +tabInd + "\t{");

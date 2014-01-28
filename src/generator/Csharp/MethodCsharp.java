@@ -47,7 +47,7 @@ public class MethodCsharp implements GeneratorStrategy{
 		if (!method.getReturns().isEmpty()) {
 			if (method.getReturns().get(0).getUpperValue() == '*' 
 				|| method.getReturns().get(0).getLowerValue() == '*') {
-				out.write("ArrayList<" + method.getReturns().get(0).getType() + "> ");
+				out.write("[] ");
 			} else {
 				out.write(method.getReturns().get(0).getType() + " ");
 			}
@@ -75,26 +75,57 @@ public class MethodCsharp implements GeneratorStrategy{
 
 	// Gera os Parametros de Entrada
 	private void genCodePmtIn(BufferedWriter out) throws IOException {
+		int n, i = 0;
 		out.write("(");
-		int i = 0;
+		n = this.method.getName().indexOf("_");
+		if(n > 0){
+			if(WindowsPhone.Method.valueOf(method.getName().substring(n)) != null){
+				genCodePmWindows();
+			}
+		}
 		for (Parameter parameter : method.getParameters()) {
 			if ((parameter.getDirection().equals("in"))
 					|| (parameter.getDirection().equals("inout"))) {
 				if (parameter.getUpperValue() == '*' || parameter.getLowerValue() == '*') {
-					out.write("ArrayList<" + parameter.getType() + "> ");
+					out.write("[] ");
 				} else {
 					out.write(parameter.getType() + " ");
 				}
 				out.write(parameter.getName());
 			}
 			i++;
-			if (method.getParameters().size() > (i + 1)) {
-				if (!method.getParameters().get(i + 1).getDirection().equals("out")) {
+			if (method.getParameters().size() > (i)) {
+				if (!method.getParameters().get(i).getDirection().equals("out")) {
 					out.write(", ");
 				}
 			}
 		}
 		out.write(")\n"+ tabInd + "{");
+	}
+	
+	
+	private void genCodePmWindows(){
+		this.method.addParameter("sender", "object");
+		if(this.method.getName().contains("_Click")){
+			this.method.addParameter("e", "RoutedEventArgs");
+			return;
+		}
+		if(this.method.getName().contains("_Mouse")){
+			this.method.addParameter("e", "MouseButtonEventArgs");
+			return;
+		}
+		if(this.method.getName().contains("_ManipulationStarted")){
+			this.method.addParameter("e", "ManipulationStartedEventArgs");
+			return;
+		}
+		if(this.method.getName().contains("_ManipulationDelta")){
+			this.method.addParameter("e", "ManipulationDeltaEventArgs");
+			return;
+		}
+		if(this.method.getName().contains("_ManipulationCompleted")){
+			this.method.addParameter("e", "ManipulationCompletedEventArgs");
+			return;
+		}
 	}
 
 
