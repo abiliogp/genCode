@@ -7,11 +7,14 @@ import utilities.Tool;
 import model.structure.Method;
 import model.structure.Parameter;
 import generator.GeneratorStrategy;
+import generator.Android.InteractionAndroid;
 
 public class MethodCsharp implements GeneratorStrategy{
 
 	private Method method;
-
+	
+	private InteractionCsharp generatorInteraction;
+	
 	private String tabInd;
 	private int tab;
 	
@@ -66,7 +69,7 @@ public class MethodCsharp implements GeneratorStrategy{
 		if ((method.isAbstract())) {
 			out.write(";");
 		} else {
-			//genCodeCpMet(out);
+			genCodeCpMet(out);
 			out.write("\n" + tabInd + "}\n");
 		}
 	}
@@ -170,9 +173,25 @@ public class MethodCsharp implements GeneratorStrategy{
 						+ parameterReturn.getType()
 						+ "> disagree of type the Method*/");
 			}
-			out.write("\n\t\treturn " + parameterReturn.getName() + ";");
+			out.write("\n\t\t\treturn " + parameterReturn.getName() + ";");
 		}
 	}
 
+	
+	private void genCodeCpMet(BufferedWriter out) throws IOException {
+		// gera declaração dos out dentro do método
+		this.genCodeDeclPmtOut(out);
+		if(method.getName().equals("StartButton_Click")){
+			out.write("\n"+ tabInd + "\tthis.NavigationService.Navigate(new Uri(\"/");
+			out.write( "Page.xaml\" , UriKind.Relative));");
+		}
+		if (method.getInteraction() != null) {
+			generatorInteraction = new InteractionCsharp(method.getInteraction());
+			generatorInteraction.codeGenerator(out, tab + 1);
+		}
+		this.genCodeReturnPmtOut(out);
+		this.genCodeReturn(out, tab);
+
+	}
 
 }

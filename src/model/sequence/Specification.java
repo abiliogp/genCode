@@ -65,7 +65,10 @@ public class Specification extends DataSequence{
 		if(body.contains("&lt;")){
 			body = body.replace("&lt;", "<"); 
 			delimiter = body.indexOf("<");
-		} 
+		}
+		if(body.contains("&amp;")){
+			body = body.replace("&amp;", "&"); 
+		}
 		if(body.contains(">")){
 			delimiter = body.indexOf(">");
 		}
@@ -75,7 +78,7 @@ public class Specification extends DataSequence{
 		if(body.contains("=")){
 			delimiter = body.indexOf("=");
 		} 
-		if(delimiter == -1) {
+		if(delimiter < 1) {
 			return;
 		}
 		variable = body.substring(0, delimiter-1);

@@ -60,14 +60,35 @@ namespace WindowsPhonePuzzle
 
 		private void PuzzlePiece_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
+			// Specified from Sequence Diagram PuzzlePiece_MouseLeftButtonDown
+			if (!game.IsPlaying)
+			{
+				game.NewGame();
+			}
 		}
 
 		private void SolveButton_Click(object sender, RoutedEventArgs e)
 		{
+			// Specified from Sequence Diagram SolveButton_Click
+			game.Reset();
+			game.CheckWinner();
 		}
 
 		private void PhoneApplicationPage_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
 		{
+			// Specified from Sequence Diagram PhoneApplicationPage_ManipulationStarted
+			if (this.game.IsPlaying && e.ManipulationContainer is Image && e.ManipulationContainer.GetValue(FrameworkElement.NameProperty).ToString().StartsWith(&quot;PuzzleImage_&quot;))
+			{
+				if (piece != null)
+				{
+					for(int i = 0; i < totalPieces; i++)
+					{
+						if (piece == this.puzzlePieces[i] && this.game.CanMovePiece(i) > 0)
+						{
+						}
+					}
+				}
+			}
 		}
 
 		private void PhoneApplicationPage_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)

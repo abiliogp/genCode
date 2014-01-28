@@ -54,13 +54,55 @@
         <value xsi:nil="true"/>
       </defaultValue>
     </ownedAttribute>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_2Qqn0IfIEeOkaNFoogJpBA" name="CheckWinner" specification="_2GKE8IecEeOOQ4lPry9HIg">
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_EHiRAIfJEeOkaNFoogJpBA" name="CombinedFragment" covered="_9wQl4IfIEeOkaNFoogJpBA" interactionOperator="loop">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_EHi4EIfJEeOkaNFoogJpBA" name="InteractionOperand" covered="_9wQl4IfIEeOkaNFoogJpBA">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_EHi4EYfJEeOkaNFoogJpBA" name="">
+            <specification xmi:type="uml:LiteralString" xmi:id="_EHi4EofJEeOkaNFoogJpBA" name="n &lt; totalPieces - 1" value="n &lt; totalPieces - 1"/>
+            <maxint xmi:type="uml:LiteralString" xmi:id="_L0E3MIfPEeOkaNFoogJpBA" name="*" value="*"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_EHi4E4fJEeOkaNFoogJpBA"/>
+          </guard>
+          <fragment xmi:type="uml:CombinedFragment" xmi:id="_X5A3cIfJEeOkaNFoogJpBA" name="CombinedFragment" covered="_9wQl4IfIEeOkaNFoogJpBA" interactionOperator="opt">
+            <operand xmi:type="uml:InteractionOperand" xmi:id="_X5BegIfJEeOkaNFoogJpBA" name="InteractionOperand" covered="_9wQl4IfIEeOkaNFoogJpBA">
+              <guard xmi:type="uml:InteractionConstraint" xmi:id="_X5BegYfJEeOkaNFoogJpBA" name="">
+                <specification xmi:type="uml:LiteralString" xmi:id="_X5BegofJEeOkaNFoogJpBA" name="n != board[n]" value="n != board[n]"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_X5BehIfJEeOkaNFoogJpBA" value="1"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_X5Beg4fJEeOkaNFoogJpBA"/>
+              </guard>
+            </operand>
+          </fragment>
+        </operand>
+      </fragment>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_tj4ocIfJEeOkaNFoogJpBA" name="CombinedFragment0" covered="_9wQl4IfIEeOkaNFoogJpBA" interactionOperator="opt">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_tj5PgIfJEeOkaNFoogJpBA" name="InteractionOperand" covered="_9wQl4IfIEeOkaNFoogJpBA">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_tj5PgYfJEeOkaNFoogJpBA" name="">
+            <specification xmi:type="uml:LiteralString" xmi:id="_tj5PgofJEeOkaNFoogJpBA" name="completed" value="completed"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_tj5PhIfJEeOkaNFoogJpBA" value="1"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_tj5Pg4fJEeOkaNFoogJpBA"/>
+          </guard>
+          <fragment xmi:type="uml:CombinedFragment" xmi:id="_5bB1kIfJEeOkaNFoogJpBA" name="CombinedFragment" covered="_9wQl4IfIEeOkaNFoogJpBA" interactionOperator="opt">
+            <operand xmi:type="uml:InteractionOperand" xmi:id="_5bB1kYfJEeOkaNFoogJpBA" name="InteractionOperand" covered="_9wQl4IfIEeOkaNFoogJpBA">
+              <guard xmi:type="uml:InteractionConstraint" xmi:id="_5bB1kofJEeOkaNFoogJpBA" name="">
+                <specification xmi:type="uml:LiteralString" xmi:id="_5bB1k4fJEeOkaNFoogJpBA" name="GameOver != null" value="GameOver != null"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_5bCcoYfJEeOkaNFoogJpBA" value="1"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_5bCcoIfJEeOkaNFoogJpBA"/>
+              </guard>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_DrYrEIfKEeOkaNFoogJpBA" name="MessageSend" covered="_9wQl4IfIEeOkaNFoogJpBA" message="_DrXc8IfKEeOkaNFoogJpBA"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_DrZSIIfKEeOkaNFoogJpBA" name="MessageRecv" covered="_9wQl4IfIEeOkaNFoogJpBA" message="_DrXc8IfKEeOkaNFoogJpBA"/>
+            </operand>
+          </fragment>
+        </operand>
+      </fragment>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_9wQl4IfIEeOkaNFoogJpBA" name="Lifeline" represents="_fBz1AIebEeOOQ4lPry9HIg" coveredBy="_EHiRAIfJEeOkaNFoogJpBA _EHi4EIfJEeOkaNFoogJpBA _X5A3cIfJEeOkaNFoogJpBA _X5BegIfJEeOkaNFoogJpBA _tj4ocIfJEeOkaNFoogJpBA _tj5PgIfJEeOkaNFoogJpBA _5bB1kIfJEeOkaNFoogJpBA _5bB1kYfJEeOkaNFoogJpBA _DrYrEIfKEeOkaNFoogJpBA _DrZSIIfKEeOkaNFoogJpBA"/>
+      <message xmi:type="uml:Message" xmi:id="_DrXc8IfKEeOkaNFoogJpBA" name="1:GameOver(this, new GameOverEventArgs { TotalMoves = this.totalMoves })" messageSort="asynchCall" receiveEvent="_DrZSIIfKEeOkaNFoogJpBA" sendEvent="_DrYrEIfKEeOkaNFoogJpBA"/>
+    </ownedBehavior>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_u2zXwIebEeOOQ4lPry9HIg" name="Reset"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_xtUR4IebEeOOQ4lPry9HIg" name="NewGame"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_3aDLMIebEeOOQ4lPry9HIg" name="CanMovePiece">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_DWZocIecEeOOQ4lPry9HIg" name="pieceId">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q2TjIIecEeOOQ4lPry9HIg" direction="return">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q2TjIIecEeOOQ4lPry9HIg" name="Piece" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedParameter>
     </ownedOperation>
@@ -68,13 +110,13 @@
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_mz9GMIecEeOOQ4lPry9HIg" name="pieceId">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_pUwPAIecEeOOQ4lPry9HIg" name="return" direction="return">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_pUwPAIecEeOOQ4lPry9HIg" name="Piece" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_2GKE8IecEeOOQ4lPry9HIg" name="CheckWinner"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_2GKE8IecEeOOQ4lPry9HIg" name="CheckWinner" method="_2Qqn0IfIEeOkaNFoogJpBA"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_DcE9MIedEeOOQ4lPry9HIg" name="GetState">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_KTRegIedEeOOQ4lPry9HIg" name="return" type="_-5j8cIdpEeO2gbejfXBbTg" direction="return"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_KTRegIedEeOOQ4lPry9HIg" name="State" type="_-5j8cIdpEeO2gbejfXBbTg" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_POXfgIedEeOOQ4lPry9HIg" name="SetState">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_V87CMIedEeOOQ4lPry9HIg" name="state" type="_-5j8cIdpEeO2gbejfXBbTg"/>
@@ -214,6 +256,69 @@
         <value xsi:nil="true"/>
       </defaultValue>
     </ownedAttribute>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_T5y0YIe_EeOOQ4lPry9HIg" name="PuzzlePiece_MouseLeftButtonDown" specification="_onKdUIepEeOOQ4lPry9HIg">
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_rr_eQIe_EeOkaNFoogJpBA" name="CombinedFragment" covered="_kaPH4Ie_EeOkaNFoogJpBA" interactionOperator="opt">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_rsB6gIe_EeOkaNFoogJpBA" name="InteractionOperand" covered="_kaPH4Ie_EeOkaNFoogJpBA">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_rsEWwIe_EeOkaNFoogJpBA" name="">
+            <specification xmi:type="uml:LiteralString" xmi:id="_rsEWwYe_EeOkaNFoogJpBA" name="!game.IsPlaying" value="!game.IsPlaying"/>
+            <maxint xmi:type="uml:LiteralString" xmi:id="_I-ApAIfPEeOkaNFoogJpBA" name="*" value="*"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_rsE90Ie_EeOkaNFoogJpBA"/>
+          </guard>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_R1MikIfDEeOkaNFoogJpBA" name="MessageSend" covered="_kaPH4Ie_EeOkaNFoogJpBA" message="_R1LUcIfDEeOkaNFoogJpBA"/>
+          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_R1MikYfDEeOkaNFoogJpBA" name="MessageRecv" covered="_kaPH4Ie_EeOkaNFoogJpBA" message="_R1LUcIfDEeOkaNFoogJpBA"/>
+        </operand>
+      </fragment>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_kaPH4Ie_EeOkaNFoogJpBA" name="Lifeline" represents="_ywME8IdrEeO2gbejfXBbTg" coveredBy="_rr_eQIe_EeOkaNFoogJpBA _rsB6gIe_EeOkaNFoogJpBA _R1MikIfDEeOkaNFoogJpBA _R1MikYfDEeOkaNFoogJpBA"/>
+      <message xmi:type="uml:Message" xmi:id="_R1LUcIfDEeOkaNFoogJpBA" name="1:NewGame()" messageSort="asynchCall" receiveEvent="_R1MikYfDEeOkaNFoogJpBA" sendEvent="_R1MikIfDEeOkaNFoogJpBA"/>
+    </ownedBehavior>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_wvL_cIfMEeOkaNFoogJpBA" name="PhoneApplicationPage_ManipulationStarted" specification="_4ZUugIepEeOOQ4lPry9HIg">
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_ZPlE8IfNEeOkaNFoogJpBA" name="CombinedFragment" covered="_WAPbIIfNEeOkaNFoogJpBA" interactionOperator="opt">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_ZPlE8YfNEeOkaNFoogJpBA" name="InteractionOperand" covered="_WAPbIIfNEeOkaNFoogJpBA">
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_ZPlE8ofNEeOkaNFoogJpBA" name="">
+            <specification xmi:type="uml:LiteralString" xmi:id="_ZPlE84fNEeOkaNFoogJpBA" name="this.game.IsPlaying &amp;&amp; e.ManipulationContainer is Image &amp;&amp; e.ManipulationContainer.GetValue(FrameworkElement.NameProperty).ToString().StartsWith(&quot;PuzzleImage_&quot;)" value="this.game.IsPlaying &amp;&amp; e.ManipulationContainer is Image &amp;&amp; e.ManipulationContainer.GetValue(FrameworkElement.NameProperty).ToString().StartsWith(&quot;PuzzleImage_&quot;)"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_ZPlsAIfNEeOkaNFoogJpBA" value="1"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_ZPlE9IfNEeOkaNFoogJpBA"/>
+          </guard>
+          <fragment xmi:type="uml:CombinedFragment" xmi:id="_adK5cIfNEeOkaNFoogJpBA" name="CombinedFragment" covered="_WAPbIIfNEeOkaNFoogJpBA" interactionOperator="opt">
+            <operand xmi:type="uml:InteractionOperand" xmi:id="_adLggIfNEeOkaNFoogJpBA" name="InteractionOperand" covered="_WAPbIIfNEeOkaNFoogJpBA">
+              <guard xmi:type="uml:InteractionConstraint" xmi:id="_adLggYfNEeOkaNFoogJpBA" name="">
+                <specification xmi:type="uml:LiteralString" xmi:id="_adLggofNEeOkaNFoogJpBA" name="piece != null" value="piece != null"/>
+                <maxint xmi:type="uml:LiteralInteger" xmi:id="_adLghIfNEeOkaNFoogJpBA" value="1"/>
+                <minint xmi:type="uml:LiteralInteger" xmi:id="_adLgg4fNEeOkaNFoogJpBA"/>
+              </guard>
+              <fragment xmi:type="uml:CombinedFragment" xmi:id="_cNrNwIfNEeOkaNFoogJpBA" name="CombinedFragment" covered="_WAPbIIfNEeOkaNFoogJpBA" interactionOperator="loop">
+                <operand xmi:type="uml:InteractionOperand" xmi:id="_cNrNwYfNEeOkaNFoogJpBA" name="InteractionOperand" covered="_WAPbIIfNEeOkaNFoogJpBA">
+                  <guard xmi:type="uml:InteractionConstraint" xmi:id="_cNrNwofNEeOkaNFoogJpBA" name="">
+                    <specification xmi:type="uml:LiteralString" xmi:id="_cNrNw4fNEeOkaNFoogJpBA" name="i &lt; totalPieces" value="i &lt; totalPieces"/>
+                    <maxint xmi:type="uml:LiteralString" xmi:id="_Eq0VgIfPEeOkaNFoogJpBA" name="*" value="*"/>
+                    <minint xmi:type="uml:LiteralInteger" xmi:id="_cNrNxIfNEeOkaNFoogJpBA"/>
+                  </guard>
+                  <fragment xmi:type="uml:CombinedFragment" xmi:id="_f-Vb8IfNEeOkaNFoogJpBA" name="CombinedFragment" covered="_WAPbIIfNEeOkaNFoogJpBA" interactionOperator="opt">
+                    <operand xmi:type="uml:InteractionOperand" xmi:id="_f-WDAIfNEeOkaNFoogJpBA" name="InteractionOperand" covered="_WAPbIIfNEeOkaNFoogJpBA">
+                      <guard xmi:type="uml:InteractionConstraint" xmi:id="_f-WDAYfNEeOkaNFoogJpBA" name="">
+                        <specification xmi:type="uml:LiteralString" xmi:id="_f-WDAofNEeOkaNFoogJpBA" name="piece == this.puzzlePieces[i] &amp;&amp; this.game.CanMovePiece(i) > 0" value="piece == this.puzzlePieces[i] &amp;&amp; this.game.CanMovePiece(i) > 0"/>
+                        <maxint xmi:type="uml:LiteralInteger" xmi:id="_f-WDBIfNEeOkaNFoogJpBA" value="1"/>
+                        <minint xmi:type="uml:LiteralInteger" xmi:id="_f-WDA4fNEeOkaNFoogJpBA"/>
+                      </guard>
+                    </operand>
+                  </fragment>
+                </operand>
+              </fragment>
+            </operand>
+          </fragment>
+        </operand>
+      </fragment>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_WAPbIIfNEeOkaNFoogJpBA" name="" represents="_ywME8IdrEeO2gbejfXBbTg" coveredBy="_ZPlE8IfNEeOkaNFoogJpBA _ZPlE8YfNEeOkaNFoogJpBA _adK5cIfNEeOkaNFoogJpBA _adLggIfNEeOkaNFoogJpBA _cNrNwIfNEeOkaNFoogJpBA _cNrNwYfNEeOkaNFoogJpBA _f-Vb8IfNEeOkaNFoogJpBA _f-WDAIfNEeOkaNFoogJpBA"/>
+    </ownedBehavior>
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_o4BHgIfPEeOkaNFoogJpBA" name="SolveButton_Click" specification="_yR0kwIepEeOOQ4lPry9HIg">
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zAKcMYfPEeOkaNFoogJpBA" name="MessageSend" covered="_vwgpUIfPEeOkaNFoogJpBA" message="_zAKcMIfPEeOkaNFoogJpBA"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zAKcMofPEeOkaNFoogJpBA" name="MessageRecv" covered="_vwgpUIfPEeOkaNFoogJpBA" message="_zAKcMIfPEeOkaNFoogJpBA"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0Cfb4IfPEeOkaNFoogJpBA" name="MessageSend0" covered="_vwgpUIfPEeOkaNFoogJpBA" message="_0Ce00IfPEeOkaNFoogJpBA"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0Cfb4YfPEeOkaNFoogJpBA" name="MessageRecv0" covered="_vwgpUIfPEeOkaNFoogJpBA" message="_0Ce00IfPEeOkaNFoogJpBA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_vwgpUIfPEeOkaNFoogJpBA" name="Lifeline" represents="_ywME8IdrEeO2gbejfXBbTg" coveredBy="_zAKcMYfPEeOkaNFoogJpBA _zAKcMofPEeOkaNFoogJpBA _0Cfb4IfPEeOkaNFoogJpBA _0Cfb4YfPEeOkaNFoogJpBA"/>
+      <message xmi:type="uml:Message" xmi:id="_zAKcMIfPEeOkaNFoogJpBA" name="1:Reset()" messageSort="asynchCall" receiveEvent="_zAKcMofPEeOkaNFoogJpBA" sendEvent="_zAKcMYfPEeOkaNFoogJpBA"/>
+      <message xmi:type="uml:Message" xmi:id="_0Ce00IfPEeOkaNFoogJpBA" name="2:CheckWinner()" messageSort="asynchCall" receiveEvent="_0Cfb4YfPEeOkaNFoogJpBA" sendEvent="_0Cfb4IfPEeOkaNFoogJpBA"/>
+    </ownedBehavior>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_ntjKMIeoEeOOQ4lPry9HIg" name="InitBoard" visibility="private"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_0Jl0IIeoEeOOQ4lPry9HIg" name="AnimatePiece" visibility="private">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_8gWDsIeoEeOOQ4lPry9HIg" name="piece" type="_ELDFkIepEeOOQ4lPry9HIg"/>
@@ -222,9 +327,9 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_onKdUIepEeOOQ4lPry9HIg" name="PuzzlePiece_MouseLeftButtonDown" visibility="private"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_yR0kwIepEeOOQ4lPry9HIg" name="SolveButton_Click" visibility="private"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_4ZUugIepEeOOQ4lPry9HIg" name="PhoneApplicationPage_ManipulationStarted" visibility="private"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_onKdUIepEeOOQ4lPry9HIg" name="PuzzlePiece_MouseLeftButtonDown" visibility="private" method="_T5y0YIe_EeOOQ4lPry9HIg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_yR0kwIepEeOOQ4lPry9HIg" name="SolveButton_Click" visibility="private" method="_o4BHgIfPEeOkaNFoogJpBA"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4ZUugIepEeOOQ4lPry9HIg" name="PhoneApplicationPage_ManipulationStarted" visibility="private" method="_wvL_cIfMEeOkaNFoogJpBA"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_A84rAIeqEeOOQ4lPry9HIg" name="PhoneApplicationPage_ManipulationDelta" visibility="private"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Ith80IeqEeOOQ4lPry9HIg" name="PhoneApplicationPage_ManipulationCompleted" visibility="private"/>
     <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_YKQ_UIekEeOOQ4lPry9HIg" name="Canvas"/>

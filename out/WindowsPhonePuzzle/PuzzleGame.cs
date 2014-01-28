@@ -93,18 +93,35 @@ namespace WindowsPhonePuzzle
 
 		public int CanMovePiece(int pieceId)
 		{
+			return Piece;
 		}
 
 		public boolean MovePiece(int pieceId)
 		{
+			return Piece;
 		}
 
 		public void CheckWinner()
 		{
+			// Specified from Sequence Diagram CheckWinner
+			for(int n = 0; n < totalPieces - 1; n++)
+			{
+				if (n != board[n])
+				{
+				}
+			}
+			if (completed)
+			{
+				if (GameOver != null)
+				{
+					GameOver(this, new GameOverEventArgs { TotalMove = GameOver.this.totalMoves });
+				}
+			}
 		}
 
 		public PuzzleState GetState()
 		{
+			return State;
 		}
 
 		public void SetState(PuzzleState state)

@@ -22,6 +22,7 @@ namespace WindowsPhonePuzzle
 		//Methods
 		private void StartButton_Click(object sender, RoutedEventArgs e)
 		{
+			this.NavigationService.Navigate(new Uri("/Page.xaml" , UriKind.Relative));
 		}
 
 	}
