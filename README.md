@@ -28,5 +28,6 @@ In: Ibero-american Conference on Software Engineering, 2013,
 Montevideu. 16th Ibero-american Conference on Software Engineering (CibSE 2013), 2013. p. 1-14.
 
 ---
+<script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="arEwAph" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting. You can now buy me a coffee!" data-color="#79D6B5" data-position="right" data-x_margin="18" data-y_margin="18"></script>
 
 [![LinkedIn](https://img.shields.io/badge/linkedin-abiliogp-blue)](https://www.linkedin.com/in/abilio-parada-464b247a/)
